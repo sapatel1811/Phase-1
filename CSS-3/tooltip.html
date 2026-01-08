@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+.mybox{
+	position:relative;
+	top:100px;
+	left:100px;
+	height:20px;
+	background-color:lightGray;
+	padding:5px;
+	width:150px;
+}
+.tooltip{
+	position:absolute;
+	bottom:40px;
+	left:25px;
+	color:white;
+	height:20px;
+	background-color:black;
+	padding:5px;
+	width:100px;
+	border-radius:15px;
+	visibility:hidden;
+}
+.mybox:hover .tooltip{
+	visibility:visible;
+}
+
+</style>
+<body style="text-align:center;">
+
+
+	<div class="mybox">Hover over me 
+		<div class="tooltip"> Hover effect. </div>
+	</div>
+	
+</body>
+</html>
