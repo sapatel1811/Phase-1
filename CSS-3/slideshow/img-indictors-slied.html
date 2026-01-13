@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slider with Image Indicators</title>
+<link rel="stylesheet" href="style5.css">
+</head>
+<body>
+
+  <!-- Note: Creates a slideshow with image indicators using CSS and radio buttons for 
+  navigation. -->
+
+<div class="slider">
+
+  <!-- Radio buttons -->
+  <input type="radio" name="slide" id="s1" checked>
+  <input type="radio" name="slide" id="s2">
+  <input type="radio" name="slide" id="s3">
+
+  <!-- Main Slides -->
+  <div class="slides">
+    <img src="https://picsum.photos/id/1015/600/300">
+    <img src="https://picsum.photos/id/1016/600/300">
+    <img src="https://picsum.photos/id/1018/600/300">
+  </div>
+
+  <!-- Image Indicators -->
+  <div class="thumbnails">
+    <label for="s1">
+      <img src="https://picsum.photos/id/1015/120/60">
+    </label>
+    <label for="s2">
+      <img src="https://picsum.photos/id/1016/120/60">
+    </label>
+    <label for="s3">
+      <img src="https://picsum.photos/id/1018/120/60">
+    </label>
+  </div>
+
+</div>
+
+</body>
+</html>

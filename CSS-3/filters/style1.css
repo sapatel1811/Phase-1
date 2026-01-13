@@ -1,0 +1,49 @@
+body {
+  background: #111;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  width: 400px;
+}
+
+.search {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  background: #222;
+  border-radius: 6px;
+}
+
+.list li {
+  padding: 12px;
+  border-bottom: 1px solid #333;
+}
+
+/* Hide all items when typing */
+.search:not(:placeholder-shown) ~ .list li {
+  display: none;
+}
+
+/* Show matching items */
+.search[value*="blur"] ~ .list li[data-key="blur"],
+.search[value*="brightness"] ~ .list li[data-key="brightness"],
+.search[value*="contrast"] ~ .list li[data-key="contrast"],
+.search[value*="grayscale"] ~ .list li[data-key="grayscale"],
+.search[value*="invert"] ~ .list li[data-key="invert"],
+.search[value*="opacity"] ~ .list li[data-key="opacity"],
+.search[value*="saturate"] ~ .list li[data-key="saturate"],
+.search[value*="sepia"] ~ .list li[data-key="sepia"] {
+  display: block;
+}

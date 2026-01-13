@@ -1,0 +1,81 @@
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background: #111;
+  
+}
+
+.slider {
+  width: 600px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+input { display: none; }
+
+.slides {
+  display: flex;
+  width: 300%;
+  transition: 0.6s;
+}
+
+.slides img {
+  width: 100%;
+}
+
+/* Slide movement */
+#s1:checked ~ .slides { margin-left: 0; }
+#s2:checked ~ .slides { margin-left: -100%; }
+#s3:checked ~ .slides { margin-left: -200%; }
+
+/* Prev / Next */
+.controls label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: white;
+  background: rgba(153, 146, 146, 0.5);
+  padding: 6px 12px;
+  cursor: pointer;
+  display: none;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Show correct arrows */
+#s1:checked ~ .controls .p1,
+#s1:checked ~ .controls .n1,
+#s2:checked ~ .controls .p2,
+#s2:checked ~ .controls .n2,
+#s3:checked ~ .controls .p3,
+#s3:checked ~ .controls .n3 {
+  display: block;
+}
+
+/* Indicators */
+.indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.indicators label {
+  color: white;
+  background: rgba(0,0,0,0.5);
+  padding: 4px 8px;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+/* Active number */
+#s1:checked ~ .indicators label:nth-child(1),
+#s2:checked ~ .indicators label:nth-child(2),
+#s3:checked ~ .indicators label:nth-child(3) {
+  background: white;
+  color: black;
+}

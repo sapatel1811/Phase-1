@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #111;
+}
+
+.slider {
+  width: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slides {
+  display: flex;
+  width: 300%;
+  animation: slide 10s infinite;
+}
+
+.slide {
+  width: 100%;
+}
+
+/* Animation */
+@keyframes slide {
+  0%   { transform: translateX(0); }
+  33%  { transform: translateX(0); }
+
+  36%  { transform: translateX(-100%); }
+  66%  { transform: translateX(-100%); }
+
+  69%  { transform: translateX(-200%); }
+  100% { transform: translateX(-200%); }
+}

@@ -1,0 +1,49 @@
+body {
+  background: #111;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  width: 80%;
+}
+
+.search {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #222;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #444;
+}
+
+th {
+  background: #333;
+}
+
+/* Default hide all rows when typing */
+.search:not(:placeholder-shown) ~ table tbody tr {
+  display: none;
+}
+
+/* Show matching rows */
+.search[value*="blur"] ~ table tr[data-key="blur"],
+.search[value*="contrast"] ~ table tr[data-key="contrast"],
+.search[value*="sepia"] ~ table tr[data-key="sepia"],
+.search[value*="invert"] ~ table tr[data-key="invert"],
+.search[value*="brightness"] ~ table tr[data-key="brightness"],
+.search[value*="grayscale"] ~ table tr[data-key="grayscale"] {
+  display: table-row;
+}

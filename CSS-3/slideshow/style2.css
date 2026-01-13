@@ -1,0 +1,51 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #111;
+ 
+}
+
+
+.slider {
+  width: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+ 
+}
+
+.slides {
+  display: flex;
+  width: 300%;
+  animation: slide 9s infinite;
+}
+
+.slide {
+  width: 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+
+}
+
+/* Caption */
+.caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  text-align: center;
+ 
+}
+
+/* Animation */
+@keyframes slide {
+  0%, 30%   { transform: translateX(0); }
+  40%, 60%  { transform: translateX(-100%); }
+  75%, 100% { transform: translateX(-200%); }
+}

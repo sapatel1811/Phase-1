@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Dropdown Search</title>
+<link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+  <!-- Note : creates a fake search filter for a dropdown menu that appears on click by 
+  hiding all list items and selectively showing predefined matches using attribute 
+  selectors, but it does not perform real text search.
+    -->
+
+<div class="dropdown">
+
+  <!-- Click area -->
+  <input type="checkbox" id="toggle">
+  <label for="toggle" class="dropdown-btn">
+    Select Filter ▼
+  </label>
+
+  <!-- Dropdown box -->
+  <div class="dropdown-menu">
+
+    <!-- Search UI (visual only) -->
+    <input type="text" placeholder="Search filter..." class="search" disabled>
+
+    <ul>
+      <li>Blur</li>
+      <li>Brightness</li>
+      <li>Contrast</li>
+      <li>Grayscale</li>
+      <li>Invert</li>
+      <li>Sepia</li>
+    </ul>
+
+  </div>
+</div>
+</body>
+</html>

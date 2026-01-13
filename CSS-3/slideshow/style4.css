@@ -1,0 +1,75 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #111;
+}
+
+.slider {
+  width: 600px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+input { display: none; }
+
+/* Slides */
+.slides {
+  display: flex;
+  width: 300%;
+  transition: 0.6s;
+}
+
+.slides img {
+  width: 100%;
+}
+
+/* Slide movement */
+#s1:checked ~ .slides { margin-left: 0; }
+#s2:checked ~ .slides { margin-left: -100%; }
+#s3:checked ~ .slides { margin-left: -200%; }
+
+/* Icon indicators */
+.icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.icons label {
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 6px;
+  opacity: 0.4;
+}
+
+/* Bullet indicators */
+.bullets {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.bullets label {
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+/* Active states */
+#s1:checked ~ .icons label:nth-child(1),
+#s2:checked ~ .icons label:nth-child(2),
+#s3:checked ~ .icons label:nth-child(3),
+#s1:checked ~ .bullets label:nth-child(1),
+#s2:checked ~ .bullets label:nth-child(2),
+#s3:checked ~ .bullets label:nth-child(3) {
+  opacity: 1;
+}
