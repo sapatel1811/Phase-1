@@ -1,0 +1,66 @@
+/* Card for demo */
+.card {
+  width: 250px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+/* Base badge */
+.badge {
+  display: inline-block;          /* inline + size control */
+  padding: 4px 8px;               /* space inside badge */
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background-color: crimson;
+
+  border-radius: 12px;            /* rounded shape */
+  text-align: center;
+  line-height: 1;
+
+  position: absolute;             /* overlap element */
+  top: 10px;
+  right: 10px;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  cursor: default;
+}
+
+/* Button */
+.btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #333;
+  color: #fff;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Circular badge (notification count) */
+.badge-circle {
+  min-width: 20px;
+  height: 20px;
+  padding: 0;
+
+  border-radius: 50%;             /* perfect circle */
+  background: red;
+
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  display: flex;                  /* center text */
+  align-items: center;
+  justify-content: center;
+
+  font-size: 11px;
+}
+
+/* Hover effect */
+.badge:hover {
+  transform: scale(1.1);
+  transition: 0.2s ease;
+}

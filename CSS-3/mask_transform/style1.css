@@ -1,0 +1,69 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  height: 100vh;
+  background: #cf8b8b;
+}
+
+/* Container */
+.mask-box {
+  width: 500px;
+}
+
+/* Image with FULL MASKING */
+.mask-box img {
+  width: 100%;
+  display: block;
+
+  /* 
+     MASK IMAGE
+  */
+  -webkit-mask-image: 
+    linear-gradient(to right, black 70%, transparent 100%);
+  mask-image: 
+    linear-gradient(to right, black 70%, transparent 100%);
+
+  /* 
+     MASK MODE
+  */
+  -webkit-mask-mode: match-source;
+  mask-mode: match-source;
+
+  /* 
+     MASK REPEAT
+   */
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  /* 
+     MASK POSITION
+   */
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  /* 
+     MASK SIZE
+   */
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+
+  /* 
+     MASK ORIGIN
+   */
+  -webkit-mask-origin: content-box;
+  mask-origin: content-box;
+
+  /* 
+     MASK CLIP
+   */
+  -webkit-mask-clip: content-box;
+  mask-clip: content-box;
+
+  /* 
+     MASK COMPOSITE
+     (Useful when multiple masks are used)
+   */
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}

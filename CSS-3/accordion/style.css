@@ -1,0 +1,61 @@
+/* Wrapper */
+.accordion {
+  width: 400px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Each accordion item */
+.item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+/* Hide checkbox */
+.item input {
+  display: none;
+}
+
+/* Accordion header */
+.item label {
+  display: block;
+  padding: 12px;
+  background: #f2f2f2;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Plus / minus icon */
+.item label::after {
+  content: "+";
+  position: absolute;
+  right: 15px;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Content area */
+.content {
+  max-height: 0;              /* collapse */
+  overflow: hidden;           /* hide extra text */
+  padding: 0 12px;            /* removed when closed */
+  background: white;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* When checkbox is checked */
+.item input:checked ~ .content {
+  max-height: 150px;          /* expand */
+  padding: 12px;
+}
+
+/* Rotate icon when open */
+.item input:checked + label::after {
+  content: "-";
+}

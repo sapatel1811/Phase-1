@@ -1,0 +1,76 @@
+<!DOCTYPE html >
+<html>
+    <head>
+        <title>Inheritance</title>
+
+         <style>
+            .perent {
+                color: aqua;
+                font-size: 20px;
+
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+<!-- 1_) inheritance => perent element ke css properties direct child element tak autometicaly 
+phoch jata he.
+inheritable properties => color , font-size , font-faymily , font-weight ,visibility ,
+ cursor -->
+
+
+        <!-- <div class="perent">
+        THis is inherit perent text.
+        <p>THis is chlid peragraph</p>
+        </div> -->
+
+<!--2_) Non-inheritable properties => ye propertie perent se child tak nhi jati
+non-inheritable properties => border , margin , pedding , background ,hight/width , 
+position, display. -->
+
+<!-- <style>
+    div{
+    border: 2px solid lightblue;
+    }
+</style>
+<div>
+  Parent to non inherit 
+  <p>Child</p>
+</div> -->
+
+<!-- inheritance => perent style child ko milta hai.
+            => autometic defult behavior 
+            => mostly text releted prpoertis are used.
+            => ex: color , fornt-size 
+
+non inheritance => perent style child ko nhi milta hai.
+                => not autometic defult behavior .
+                => mostly box and layout releted properties are used .
+                => ex: border , background   -->
+
+
+<!-- 3_) initial & unset -->
+  <!-- a) initial => browser ka defult value set krega. -->
+
+   <!-- <style>
+    div{
+        color: initial;
+    }
+   </style>
+   <div>
+    initial properties.
+   </div> -->
+
+   <!-- b) unset => agr propertey  inheritable hai =>  inerit krega 
+             => inheritable nhi hai => nhi krega -->
+             <style>
+                div{
+                    color: unset;
+                }
+             </style>
+             <div>
+                unset properties
+             </div>
+</body>
+</html>
