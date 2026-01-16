@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Shipping</title>
+</head>
+<body>
+
+  <!-- Note: Creates a shipping address and payment form using HTML5 form validation features.
+  => this code uses HTML5 form validation attributes like 'required', 'pattern', and 
+  'minlength' to ensure user inputs are valid before submission. -->
+
+  <form class="form" novalidate>
+  <h2>Shipping Address</h2>
+
+  <label>
+    Full Name
+    <input type="text" name="name" required minlength="3">
+  </label>
+
+  <label>
+    Address
+    <input type="text" name="address" required>
+  </label>
+
+  <label>
+    City
+    <input type="text" name="city" required>
+  </label>
+
+  <label>Postal Code
+  <input type="text"name="zip"required pattern="[0-9]{6}"aria-describedby="zip-help">
+    <small id="zip-help">Enter 6-digit PIN code</small>
+  </label>
+
+  <button type="submit">Continue to Payment</button>
+</form>
+<br>
+
+<!-- ================================================ -->
+ <form class="form" novalidate>
+  <h2>Payment Details</h2>
+
+  <label>Card Number
+ <input type="text" inputmode="numeric" required pattern="[0-9]{16}" aria-describedby="card-help">
+  <small id="card-help">16-digit card number</small>
+  </label>
+
+  <div class="grid">
+    <label>Expiry
+    <input type="text" placeholder="MM/YY" required pattern="(0[1-9]|1[0-2])\/[0-9]{2}">
+    </label>
+
+    <label>CVV
+  <input type="password" inputmode="numeric" required pattern="[0-9]{3}" aria-describedby="cvv-help">
+    </label>
+  </div>
+
+  <button type="submit">Pay Now</button>
+</form>   
+</body>
+</html>

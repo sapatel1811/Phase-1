@@ -1,0 +1,40 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Mini Project</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 
+    Note: Creates a simple product card with badge and skeleton loading effect using CSS.
+    => This design use CSS variables, Flexbox, and keyframe animations for shimmer effect. 
+    -->
+
+<h2 class="title">Featured Products</h2>
+
+<div class="product-grid">
+
+  <!-- Product Card -->
+  <div class="card">
+    <span class="badge">New</span>
+
+    <img src="https://picsum.photos/300/200" alt="product">
+
+    <div class="content">
+      <h3>Wireless Headphones</h3>
+      <p class="price">$99</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Skeleton Card -->
+  <div class="card skeleton-card">
+    <div class="skeleton img"></div>
+    <div class="skeleton line"></div>
+    <div class="skeleton line short"></div>
+  </div>
+
+</div>  
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* Page background */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg,#8e9ee7,#a36fd8);
+  font-family: Arial, sans-serif;
+}
+
+/* Glass Card */
+.glass-card {
+  width: 300px;
+  padding: 30px;
+  border-radius: 16px;
+
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+  color: #fff;
+  text-align: center;
+}
+
+/* Button */
+.glass-card button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.3);
+  color: #fff;
+  font-weight: bold;
+}
