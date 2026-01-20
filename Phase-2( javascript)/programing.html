@@ -1,0 +1,150 @@
+
+<!-- Javascript Operators: Operators are special symbols used in programming to
+  perform operations on values (operands).
+    
+=> There are various types of operators in JavaScript, including:
+1) Arithmetic Operators
+2) Assignment Operators
+3) Comparison Operators
+4) Logical Operators
+5) String Operators 
+6) Type Operators
+7) Conditional (Ternary) Operator
+8) Unary Operators
+9) Bitwise Operators
+10) Comma Operator 
+-->
+
+<!-- ========================================================================================== -->
+
+<h4 id="desc">Arithmetic Operators</h4>
+<script>
+// 1) Arithmetic Operators: used to perform mathametical experssions .
+ var a,b,c;
+ a=10;
+ b=20;
+ c=a+b;
+ document.write(`<h1>sum of a & b are ${c}</h1>`);
+ 
+//  document.getElementById('desc').innerText = `sum of a & b are ${c}`;
+</script>
+<hr/>
+
+<!-- ================================================================================ -->
+ <h4>Assignment Operators</h4>
+ <script>
+// 2) Assignment Operators: used to assign values to variables.
+
+ var x=10;  // assign 10 to x
+ var y=20;  // assign 20 to y
+ var z;
+ z=x+y;    // assign sum of x & y to z
+ document.write(`<h1>sum of x & y are : ${z}</h1>`);
+
+ </script>
+<hr/>
+<!-- ================================================================================ -->
+ <h4>Comparison Operators</h4>
+
+<script>
+// 3) Comparison Operators: used to compare two values and return a boolean value (true or false).
+ var a=10;
+ var b=20;
+ document.write(`<h1>Is a equal to b? ${a==b}</h1>`);
+ document.write(`<h1>Is a greater than b? ${a>b}</h1>`);
+ document.write(`<h1>Is a less than b? ${a<b}</h1>`);
+</script>
+<hr/>
+
+<!-- ================================================================================ -->
+
+ <h4>Logical Operators</h4>
+<script>
+// 4) Logical Operators: used to combine multiple boolean expressions and return a boolean value.
+ var a=10;
+ var b=20;
+ document.write(`<h1>Is a less than b AND a equal to 10? ${ (a<b) && (a==10) }</h1>`);
+ document.write(`<h1>Is a greater than b OR a equal to 10? ${ (a>b) || (a==10) }</h1>`);
+ document.write(`<h1>Is NOT (a less than b)? ${ !(a<b) }</h1>`);
+</script>
+<hr/>
+<!-- ================================================================================ -->
+
+ <h4>String Operators</h4>
+<script>
+// 5) String Operators: used to concatenate (join) two or more strings together.
+    var firstName="sapna";
+    var lastName="patel";
+    var fullName=firstName + " " + lastName;
+    document.write(`<h1>Full Name is : ${fullName}</h1>`);
+</script>
+<hr/>
+<!-- ================================================================================ --> 
+
+    <h4>Type Operators</h4> 
+<script>  
+// 6) Type Operators: used to check the data type of a variable or value.
+    var num=10;
+    var str="hello";
+    var bool=true;
+    document.write(`<h1>Type of num is : ${typeof num}</h1>`);
+    document.write(`<h1>Type of str is : ${typeof str}</h1>`);
+    document.write(`<h1>Type of bool is : ${typeof bool}</h1>`);
+</script>
+<hr/>
+<!-- ================================================================================ --> 
+    <h4>Conditional (Ternary) Operator</h4> 
+<script>  
+// 7) Conditional (Ternary) Operator: used to evaluate a condition and return one of 
+// two values based on the result.
+    var age=18;
+    var canVote=(age>=18) ? "Yes, you can vote." : "No, you cannot vote.";
+    document.write(`<h1>Can you vote? ${canVote}</h1>`);
+</script>
+<hr/>
+<!-- ================================================================================ --> 
+    <h4>Unary Operators</h4> 
+<script>  
+// 8) Unary Operators: used to perform operations on a single operand.
+    var num=10;     
+    document.write(`<h1>Value of num is : ${num}</h1>`);
+    document.write(`<h1>Value of ++num is : ${++num}</h1>`); // pre-increment
+    document.write(`<h1>Value of num++ is : ${num++}</h1>`); // post-increment
+    document.write(`<h1>Value of --num is : ${--num}</h1>`); // pre-decrement
+    document.write(`<h1>Value of num-- is : ${num--}</h1>`); // post-decrement
+</script>
+<hr/>
+<!-- ================================================================================ --> 
+    <h4>Bitwise Operators</h4> 
+<script>  
+// 9) Bitwise Operators: used to perform bit-level operations on binary numbers.
+    var a=5;  // binary: 0101
+    var b=3;  // binary: 0011
+    document.write(`<h1>a & b = ${a & b}</h1>`);
+    document.write(`<h1>a | b = ${a | b}</h1>`);
+    document.write(`<h1>a ^ b = ${a ^ b}</h1>`);
+    document.write(`<h1>~a = ${~a}</h1>`);
+    document.write(`<h1>a << 1 = ${a << 1}</h1>`);
+    document.write(`<h1>a >> 1 = ${a >> 1}</h1>`);
+</script>
+<hr/>
+<!-- ================================================================================ -->   
+    <h4>Comma Operator</h4> 
+<script>  
+// 10) Comma Operator: used to evaluate multiple expressions and return the value of the 
+// last expression.
+    var a,b,c;
+    a=(1,2,3); // a gets the value 3    
+    b=(4,5,6); // b gets the value 6
+    c=(7,8,9); // c gets the value 9
+    document.write(`<h1>Value of a is : ${a}</h1>`);
+    document.write(`<h1>Value of b is : ${b}</h1>`);    
+    document.write(`<h1>Value of c is : ${c}</h1>`);
+</script>
+<hr/>
+<!-- ================================================================================ -->
+
+<!-- note :Create various types of operators in JavaScript,
+ including arithmetic, assignment, comparison, logical, string, type, conditional (ternary),
+ unary, bitwise, and comma operators. Each operator type is illustrated with examples,
+ and the results are displayed on the web page using the document.write() method.  -->

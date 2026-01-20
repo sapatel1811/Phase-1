@@ -4,15 +4,21 @@
 <style>
 li {
   display: inline;
+  /* elemnt ek line me show hoga
+  jitna jarurat ho utna width lega */
 }
 
 span {
   display: block;
+  /* element new line se shuru hoga
+  full width lega */
 }
 
 h1.hidden {
   display: none;
+  /* matlab => element page par show nahi hoga  but space nahi lega */
   visibility: hidden;
+  /* matlab => element page par show nahi hoga lekin space lega . */
 }
 
 </style>
@@ -30,7 +36,8 @@ h1.hidden {
 
 
 <span>A display property with a value of "block" results in</span> <span>a line break between the two elements.</span><span>a line break between the two elements.</span>
-
+<!-- span => Jab text ke kisi specific word/line par CSS ya JavaScript lagani ho, tab 
+<span> use hota hai. -->
 
 
 <h1 class="hidden">This is a hidden heading</h1>
