@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- filter loop => filter loop ka use array ke elements ko iterate karne ke liye
+ kiya jata hai.
+ 
+     syntax:
+     array.filter(function(element){
+        // code to be executed
+     }); -->
+
+    <h4 style="color: brown;">Filter Loop</h4>
+    <p>Filter loop is used to iterate over the elements of an array.</p>
+    <script>
+        var numbers = [1, 2, 3, 4, 5];
+        numbers.filter(function(number) {
+            if(number > 2) {
+                document.write(number + "<br>");
+            }
+        });
+    </script>
+</body>
+</html>
+
+<!--
+ note => Filter Loop in JavaScript.
+     => It iterates over the elements of the 'numbers' array and prints each number 
+     greater than 2 on the webpage, each followed by a line break. -->

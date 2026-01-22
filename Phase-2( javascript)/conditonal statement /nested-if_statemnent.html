@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4 style="color: brown;">Nested If Statement</h4>
+<script>
+// Nested If Statement: 
+
+// => used to execute a block of code if a specified condition is true, and then
+// another block of code if a different condition is true within the first block.
+
+//=> jab ek condition ke andar dusri condition ko check karna ho to nested if statement
+// ka use kiya jata hai.
+
+// Syntax:
+// if(condition1){          
+//      // code to be executed if condition1 is true
+//      if(condition2){         
+//          // code to be executed if condition2 is true        
+//      }
+// }    
+
+    var age=19;
+    var hasVoterID=true;        
+    if(age>=18){          
+        if(hasVoterID){         
+            document.write(`<h1>You are eligible to vote.</h1>`);        
+        }else{         
+            document.write(`<h1>You are not eligible to vote. Please get a Voter ID.</h1>`);        
+        }    
+    }else{          
+        document.write(`<h1>You are not eligible to vote.</h1>`);    
+    }
+</script>
+</body>
+</html>
+
+<!--
+ note => Nested If statement in JavaScript.
+     => It checks if a person is eligible to vote based on their age and possession 
+     of a Voter ID, displaying appropriate messages accordingly. -->

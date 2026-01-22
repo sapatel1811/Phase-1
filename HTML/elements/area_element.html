@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    area element => area element ka use image map me clickable areas define karne
+     ke liye kiya jata hai.
+
+    syntex: <area shape="" coords="" href="" alt="">
+
+    uses: - image map me clickable areas define karne ke liye.
+          - navigation me use hota hai.
+
+    => shape : area ka shape define karne ke liye use hota hai.
+        => options:
+            1) rect : rectangular area ke liye.
+            2) circle : circular area ke liye.
+            3) poly : polygonal area ke liye.
+            4) default : pura area clickable banane ke liye.
+
+    => coords : area ke coordinates define karne ke liye use hota hai.
+    => rectangular ke liye : x1,y1,x2,y2 (top-left and bottom-right)
+    => circular ke liye : x,y,r (center and radius)
+    => polygonal ke liye : x1,y1,x2,y2,x3,y3,...(all vertices)
+    => href : destination url (jis path par jana ho )
+    => alt : area ka alternative text define karne ke liye use hota hai.    
+    -->
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" 
+    height="50px" width="50px"
+     usemap="#example-map" alt="Example Image Map">
+    <map name="example-map">
+        <area shape="rect" coords="34,44,270,350" href="https://www.example.com/rect"
+         alt="Rectangular Area">
+        <area shape="circle" coords="337,300,44" href="https://www.example.com/circle"
+         alt="Circular Area">
+        <area shape="poly" coords="400,50,450,150,350,150" 
+        href="https://www.example.com/polygon" alt="Polygonal Area">
+    </map>
+    <p>Click on the areas of the image to navigate to different links.</p>
+
+</body>
+</html>

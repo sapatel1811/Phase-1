@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="url">link to text</a>
+    <br>
+
+<!-- => a : anchor element html me link banane me use hota hy 
+- Ek page se dusre page pr jane ke liye .
+- Same page ke kisi section me jump kar sakte hy (about.html)
+- Email ya phone call karwa sakte hy 
+- File doundlod kar sakte hy .
+
+=> href : destination url (jis path par jana ho )
+=> link to text : link web page pr show hoga  -->
+
+<a href ="about.html">about page </a><br>
+<!-- => another page open karna ho tb. -->
+
+<a href="https://www.google.com/" target="_top"> google open</a><br>
+<!-- => new tab open karne ke liye 
+ => targete : link kha open hoga uske liye use hota hy 
+        => targete me options.
+        1) _blank : new tab me open hoga
+        2) _self : same tab me open hoga (default)
+        3) _parent : parent frame me open hoga
+        4) _top : full body me open hoga
+
+          -->
+
+<a href="#contect">contect page</a><br>
+<h2 id="contect">contect us</h2><br>
+ <!-- => same page ke kisi section me jump karne ke liye 
+=> id : unique identifier hota hy jo kisi element ko identify karne ke liye
+use hota hy .  -->
+
+<a href="mailto:sp@gmail.com">send mail</a><br>
+<!-- => email karne ke liye 
+=> mailto : email address ke liye use hota hy .  -->
+
+<a href="tel:+1234567890">call us</a><br>
+<!-- => phone call karne ke liye
+=> tel : phone number ke liye use hota hy .  -->
+
+<a href="file.pdf" download>download file</a><br><br> 
+<!-- => file download karne ke liye
+=> download : file download karne ke liye use hota hy .  -->
+
+<a href="sms:hello">send sms</a><br>
+<!-- => sms bhejne ke liye
+=> sms : sms bhejne ke liye use hota hy .  -->  
+
+<a href="https://www.example.com" target="_blank" rel="noopener noreferrer">
+    Visit Example.com</a><br><br>
+<!-- 
+=> rel : security ke liye use hota hy . 
+=> noopener noreferrer : ye dono attribute security ke liye use hote hy jab hum 
+target="_blank" use karte hy . 
+ye dono attribute link ko open karne ke baad naye page ko humare page se connect
+ nahi karne dete hy .  -->
+</a>
+
+<a href="login" class="btn">login us </a>
+<style>
+    .btn{
+       
+        color: white;
+        background-color: blue;
+        padding: 10px 20px;
+        border-radius: 5px; /* button jaisa look dene ke liye  */
+        text-decoration: none;  /* underline remove karne ke liye  */
+    }
+</style>
+    
+                
+
+</body>
+</html>
+
+=> Studied the HTML <a> tag used to create hyperlinks.
+Learned key attributes: href, target, and title.
+Practiced linking external pages, internal sections, email, and phone links.

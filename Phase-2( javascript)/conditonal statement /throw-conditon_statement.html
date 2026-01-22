@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Throw Condition Statement</h4>
+<script>
+// Throw Statement: 
+
+// => The throw statement is used to throw a user-defined exception.
+// => The throw statement is used together with try...catch to handle errors in a more
+// elegant way.
+
+// => jab rule break hone par error dena ho tb  
+
+// Syntax:
+// throw expression;
+
+    function checkAge(age){
+        if(age<18){ 
+            throw "Age must be at least 18.";
+        }else{
+            return "You are eligible to vote.";
+        }
+    }   
+    try{
+        var result=checkAge(16);
+        document.write(`<h1>${result}</h1>`);
+    }catch(error){
+        document.write(`<h1>Error: ${error}</h1>`);
+    }
+</script>
+</body>
+</html>
+
+<!--
+ note => Throw Statement in JavaScript.
+     => It demonstrates how to throw a custom error message when a user-defined 
+     condition (age < 18) is not met, and how to handle that error using try...catch. -->

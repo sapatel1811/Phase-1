@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- for-in loop => for-in loop ka use object ke properties ko iterate karne ke liye
+  kiya jata hai.
+
+     syntax:
+     for(property in object){
+        // code to be executed
+     } -->
+
+    <h4 style="color: brown;">For-In Loop</h4>
+    <p>For-In loop is used to iterate over the properties of an object.</p>
+    <script>
+        var person = {
+            name: "sp",
+            age: 23,
+            city: "pune"
+        };
+        for(var property in person)
+        {
+            document.write(property + ": " + person[property] + "<br>");
+        }
+    </script>
+</body>
+</html>
+
+<!--
+ note => For-In Loop in JavaScript.
+     => It iterates over the properties of the 'person' object and prints each property 
+     along with its value on the webpage, each followed by a line break. -->

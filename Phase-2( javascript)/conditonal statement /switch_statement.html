@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4 style="color: brown;">switch Statement</h4>
+    <script>
+// Switch Statement:
+// => used to execute one block of code if a specified condition is true, another block 
+// of code if a different condition is true,and a final block of code if none of the
+// conditions are true.  
+
+//=> jab multiple condition ko check karna ho to if...else if...else statement ka use 
+// kiya jata hai.  
+
+// Syntax:
+// switch(expression){
+//      case value1:
+//          // code to be executed if expression matches value1
+//          break;
+//      case value2:
+//          // code to be executed if expression matches value2
+//          break;
+//      default:
+//          // code to be executed if expression doesn't match any case
+// }
+    var day = "Monday";
+    switch(day){
+        case "Monday":
+            document.write(`<h1>Today is Monday.</h1>`);
+            break;
+        case "Tuesday":
+            document.write(`<h1>Today is Tuesday.</h1>`);
+            break;
+        case "Wednesday":
+            document.write(`<h1>Today is Wednesday.</h1>`);
+            break;
+        default:
+            document.write(`<h1>Today is not Monday, Tuesday, or Wednesday.</h1>`);
+    }
+    </script>
+</body>
+</html>
+
+<!--
+ note => switch statement in JavaScript.
+     => It evaluates the value of the variable 'day' and displays a message indicating 
+     which day it is, or if it is not one of the specified days. -->

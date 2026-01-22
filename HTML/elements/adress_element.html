@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    adress element => address element ka use kisi person ya organization ke contact 
+    information dene ke liye kiya jata hai.
+
+=> ye element generally footer me use hota hai.
+=>  isme hum address, phone number, email id, website link etc. de sakte hai.
+    is element ka content italic me show hota hai by default.
+
+    syntex: <adress> contact information </adress>
+    uses: - kisi person ya organization ke contact information dene ke liye.
+          - footer me use hota hai. 
+          -artical me use hota hy .
+          - resume / portfulio me use hota hy.
+    -->
+
+    <address>
+        Contact us at:<br>
+        Email: example@example.com<br>
+        Phone: +1234567890<br>
+        Address: 123 hatkeshwer ctm .<br>
+        Website: <a href="https://www.example.com">www.example.com</a>
+    </address><br>
+
+    <!-- => simple text me use karne pr koi special formatting nahi hoti hai. -->
+<footer>
+    <address>
+        Contact us at:<br>
+        Email: example@example.com<br>
+        Phone: <a href="tel:+1234567890">+1234567890</a><br>
+        Address: 123 hatkeshwer ctm .<br>
+        Website: <a href="https://www.example.com">www.example.com</a>
+    </address>
+</footer><br>
+
+<!--
+=> footer me use karne pr contact information ko highlight karne ke liye 
+    aur clickable links provide karne ke liye.
+    --> 
+
+    <article>
+        <h2>About Our Company</h2>
+        <p>We are committed to providing the best services to our customers.</p>
+        <address>
+            For more information, reach out to us at:<br>
+            Email: <a href="mailto:example@example.com">example@example.com</a><br>
+            Phone: <a href="tel:+1234567890">+1234567890</a><br>
+            Address: 123 hatkeshwer ctm .<br>
+            Website: <a href="https://www.example.com">www.example.com</a>
+        </address>
+    </article>
+
+<!-- 
+    => article me use karne pr author ya organization ke contact information
+    provide karne ke liye. -->
+</body>
+</html>
