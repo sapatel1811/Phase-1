@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        HTML fieldset form Attribute
+    </title>
+    <style>
+        h1,
+        h2,
+        .title {
+            text-align: center;
+        }
+        
+        fieldset {
+            width: 50%;
+            margin-left: 22%;
+        }
+        
+        h1 {
+            color:aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>fildset</h1>
+    <h2>
+      HTML &lt;fieldset&gt; 
+      form Attribute
+  </h2>
+    <form id="myfield">
+        <div class="title">
+            Suggest article for video:
+        </div>
+    </form>
+  
+    <fieldset form="myfield">
+        <legend>JAVA:</legend>
+        Title:
+        <input type="text">
+        <br> Link:
+        <input type="text">
+        <br> User ID:
+        <input type="text">
+    </fieldset>
+    <br>
+    <fieldset form="myfield">
+        <legend>PHP:</legend>
+        Title:
+        <input type="text">
+        <br> Link:
+        <input type="text">
+        <br> User ID:
+        <input type="text">
+    </fieldset>
+
+</body>
+
+</html>
+
+<!-- feildseet => ye form ko inpute fild group karta hy 
+legend => yah upr labal batat hy  -->

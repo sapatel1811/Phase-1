@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>Combinator Property</title>
+    <style>
+        div ~ p{
+            color:aquamarine;
+            font-size:32px;
+            font-weight:bold;
+            margin:0px;
+            text-align:center;
+        }
+        div {
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1) General Sibling selector(~) -->
+    <div>General sibling selector property</div>
+    <p>hello </p>
+    <div>
+        <div>child div content</div>
+        <p>how</p>
+    </div>
+    <p>are</p>
+    <p>you</p>
+
+<hr/>
+    <!-- 2) Descendant Combinator (Space) -->
+     <style>
+        div p{
+            color:antiquewhite;
+            font-size:32px;
+            font-weight:bold;
+            margin:0px;
+            text-align:center;
+        }
+     </style>
+     <div>
+        <p>hello</p>
+        <section>
+            <p>how are you</p>
+        </section>
+        <p>nice to meet you.</p>
+     </div>
+
+     <hr/>
+
+
+     <style>
+        div > p{
+            color:black;
+            font-size:32px;
+            font-weight:bold;
+            margin:0px;
+            text-align:center;
+        }
+     </style>
+
+     <div>
+  <p>Direct</p>
+  <section>
+    <p>Not selected</p>
+  </section>
+</div>
+
+
+
+
+
+</body>
+</html>
+<!-- 1. General Sibling selector(~)
+=> next ke bad sab (div - ke bad ke jitne be p hy sab ko color kr dega)
+
+2. Descendant Combinator (Space)
+=> div ke ander ke sab .
+
+3. child Combinator.
+=> direct child hi (>) 
+=> matlb div me hoga to us pr work karega 
+=> section ke andr hoga wo work nahi karega 
+
+4. adjecent subling(+)
+=> h1 ke turant bad jo p hoga only whi work karega 
+
+ -->

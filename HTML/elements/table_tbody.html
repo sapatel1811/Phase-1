@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Table with tbody</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 60%;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+    }
+    thead {
+      background-color: #f2f2f2;
+    }
+    tbody tr:hover {
+      background-color: #e6f7ff;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Student Details</h2>
+
+
+<!-- => left - right : colspan , 
+=> top - bottom : rowspan. -->
+
+<table>
+  <!-- Table Header -->
+  <thead>
+    <tr>
+      <th>Roll No</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Course</th>
+    </tr>
+  </thead>
+
+  <!-- Table Body -->
+  <tbody>
+    <tr>
+      <td>01</td>
+      <td>Sapna</td>
+      <td>22</td>
+      <td>Web Development</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td>Rahul</td>
+      <td>23</td>
+      <td>JavaScript</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td>Anjali</td>
+      <td>21</td>
+      <td>HTML & CSS</td>
+    </tr>
+  </tbody>
+
+</table>
+
+</body>
+</html>

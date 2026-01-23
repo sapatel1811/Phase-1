@@ -41,6 +41,18 @@
         padding: 20px;
         
     }
+
+    input:invalid{
+        border-color: red;
+        background-color: aqua;
+    }
+    input:valid{
+        border-color: green;
+        background-color: aquamarine;
+    }
+
+    /* :invalid => matlb user kuch be type nhi kiya ho to red 
+    :valid => user type karega to green  *  /
     
 
 </style>
@@ -50,10 +62,10 @@
 <h2> Form </h2>
 
 <label>First Name</label>
-<input type="text" id="fname" placeholder="enter your fname"  required>
+<input type="text" id="fname" placeholder="enter your fname"  required autofocus>
 
 <label>Last Name</label>
-<input type="text" id="lname" placeholder="enter your lname"  required>
+<input type="text" id="lname" placeholder="enter your lname"  required disabled>
 
 <label>Age</label>
 <input type="number" id="age" placeholder="enter your age"  required>
@@ -148,3 +160,10 @@ function showData(event){
 
 </body>
 </html>
+
+
+<!-- note: 
+ 1) autofocus=> isme auto foucus atribute ka use kiya gya hy jo batat hy ki jb be aap page open kroge 
+    fname me phle hi dark box bna show hoga
+2) desable => disable matlb button ya tex show hoga bus wo koi work nhi krega.
+3)  -->
