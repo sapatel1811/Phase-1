@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Only Filter</title>
+
+<style>
+  
+
+  h2 {
+    text-align: center;
+  }
+
+  /* Hide radio buttons */
+  input[type="radio"] {
+    display: none;
+  }
+
+  /* Filter buttons */
+  label {
+    padding: 8px 15px;
+    margin: 5px;
+    background: #57606f;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  input:checked + label {
+    background:#57606f;
+  }
+
+  /* Items */
+  .items {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .item {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    display: none;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  /* Show all */
+  #all:checked ~ .items .item {
+    display: block;
+  }
+
+  /* Web filter */
+  #web:checked ~ .items .web {
+    display: block;
+  }
+
+  /* Design filter */
+  #design:checked ~ .items .design {
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>CSS Filter</h2>
+
+<!-- Filter Controls -->
+<input type="radio" name="filter" id="all" checked>
+<label for="all">All</label>
+
+<input type="radio" name="filter" id="web">
+<label for="web">Web</label>
+
+<input type="radio" name="filter" id="design">
+<label for="design">Design</label>
+
+<!-- Items -->
+<div class="items">
+  <div class="item web">Website Project</div>
+  <div class="item design">Logo Design</div>
+  <div class="item web">Landing Page</div>
+  <div class="item design">Poster Design</div>
+</div>
+
+</body>
+</html>
