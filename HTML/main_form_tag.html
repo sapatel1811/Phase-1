@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+ 1) comman form elements =>
+  <input> => data lene ke liye use hota hy.
+ * input tag type : text , password , checkbox , radio , submit , button ,
+ * action => is atribute ka use form me submite karte time data ko jha bhejna ho uske 
+ liye us ka path ya url likhte he . 
+=> action="" : agr same page me data show karna ho .
+=> js ke liye (<form onsubmit="showData(event)">)
+=> live url(api) => action="http://www.ex.com/submit"
+=> demo(testing) => action="table.html"
+=> action + method exam: <form action="table.html" method="post/get" target="_blank / _self">
+-->
+
+<style>
+/* Form  */
+
+form{
+    width: 800px;
+    margin: 30px auto;
+    padding: 40px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+/*  Label  */
+label{
+    display: block;
+    
+}
+
+/*  Input, Textarea, Select  */
+input,
+textarea,
+select{
+    width: 100%;
+    padding: 8px;
+}
+
+/*  Checkbox & Radio  */
+input[type="checkbox"],
+input[type="radio"]{
+    width: auto;
+    
+}
+
+/*  Placeholder  */
+input::placeholder,
+textarea::placeholder{
+    color: blue;
+    
+}
+
+/*  Focus  */
+input:focus,
+textarea:focus,
+select:focus{
+    border-color: #007bff;
+    outline: none;
+}
+
+/*  File, Color, Range  */
+input[type="file"],
+input[type="color"],
+input[type="range"]{
+    padding: 3px;
+}
+
+/*  Meter  */
+meter{
+    width: 100%;
+    height: 18px;
+}
+
+/*  Link  */
+a{
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+button[type="submit"]{
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    font-size: 15px;    
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+
+
+    <form action="#" method="post" target="_blank" autocomplete="on" >
+        <label>Fname:</label>
+        <input type="text" name="fname" id="fname" placeholder="enter your fname" required autofocus><br><br>
+
+        <label>Lname:</label>
+        <input type="text" name="lname" id="lnmae" placeholder="enter your lname" required><br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" id="email" placeholder="enter your email" required><br><br>
+
+        <label>Password:</label>
+        <input type="password" name="pass" id="pass" placeholder="enter your password" required><br><br>
+
+    <label>Address:</label>
+    <textarea id="add" rows="3" placeholder="enter your address"  required></textarea><br><br>
+
+    <label>Education:</label>
+        <select id="education" required>
+        <option value="">Select</option>
+        <option value="10th">10th</option>
+        <option value="12th">12th</option>
+        <option value="Bachelor">Bachelor</option>
+        <option value="Master">Master</option>
+        </select><br><br>
+
+        <label>Hobby:</label><br>
+        <input type="checkbox" name="hobby" checked> Music <br>
+        <input type="checkbox" name="hobby"> Study <br>
+        <input type="checkbox" name="hobby"> Traveling <br>
+        <input type="checkbox" name="hobby"> Sports <br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="Male" required> Male <br>
+        <input type="radio" name="gender" value="Female"> Female<br>
+        <input type="radio" name="gender" value="Other"> Other<br><br>
+
+        <label>Select file/img:</label>
+        <input type="file" name="img" id="img" accept="image"> <br><br> 
+
+        <label>Number:</label>
+        <input type="number" id="num" value="2" step="5"><br><br>
+
+        <label>Date:</label>
+        <input type="date"><br><br>
+
+
+        <label>Week:</label>
+        <input type="week"><br><br>
+                                                                                                                                                                            
+        <label>Month:</label>
+        <input type="month"><br><br>
+
+        <label>Year:</label>
+        <input type="number" min="1900" max="2100" placeholder="Enter year"> <br><br>
+
+        <label>Fill time:</label>
+        <input type="time" name="time"><br><br>
+
+
+        <label>color:</label>
+        <input type="color" name="color">
+
+        <label>Range:</label>
+         <input type="range" id="range" ><br><br>
+          <!--use: 
+               britness control , zooming , price filter etc.  -->
+
+    <label>Hidden output: </label>
+    <input type="hidden" name="hide"><br><br>
+    <!-- use: form ke sath extra data submite karne ke liye , jo user ko visible nahi hota hy.
+     -->
+
+     <label>meter:</label>
+    <meter value="60" min="0" max="100"></meter>
+
+    <a href="https://www.geeksforgeeks.org/css/css-styling-forms/" accesskey="h">Home</a><br><br>
+
+    <!-- => keybord se directly link ko active kar sakte hy , without mouse hover.
+    => accesskey : yha "h" hai isliye = alt + h (press kro) -->
+
+    <!--
+    disable atribute => iska use user ke input fild ya button ko disable krne ke liye 
+    hota hy
+    =>  
+     -->
+
+     <!-- accept atribute  => yah batata hy ki user kis type ka file slect kar sakte hy
+     like : audio, video , img , jpg , png , pdf etc ...  -->
+
+     <!-- dirname atribute => inpute text ke sath uska direction send krta hy.
+      like : english -type : direction -ltr batayega 
+      example : username: sapna
+                username.dir: ltr
+       -->
+
+       <!-- formaction => Lekin kabhi-kabhi same form ke liye different submit buttons 
+       chahiye hote hain , ise problam ko solve krta hy.
+       => formaction sirf submit buttons par kaam karta hai. 
+       => jha adress change hota ho.
+       -->
+
+       <!-- formenctype atribute : form data kis formate me jayega ye deside karta hy 
+       => pura box change kar de uske liye use hota hy. 
+
+       -->
+
+       <!-- 1) absolute url: pura complte adress hota hy
+                      => protocol + domain + path 
+      2) reletive url : Current page ke location ke base par path hota hai
+                      => domain + protocol nhi use karte , only path used  -->
+                      
+             
+   <!-- formmethod atribute => Batata hai form data kis method se server par bhejna hai
+               => Ye form ke method ko override karta hai
+              => Mostly button-level par use hota hai
+              => get and post used only 
+        1) get => not sequre.
+              => show url 
+              => fast work 
+        2) post => sequre data 
+                => not show url in browser. -->
+
+<!-- formnovalidate atribute => HTML form validation ko skip karta hai
+                                => Sirf submit button par lagta hai
+                                => Browser ke required / pattern / email check ko ignore 
+                                karta hai 
+                                => email blank - submit ho jayega.
+    -->
+
+
+
+    <!-- formtarget atribute => attribute decide karta hai ki form submit hone ke baad 
+       server ka response kis tab ya window me open hoga.
+       1) _blank: new tab
+       2) _self : defult (same page )
+       3) _top : full window 
+       4)_perent : perent frem 
+
+       -->
+
+
+<lable> Suggestion list:</lable>
+<input type="text" list="cities">
+<datalist id="cities">
+  <option value="Delhi">
+  <option value="Mumbai">
+  <option value="Ahmedabad">
+<option value="Goa">
+</datalist><br><br>
+
+
+  <!-- suggestion list: User type karega → suggestions dikhenge
+           => User chahe to apna value bhi likh sakta hai
+           => Dropdown jaisa lagta hai, par select se different hai -->
+
+<button type="submit">Click Me</button>
+
+      
+</form>
+</body>
+</html>
+
+
