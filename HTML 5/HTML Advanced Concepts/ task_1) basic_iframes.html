@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- iframe => full form : inline frame.
+    used : ek webpage ke ander dusra webpage embed karne ke liye hota hy.
+    means : page ke ander page 
+    syntex : <iframe src="url"></iframe> -->
+
+    <iframe src="https://www.geeksforgeeks.org/html/html-iframe-referrerpolicy-attribute/" title="iframes" height="100px" width="200px">
+    </iframe><br><br>
+
+    <!-- fullscreen ke liye : allowfullscreen -->
+     <iframe src="vidio.html" allowfullscreen></iframe><br><br>
+
+     <!-- loading lazy : iframe scroll hone pr load karta hy (fast perfomance) -->
+     <iframe src="page.html" loading="lazy"></iframe><br><br>
+
+     <!-- iframe target attribute : click karne par page load hoga. -->
+      <a href="page1.html" target="myframe">Page 1</a>
+      <a href="page2.html" target="myframe">Page 2</a>
+
+        <iframe name="myframe" width="400" height="300"></iframe><br><br>
+
+        <!-- iframe style with css  -->
+         <style>
+            .box{
+                border: 2px solid plum;
+                border-radius: 10px;
+            }
+         </style>
+
+        <iframe class="box" src="/img/oppo.jpg"></iframe>
+
+</body>
+</html>
+
+Task_1 Iframe: 
+
+=> Learned the meaning of the HTML <iframe> tag
+=> Understood how iframe is used to embed internal and external webpages
+=> Practiced examples like local HTML files, YouTube videos, and Google Maps
+=> Learned important iframe attributes such as src, width, height, title, loading, and sandbox
+=> Understood why iframe is used instead of the <video> tag in some cases.
+
+Task_2 Html File Paths:
+
+=> Learned the meaning of file path in HTML
+=> Understood relative and absolute file paths
+=> Practiced using file paths for images, CSS,  video, and iframe
+=> Learned special symbols like . , .. , and / in file paths
+=> Understood common mistakes related to file paths
+
+Task_3 Html Favicon:
+
+=> Learned the meaning of favicon in HTML
+=> Understood how to add a favicon using the <link rel="icon"> tag
+=> Learned different favicon formats like .ico, .png, and .svg
+=> Understood where favicon appears (browser tab and bookmarks)
+=> Learned common mistakes related to favicon
+
+Task_4 Html Layouts : 
+
+=> Learned the concept of HTML layout and its common sections
+=> Practiced flexible layout using CSS flexbox
+=> Applied media queries for tablets and mobile screens
+=> Used meta viewport to make the page scale properly on all devices
+=> Tested layout on desktop, tablet, and mobile to ensure responsiveness
+=> Understood how all three techniques (meta viewport, flexbox, media queries) work 
+together to create a fully responsive webpage
+
+Task_5 css box modal: 
+
+Learned the concept of CSS Box Model and its importance in layout design
+Understood the four parts of a box: content, padding, border, and margin
+Practiced setting width, padding, border, and margin for HTML elements
+Learned the difference between content-box and border-box (box-sizing)
+Tested how total element size changes when padding, border, or margin is applied
+
+
+Task_6 css position : 
+
+=> Learned the purpose of the CSS position property
+=> Understood different position types: static, relative, absolute, fixed, and sticky
+=> Practiced using top, right, bottom, and left properties
+=> Learned how absolute positioning works with a relative parent
+=> Understood the use of fixed and sticky positions for headers and navigation bars
+=> Learned the role of z-index in handling overlapping elements

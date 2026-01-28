@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <!-- =>  Website har device (mobile, tablet, laptop, desktop) par automatically adjust ho jaye.
+ => Responsive Design kyu zaroori hai?
+      - Mobile users zyada hote ja rahe hain
+      - Google mobile-friendly sites ko prefer karta hai
+     - Better user experience
+     - Professional look
+=> Responsive Web Design ke 3 Main Pillars
+    1) Meta Viewport (HTML) : 
+    => Meta viewport ek HTML tag hota hai jo browser ko batata hai: Webpage ko 
+    device screen par kaise scale aur display karna hai
+
+    2) Flexibal layout(css):
+    => Webpage ka layout screen size ke hisaab se adjust ho jaye
+
+    3) media Queries :
+    => Media Queries CSS ka feature hai jo different screen sizes aur devices ke 
+    liye styles apply karta hai. -->
+
+    <style>
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color:blanchedalmond;
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;           /* Flexible width */
+            margin: 20px auto;
+            display: flex;        /* Flexible layout using flexbox */
+            flex-wrap: wrap;      /* Wrap boxes on small screens */
+            gap: 20px;
+        }
+
+        .box {
+            flex: 1 1 30%;        /* Flexible boxes: grow, shrink, basis */
+            background-color:antiquewhite;
+            color:black;
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        /* Media Query for Tablet */
+        @media (max-width: 900px) {
+            .box {
+                flex: 1 1 45%;    /* 2 boxes per row */
+            }
+        }
+
+        /* Media Query for Mobile */
+        @media (max-width: 600px) {
+            .box {
+                flex: 1 1 100%;   /* 1 box per row */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Responsive Page Example</h1>
+</header>
+
+<div class="container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+</div>
+
+<footer>
+    <p>Responsive Web Design Demo</p>
+</footer>
+</body>
+</html>
