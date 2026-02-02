@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    p { 
+        background: #ecf0f1; 
+        padding: 10px;
+        border-radius: 5px; 
+        }
+  </style>
+
+</head>
+<body>
+
+<!-- => Single value store karte hain
+=> Immutable hote hain (change nahi kar sakte directly) -->
+
+<h1>JavaScript Primitive Data Types</h1>
+
+<p id="number"></p>
+<p id="string"></p>
+<p id="boolean"></p>
+<p id="undefined"></p>
+<p id="null"></p>
+<p id="bigint"></p>
+<p id="symbol"></p>
+
+<script>
+  //  Number => Represents integers and decimals
+  let age = 25;
+  document.getElementById("number").innerHTML = "Number: " + age;
+  console.log("Number:", age);
+
+  // String => Sequence of characters
+  let name = "Sapna Patel";
+  document.getElementById("string").innerHTML = "String: " + name;
+  console.log("String:", name);
+
+  //  Boolean => True or False value
+  let isLoggedIn = true;
+  document.getElementById("boolean").innerHTML = "Boolean: " + isLoggedIn;
+  console.log("Boolean:", isLoggedIn);
+
+  //  Undefined => Variable declared but not assigned
+  let city;
+  document.getElementById("undefined").innerHTML = "Undefined: " + city;
+  console.log("Undefined:", city);
+
+  // Null => Represents no value    
+  let job = null;
+  document.getElementById("null").innerHTML = "Null: " + job;
+  console.log("Null:", job);
+
+  //  BigInt => Very large integers
+  let bigNumber = 12345678901234567890n;
+  document.getElementById("bigint").innerHTML = "BigInt: " + bigNumber;
+  console.log("BigInt:", bigNumber);
+
+  // Symbol => Unique identifier
+  let id = Symbol("id");
+  document.getElementById("symbol").innerHTML = "Symbol: " + id.toString();
+  console.log("Symbol:", id);
+
+  
+
+
+</script>
+
+</body>
+</html>

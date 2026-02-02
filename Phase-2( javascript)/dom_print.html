@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- DOM = Document Object Model
+=> Ye ek programming interface hai jo HTML ya XML document ko objects ki tree structure 
+me represent karta hai.
+
+* DOM ka use kyun hota hai?
+=> JS se hum HTML elements ko access aur change kar sakte hain.
+=> Style aur content dynamically change kar sakte hain.
+=> Events handle kar sakte hain → click, hover, input, submit etc.
+
+* DOM ko access karne ke tareeke (JavaScript ke saath) -->
+
+<!-- 1) By ID -->
+ <h2 id="title"></h2>
+<script>
+    document.getElementById("title").innerHTML = "Hello DOM";
+</script>
+
+<!-- 2) by class name  -->
+ <h2 class="myClass">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, laudantium 
+    consectetur at repudiandae maxime ipsam eaque, ratione placeat laboriosam 
+    corporis autem a molestiae, dolorum rem natus. Possimus quasi sit totam!  </h2>
+<script>
+    document.getElementsByClassName("myClass")[0].style.color = "red";
+</script>
+
+<!-- 3) bt tag name -->
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, laudantium 
+    consectetur at repudiandae maxime ipsam eaque, ratione placeat laboriosam 
+    corporis autem a molestiae, dolorum rem natus. Possimus quasi sit totam!</p>
+<script>
+    document.getElementsByTagName("p")[0].innerHTML = "Updated Text";
+</script>
+
+<!-- 4) using querry selectors -->
+ <h2 id="#title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, 
+    aspernatur voluptates, illo vero pariatur, accusamus repellat fuga voluptatem 
+    nisi nobis ex esse id dolorum obcaecati fugit numquam reiciendis facere suscipit.</h2>
+<script>
+    document.querySelector("#title").style.fontSize = "30px";
+</script> 
+
+
+ 
+</body>
+</html>

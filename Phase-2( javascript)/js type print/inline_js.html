@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Adding js in html doc</h2>
+    <button onclick="alert('Hello Inline JS' )"> click me</button>
+<hr/>
+    <h2> content changed </h2>
+    <script>
+        function btn(){
+            document.getElementById("demo").innerHTML="Hello How are you!"
+        }
+    </script>
+    <h3 id="demo" style="color:green">Hello</h3>
+    <button type="button" onclick="btn()">click me </button>
+
+    
+</body>
+</html>

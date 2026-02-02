@@ -21,22 +21,36 @@ Writing into the browser console, using console.log().
 document.write(5 + 6);
 </script>
 
+<!-- inner html => webpage par data dikhane ke liye use hota hy. -->
 
 <h1 id="demo"></h1>
 <script>
 document.getElementById("demo").innerHTML = 'Hello';
 </script>
 
+<!-- direct page par => htmll me direct page pr likte hy  -->
+ <script>
+    document.write("hello js ");
+ </script>
 
+
+<!-- popup box => user ko msg dikhane ke liye  -->
 <script>
 window.alert("Hi this is alert");
 </script>
 
-
+<!-- consol => debugging ke liye use  -->
 <script>
 console.log(5+6);
 console.log(8+6);
 </script>
+
+<!-- console.error() / console.warn() => error or wornig show ke liye  -->
+<script>
+console.error("This is an error");
+console.warn("This is a warning");
+</script>
+
 
 </body>
 </html>

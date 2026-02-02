@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Non-Primitive Data Types</title>
+  <style>
+  
+    
+    p {
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>JavaScript Non-Primitive Data Types</h1>
+
+<p id="object"></p>
+<p id="array"></p>
+<p id="function"></p>
+<p id="date"></p>
+<p id="regexp"></p>
+
+<script>
+  // Object
+  let person = {
+    name: "Sapna",
+    age: 22,
+    city: "Ahmdabad"
+  };
+  document.getElementById("object").innerHTML =
+    "Object: Name = " + person.name + ", Age = " + person.age + ", City = " + person.city;
+  console.log("Object:", person);
+
+  // Array
+  let subjects = ["HTML", "CSS", "JavaScript"];
+  document.getElementById("array").innerHTML =
+    "Array: " + subjects.join(", ");
+  console.log("Array:", subjects);
+
+  // Function
+  function greet() {
+    return "Hello from Function";
+  }
+  document.getElementById("function").innerHTML =
+    "Function: " + greet();
+  console.log("Function:", greet());
+
+  //  Date
+  let today = new Date();
+  document.getElementById("date").innerHTML =
+    "Date: " + today;
+  console.log("Date:", today);
+
+  //  RegExp
+  let pattern = /javascript/i;
+  document.getElementById("regexp").innerHTML =
+    "RegExp: " + pattern;
+  console.log("RegExp:", pattern);
+</script>
+
+</body>
+</html>
