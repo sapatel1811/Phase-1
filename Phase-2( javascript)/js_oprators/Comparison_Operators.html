@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #cl{
+           text-align: center;
+           color: green;
+        }
+        .cls{
+            text-align: center;
+            color:brown;
+        }
+    </style>
+    <h2 id="cl">Comparison Operators</h2>
+    <p class="cls">2 value ko compare karte hy or result true or false me  dete hy.</p><hr/>    
+     
+   
+   <h3>1) Equal to (==)</h3>
+    <!-- Sirf value check karta hai, type nahi -->
+   <p id="eq"></p>
+   <p id="bq"></p>
+  <script>
+  let a = 5;
+  let b = "5";
+  document.getElementById("eq").innerHTML = (a == b);
+  document.getElementById("bq").innerHTML = (NaN == NaN);
+  </script>
+  <hr/>
+  
+<!-- ================================================================================================ -->
+
+  <h3>2) Inequality Operator_ not equal to (!=) </h3>
+  <!-- jab value same nahi ho tb. -->
+
+  <p id="neq"></p>
+  <p id="meq"></p>
+  <script>
+    let m = 10;
+    let n = "20";
+    document.getElementById("neq").innerHTML = (m != n);
+    document.getElementById("meq").innerHTML = (0 != false);
+  </script>
+<hr/>
+
+<!-- =========================================================================================== -->
+
+<h3>3) Strict equality Operator (===)</h3>
+<!-- value + type dono check karta hy  -->
+
+<p id="seq"></p>
+<script>
+let x = 5;
+let y = "5";
+document.getElementById("seq").innerHTML = (x === y);
+</script>
+<hr/>
+<!-- ============================================================================================ -->
+
+<h3>4) Strict inequality Operator (!==)</h3>
+<!-- value + type dono same na ho  -->
+
+<p id="sneq"></p>
+<script>
+let p = 5;
+let q = "5";
+document.getElementById("sneq").innerHTML = (p !== q);
+</script>
+<hr/>
+
+<!-- ============================================================================================= -->
+
+<h3>5) Greater than Operator (>)</h3>
+<p id="gt"></p>
+<script>
+let age = 20;
+document.getElementById("gt").innerHTML = (age > 18);
+</script>
+<hr/>
+
+<!-- ========================================================================================= -->
+
+<h3>6) Greater than or equal Operator (>=)</h3>
+<p id="gte"></p>
+<script>
+let score = 50;
+document.getElementById("gte").innerHTML = (score >= 50);
+</script>
+<hr/>
+
+<!-- ============================================================================================= -->
+
+<h3>7)  Less than Operator (<)</h3>
+<p id="lt"></p>
+<script>
+let marks = 30;
+document.getElementById("lt").innerHTML = (marks < 35);
+</script>
+<hr/>
+
+<!-- ========================================================================================== -->
+
+<h3>8) Less than or equal Operator (<=)</h3>
+<p id="lte"></p>
+<script>
+let time = 9;
+document.getElementById("lte").innerHTML = (time <= 8);
+</script>
+
+</body>
+</html>
+
+
+ 

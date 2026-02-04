@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- Unary operator wo operator hota hai jo sirf ek operand (value) par kaam karta hai. -->
+
+<h3>Increment Operator (++)</h3>
+<!-- Value 1 se badhata hai. -->
+
+<p id="inc"></p>
+<script>
+let x = 5;
+x++;
+document.getElementById("inc").innerHTML = x;
+</script><hr/>
+
+<!-- ======================================================================================== -->
+
+<h3>Decrement oprators(--) </h3>
+<!-- Value 1 se ghataata hai. -->
+
+<p id="dec"></p>
+<script>
+    let p = 9;
+    p--;
+    document.getElementById("dec").innerHTML = p;
+</script><hr/>
+
+<!-- ========================================================================================== -->
+
+<h3>Unary Plus(+)</h3>
+<!-- String ko number me convert karta hai. -->
+
+<p id="pluse"></p>
+<script>
+        let b = "10";
+        let c = "+s";
+        document.getElementById("pluse").innerHTML = "value:"+b+ "| type: "+typeof b;
+
+</script><hr/>
+
+<!-- ========================================================================================= -->
+
+<h3>Unary Minus (-)</h3>
+<!-- Number ka sign change karta hai. -->
+
+<p id="minus"></p>
+<script>
+let o = 1;
+let y = -o;
+document.getElementById("minus").innerHTML = y;
+</script><hr/>
+
+<!-- ========================================================================================== -->
+
+<h3>typeof Operator</h3>
+<!-- Variable ka data type batata hai. -->
+
+<p id="type"></p>
+<script>
+let value = "Hello";
+document.getElementById("type").innerHTML = "Type is: " + typeof value;
+</script><hr/>
+
+<!-- ====================================================================================== -->
+
+<h3>delete Operator</h3>
+<!-- object ki property delete karta hy  -->
+
+<p id="del"></p>
+<script>
+let user = {
+  name: "sp",
+  age: 22
+};
+delete user.age;
+document.getElementById("del").innerHTML = "Age after delete: " + user.age;
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>BigInt Operators Example</h3>
+<!-- JavaScript me bahut bade integers ko safely handle karne ke liye BigInt use hota hai. 
+=> BigInt banane ke 2 tareeke: 
+
+1) 12345678901234567890n      // n lagana
+2) BigInt("12345678901234567890")
+
+-->
+
+<p id="out"></p>
+
+<script>
+let big1 = 9007199254740991n;
+let big2 = 20n;
+
+let result = big1 + big2;
+
+document.getElementById("out").innerHTML = result;
+</script>
+
+</body>
+</html>

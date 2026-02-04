@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #cl{
+            text-align: center;
+            color: green;
+        }
+        .cls{
+            text-align: center;
+            color: brown;
+        }
+    </style>
+    <h2 id="cl"> Logical oprators:</h2>
+    <p class="cls">Logical operators conditions ko combine karte hain aur result true ya false me dete hain.
+    </p>
+
+<!-- =========================================================================================== -->
+
+    <h3> 1) Logical AND (&&)</h3>
+    <!-- Dono conditions true hongi tabhi result true hoga
+    Ek bhi false hui → result false -->
+
+<p id="and"></p>
+<script>
+let age = 20;
+let hasID = true;
+
+document.getElementById("and").innerHTML =(age >= 18 && hasID === true);
+</script><hr/>
+
+<!-- ========================================================================================= -->
+
+<h3> 2) Logical OR( || )</h3>
+<!-- Koi ek condition true ho to result true
+Dono false ho tab false -->
+
+<p id="or"></p>
+<script>
+let isAdmin = false;
+let isEditor = true;
+document.getElementById("or").innerHTML = (isAdmin === true || isEditor === true);
+</script><hr/>
+
+<!-- ======================================================================================== -->
+
+<h3> 3) Logical NOT(!)</h3>
+<!-- Condition ka ulta result deta hai
+true → false
+false → true -->
+
+<p id="not"></p>
+<script>
+let isLoggedIn = false; 
+document.getElementById("not").innerHTML = !isLoggedIn;
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

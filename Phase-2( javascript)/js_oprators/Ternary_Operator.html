@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <!-- Ternary operator ek short form hai if–else ka
+ Isme 3 parts hote hain, isliye naam ternary hai.
+
+ => syntex: condition ? value_if_true : value_if_false;
+ => means: Agar condition true → pehla result
+           Agar condition false → doosra result
+ -->
+
+
+<h3>Simple Ternary Operator</h3>
+<p id="t1"></p>
+<script>
+let age = 20;
+document.getElementById("t1").innerHTML =
+(age >= 18) ? "Adult" : "Minor";
+</script><hr/>
+
+<!-- =========================================================================================== -->
+
+  <h3>Ternary vs If–Else (Same Logic)</h3>
+  <p id="output"></p>
+
+  <script>
+    let agee = 20;
+    let result;
+
+    if (agee >= 18) {
+      result = "Adult";
+    } else {
+      result = "Minor";
+    }
+
+    document.getElementById("output").innerHTML = result;
+  </script><hr/>
+    
+<!-- =========================================================================================== -->
+
+<h3>Number Check</h3>
+<p id="t2"></p>
+<script>
+let num = 5;
+document.getElementById("t2").innerHTML =
+(num % 2 === 0) ? "Even Number" : "Odd Number";
+</script><hr/>
+
+<!-- ============================================================================================ -->
+
+
+<h3>Boolean Example</h3>
+<p id="t3"></p>
+<script>
+let isLogin = true;
+document.getElementById("t3").innerHTML =
+isLogin ? "Welcome User" : "Please Login";
+</script><hr/>
+
+<!-- ================================================================================================ -->
+
+<h3>Nested Ternary</h3>
+<p id="t4"></p>
+<script>
+let marks = 75;
+document.getElementById("t4").innerHTML =
+(marks >= 90) ? "Grade A" :
+(marks >= 60) ? "Grade B" : "Grade C";
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- Comma operator ( , ) JavaScript me multiple expressions ko ek line me likhne ke kaam
+ aata hai.
+ => Sab expressions evaluate hote hain
+=>Last expression ka result return hota hai -->
+
+<p id="out"></p>
+<script>
+    let x = (10 , 20 , 23);
+    document.getElementById("out").innerHTML = x;
+</script>
+
+<p id="result"></p>
+<script>
+    let result =(2+3 , 6+8);
+    document.getElementById("result").innerHTML = result;
+</script>
+
+
+
+
+</body>
+</html>

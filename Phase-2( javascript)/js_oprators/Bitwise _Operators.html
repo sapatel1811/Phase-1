@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #cl{
+            text-align: center;
+            color: green;
+        }
+        .cls{
+            text-align: center;
+            color: brown;
+        }
+    </style>
+    <h3 id="cl">Bitwise operators</h3>
+    <p class="cls">Bitwise operators numbers ke bits (0 aur 1) par kaam karte hain,
+normal values par nahi.</p>
+
+<!-- =========================================================================================== -->
+
+<h3>Bitwise AND (&)</h3>
+
+<!-- Dono bits 1 ho → result 1
+Warna 0 -->
+
+<p id="and"></p>
+<script>
+let a = 5;  // 101
+let b = 3;  // 011
+document.getElementById("and").innerHTML = a & b;
+</script><hr/>
+
+<!-- ========================================================================================== -->
+
+<h3>Bitwise OR (|)</h3>
+
+<!-- Koi ek bit 1 ho → result 1 -->
+
+<p id="or"></p>
+<script>
+let d = 5;
+let f = 3;
+
+document.getElementById("or").innerHTML = f | d;
+</script><hr/>
+
+<!-- ========================================================================================== -->
+
+
+<h3>Bitwise XOR (^)</h3>
+<!-- Dono bits same → 0
+Dono bits different → 1 -->
+
+<p id="xor"></p>
+<script>
+let c = 5;
+let g= 3;
+document.getElementById("xor").innerHTML = g ^ c;
+</script><hr/>
+
+<!-- ========================================================================================== -->
+
+<h3>Bitwise NOT (~)</h3>
+<!-- Rule:
+0 → 1
+1 → 0 -->
+
+<p id="not"></p>
+<script>
+let q = 5;
+document.getElementById("not").innerHTML = ~q;
+</script><hr/>
+
+<!-- ============================================================================================ -->
+
+<h3>Left Shift (<<)</h3>
+<!-- Bits ko left side shift karta hai
+Har shift = number × 2 -->
+
+<p id="ls"></p>
+<script>
+let o = 5;
+document.getElementById("ls").innerHTML = o << 1;
+</script><hr/>
+
+<!-- ============================================================================================ -->
+
+<h3>Right Shift (>>)</h3>
+<!-- Bits ko right side shift karta hai
+Har shift = number ÷ 2 -->
+
+<p id="rs"></p>
+<script>
+let p = 5;
+document.getElementById("rs").innerHTML = p >> 1;
+</script>
+
+
+
+</body>
+</html>
