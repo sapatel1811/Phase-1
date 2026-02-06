@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => Jis function ka koi naam nahi hota, use Anonymous Function kehte hain. -->
+
+<!-- <script>
+    function (){
+    console.log("hello");
+    }      //  this is not use only (it works like to be variable name and f name )
+</script> -->
+
+<!-- =========================================================================================== -->
+
+<!-- Anonymous function store in variable  -->
+<script>
+    let geet = function() {
+       console.log("hello");
+    }
+    geet();
+     // function ka name nahi hy 
+    // variable geet throw print ho rha hy 
+</script>
+<!-- ===================================================================================== -->
+
+<!-- Anonymous function with perameter -->
+
+<script>
+   let greet = function(name){
+    console.log("Hello " + name);
+};
+greet("sp");
+</script>
+
+<!-- ==================================================================================== -->
+
+<!-- Anonymous function with event -->
+
+    <button id="btn">Click Me</button>
+
+    <script>
+        document.getElementById("btn").onclick = function(){
+            alert("Button clicked movement");
+        };
+    </script>
+
+<!-- ======================================================================================== -->
+
+    <!-- Anonymous function in settime out -->
+     <script>
+        setTimeout(function(){
+       console.log("Hello after 2 seconds");
+}, 2000); // 2000 => 2s     
+
+     </script>
+     
+     <script>
+        setTimeout(function(){
+            console.log("keep larining javascript 1 seconds  ");
+
+        } , 1000);// 1000 => 1s
+
+     </script>  
+
+
+<!-- =========================================================================================== -->
+
+<!-- nested callback -->
+ <script>
+    setTimeout(function(){
+  console.log("hello learning html");
+
+  setTimeout(function(){
+    console.log("hello larning css ");
+
+    setTimeout(function(){
+      console.log("hello laerning javascript ");
+    }, 1000);
+
+  }, 1000);
+
+}, 1000);
+ </script>
+
+</body>
+</html>

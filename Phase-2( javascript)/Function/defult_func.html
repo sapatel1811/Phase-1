@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => Default parameter wo value hoti hai jo function khud se use kar leta hai,
+jab function call karte waqt argument pass nahi kiya jata.
+=> Matlab: agar user value na de → function apni value use kare -->
+
+<!-- without defult value: normal function -->
+ <script>
+    function greet(name){
+        console.log("hello\n" + name);
+    }
+    greet(); // Problem: name nahi mila, isliye undefined
+ </script>
+
+ <!-- =========================================================================================== -->
+  
+ <!-- use defult perametr  -->
+   <script>
+    function student(name = "ram"){ 
+            console.log("hello\n" + name); // kuki value nahi di isliye defult 
+            // "ram" print ho gya 
+    }
+    student();
+   </script>
+
+   <!-- function call with argument -->
+    <script>
+        function addNam(name = "student"){
+         console.log("hello\n" + name);
+        }
+        addNam("sp"); // defult ignor kuki value mil gyi .
+    </script>
+
+<!-- ==================================================================================== -->
+
+<!-- 2 perameter ke sath defult -->
+ <script>
+    function student(name = "Student", course = "JavaScript"){ // js is defult value 
+    console.log(name + " is learning " + course);
+}
+student(); // student is learning js 
+student("sp"); // sp is learning js 
+student("sp", "React"); // sp is learning react
+ </script>
+
+<!-- ========================================================================================== -->
+  
+<!-- return stetment  -->
+
+<script>
+    function greet(name = "Guest"){
+    return "Hello " + name;
+}
+
+// defult value print hoga...
+
+ let msg = greet();
+ console.log(msg);
+
+// value mila to defult ignore ho jayega..
+
+//msg = greet("sp");
+ //console.log(msg);
+
+</script>
+
+</body>
+</html>
