@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => Jab function ko ek variable ke andar store kiya jata hai
+to use Function Expression kehte hain.
+=> means : function = value 
+
+=> syntex : const functionName = function() {
+  // code
+}; // yha function vaiable through call hota hy  -->
+
+
+<p id="function"></p>
+<script>
+const greet = function() {
+  console.log("Hello from Function Expression");
+};
+
+greet();
+</script>
+
+<!-- ========================================================================================== -->
+
+<!-- function exprestion with button click movement  -->
+
+<button onclick="showmsg()"> click btn </button>
+
+<script>
+    const showmsg = function() {
+    alert("This is function exprestion")
+    }
+</script>
+
+<!-- => const showmsg : variable
+=> function : Anonymous function
+=> showmsg : function call 
+=> function variable ke through run hota hy 
+-->
+
+<!-- ============================================================================================ -->
+
+<!-- function exprestion vs  declration  -->
+
+<!--
+ 1) function declaration => 
+ => syntex : function fn() {}
+ => hosting : full hosting 
+ => call before define : yes 
+ => memory phase : function stored 
+ => mordan js : old style 
+ 
+ 2) function expresstion => 
+=> syntex : const fn = function(){}
+=> hosting : no hosted 
+=> call before define : no 
+=> memeory phase : variable = undefine 
+=> mordan js : prefferd 
+ 
+ -->
+<p id="test"> </p>
+<script>
+ if (true) {
+  function test() {
+    console.log("Hello");
+  }
+}
+test(); // ⚠️ unpredictable
+</script>
+
+<!-- ========================================================================================== -->
+
+<!-- use case of function expression : 
+
+ => Function Expression tab use hota hai jab hume:
+function ko variable ki tarah treat karna ho
+function ko turant use / pass karna ho
+control + flexibility chahiye 
+
+-->
+<!-- 
+1) storing in variable : 
+=> kisi valu ko variable ke ander rakhna , taki bad me us variable ko use
+ change ya store kar sake .
+   
+  ex: let a = 10;
+  => 10 : value 
+  => a : variable 
+  => 10 ko a me store kiya 
+   -->
+
+<p id="add"> </p>
+<script>
+    const add = function(x,y){
+        return x+ y ;
+
+    };
+console.log(add(4,5));
+</script>
+
+
+<!-- =========================================================================================== -->
+
+<!--    
+2) callback function :
+ => callback function other function ko argument pass karta hy 
+ => or jab uski need ho tabi exicute hota hy 
+ like : settimeout , timmer function  
+-->
+
+
+<script>
+    function calculate( a , b , callback){
+callback(a,b);
+    }
+    calculate(5,3,(x,y)=> console.log(x+y));
+
+ calculate(5,3,(x,y)=> console.log(x*y)); 
+
+</script>
+
+<!-- use with set time out -->
+<script>
+    setTimeout(function () {
+  console.log("3 second baad ye message aaya");
+}, 3000);
+
+</script>
+
+<!-- ============================================================================ -->
+
+<!-- event handlers : 
+=> kisi event ke hone par run ho,
+=> event : koi action 
+=> handler : us action par clne wala function 
+( jab user kuch [click , type ,hover ] kare  jo function chla vahi event handler hay )
+=> comman event :
+   - click
+   - dubal click 
+   - mouse hover 
+   - mouse out 
+   - key down 
+   - submite
+   - change 
+   -->
+
+    <button onclick="printmsg()">click me </button>
+    <script>
+        function printmsg (){
+            alert("button click hua ")
+        }
+        printmsg();
+    </script>
+
+
+
+<!-- =================================================================================== -->
+
+<!-- selfinvoking function (IIFE => immediate + invoke + function + expresstion )
+=> ye function define hote hi turant execute ho jate hy 
+=> IIFE Function Declaration ke sath kaam nahi karta,
+ye Function Expression hota hai.
+=> syntex : (function () {
+  console.log("Main khud hi run ho gaya");
+})(); -->
+
+<script>
+    (function () {
+  console.log("Main khud hi run ho gaya");
+})();
+
+</script>
+
+<!-- used by perameter  -->
+ <script>
+    (function (name) {
+  console.log("Hello " + name);
+})("Sapna");
+ </script>
+
+ <!-- note : iife isliye use karte hy kuki tempropry code run karane ke liye 
+ => page load par automaticaly kam karanke liye 
+=> securtiy and clean code ke liye  -->
+
+<!-- =============================================================================================== -->
+
+<!-- arrow function :
+=> Arrow Function JavaScript ka short & modern way hai function likhne ka.
+Isko => (arrow) symbol se banaya jata hai. -->
+
+<script>
+// Normal function
+function norm(a, b) {
+  return a + b;
+}
+
+// Arrow function
+const worm = (a, b) => {
+  return a + b;
+};
+
+</script>
+
+
+<!-- single perametr -->
+ <script>
+    const print = name =>{
+        console.log("hello" + name);
+    }
+    print();
+ </script>
+
+ <!-- no perameter -->
+  <script>
+    const sayhi = () => {
+  
+    alert("hiiii");
+    };
+    sayhi();
+  </script>
+
+
+
+</body>
+</html>
+
+
+
