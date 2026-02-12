@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+=> callback function : wo function hay jo dusre function ke liye argument ki 
+tarh work karte hy bad me call hote hy.
+Real life ex: mummy chai bna lo , phir muje bula lena
+ => yha chai banana = main function 
+ => bna ke bulana = callback function
+ 
+ex: function A -> function B
+=> yha (A-> B )a ke ander b function call hota hy.
+  -->
+
+  <script>
+    function geet(name){
+        console.log("hello\n"+ name);
+    }
+    function processuser(callback){
+        let username = "sapna";
+        callback (username);
+    }
+    processuser(geet);
+  </script>
+
+<!-- 
+  => yha geet : callback function hay 
+  => processuser : main function 
+  => geet : ko argument ki trah pass kiya 
+  =>  baad me : callback(username) se call kiya  
+   -->
+
+<!-- ============================================================================================= -->
+
+<!-- callback with Anonymous function  -->
+<script>
+function calculate(a, b, callback) {
+  callback(a + b);
+}
+
+calculate(5, 3, function(result) {
+  console.log("Result is:", result);
+});
+
+</script>
+<!-- 
+=> calculate : name ka function bnaya 
+=> a,b : 2 number lega 
+=> callback : ek function lega 
+=> ab a+b ko jod do : jo answe aye usko callback function me dal do 
+=> calculate fnction chalo jisme a=5 and b=3 , or ek function jo : result hoga 
+=>ab console.log me print karo  -->
+
+<!-- ========================================================================================== -->
+    
+<!-- callback with arrow function -->
+ <script>
+    function calculate(a, b, callback) {
+  callback(a * b);
+}
+
+calculate(4, 5, (result) => {
+  console.log("Multiplication:", result);
+});
+
+ </script>
+ 
+ <!-- ========================================================================================= -->
+  
+  <!-- callback in settime out -->
+  <script>
+setTimeout(function() {
+  console.log("This runs after 2 seconds");
+}, 2000);
+  </script>
+  <!-- => settime out ka kam complite hone ke bad callback run hota hy  -->
+
+<!-- =================================================================================== -->
+
+<!-- problam with callback -->
+<!-- => jab bhot sare callback ka use hota hy to ye error ata hy  -->
+
+<!-- 1) callback hell: Callback ke andar callback,
+phir uske andar aur callback… -->
+
+ <!-- <script>
+    task 1(function(){
+     task 1(function(){
+     task 1(function(){
+        console.log("hello");
+    });
+});
+    });
+ </script> -->
+
+ <!-- =================================================================================== -->
+
+ <!-- error handling with callback :
+  => jab callback me error aye usko handle karna ....   
+   -->
+
+ <script>
+if(err) {
+  console.log(err);
+}
+ </script>
+
+ <!-- ====================================================================================== -->
+
+ <!-- solution :
+=> promise
+=> async / await -->
+
+
+</body>
+</html>
+
+

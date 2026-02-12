@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => Constructor function : yeh ek special function hota 
+    hy jo object bnane (create) ke kam ata hy
+=> isko ham new keyword ke sath use karte hy  
+=> RLE: like ek hi machine me same type ke repetly product bnte ho 
+machine : Constructor function 
+product : object 
+ -->
+
+<script>
+    function Person(name, age) {
+  this.name = name; // normaly name capital me likha jata hy 
+  this.age = age; // this is constroutor function 
+}
+</script>
+
+<!-- ========================================================================================== -->
+
+<script>
+    function Person(name, age) { //construtor function => jo object bnata hy 
+  this.name = name;// new obj me data set karta hy 
+  this.age = age;
+
+  this.sayHello = function() { // sayhello : object method 
+    console.log("Hello, my name is " + this.name);
+  };
+}
+
+let p1 = new Person("Sapna", 22); // new person : ek new obj bnata hy 
+p1.sayHello(); // give output 
+</script>
+
+</body>
+</html>

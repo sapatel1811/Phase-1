@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Recursive function : jo apne aap ko call karta hy 
+    => function = khud ko call kare = condition milte hi ruk jaye 
+    RLE : seedhi 
+    => seedhi se niche utro 
+             |
+        first floor // all floor recursive call 
+             |
+        secound floor 
+            |
+        ground floor (end)  // base case 
+    -->
+
+<!-- ======================================================================= -->
+
+<!-- code ko one line me print karna  -->
+ <script>
+    
+function show(n) {
+    if (n > 3) return;   // ruk jao
+    document.write(n + "<br>");
+    show(n + 1);         // khud ko call
+}
+
+show(1);
+</script>
+
+ 
+</body>
+</html>

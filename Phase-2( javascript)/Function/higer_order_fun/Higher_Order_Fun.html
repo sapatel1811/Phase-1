@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- hof : function ko perametr (argument ) ke roop  me leta hy 
+    => function return karta hy
+    short => function ke sath function ka kam ho rha ho
+
+    RLE: Restaurant example 
+Tum order deti ho → “Burger banao”
+Kitchen recipe (function) ko use karta hai
+Kitchen = Higher Order Function
+Recipe = Normal Function
+     -->
+
+<!-- ============================================================================================= -->
+
+<!-- function ko argument me lena  -->
+<script>
+    function calculate(a, b, operation) { // calculate : hof
+  return operation(a, b); // function call
+}
+
+function add(x, y) { // add : normal function 
+  return x + y;
+}
+
+console.log(calculate(5, 3, add));
+</script>
+
+<!-- ======================================================================================== -->
+
+<!-- arrow function ke sath -->
+ <script>
+    function greet(fn) { // greet : hof (kuki wo function ko inpute me le rha hy )
+  fn(); 
+}
+
+greet(() => {
+  console.log("Hello Sapna");
+});
+
+ </script>
+
+ <!-- ==================================================================================== -->
+
+ <!-- function return karna  -->
+  <script>
+    function multiplier(x) { // ek function return karta hy 
+  return function(y) {
+    return x * y;
+  };
+}
+
+let double = multiplier(2);
+console.log(double(5)); //2 *5 = 10
+
+  </script>
+  
+  <!-- js ka femous higher function : map() , filter() , reduce() , foreach() -->
+
+</body>
+</html>

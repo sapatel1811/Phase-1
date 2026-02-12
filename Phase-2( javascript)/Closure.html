@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- closure : jab ek function apne outer function ke variable ko yad rakhta hy even after outer 
+function finish ho chuka ho usko closure bolte hy  -
+
+short = Ek function ke andar ek variable hai.
+                |
+Aur us function ke andar hi ek aur function hai.
+                |
+Agar andar wala function bahar chala jaye
+                |
+aur fir bhi wo andar wale variable ko use kare…
+                |
+        => Yahi Closure hai.
+
+-->
+
+<script>
+    function outer(){  // outer -> chala
+            let name ="sapna"; // create hua 
+    
+    function inner(){
+        console.log(name);
+    }
+    return inner; // return hua 
+}
+let fn = outer(); // khatam ho gya 
+// noraml me name => delete ho jana chiye tha but ,
+
+fn(); // call hua isliye print => sapna                         
+</script>
+
+<!-- note : kuki js ne inner function ko name variable ke sath memory me save kar diya 
+function + uski memory => closure   -->
+
+</body>
+</html>

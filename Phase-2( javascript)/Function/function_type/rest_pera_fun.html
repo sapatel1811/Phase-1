@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- Rest perameter : function ko jitni be extra value milegi
+     un sab ko ek arry me collect kar lega 
+=> isko ham (...) se likhte hy 
+RLE : pizza order : base + toping + extra chezz + olive...
+=> all extra cheje ek plate me 
+=> plate : rest perameter -->
+</body> 
+
+<!-- ========================================================================================= -->
+
+<!-- simple rest perametr  -->
+ <script>
+    function add(...numbers) {
+  console.log(numbers);
+}
+
+add(1, 2, 3, 4);
+
+ </script>
+ <!-- ==================================================================================== -->
+
+ <!-- calculation with rest  -->
+  <script>
+    function sum(...nums) {
+  let total = 0;
+  for (let n of nums) {
+    total += n;
+  }
+  return total;
+}
+
+sum(2, 4, 6); // 12
+
+  </script>
+
+  <!-- ====================================================================================== -->
+ <!-- fixed + rest perameter  -->
+  <script>
+    function show(name, ...skills) {
+  console.log(name);
+  console.log(skills);
+}
+
+show("Sapna", "HTML", "CSS", "JS");
+
+</script>
+</body>
+</html>

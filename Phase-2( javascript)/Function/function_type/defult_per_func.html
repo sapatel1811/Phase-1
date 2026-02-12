@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- defult perameter : ager function ko value pass na karo to function khud se
+ hi ek value add kar lega
+ => RLE : tum chai bolo bina suger ke = suger-> (1 spoon)
+    => whai tum bolo 2 sppon suge = defult value change ho jayega   -->
+
+<!-- ========================================================================================= -->
+
+<!-- simple defult perameter  -->
+ <script>
+    function greet(name = "Guest") {
+  console.log("Hello " + name);
+}
+
+greet();        // Hello Guest
+greet("Sapna"); // Hello Sapna
+
+ </script>
+
+ <!-- ======================================================================================== -->
+
+ <!-- multipal defult perameter -->
+  <script>
+    function bill(amount, tax = 5) {
+  return amount + tax;
+}
+
+bill(100);      // 105
+bill(100, 10);  // 110
+
+  </script>
+
+  <!-- ========================================================================================= -->
+
+  <!-- defult + arrow function  -->
+   <script>
+    const multiply = (a, b = 2) => a * b;
+
+multiply(5);    // 10
+multiply(5, 3); // 15
+</script>
+
+<!-- => Default parameter function ke parameter section me hota hai
+Sirf tab use hota hai jab argument missing ya undefined ho
+null pass karoge → default apply nahi hoga -->
+
+
+</body>
+</html>

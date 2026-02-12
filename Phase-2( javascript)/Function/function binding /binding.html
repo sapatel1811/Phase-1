@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- Function binding : function ke ander this kis object ko refer karega ye fix karna 
+short = this ko cntrol krna : function binding  -->
+
+<!-- without binding problam :  -->
+<script>
+    let person = {
+  name: "Sapna",
+  greet: function() {
+    console.log(this.name);
+  }
+};
+
+let sayHi = person.greet;
+sayHi();   // undefined
+
+</script>
+
+<!-- => greet function alag variable me chala gaya
+=> this ka connection person se toot gaya
+=> Isliye this.name = undefined -->
+
+<!-- ==================================================================================== -->
+
+<script>
+// solution : bind()
+let sayHii = person.greet.bind(person);
+sayHi();   // ✅ Sapna
+
+</script>
+<!-- => this ko permanently person pe set kar deta hai
+=> Naya function return karta hai
+=> Turant call nahi karta -->
+
+<!-- call example :  
+person.greet.call({ name: "Riya" });
+// Output: Riya
+=> call() function ko turant call karta hai
+=>  Arguments comma se pass hote hain -->
+
+<!-- apply example :
+person.greet.apply({ name: "Anu" });
+// Output: Anu
+=> apply() bhi turant call karta hai
+=> Arguments array me pass hote hain -->
+
+
+<script>
+  let obj = {
+  name: "Sapna",
+  show() {
+    return () => {
+      return function() {
+        console.log(this.name);
+      };
+    };
+  }
+};
+
+obj.show()()();
+
+</script>
+</body>
+</html>
+
+

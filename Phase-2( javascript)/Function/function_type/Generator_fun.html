@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => Generator function : ek special function hota hy jo value  ek ek
+     kar ke produce (genrete karta hy )
+=> isme function* use hota hy 
+=> yeild : keyword hota hy 
+=> function pause or resume ho sakta hy   -->
+
+<!-- basic syntex :  -->
+<script>
+    function* myGen(){
+        yield 1;
+        yield 2;
+        yield 3;// tokan number 
+    }
+    let gen = myGen();
+
+console.log(gen.next());
+console.log(gen.next());
+console.log(gen.next());
+console.log(gen.next());
+
+</script>
+<!-- ========================================================================================== -->
+ 
+
+<div id="output"></div>
+<script>
+  function* myGenz() {
+    yield 1;
+    yield 2;
+    yield 3;
+  }
+
+  let genz= myGenz();
+  let outputDiv = document.getElementById("output");
+
+  function printNext() {
+    let result = genz.next();
+    outputDiv.innerHTML += 
+      "Value: " + result.value + 
+      " , Done: " + result.done + "<br>";
+  }
+
+  printNext();
+  printNext();
+  printNext();
+  printNext();
+</script>
+
+<!-- yeild 1 : ek bhejo or yhi ruk jao 
+next() : next call se function whi age chlega   -->
+
+<!-- ============================================================================== -->
+ 
+<!-- => generator ko stop karene ke liye : return keyword ka use karte hy  -->
+
+<!-- <script>
+    let gd = genzo();
+gd.return();
+</script> -->
+    
+<!-- generator ko error dene ke liye : throw use  -->
+
+<script>
+    function* genzz() {
+  try {
+    yield 1;
+  } catch (e) {
+    console.log("Error:", e);
+  }
+}
+
+let gn = genzz();
+gn.next();
+gn.throw("Something wrong");
+
+</script>
+
+</body>
+</html>

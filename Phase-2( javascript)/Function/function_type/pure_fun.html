@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => pure function : yeh hamesha same inpute leke same outpute deta hy 
+=> bahr ki chize change nahi karta (no side effect)  
+
+RLE : 2 cup chai = same test hamesha 
+=> kictan ke bahr ka saman change nahi hota 
+=-> recipe fixed = output fixed -->
+
+<!-- ======================================================================================= -->
+
+<!-- pure function simple  -->
+ <script>
+    function add(a, b) {
+  return a + b;
+}
+add(2, 3); // 5
+add(2, 3); // 5 (same result)
+ </script> 
+
+<!-- ======================================================================================== -->
+
+<!-- pure function with variable  -->
+<script>
+    function square(n) {
+  return n * n;
+} // no global variable , no console , no dom change 
+</script>
+
+
+</body>
+</html>

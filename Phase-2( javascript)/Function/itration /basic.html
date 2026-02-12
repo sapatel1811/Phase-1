@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- => jab koi kam bar bar repeat hota hy use itration kahte hy 
+    means : loop chalana . 
+    -->
+
+<!-- =============================================================================== -->
+
+    <!-- 1) for loop : sabse comman loop  -->
+     <script>
+        for (let i = 1; i <= 5; i++) {
+  console.log(i); // output : 1 2 3 4 5
+  
+}
+ console.log("=====for loop====")
+</script>
+
+<!-- ========================================================================================== -->
+
+<!-- while loop : jab condition ke basis par chlna ho  -->
+ <script>
+    let i = 3 ;
+    while(i<=5){
+        console.log(i);
+        i++;
+    }
+    console.log("====while loop====")
+ </script>
+
+<!-- ======================================================================================== -->
+
+<!-- do...while loop : kam se kam 1 baar print karna ho to  -->
+ <script>
+    let j = 1;
+
+do {
+  console.log(j);
+  j++;
+} while (j <= 5);
+console.log("=====do...while loop=====")
+
+ </script>
+
+ <!-- ==================================================================================== -->
+  
+ <!-- for ...of (arry ke liye) : direct value mita hy  -->
+<script>
+    let arr = [10, 20, 30];
+
+for (let value of arr) {
+  console.log(value);
+}
+console.log("====for...of loop====")
+</script>
+
+<!-- ======================================================================================== -->
+
+<!-- for ...in (object ke liye): key ke liye  -->
+ <script>
+    let obj = {
+  name: "Sapna",
+  age: 20
+};
+
+for (let key in obj) {
+  console.log(key, obj[key]);
+}
+console.log("====for...in loop====")
+
+ </script>
+
+</body>
+</html>

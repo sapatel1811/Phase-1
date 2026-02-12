@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <!-- nested function : ek function ke ander dusra function
+   => function ke ghr ke ander function 
+   * RLE : school(outer function)
+      =>   : class (inner function)  // class school ke ander hoti hy 
+      => wese hi inner function outer function ke ander hoti hy  -->
+
+<!-- ==================================================================================== -->
+
+<!-- 
+basic nested function : -->
+<script>
+    function outer() { //call hua 
+  function inner() { // outer ke andr bna 
+    console.log("I am inner function");
+  }
+  inner(); // outer ke ander hi call hua 
+}
+
+outer();
+</script>
+
+<!-- ========================================================================================== -->
+
+<!-- inner function outer ka data use kare  -->
+ <script>
+    function outer() {
+  let name = "Sapna";
+
+  function inner() {
+    console.log("Hello " + name);
+  }
+
+  inner();
+}
+
+outer();
+ </script>
+
+ <!-- => inner function outer ka variable use kar skate hy 
+ => is concept ko closure kahte hy  -->
+
+ <!-- ==================================================================================== -->
+
+<!-- nested function return karna  -->
+ <script>
+    function outer() { // one function return krta hy 
+  return function inner() {
+    console.log("Hello from inner");
+  };
+}
+
+let fn = outer();
+fn(); // inner function call hoga 
+ </script>
+
+
+<!-- => inner function only = outer ke ander accesible hota hy 
+=> outer function inner ko acess kar skta hy 
+=> inner function outer ka variable use kar skta hy  -->
+
+</body>
+</html>
