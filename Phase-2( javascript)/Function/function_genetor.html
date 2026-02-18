@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => genretor ek special type ka function hota hy jo multiple value ek ek 
+kar ke return karta hy .
+=> genretor function me yeild keyword ka use hota hy jo value ko return karta hy aur function ko
+ push kar deta hy.
+ => genrtor function ko call karne ke liye hume uske sath * lagana hota hy . 
+ => genrtor function ek function object return karta hy jisme next() method use hota hy 
+ jo function ke ander se value ko ek ek kar ke return karta hy . 
+ 
+ syntax : Function* genretorName(){
+ // code...
+ yeild value; // push or value return karta hy
+
+ }
+ -->
+
+<script>
+function* numberGen() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+const gen = numberGen();
+console.log(gen.next()); //{ value: 1, done: false}
+</script>
+
+<!-- =========================================================================================== -->
+
+<!-- fibonacci genretor :  -->
+<script>
+function* fibonacci() {
+  let a = 0, b = 1;
+  while (true) {
+    yield a; // current number return karta hy
+    [a, b] = [b, a + b]; // next number calculate karta hy
+  }
+}
+const fibGen = fibonacci();
+console.log("=======Start of Fibonacci Sequence========");
+console.log(fibGen.next().value); // 0
+console.log(fibGen.next().value); // 1
+console.log(fibGen.next().value); // 1
+console.log(fibGen.next().value); // 2
+console.log(fibGen.next().value); // 3
+console.log(fibGen.next().value); // 5
+console.log("=======End of Fibonacci Sequence========");
+
+</script>
+</body>
+</html>

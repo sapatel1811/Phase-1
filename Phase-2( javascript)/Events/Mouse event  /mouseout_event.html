@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- mouseout event : mouseout event tab trigger hota hai jab user kisi element se mouse 
+ ko hata deta hai .
+syntax :
+<element onmouseout="handlerFunction()">
+=> element : html element jisme mouseout event add karna hai
+=> handlerFunction() : function jo mouseout event ke hone par call hoga -->
+
+<button onmouseout="showMessage()">Mouse Out Me</button>
+<script>
+    function showMessage(){
+        alert("Mouse is out of the button!");
+    }
+</script>   
+
+<!-- =========================================================================================== -->    
+
+<script>
+
+    function changeStyle(){
+        let btn = document.querySelector("button");
+        btn.style.backgroundColor = "orange";
+        btn.style.color = "white";
+        btn.style.fontSize = "20px";
+    }
+</script>
+<button onmouseout="changeStyle()">Change Style</button>
+
+
+
+</body>
+</html>

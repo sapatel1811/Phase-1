@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- keypress event :
+=> jab user koi key press karta hy to ye event trigger hota hy
+=> is event ke sath hum event handler function ko jod sakte hy jise event
+   ke hone par call kiya jata hy.
+   syntax : <element onkeypress="handlerFunction()">
+=> element : html element jisme event add karna hai
+=> onkeypress : event ka naam
+=> handlerFunction() : function jo event ke hone par call hoga -->
+
+
+<h1>Keypress Event Example</h1>
+<script>
+    function handleKeyPress(event){
+        console.log("Key pressed: " + event.key);
+    }
+</script>
+<input type="text" onkeypress="handleKeyPress(event)" placeholder="Type something...">
+
+</body>
+</html>

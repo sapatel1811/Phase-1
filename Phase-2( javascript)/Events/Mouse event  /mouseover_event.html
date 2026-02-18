@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- mouse over event : mouse over event tab trigger hota hai jab user kisi element
+  par mouse le jata hai .
+syntax :
+<element onmouseover="handlerFunction()">
+
+
+<button onmouseover="showMessage()">Mouse Over Me</button>
+<script>
+    function showMessage(){
+        alert("Mouse is over the button!");
+    }
+
+</script>--> 
+
+<!--===================================================================================  -->
+
+<script>
+    function changeStyle(){
+        let btn = document.querySelector("button");
+        btn.style.backgroundColor = "green";
+        btn.style.color = "white";
+        btn.style.fontSize = "20px";
+    }
+</script>
+<button onmouseover="changeStyle()">Change Style</button>  
+
+
+</body>
+</html>

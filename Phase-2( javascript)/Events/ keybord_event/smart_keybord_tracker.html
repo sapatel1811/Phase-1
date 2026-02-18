@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<label>Smart Keyboard Tracker</label><br/> </br/>
+<input type="text" id="smartInput" placeholder="Type something...">
+<div id="output"></div>
+<div id="count"></div>
+
+<script>
+    const input = document.getElementById('smartInput');
+    const output = document.getElementById('output');
+    const countDisplay = document.getElementById('count');
+
+    let count = 0;   // Counter variable add kiya
+
+    // keydown event
+    input.addEventListener('keydown', function(event){
+
+        count++;   // Har key press par count increase
+        countDisplay.innerHTML = `Total Keys Pressed: ${count}`;
+
+        // Enter key detect
+        if(event.key === "Enter"){
+            event.preventDefault(); // form submit prevent
+            output.innerHTML = "Form Submitted";
+            return;
+        }
+
+        // Escape key detect
+        if(event.key === "Escape"){
+        input.value = "";
+        output.innerHTML = "Input Cleared"; // Escape key par input clear aur message show
+        return;
+        }
+        // Normal key down message
+        output.innerHTML = `Key Down: ${event.key}`; // Har key press par output update
+    });
+
+    // keyup event 
+    input.addEventListener('keyup', function(event){
+        output.innerHTML = `Key Up: ${event.key}`;
+    });
+</script>
+
+    
+</body>
+</html>

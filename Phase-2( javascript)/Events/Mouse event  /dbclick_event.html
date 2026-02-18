@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => dbclick event : dbclick event tab trigger hota hai jab user kisi element par
+     double click karta hai .
+syntax :
+<element ondblclick="handlerFunction()">    
+   
+=> element : html element jisme dbclick event add karna hai
+=> handlerFunction() : function jo dbclick event ke hone par call hoga -->
+
+<button ondblclick ="showMessage()">Double Click Me</button>
+<script>
+    function showMessage(){
+        alert("Button double clicked!");
+    }
+</script>
+
+<!-- =========================================================================================== -->        
+
+<script>
+    function changeStyle(){
+        let btn = document.querySelector("button");
+        btn.style.backgroundColor = "red";
+        btn.style.color = "white";
+        btn.style.fontSize = "20px";
+    }
+</script>
+<button ondblclick="changeStyle()">Change Style</button> <br/><br/>   
+
+<!-- ============================================================================================ --> 
+
+<div id="box" style="width:200px;height:100px;background:lightblue;">
+  Click Me
+</div>
+
+<script>
+let box = document.getElementById("box");
+let timer;
+
+box.addEventListener("click", function() {
+
+   timer = setTimeout(function() {
+      box.style.backgroundColor = "yellow";
+   }, 250);
+
+});
+
+box.addEventListener("dblclick", function() {
+
+   clearTimeout(timer);
+   box.innerText = "Double Clicked!";
+});
+
+</script>
+</body>
+</html>

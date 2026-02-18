@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <!-- => mousedown event : yah event tab trigger hota hy jab koi user kisi element par mouse 
+ ka button press  karta hai.
+ syntax : <elemnt onmousedown="handlerfunction()"> -->
+
+    <button onmousedown="showMessage()">Click Me</button>
+    <script>
+        function showMessage(){
+            alert("Mouse button is pressed!");
+        }
+    </script>
+<!-- =========================================================================================== -->
+
+   
+
+<script>    
+    function changeStyle(){
+        let btn = document.querySelector("button");
+        btn.style.backgroundColor = "purple";
+        btn.style.color = "white";
+        btn.style.fontSize = "20px";
+    }
+</script>
+<button onmousedown="changeStyle()">Change Style</button> <br/><br/>
+<!-- =========================================================================================== -->
+
+<div id="box" style="width:200px;height:100px;background:lightblue;">
+  Click Me
+</div>  
+<script>
+let box = document.getElementById("box");
+let timer;
+box.addEventListener("mousedown", function() {
+
+   timer = setTimeout(function() {
+      box.style.backgroundColor = "yellow";
+   }, 250);
+
+});
+</script>
+
+
+
+</body>
+</html>

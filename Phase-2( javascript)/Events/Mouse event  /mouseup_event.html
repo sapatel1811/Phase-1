@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- mouseup event : mouseup event tab trigger hota hai jab user kisi element par
+ mouse ka button release karta hai . 
+ syntax : <element onmouseup="handlerFunction()">
+ => element : html element jisme mouseup event add karna hai
+ => handlerFunction() : function jo mouseup event ke hone par call hoga  -->
+
+<button onmouseup="showMessage()">Mouse Up Me</button>
+ <script> function showMessage(){ 
+    alert("Mouse button is released!");
+     } 
+     </script>
+ <!-- =========================================================================================== --> 
+<script>
+function changeStyle(){ 
+    let btn = document.querySelector("button"); 
+    btn.style.backgroundColor = "red"; 
+    btn.style.color = "white"; 
+    btn.style.fontSize = "20px"; 
+    } 
+    </script>
+<button onmouseup="changeStyle()">Change Style</button>
+
+ 
+
+</body>
+</html>

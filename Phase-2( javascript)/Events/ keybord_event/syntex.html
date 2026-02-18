@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- event : koi action hota hy jo browser me hota hy 
+    ye ation :
+    => user karta hy (click , type , scroll)
+    => ya browser karta hy (page load , resize , scroll)
+    => event ke sath hum function ko jod sakte hy jise event handler kehte hy
+    => event handler function hota hy jo event ke hone par call hota hy
+    => event handler function me hum event ke bare me jankari le sakte hy aur
+    uske hisab se action le sakte hy
+
+    syntax : <element event="handlerFunction()">
+        => element : html element jisme event add karna hai
+        => event : event ka naam (click , load , mouseover) 
+        => handlerFunction() : function jo event ke hone par call hoga=
+        -->
+<!-- ========================================================================================== -->
+        
+<button onclick="showAlert()">Click Me</button>
+        <script>
+            function showAlert(){
+                alert("Button clicked!");
+            }
+
+        </script><br/><br/>
+
+<!-- ========================================================================================= -->
+
+<!-- keybord event : 
+=> ye event tab hota hy  jab user keybord se intrect karta hy 
+=> keybord event ke 3 type hote hy :
+1. keydown : jab user koi key pass karta hy 
+2. keyup : jab user koi key relese karta hy 
+3. keypress : jab user koi key press karta hy (ye event ab deprecated ho chuka hy )
+=> keybord event ke sath hum event handler function ko jod sakte hy jise event ke hone par call kiya jata hy
+
+syntax : <element event="handlerFunction()">
+    => element : html element jisme event add karna hai
+    => event : event ka naam (keydown , keyup , keypress)
+    => handlerFunction() : function jo event ke hone par call hoga
+
+-->
+
+<!-- =============================================================================== -->
+
+<label for="name" style="font-size: 19px;">Name:</label>
+<input type="text" name="name" onkeydown="handleKeyDown(event)" placeholder="Type something...">
+
+<script>
+    function handleKeyDown(event){
+        console.log("Key pressed: " + event.key);
+    }
+</script>
+
+
+</body>
+</html>

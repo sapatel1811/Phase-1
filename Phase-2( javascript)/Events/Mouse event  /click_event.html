@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- click event : click event tab trigger hota hai jab user kisi element par click karta hai .
+
+syntax : 
+<element onclick="handlerFunction()"> 
+
+=> element : html element jisme click event add karna hai
+=> handlerFunction() : function jo click event ke hone par call hoga -->
+
+<button onclick="showMessage()">Click Me</button>
+<script>
+    function showMessage(){
+        alert("Button clicked!");
+    }
+</script>
+<!-- ====================================================== -->
+
+<script>
+    function changeStyle(){
+        let btn = document.querySelector("button");
+        btn.style.backgroundColor = "blue";
+        btn.style.color = "white";
+        btn.style.fontSize = "20px";
+    }
+</script>
+<button onclick="changeStyle()">Change Style</button>
+    
+
+
+
+
+</body>
+</html>

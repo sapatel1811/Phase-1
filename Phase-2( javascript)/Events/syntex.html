@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- event : koi action hota hy jo browser me hota hy 
+    ye ation :
+    => user karta hy (click , type , scroll)
+    => ya browser karta hy (page load , resize , scroll)
+    => event ke sath hum function ko jod sakte hy jise event handler kehte hy
+    => event handler function hota hy jo event ke hone par call hota hy
+    => event handler function me hum event ke bare me jankari le sakte hy aur
+    uske hisab se action le sakte hy
+    syntax : <element event="handlerFunction()">
+        => element : html element jisme event add karna hai
+        => event : event ka naam (click , load , mouseover) 
+        => handlerFunction() : function jo event ke hone par call hoga
+
+        -->
+
+        <button onclick="showAlert()">Click Me</button>
+        <script>
+            function showAlert(){
+                alert("Button clicked!");
+            }
+
+        </script>
+
+<!-- =========================================================================================== -->
+
+<!-- => event type : 
+1. Mouse events : click , dblclick , mouseover , mouseout , mousedown , mouseup
+2. Keyboard events : keydown , keyup , keypress
+3. Form events : submit , change , focus , blur
+4. Window events : load , resize , scroll , unload
+5. Touch events : touchstart , touchmove , touchend
+6. Clipboard events : copy , cut , paste
+7. Drag and drop events : dragstart , drag , dragenter , dragover , dragleave , drop , dragend
+8. Media events : play , pause , ended , timeupdate
+9. Animation events : animationstart , animationiteration , animationend
+10. Transition events : transitionstart , transitionend , transitionrun
+
+=> event atribute :
+1. onclick : element par click hone par call hota hy
+2. onload : page load hone par call hota hy     
+3. onmouseover : mouse element ke upar jane par call hota hy
+4. onmouseout : mouse element se bahar jane par call hota hy
+5. onkeydown : keyboard key press hone par call hota hy
+6. onkeyup : keyboard key release hone par call hota hy
+7. onsubmit : form submit hone par call hota hy
+8. onchange : form element ki value change hone par call hota hy
+9. onfocus : form element par focus hone par call hota hy
+10. onblur : form element se focus hatne par call hota hy
+11. onresize : window resize hone par call hota hy
+12. onscroll : window scroll hone par call hota hy
+13. oncopy : content copy hone par call hota hy
+14. oncut : content cut hone par call hota hy
+15. onpaste : content paste hone par call hota hy
+14. ondragstart : element drag start hone par call hota hy
+15. ondrag : element drag hone par call hota hy
+16. ondragenter : dragged element ke upar jane par call hota hy
+17. ondragover : dragged element ke upar rakhne par call hota hy
+18. ondragleave : dragged element se bahar jane par call hota hy
+19. ondrop : dragged element drop hone par call hota hy
+20. ondragend : drag end hone par call hota hy   -->
+
+
+
+</body>
+</html>

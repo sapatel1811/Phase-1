@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => form event : form me event tab hota hy jab user form ke sath interact karta hy
+
+form event ke 3 type hote hy :
+1. submit : jab user form submit karta hy to ye event trigger hota hy
+2. reset : jab user form reset karta hy to ye event trigger hota hy
+3. change : jab user form ke kisi input field me change karta hy to ye event trigger hota hy.
+
+=> form event ke sath hum event handler function ko jod sakte hy jise event ke hone par
+ call kiya jata hy.
+
+syntax : <form event="handlerFunction()">
+    => form : html form element jisme event add karna hai
+    => event : event ka naam (submit , reset , change)
+    => handlerFunction() : function jo event ke hone par call hoga  -->
+
+    <h1>Form Submit Event Example</h1>
+    <form onsubmit="handleSubmit(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function handleSubmit(event){
+            event.preventDefault(); // form ke default submit action ko rokta hy
+            const name = document.getElementById('name').value;
+            alert("Form submitted! Name: " + name); // debugging 
+        }
+    </script>
+
+<!--
+=> form submit event ke sath hum form ke default submit action ko rok sakte hy 
+ise form ke data ko server par send karna hota hy. 
+=> iske liye hum event handler function me event.preventDefault() method ka use karte hy.
+
+=> data ager console me show ho rha hy => debugging karna 
+=> data ager browser me show ho rha hy to => dom manipulation karna.
+-->
+
+
+    
+</body>
+</html>

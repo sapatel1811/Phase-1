@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- => input formevent : jab user form ke kisi input field me interact karta hy to ye event 
+trigger hota hy
+=> is event ke sath hum event handler function ko jod sakte hy jise event ke hone par call 
+kiya jata hy.
+
+syntax : <input event="handlerFunction()">
+    => input : html input element jisme event add karna hai
+    => event : event ka naam (change , input)
+    => handlerFunction() : function jo event ke hone par call hoga
+
+=> change event : jab user form ke kisi input field me change karta hy to ye event trigger 
+hota hy
+=> is event ke sath hum event handler function ko jod sakte hy jise event ke hone 
+par call kiya jata hy.  -->
+
+<input type="text" onchange="handleChange(event)" placeholder="Type something...">
+<script>
+    function handleChange(event){   
+        console.log("Input changed: " + event.target.value);
+    }
+</script>
+
+<!-- ================================================================================== -->
+
+<script>
+    document.querySelector('input').addEventListener('change', function(event){
+        console.log("Input changed using addEventListener: " + event.target.value);
+    });
+</script>
+
+</body>
+</html>

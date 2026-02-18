@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- keyup event :
+=> jab user koi key relese karta hy to ye event trigger hota hy
+=> is event ke sath hum event handler function ko jod sakte hy jise event ke hone
+ par call kiya jata hy.
+syntax : <element onkeyup="handlerFunction()">
+    => element : html element jisme event add karna hai
+    => onkeyup : event ka naam   
+    => handlerFunction() : function jo event ke hone par call hoga -->
+
+<input type="text" onkeyup="handleKeyUp(event)" placeholder="Type something...">
+<script>
+    function handleKeyUp(event){
+        console.log("Key released: " + event.key);
+    }
+</script>
+<!-- ================================================================================== -->
+
+<script>
+    document.querySelector('input').addEventListener('keyup', function(event){
+        console.log("Key released using addEventListener: " + event.key);
+    });
+</script>
+
+</body>
+</html>
