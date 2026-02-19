@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => blur form event : ye event tab trigger hota hy jab koi input field focus lose kar deta hy 
+=> simply : jab cursor kisi input se bahr chla jata hy  -->
+
+<!-- example_1) simple blur event : jese hi user filed choega => msg console me print ho jayega  -->
+<input type="text" id="name" placeholder="enter your name">
+<script>
+    let input = document.getElementById("name");
+    input.addEventListener("blur", function(){
+        console.log("Input field is blurred");
+    });
+</script> <br/><br/>
+
+<!-- ================================================================================ -->
+
+<!-- example_2) validation on blur : jab fild empty chodoge => error msg show hoga  --> 
+<input type="text" id="email" placeholder="enter your email">
+<p id="error" style="color: red;"></p>
+<script>
+    let email = document.getElementById("email");
+    let error = document.getElementById("error");   
+    email.addEventListener("blur", function(){
+        if(email.value === ""){
+            error.innerText = "Email is required";
+        } else {
+            error.innerText = "";
+        }
+    });
+</script><br/><br/>
+
+<!-- ================================================================================ -->
+
+<!-- example_3) email format check on blur : jab fild chodoge to validation hoga . -->
+<input type="text" id="emailFormat" placeholder="enter your email">
+<p id="formatError" style="color: red;"></p>
+<script>    
+    let emailFormat = document.getElementById("emailFormat");
+    let formatError = document.getElementById("formatError");
+    emailFormat.addEventListener("blur", function(){
+        const emailValue = emailFormat.value;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email regex pattern 
+        if(!emailPattern.test(emailValue)){
+            formatError.innerText = "Invalid email format";
+        } else {
+            formatError.innerText = "";
+        }
+    });
+</script>
+
+</body>
+</html>

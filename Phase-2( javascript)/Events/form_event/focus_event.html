@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- Focus event : jab user input field par click karta  hai
+=> focus event tab fire  hota hy jab element 
+* click kiya jaye 
+* tab key se select kiya jaye 
+* js se focus diya jaye  -->
+
+<!-- example_1) simple focus detection : -->
+
+<input type = "text" id = "name" placeholder="enter your name ">
+<script>
+    let input = document.getElementById("name");
+    input.addEventListener("focus", function(){
+        console.log("Input field is focused");
+    });
+</script><br/><br/>
+
+<!-- ================================================================================== -->
+
+<!-- example_2) background change on focus: -->
+ <input type="text" id="email" placeholder="enter your email">
+ <script>
+    let email = document.getElementById("email");
+    email.addEventListener("focus",function() {
+        email.style.backgroundColor ="green";
+    });
+ </script><br/><br/>
+
+<!-- ================================================================================ -->
+<!-- example_3) error remove on focus: -->
+ <input type="text" id="username">
+ <p id="error" style="color: red;">username requied</p>
+ <script>
+    let username = document.getElementById("username");
+    let error = document.getElementById("error");
+
+    username .addEventListener("focus",function(){
+        error.innerText ="";
+    });
+ </script><br/><br/>
+
+ <!-- ================================================================================ -->
+<!-- example_4) autofocus using js : -->
+ <input type="text" id="city">
+ <script>
+    let city = document.getElementById("city");
+    city.focus();
+     </script>
+</body>
+</html>
+
+
+

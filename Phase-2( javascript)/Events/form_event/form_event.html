@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => Form Event : jab user kisi form (input, select, textarea) ke sath interact karta hy to 
+ye event trigger hota hy.
+
+* Real life example :   socho aap school me admisstion form bhar rhe ho  -->
+
+<!-- Step 1: focus event => jab aap kisi input box me click karte ho.
+example :  -->
+<script>
+input.addEventListener("focus", function() {
+  console.log("Input selected");
+});
+</script>
+
+
+<!-- step 2: blur event => jab aap input box se bahr chle jate ho .
+example :  -->
+<script>
+input.addEventListener("blur", function() {
+  console.log("Input left");
+});
+</script>
+
+<!-- step 3: input event => jab value change ho jaye aur confirm ho jaye ,
+example : -->
+<script>
+input.addEventListener("input", function() {
+  console.log("Typing...");
+});
+</script>
+
+
+<!-- step 4: change event => jab value change ho jaye aur confirm ho jaye ,
+example :  -->
+<script>
+select.addEventListener("change", function() {
+  console.log("Value changed");
+});
+</script>
+
+
+<!-- step 5: submit event => jab user form submit karta hy ,
+example :  -->
+<script>
+    form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  console.log("Form Submitted");
+});
+</script>
+
+
+<!-- Simple flow diagram : 
+Focus => type => change => blur => submit
+
+like : pen uthaya => nam likha => option select kiya => next fild me gye
+ => option select kiya. -->
+
+</body>
+</html>
