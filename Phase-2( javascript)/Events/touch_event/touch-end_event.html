@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- touch end event : jab user screen ko touch karke move karta hay aur uska touch end ho jata hay to ye event trigger hoat hay.
+(touch ki ending movement ). -->
+
+<button id="btn">Press karo</button>
+<div id="status">Status: Not Pressed</div>
+
+<script>
+let btn = document.getElementById("btn");
+let statusDiv = document.getElementById("status");
+
+let startCount = 0;
+let endCount = 0;
+
+// ----- Mobile Touch Events -----
+btn.addEventListener("touchstart", function() {
+    statusDiv.innerText = "Status: Press Start";     
+    startCount++;
+    console.log("Press Start Count:", startCount);
+});
+
+btn.addEventListener("touchend", function() {
+    statusDiv.innerText = "Status: Press End";       
+    endCount++;
+    console.log("Press End Count:", endCount);
+});
+
+// ----- Desktop Mouse Events -----
+btn.addEventListener("mousedown", function() {
+    statusDiv.innerText = "Status: Press Start";     
+    startCount++;
+    console.log("Press Start Count:", startCount);
+});
+
+btn.addEventListener("mouseup", function() {
+    statusDiv.innerText = "Status: Press End";       
+    endCount++;
+    console.log("Press End Count:", endCount);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- window resize & scroll event : jab window resize hota hy ya scroll hota
+hy to ye event trigger hota hy.
+
+* ham ye 2 event ka use karenge :
+1. resize event : jab window resize hota hy to ye event trigger hota hy
+2. scroll event : jab window scroll hota hy to ye event trigger hota hy
+   -->
+
+
+
+<style>
+    body {
+       
+        height: 2000px;
+    }
+
+    .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: orange;
+    width: 0%;
+    z-index: 1000; 
+}
+
+
+    .navbar {
+    top: 5px;
+}
+
+ 
+    .resize-box {
+        margin-top: 100px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    #box {
+        width: 200px;
+        height: 200px;
+        background: green;
+        margin: 20px auto;
+        transition: 0.3s;
+    }
+
+    
+
+    #topBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        display: none;
+    }
+</style>
+
+
+<div class="progress"></div>
+
+<div class="navbar">Navbar</div>
+
+<div class="resize-box">
+    Window Width: <span id="width"></span> px
+    <div id="box"></div>
+</div>
+
+<button id="topBtn">Top</button>
+
+<script>
+
+    const widthText = document.getElementById("width");
+    const box = document.getElementById("box");
+    const navbar = document.querySelector(".navbar");
+    const progress = document.querySelector(".progress");
+    const topBtn = document.getElementById("topBtn");
+
+
+    // Resize Event
+    function updateWidth() {
+        widthText.innerText = window.innerWidth;
+
+        if (window.innerWidth < 600) {
+            box.style.background = "purple";
+        } else {
+            box.style.background = "green";
+        }
+    }
+
+    window.addEventListener("resize", updateWidth);
+    updateWidth(); // page load par bhi run kare
+
+    // Scroll Event
+    window.addEventListener("scroll", function () {
+
+        let scrollTop = window.scrollY;
+        let docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        let scrollPercent = (scrollTop / docHeight) * 100;
+
+        // Progress Bar
+        progress.style.width = scrollPercent + "%";
+
+        // Sticky Navbar
+        if (scrollTop > 50) {
+            navbar.classList.add("sticky");
+        } else {
+            navbar.classList.remove("sticky");
+        }
+
+        // Back To Top Button
+        if (scrollTop > 200) {
+            topBtn.style.display = "block";
+        } else {
+            topBtn.style.display = "none";
+        }
+
+    });
+
+    // Top Button Click
+    topBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- Touch start event : jab user screen ko touch karta hay to ye event trigger hoat hay.
+(touch ki starting movement ).
+=> ye bilkul mouse ke mouse down event jesa hy => lekin mobile ke liye . -->
+
+<div id="box"></div>
+<style>
+    #box {
+        width: 100px;
+        height: 100px;
+        background: blue;
+    }
+</style>
+<script>
+    const box = document.getElementById("box");
+
+    // Touch Start
+    box.addEventListener("touchstart", function() {
+        box.style.background = "green";
+        console.log("Touch Start");
+    });
+</script>
+</body>
+</html>

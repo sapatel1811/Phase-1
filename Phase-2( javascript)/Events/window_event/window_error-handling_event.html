@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- window error handling event : jab window me koi error aata hy to ye event trigger hota hy.
+
+* ham ye 2 event ka use karenge :
+1. error : jab window me koi error aata hy to ye event trigger hota hy
+2. unhandledrejection : jab window me koi promise reject hota hy aur uska
+catch block nahi hota hy to ye event trigger hota hy -->
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+        }
+        #log {
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Window Error Handling</h2>
+
+<button onclick="makeJSError()">Generate JS Error</button>
+<button onclick="makePromiseError()">Generate Promise Error</button>
+
+<div id="log"></div>
+
+<script>
+
+const logDiv = document.getElementById("log");
+
+// Normal JavaScript Error
+function makeJSError() {
+    console.log(undefinedVariable); // Variable defined nahi hai
+}
+
+// Promise Error
+function makePromiseError() {
+    new Promise((resolve, reject) => {
+        reject("Promise Failed!");// rejected promise without catch block 
+    });
+}
+
+// Global JS Error Listener
+window.addEventListener("error", function(event) {
+    logDiv.innerHTML += "JS Error: " + event.message + "<br>";
+});
+
+//Global Promise Error Listener
+window.addEventListener("unhandledrejection", function(event) {
+    logDiv.innerHTML += "Promise Error: "+ event.reason + "<br>";
+});
+
+
+</script>
+
+</body>
+</html>

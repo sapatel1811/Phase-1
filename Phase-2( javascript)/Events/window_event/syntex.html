@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- window event : ye event tab trigger hota hy jab user window object (yani pura browesr window)
+ke sath interact karta hy.
+=> ye user intraction ya browser ke intrnal chnages par response karta hy 
+=> ye global level par be work karte hy , ye kisi spaciic html element se nahi blki window 
+se releted hote hay .
+=> syntax : window.event = handlerFunction() 
+    => window : global object jo browser window ko represent karta hy
+    => event : event ka naam (load , resize , scroll , unload)
+    => handlerFunction() : function jo event ke hone par call hoga
+    => yha ek load event hai jo tab trigger hota hy jab page ka content pura load ho jata hy
+ -->
+
+<script>
+    window.onload = function() { //yha ek load event hai jo tab trigger hota hy 
+    // jab page ka content pura load ho jata hy
+        console.log("Page loaded!");
+    }
+</script> 
+
+
+<!-- * window event ke comman type :
+A) loading event : jab page load hota hy to ye event trigger hota hy
+
+1. load : tab trigger hota hy jab window or sabhi resource (image ,css , script )
+trigger ho jate hy 
+
+2. domcontentloaded : jab html document ka dom stucture ready ho jata hy 
+lekin image and css ka wait nahi karta .
+
+3. beforeunload : jab user page se bahr jane wala hota hy to ye event trigger hota hy
+4. unload : jab user page se bahr jata hy to ye event trigger hota hy
+-->
+<!-- ========================================================================== -->
+
+<!--
+ B) focus and visibility event : jab user window ke sath interact karta hy to ye event 
+trigger hota hy
+
+1. focus : jab user window par focus karta hy to ye event trigger hota hy
+2. blur : jab user window se bahr jata hy to ye event trigger hota hy
+3. visibilitychange : jab user window ki visibility change hoti hy to
+ ye event trigger hota hy
+-->
+
+<!-- ================================================================================== -->
+ 
+<!-- C) resize and scroll event : jab user window ko resize ya scroll karta hy to ye 
+ event trigger hota hy 
+1. resize : jab user window ko resize karta hy to ye event trigger hota hy
+2. scroll : jab user window ko scroll karta hy to ye event trigger hota hy -->
+
+<!-- ============================================================================ -->
+
+<!-- D) error handling event : jab window me koi error aata hy to ye event trigger hota hy   
+1. error : jab window me koi error aata hy to ye event trigger hota hy
+2. unhandledrejection : jab window me koi promise reject hota hy aur uska
+catch block nahi hota hy to ye event trigger hota hy -->
+
+
+    
+</body>
+</html>

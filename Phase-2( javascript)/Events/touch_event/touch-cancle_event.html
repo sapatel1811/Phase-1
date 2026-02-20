@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- touch cancle event : jab user screen ko touch karta hay aur uska touch cancel ho jata hay to ye event trigger hoat hay.
+(touch ki cancel movement ). 
+-->
+
+<style>
+    #box {
+        width: 100px;
+        height: 100px;
+        background: blue;       
+    }
+</style>
+<div id="box"></div>
+<script>
+    const box = document.getElementById("box");
+
+    // Touch Cancel
+    box.addEventListener("touchcancel", function() {
+        box.style.background = "red";
+        console.log("Touch Cancel");
+    });
+</script>
+
+
+<div id="touch-cancel"> </div>
+<script>
+    const touchCancelDiv = document.getElementById("touch-cancel");
+
+    // Touch Cancel
+    box.addEventListener("touchcancel", function() {
+        touchCancelDiv.innerHTML = "Touch Cancel Event Triggered";
+    });
+</script>
+</body>
+</html>

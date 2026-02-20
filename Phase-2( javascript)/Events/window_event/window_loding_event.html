@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- window loading event : jab window load hota hy to ye event trigger hota hy
+=> is event ke sath hum event handler function ko jod sakte hy jise event ke 
+hone par call kiya jata hy.  
+ 
+* ham ye 4 event ka use karenge :
+1. load : jab window or sabhi resource (image ,css , script ) trigger ho jate hy to ye 
+event trigger hota hy
+2. domcontentloaded : jab html document ka dom stucture ready ho jata hy lekin image
+ and css ka wait nahi karta to ye event trigger hota hy
+3. beforeunload : jab user refrese ya close karta hy to ye event trigger hota hy      
+4. unload : jab user page se bahr jata hy to ye event trigger hota hy    -->
+
+    <style>
+        .loader {
+            width: 100%;
+            height: 100vh;
+            background: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loader -->
+    <div class="loader">
+        Loading Page...
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Window Loading Events Example</h1>
+        <p>Try refreshing or closing the page.</p>
+        <input type="text" placeholder="Type something here">
+    </div>
+
+<script>
+
+    //  DOMContentLoaded
+    window.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM is Ready!");
+    });
+
+    // Load Event
+    window.addEventListener("load", function () {
+        console.log("Page Fully Loaded!");
+
+        document.querySelector(".loader").style.display = "none";
+        document.querySelector(".content").style.display = "block";
+    });
+
+    //  BeforeUnload Event
+    window.addEventListener("beforeunload", function (event) {
+        event.preventDefault();
+        event.returnValue = "";
+    });
+
+    // Unload Event
+    window.addEventListener("pagehide", function () { 
+        // unload ki jagh => pagehide ka use kiya hy 
+        // kuki page hide event unload event se zyada reliable hota hy
+        console.log("Page is Unloading...");
+    });
+
+</script>
+
+</body>
+</html>

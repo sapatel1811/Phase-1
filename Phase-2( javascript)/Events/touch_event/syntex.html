@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- Touch event : jab user kisi touch screen device par interact karta hy to ye event 
+trigger hota hy.
+
+* real life example :
+=> socho aap apne mobile par kisi app ko use kar rhe ho to aap us app ke
+ sath interact karte ho to touch event trigger hota hy  
+
+* touch event ke 3 type hote hy :
+1. touchstart : jab user screen ko touch karta hy to ye event trigger hota hy
+2. touchmove : jab user screen par apna finger move karta hy to ye event trigger hota hy
+3. touchend : jab user screen se apna finger uthata hy to ye event trigger hota hy
+4. touchcancel : jab user ka touch cancel ho jata hy to ye event trigger hota hy
+ -->
+    <style>
+#box {
+    width: 200px;
+    height: 200px;
+    background: blue;
+}
+</style>
+
+<div id="box"></div>
+
+<script>
+
+const box = document.getElementById("box");
+
+// Touch Start
+box.addEventListener("touchstart", function() {
+    box.style.background = "green";
+    console.log("Touch Start");
+});
+
+// Touch Move
+box.addEventListener("touchmove", function() {
+    box.style.background = "yellow";
+    console.log("Touch Move");
+});
+
+// Touch End
+box.addEventListener("touchend", function() {
+    box.style.background = "blue";
+    console.log("Touch End");
+});
+
+</script>
+
+</body>
+</html>
+

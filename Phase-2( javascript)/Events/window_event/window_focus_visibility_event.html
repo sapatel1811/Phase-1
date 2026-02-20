@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- foucus and visibility event : jab window focus me aata hy ya bahr jata hy to ye event 
+trigger hota hy
+
+* ham ye 3 event ka use karenge :
+1. focus : jab window focus me aata hy to ye event trigger hota hy
+2. blur : jab window focus se bahr jata hy to ye event trigger hota hy
+3. visibilitychange : jab window ki visibility change hoti hy to ye event trigger hota hy -->
+
+    <style>
+        #status {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background: green;
+            margin: 20px auto;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Focus & Visibility Event Demo</h1>
+    <p>Switch tab or minimize window to test.</p>
+
+    <div class="box"></div>
+
+    <div id="status">Page is Active</div>
+
+<script>
+
+    const statusText = document.getElementById("status");
+    const box = document.querySelector(".box");
+
+    // Focus Event
+    window.addEventListener("focus", function () {
+        statusText.innerText = "Window is Focused (Active)";
+        box.style.background = "green";
+        console.log("Window Focused");
+    });
+
+    // Blur Event
+    window.addEventListener("blur", function () {
+        statusText.innerText = "Window Lost Focus (Inactive)";
+        box.style.background = "red";
+        console.log("Window Blurred");
+    });
+
+    // Visibility Change Event
+    document.addEventListener("visibilitychange", function () {
+
+        if (document.visibilityState === "hidden") {
+            console.log("Tab is Hidden");
+        } else {
+            console.log("Tab is Visible");
+        }
+
+    });
+
+</script>
+   
+</body>
+</html>
