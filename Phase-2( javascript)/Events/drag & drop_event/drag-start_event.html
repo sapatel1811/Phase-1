@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => drage  start event : jab user kisi element ko drag karna start karta hay 
+to ye event trigger hota hy
+=> ye drag and drop event ka first event hota hay .
+
+* kab trigger hota hy : 
+=> jab user mouse se element ko click + hold karke move karna suru kare 
+=> element me dreggeble="true" hona chiye .
+
+* syntex: element.addEventListener("dragstart",function(event){
+    //code .....
+}); -->
+
+
+<style>
+#box {
+  width: 120px;
+  height: 120px;
+  background-color: blue;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
+</style>
+
+
+<div id="box" draggable="true">Drag Me</div>
+
+<script>
+const box = document.getElementById("box");
+
+box.addEventListener("dragstart", function(e) {
+    console.log("Drag Started");
+
+    // Data store karna
+    e.dataTransfer.setData("text/plain", "This is dragged box");
+
+    // Optional styling change
+    box.style.opacity = "0.5";
+});
+</script>
+
+<!-- * Importent :
+=> drag and drop ke heart :
+
+ - setdata() method : 
+ => ye method dragstart event ke sath use hota hay aur isme hum data store
+  karte hay jo hum drop event me use karna chahte hay.
+
+ - getdata() method : 
+ => ye method drop event ke sath use hota hay aur isme hum dragstart event me
+ store kiya gaya data ko retrieve karte hay. 
+
+ - clearData() method : 
+ => ye method dragend event ke sath use hota hay aur isme hum dragstart event
+  me store kiya gaya data ko clear karte hay.
+
+ - effectAllowed property : 
+ => ye property dragstart event ke sath use hota hay aur isme hum drag and drop 
+ operation ke allowed effects ko specify karte hay. -->
+
+
+</body>
+</html>

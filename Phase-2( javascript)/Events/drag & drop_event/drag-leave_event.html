@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => drag leave event : jab dregged element drop ke bahr chla jata hy 
+tb ye event trigger kart ahy 
+=> drag over and drag enter k eopsite kam karta hy  -->
+
+<h3>Drag the box over the drop area</h3>
+<div id="dragBox" draggable="true" style="width:100px;height:100px;background:orange;text-align:center;line-height:100px;">
+  Drag me
+</div>
+
+<div id="dropArea" style="width:200px;height:150px;background:lightgray;margin-top:20px;text-align:center;line-height:150px;">
+  Drop here
+</div>
+
+<script>
+    const dragBox = document.getElementById("dragBox");
+const dropArea = document.getElementById("dropArea");
+
+// Drag enter – highlight
+dropArea.addEventListener("dragenter", function(event) {
+    event.preventDefault();
+    dropArea.style.backgroundColor = "#a8ffb0"; // Green highlight
+    dropArea.textContent = "You can drop here!";
+});
+
+// Drag over – allow drop
+dropArea.addEventListener("dragover", function(event) {
+    event.preventDefault();
+});
+
+// Drag leave – remove highlight
+dropArea.addEventListener("dragleave", function() {
+    dropArea.style.backgroundColor = "lightgray"; // Reset color
+    dropArea.textContent = "Drop here"; // Reset text
+});
+
+// Drop – final action
+dropArea.addEventListener("drop", function(event) {
+    event.preventDefault();
+    dropArea.style.backgroundColor = "lightgray";
+    dropArea.textContent = "Dropped!";
+    dropArea.appendChild(dragBox); // Move element
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- clipbord event : ek special type ka event hota hy jo user ke clipbord ke sath 
+interact karta hy 
+
+* clipbord event ke 3 type hote hy :
+1. copy : jab user content ko copy karta hy to ye event trigger hota hy
+2. cut : jab user content ko cut karta hy to ye event trigger hota hy
+3. paste : jab user content ko paste karta hy to ye event trigger hota hy
+
+* real life example :
+=> socho aap apne computer par kisi document me kuch likh rhe ho to aap us document
+ ke sath interact karte ho to clipbord event trigger hota hy  -->
+
+<textarea id="myTextArea" rows="4" cols="50" placeholder="Type something here..."></textarea>
+<script>
+const textrea = document.getElementById("myTextArea"); 
+// Copy event
+textrea.addEventListener("copy", function() {
+    console.log("Content copied!"); // ctrl + c 
+});
+// Cut event
+textrea.addEventListener("cut", function() {
+    console.log("Content cut!"); // ctrl + x
+});
+// Paste event
+textrea.addEventListener("paste", function() {
+    console.log("Content pasted!"); // ctrl + v
+});
+</script>
+
+
+<!-- ================================================================================== -->
+
+<!-- clipbord event with window alert event  -->
+
+<textarea id="textArea" rows="5" cols="40">
+Hello! Try copying, cutting or pasting this text.
+</textarea>
+
+<script>
+const textArea = document.getElementById("textArea");
+
+// Copy Event
+textArea.addEventListener("copy", function(e){
+    alert("Text copied!");
+    // clipboard me data modify karna
+    e.clipboardData.setData ("text/plain", "Custom Copied Text");
+    e.preventDefault(); // default copy ko rokta hai
+});
+
+// Cut Event
+textArea.addEventListener("cut", function(e){
+    alert("Text cut!");
+    e.clipboardData.setData("text/plain", "Custom Cut Text");
+    e.preventDefault(); // default cut ko rokta hai
+});
+
+// Paste Event
+textArea.addEventListener("paste", function(e){
+    e.preventDefault(); // default paste ko rokna
+    let pastedData = e.clipboardData.getData("text/plain");
+    alert("You pasted: " + pastedData);
+    // manually insert
+    textArea.value += pastedData;
+});
+</script>
+
+</body>
+</html>

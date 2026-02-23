@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => drag enetr event : jab user kisi element ko drag karta hy aur uska cursor
+kisi dusre element ke  uper ata hay to ye event trigger hota hy 
+=> ye event drag and drop ka 3rd event hota hy 
+=>iska simple matlb hay koi chiz ab drop area me ana wala hy 
+key point : 
+=> ye event drop target par lagta hy 
+=> isme ham visual feedback de skate hy , like : highlight ya border change 
+=> ye drag over ke phle trigger hota hy -->
+
+<h3>Drag your file over the box</h3>
+<div id="dropBox" style="width:200px;height:150px;border:2px dashed gray;text-align:center;line-height:150px;">
+  Drop here
+</div>
+
+<script>
+const dropBox = document.getElementById("dropBox");
+
+dropBox.addEventListener("dragenter", function(event) {
+    event.preventDefault(); // Drop allow karne ke liye
+    dropBox.style.backgroundColor = "#a8ffb0"; // Entered = light green
+    dropBox.textContent = "You're hovering over me!";
+});
+
+dropBox.addEventListener("dragleave", function() {
+    dropBox.style.backgroundColor = "white"; // Normal color
+    dropBox.textContent = "Drop here";
+});
+
+dropBox.addEventListener("dragover", function(event) {
+    event.preventDefault(); // Drop allow
+});
+
+dropBox.addEventListener("drop", function(event) {
+    event.preventDefault();
+    dropBox.style.backgroundColor = "#ffffff";
+    dropBox.textContent = "File dropped!";
+});
+</script>
+
+</body>
+</html>

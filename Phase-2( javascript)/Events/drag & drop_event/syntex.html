@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- 
+=> drag and drop events : jab user kisi element ko drag karta hay aur usko drop 
+karta hay to ye events trigger hoat hay.
+
+=> drag and drop events ke 7 types hotay hay :
+
+1. dragstart : jab user kisi element ko drag karna start karta hay to ye event trigger hoat hay.
+2. drag : jab user kisi element ko drag karta hay to ye event trigger hoat hay.
+3. dragenter : jab user kisi element ko drag karta hay aur uska cursor kisi dusre element ke upar aata hay to ye event trigger hoat hay.    
+4. dragover : jab user kisi element ko drag karta hay aur uska cursor kisi dusre element ke upar hota hay to ye event trigger hoat hay.
+5. dragleave : jab user kisi element ko drag karta hay aur uska cursor kisi dusre element ke upar se chala jata hay to ye event trigger hoat hay.
+6. drop : jab user kisi element ko drag karta hay aur usko kisi dusre element ke upar drop karta hay to ye event trigger hoat hay.
+7. dragend : jab user kisi element ko drag karna end karta hay to ye event trigger hoat hay. 
+ 
+-->
+
+
+
+<style>
+#dragBox {
+  width: 100px;
+  height: 100px;
+  background: red;
+  cursor: grab;
+}
+
+#dropZone {
+  width: 200px;
+  height: 200px;
+  background: lightgray;
+  margin-top: 20px;
+}
+</style>
+
+
+
+<div id="dragBox" draggable="true"></div>
+<div id="dropZone"></div>
+
+<script>
+const dragBox = document.getElementById("dragBox");
+const dropZone = document.getElementById("dropZone");
+
+// dragstart
+dragBox.addEventListener("dragstart", function(e){
+    console.log("Drag Started");
+    e.dataTransfer.setData("text", "dragBox");
+});
+
+//  dragover (IMPORTANT)
+dropZone.addEventListener("dragover", function(e){
+    e.preventDefault(); // Without this drop will not work
+});
+
+// drop
+dropZone.addEventListener("drop", function(e){
+    e.preventDefault();
+    const data = e.dataTransfer.getData("text");
+    const draggedElement = document.getElementById(data);
+    dropZone.appendChild(draggedElement);
+    console.log("Dropped");
+});
+
+//  dragend
+dragBox.addEventListener("dragend", function(){
+    console.log("Drag Ended");
+});
+</script>
+
+<!-- 
+Imporetent :
+
+=> dreg abd drop me ek special object hota hay ..
+  e.dataTransfer : data store karene ke liye (dregstart me )
+                 : data retrive karne ke liye (drop me )
+=> ager dregover event me e.priventdefult() nahi likhoge to drop event 
+kabhi fire nahi hoga.
+=> dreggable element me dreggable="true" atribute likhana jaruri hota hy.
+dreg event me bubbling hota hy .
+=> drag and drop mostly mouse based hota hy , mobile device me direct
+ supported week hota hy.
+ => drag ke time ham styling change kar skate hy .
+    
+-->
+</body>
+</html>

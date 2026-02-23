@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!--
+ => drage event : jab user kisi element ko drag karta hay to ye event trigger hota hy .
+
+=> dragstart → drag shuru
+=> drag → jab tak mouse move ho raha hai drag ke dauran
+=> dragend → drag khatam
+
+=> drag:continus event hota hy ye repeteing event hy 
+=> isliye isme havy logic use nahi karna chiye.(perfomance issue ho skata hy)
+ -->
+
+
+
+<div id="box" draggable="true" 
+     style="width:120px;height:120px;background:silver;color:white;
+     display:flex;align-items:center;justify-content:center;">
+Drag Me
+</div>
+
+<script>
+const box = document.getElementById("box");
+
+box.addEventListener("dragstart", function(){
+    console.log("Drag started");
+});
+
+box.addEventListener("drag", function(){
+    console.log("Dragging...");
+});
+
+box.addEventListener("dragend", function(){
+    console.log("Drag ended");
+});
+</script>
+
+
+</body>
+</html>
