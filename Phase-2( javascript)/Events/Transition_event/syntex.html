@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => wo event jo css transition ke lifecycle (run,start,end,cancle)ko detect karte hy
+
+=> transition event ke type :
+
+transitionrun : transiton start hone wala hy
+   |
+transitionstart : transition actual start hua
+   |
+transitionend : transition complite hua
+   |
+transitioncancle : transition clncle hua -->
+
+<style>
+#box {
+  width: 100px;
+  height: 100px;
+  background:silver;
+  transition: 2s;
+}
+</style>
+
+<button onclick="change()">Change Size</button>
+<div id="box"></div>
+
+<script>
+let box = document.getElementById("box");
+
+function change() {
+  box.style.width = "300px";
+}
+
+box.addEventListener("transitionrun", () => {
+    console.log("Transition Run Hua");
+});
+
+box.addEventListener("transitionstart", () => {
+    console.log("Transition Start Hua");
+});
+
+box.addEventListener("transitionend", () => {
+    console.log("Transition End Hua");
+});
+
+box.addEventListener("transitioncancel", () => {
+    console.log("Transition Cancel Hua");
+});
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- * Runtime stetment : yha par js ka code execte hota hy 
+=> js khud sirf ek language hay 
+=>unko run karane ke liye runtime environment chiye hota hy 
+=> example : browser(chrome,firfox)
+           : node.js
+=> iske main 4 component hay:
+1) call stack
+2) web api
+3) callback queue
+4) event loop -->
+
+<!-- ======================================================================================= -->
+
+<!-- 1) call stack: ye execution ka main area hay 
+=> yha function ek ke uper ek stack me  store hote hy -->
+
+<script>
+    function first() { // first stack me gya 
+  second();  // 2nd stack me gaya
+}
+
+function second() {
+  console.log("Hello"); //run hua
+}
+
+first(); //print hua 
+// ye LIFO(last in first out)pe work karta hy
+</script>
+
+<!-- ================================================================================== -->
+
+<!-- 2) Web apis : ye browser provide karta hy
+
+=> Example Web APIs:
+- setTimeout()
+- setInterval()
+- DOM events
+- fetch()
+=> Ye asynchronous kaam handle karta hai. -->
+
+<!-- =============================================================================== -->
+
+<!-- 3) Callback queue : jab async kaam complete hota hy to uska callback yha wait karta hy
+ ye FIFO base par work karta hy (first in first out) 
+* Use of callback queue :
+- settimeout()
+- setinterval()
+- dom event 
+- fatch api 
+- ajax (http request)
+
+=> Jab bhi:
+- Timer ho
+- User event ho
+- Network request ho
+- Async operation ho
+=> Tab callback queue use hota hai.
+-->
+
+<!-- ======================================================================================= -->
+
+<!-- 
+4) event loop : event loop check karta hy = kya call stack empty hay?
+=> ager empty hy to callback queue function utha ke call stack me bhejta hy 
+* use of event loop :
+- timer
+- dom events 
+- api calls -->
+
+</body>
+</html>

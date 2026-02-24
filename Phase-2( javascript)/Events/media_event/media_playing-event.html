@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => ye event tab trigger hota hy jab audio and video play hone ke time par.
+=> jab user :
+- play button dabata hy 
+- push karta hy 
+- end karta hy 
+- time chnage hota hy : to ye event fire hote hy
+
+=> media play event ke type :
+
+play : play button dabaya(play start hua)
+  |
+playing : media actual chalne laga(real playback start hua)
+  |
+push : push kiya(playback ruk gya)
+  |
+ended : media khtam(video complete)
+  |
+timeupdate : time chnage hua(time update hua)
+  |
+ratechnage : speed change hua(playback speed badali)
+  |
+volumechnage : volume change hua(sound level badaha)
+  |
+seeking : user time jump kare(forword / backword move)
+  |
+seeked : jump compilte(new position set) -->
+
+<video id="myvideo" width="300" controls>
+    <source src="" type="video/mp4">
+</video>
+
+<script>
+    let video = document.getElementById("myvideo");
+    video.addEventListener("play",()=>{
+        console.log("play button press hua");
+    });
+
+    video.addEventListener("playing",()=>{
+        console.log("video ab chal rha hy");
+    });
+
+    video.addEventListener("pause",()=>{
+        console.log("video pause hua");
+    });
+
+    video.addEventListener("ended",()=>{
+        console.log("video end ho gya");
+    });
+
+    video.addEventListener("timeupdate",()=>{
+        console.log("current time:" + video.curentTime.toFixed(2));
+    });
+
+    video.addEventListener("volumechange",()=>{
+        console.log("volume change hua");
+    });
+
+    video.addEventListener("ratechange",()=>{
+        console.log("speed change hua");
+    });
+</script>
+
+</body>
+</html>

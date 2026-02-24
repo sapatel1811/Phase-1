@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+=> ye event tab fire hote hy jab audio or video file browser me load ho rha hota hy.
+step_1)  jab aap video paly kar rhe hote ho
+step_2) fir metadata ata hy (duration etc.)
+step_3) fir first frame ata hy 
+step_4) fir playable hota hy  : in sab stage par alg alg event trigger hota hy  
+
+=> jab page open karte ho or video load hota hy tab:
+loadstart : loading start hui (file load hona suru hua) 
+   |
+durationchange : duration change hua (total time mila)
+   |
+loadedmetadata : metadata load hua (duration,size info)
+   |
+loadeddata : first frame load hua(first data mila)
+   |
+progress : download ho rha hy(data aa rha hy)
+   |
+canpaly : thoda paly ho sakta hy(start kar skate ho)
+   |
+canplaythrough : full paly ho skata hy (buffer complet) 
+-->
+
+<video id="myvideo" width="300"controls>    
+<source src="" type="video/mp4">
+</video>
+
+<script>
+ let video = document.getElementById("myvideo");
+ video.addEventListener("loadstart",()=> {
+    console.log("loading start hua")
+ });
+
+video.addEventListener("loadedmetadata",()=>{
+    console.log("metadata load ho gya");
+    console.log("duration:"+ vido.duration);
+});
+
+video.addEventListener("loadeddata",()=>{
+    console.log("first frame load ho gya");
+});
+
+video.addEventListener("progress",()=>{
+    console.log("video download ho rha hy");
+});
+
+video.addEventListener("canplay",()=>{
+    console.log("ab video play ho sakta hy");
+});
+
+video.addEventListener("canplaythrough",()=>{
+    console.log("video without buffring play ho skata hy");
+});
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- * animation evnet : ye event tab triggerd hote hy jab css start , repete ya finish hoti ho.
+means : 
+- animation kab start hui 
+- kab repete hui 
+- kab end(complet) hui 
+=> animation event type :
+1) animationstart
+2) animationetration (har repete par) : ager infintie ya multipal ho
+3) animationend  -->
+
+
+
+<style>
+#box {
+  width: 100px;
+  height: 100px;
+  background:silver;
+  position: relative;
+  animation: move 2s 4; 
+  /* 3 bar itration chlega 4 time par itration end ho jayega  */
+}
+
+@keyframes move {
+  from { left: 0px; }
+  to { left: 300px; }
+}
+</style>
+
+
+<div id="box"></div>
+
+<script>
+let box = document.getElementById("box");
+
+box.addEventListener("animationstart", () => {
+    console.log("Animation Start Hui");
+});
+
+box.addEventListener("animationiteration", () => {
+    console.log("Ek Iteration Complete Hua");
+});
+
+box.addEventListener("animationend", () => {
+    console.log("Animation End Ho Gayi");
+});
+</script>
+  
+</body>
+</html>
+
+
+    

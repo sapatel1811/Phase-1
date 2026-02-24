@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+=> jab video and audio play hote time data load hone ka wait kar rha ho 
+tb ye event trigger hota hy
+=> means : intrnet slow ho 
+- video ka data abhi pura load na hua ho 
+- user ne video age skip kiya ho
+=> tb media temporory ruk jata hy - isko hi buffring kahte hy
+
+=> importent buffring event : 
+waiting : playback ruk gya(data ka wait kar rha hy)
+   |
+progress : data dwonload ho rha hy(buffer fill ho rha)
+   |
+stalled : loading ruk gya(internet issue)
+   |
+suspend : browser ne loding stop ki(temprory stop)
+   |
+canplay : thoda play ho skata hy(start possible)
+   |
+canplaythrough : full play ho skata hy(no buffring) -->
+
+<video id="myvideo" width="300" controls>
+    <source src="" type="video/mp4">
+</video>
+
+<script>
+    let video = document.getElementById("myvideo");
+    let status = document.getElementById("status");
+
+    video.addEventListener("waiting",()=>{
+        console.log("buffering ho rha hy");
+        status.innerText = "buffering...";
+    });
+
+    video.addEventListener("playing",()=>{
+        console.log("video chal rha hy");
+        status.innerText = "playing";
+    });
+
+    video.addEventListener("progress",()=>{
+        console.log("video download ho rha hy");
+    });
+
+    video.addEventListener("stalled",()=>{
+        console.log("internet slow ya loading ruki hui hy");
+    });
+</script>
+
+
+
+</body>
+</html>

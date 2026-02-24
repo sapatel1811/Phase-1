@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => ye ek control flow ststement hay ,jo kise code ko fixed number of times repete
+ karta hy jab tak cndition true nahi ho jatai  
+ => jab pata ho kitni bar repete karna ho tb = for loop use kare  -->
+
+ <script>
+    for(let i =1; i<=5; i++){
+        console.log("student" + i);
+    }
+ </script>
+
+ <!-- ============================================================================ -->
+
+ <!-- flow of for loop: order hamesha same hota hai
+ initialization -> condition -> code ->  increment -> condition -> code -> increment...
+ => jab condition flase -> loop stop. -->
+
+<!-- ============================================================================== -->
+
+<!-- * infinite for loop : if condition kabhi false na ho  -->
+ <script>
+    for(let i=1; i>7; i++){
+        console.log(i);
+    }
+ </script>
+
+ <!-- ====================================================================================== -->
+
+ <!-- * revese number using for loop -->
+  <script>
+    let num = 1234;
+    let reverse = 0;
+    for(;num >0;){
+        let digit = num %10;
+        reverse = reverse * 10 + digit;
+        num = Math.floor(num / 10);
+    }
+    console.log(reverse);
+    document.write("reverse number:"+ reverse);
+  </script>
+
+  <!-- ============================================================================= -->
+
+  <!-- * check prime number is or not in console... -->
+
+  <script>
+    let numm =12;
+    let isprime = true;
+    for(let i=2;i<numm;i++){
+        if(numm % i=== 0){
+            isprime = false;
+            break;
+        }
+    }
+    if (isprime && numm >1){
+        console.log("prime number");//(2,3,5,7,11)
+    }else{
+        console.log("not prime");//(4,6,8,9)
+    }
+  </script><br/><br/>
+
+  <!-- =========================================================================== -->
+   
+  <!-- * check prime or not in browser... -->
+<script>
+    let usernum = 2;
+    let checkprime = true;
+    for(let i=2; i<usernum;i++){
+        if(usernum % i===0){
+            checkprime = false;
+            break;
+        }
+    }
+    if(checkprime && usernum>1){
+   document.write(usernum + " is prime number");
+    }else{
+   document.write(usernum + " not prime");
+    }
+</script>
+
+<!-- ============================================================================== -->
+
+<!-- * fibonacci series print in console ... -->
+ <script>
+    let n = 10;
+    let a =0,b=1;
+    for(let i=1; i<= n; i++){
+   console.log(a);
+   let next = a+b;
+   a=b; 
+   b=next;
+    }
+ </script><br/><br/>
+
+<!-- =================================================================================== -->
+
+<!-- *fibonacci series print in dom... -->
+ <script>
+      let m = 10;
+    let d =0,c=1;
+    for(let i=1; i<= m; i++){
+   document.write(d + " ");
+   let next = d + c;
+   d = c; 
+   c = next;
+    } 
+ </script>
+
+    
+</body>
+</html>

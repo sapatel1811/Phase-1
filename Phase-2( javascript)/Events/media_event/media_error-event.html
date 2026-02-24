@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- => ye tab trigger hota hy jab media file load ya play nahi ho pati aur
+ browser error detect krta hy
+ => means : file ka ptah galt hy
+ - file server par nahi hy 
+ - formate browser support nahi karta
+ - network issue  -->
+
+<p id="msg">Status</p>
+
+<video id="myVideo" width="300" controls>
+  <!-- Galat file name -->
+  <source src="" type="video/mp4">
+</video>
+
+<script>
+let video = document.getElementById("myVideo");
+let msg = document.getElementById("msg");
+
+video.addEventListener("error", () => {
+    msg.innerText = "Video Load Nahi Ho Pa Rahi!";
+    console.log("Media Error Occurred");
+});
+</script>
+
+
+
+
+</body>
+</html>
