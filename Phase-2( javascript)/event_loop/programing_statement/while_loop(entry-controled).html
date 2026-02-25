@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => while loop tab tak chlta hy jab tak conditon tru nahi ho jata.
+* Example :
+=> phle condition check hota hy 
+=> if true hy o code chlega 
+=> than dubara condition check hoga 
+=> when condtion false ho jayega to loop stop ho jayega
+=> while loop me entry controled loop hota hy matlb first wala condition check hoga ,
+than code run hoga.
+
+* EXample : like khi jate hy aap wha koi security ho , wo phle ticket chek karega ,
+=> if ticket hy to ander jao 
+=> if nahi hy to - no entry 
+
+=> while loop me 3 chize importent hai 
+1) initalization
+      |
+2) condition
+      |
+3) update...
+
+* Basic syntex :
+while(condition){
+//code....
+}
+-->
+
+<script>
+    let i = 1; // starting value
+    while(i<=5){ // condition check 
+        console.log(i) ;// console me print hua
+        document.write(i);// dom me print hau
+        i++;//update 
+    }
+</script><br><br>
+
+<!-- ====================================================================================== -->
+
+<!-- even number print using while loop... -->
+ <script>
+    let a = 2;
+    while(a<=10){ // condition phle check ho jyega 
+        console.log(a);
+        a += 2;
+    }
+ </script>
+
+ <!-- ================================================================================= -->
+
+ <!-- print the total sum of number using while loop  -->
+  <input type="number" id="num" placeholder="enter a positive number">
+  <button onclick="calsum()">Calculate</button>
+  <p id="result"></p>
+  <script>
+function calsum(){
+    let number = parseInt(document.getElementById("num").value);
+    let sum = 0;
+    let i = 1;
+
+    while(i<= number){
+        sum += i ;
+        i++;
+    }
+    document.getElementById("result").textContent = "Total sum is: "+sum;
+}  
+  </script>
+
+<!-- ============================================================================== -->
+
+<button onclick="startinput()">click</button>
+<p id="resultt"></p>
+<script>
+    function startinput(){
+        let sum = 0;
+        let number =1;
+        while (number !==0){
+            number = parseInt(prompt("enter the number(0 to stop)"));
+                  if(number !== 0){
+            sum += number;
+                  }
+        }
+         document.getElementById("resultt").textContent = "Total Sum is: " + sum;
+    }
+</script>
+
+
+</body>
+</html>

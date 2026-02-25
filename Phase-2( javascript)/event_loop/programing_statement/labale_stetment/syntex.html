@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- * Lable statement : iska matlab hay kisi loop ya block ko ek name(label) dena taki ham break 
+ya continue ko us specific loop par control kar skein
+=> ager nested loop ho to bahr wale loop ko control karne ke liye lable ka use karte hay
+*  syntex: lablename:
+           stetment 
+=> two way of we can use :
+1) labaled break
+2) labled continue 
+-->
+
+<!-- ===================================================================================== -->
+
+<!-- => labeled break : ye kisi specific loop ko todne ke liye hy -->
+ <script>
+    outer: // koi be name de skate hy
+    for(let i = 1; i<=3; i++){
+    for(let j=1; j<=3; j++){
+        if(j===2){
+            break outer;
+        }
+   console.log(i,j);
+    }
+}
+ </script>
+
+<!-- ========================================================================== -->
+
+<!-- => labeled continue : ye kisi specific loop ko skip kar ke next itration par le jata hy  -->
+<script>
+ outer:// only loop ko name dena hota hy (ye ek lable hy )
+for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 3; j++) {
+    if (j === 2) {
+      continue outer;
+    }
+    console.log(i, j);
+  }
+}   
+</script>
+
+<!-- * importenet rule :
+=> label ka name koi be cvalid variable name ka ho skata hy 
+=> label ke bad colon : lagata hy 
+=> mostly nested loop me use hote hy 
+=> break or continue ke sath hi kam karte hy
+
+* kab use kare : 
+=> jab nested loop ho 
+=> jab inner loop se outer loop ko control karna ho 
+=> complex search logic me
+
+* normal case me label avoid karo :
+=> more than case me break ya return use karna better hota hy.
+=> label code ko thoda confusing bna skte hy  -->
+
+<!-- ==================================================================================== -->
+
+<!-- pattern stop example using label ststement : -->
+ <script>
+    outer:                                                             
+for (let i = 1; i <= 5; i++) {
+  for (let j = 1; j <= 5; j++) {
+    if (i === 4) {
+      break outer;
+    }
+    document.write("* ");
+  }
+  document.write("<br>");
+}
+ </script>
+
+<!-- ========================================================================================= -->
+
+<!-- password attempt using label ststement : -->
+ <script>
+    outer:
+for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let check = 1; check <= 1; check++) {
+    let pass = prompt("Enter password");
+    if (pass === "1234") {
+      console.log("Welcome to console......");
+      break outer;
+    }
+  }
+}
+ </script>
+
+<!-- =================================================================================== -->
+
+<!-- 
+* Event bubbling : bottom -> top (child to perent)
+* Event captuing : top -> bottom (perent to child)
+ -->
+
+
+</body>
+</html>

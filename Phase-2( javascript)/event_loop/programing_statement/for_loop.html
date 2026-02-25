@@ -113,6 +113,42 @@
     } 
  </script>
 
-    
+<!-- ============================================================================ -->
+ 
+<!-- print triangle star patten using for loop... -->
+ <!-- 1) uper left triangle -->
+  <div id="output"></div>
+  <script>
+    let g = 5;
+    let result ="";
+    for(let i =1; i<= n; i++){
+    let str = "*";
+    result += str.repeat(i) + "<br>";
+
+   console.log(str.repeat(i));
+    }
+   document.getElementById("output").innerHTML = result;
+  </script>
+
+<!-- ================================================================================ -->
+
+<!-- 2) uper right triangle.. -->
+ 
+ <body>
+  <pre id="out"></pre>
+
+  <script>
+    let k = 5;
+    let resultt = "";
+
+    for (let i = 1; i <= k; i++) {
+      let line = " ".repeat(k - i) + "*".repeat(i);
+      console.log(line);
+      resultt += line + "\n";
+    }
+    document.getElementById("out").textContent = resultt;
+  </script>
+  
+</body>
 </body>
 </html>
