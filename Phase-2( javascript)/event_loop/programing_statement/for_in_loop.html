@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => ye object ka enumerable properties par itrete karta hy.
+=> ye key ko return karta hy value nahi.
+=> major diffrance : keys (property name) data hai 
+
+* syntex : for (let key in object){
+    // code ...
+}
+
+* use case :
+=> jab aap ko object ke properties par loop chlana ho 
+=> arry me be use ho skata hy lekin recommanadede nahi hai because ye
+ index as a string return karta hy , aur prototype chain ke proparty bhi include krta hy
+-->
+
+<!-- ====================================================================================== -->
+
+<!-- Example_1) object ke stah ... -->
+ <script>
+    const person ={
+        name:"sapna",
+        age: 23,
+        city:"Ahmdabad"
+    };
+    for (let key in person){
+        console.log(key);
+        console.log(person[key]);
+        document.write(key + ":" + person[key] + "<br>");
+    }
+ </script><br><br>
+
+<!-- =============================================================================== -->
+ 
+<!-- Example_2) arry ke sath : not recommanded -->
+<script>
+const arr = ["a" , "b" , "c"];
+for (let index in arr){
+    console.log(index);
+    console.log(arr[index]);
+    document.write(index + ":" + arr[index] + "<br>");
+}
+</script>
+
+<!-- => for in arry ke liye key return karta hy value ke liye for of better hay  -->
+
+</body>
+</html>
+

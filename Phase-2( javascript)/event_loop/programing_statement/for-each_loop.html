@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <!-- => for each loop ek arry method hay 
+ => arry ke har element par ek function run karta hy automaticaly       
+ 
+ * syntex: 
+ arry.foreach(function(value, index, arry){
+ //code ....    
+ });
+ -->
+
+ <script>
+    const arr = ["a" ,"b" ,"c"];
+    arr.forEach(function(value  ){
+        console.log(value);
+        document.write(value + "<br>");
+    }
+);
+ </script><br>
+
+<!-- ====================================================================================== -->
+
+<script>
+    const color =["black" , "white" ,"silver" ];
+    color.forEach(function(value){
+    document.write(value + "<br>")
+    }
+);
+</script><br>
+
+<!-- ================================================================================= -->
+
+<!-- * index ke sath value pint karna  -->
+ <script>
+    let colors = ["white" , "black" , "yellow" , "sky-blue"];
+    colors.forEach(function(value , index){
+        document.write(index + "->" + value + "<br>");
+    }
+);
+ </script>
+ 
+</body>
+</html>
