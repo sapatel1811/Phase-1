@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => array sort ka matalb hai array ke element ko order me arenge karna 
+=> order 2 type ka hota hy
+1) Assending order(small -> big)
+2) Desending order(big -> small) -->
+
+<h2>string array sort example:</h2>
+<script>
+    let fruits =["appale","banana","mango","orange"];
+    fruits.sort();
+    console.log(fruits);
+    document.write(fruits);
+</script>
+<!-- => by defult sort alafabetically sort karta hy -->
+
+<!-- ==================================================================================== -->
+
+<h2>Number array me problam:</h2>
+<script>
+    let num =[10,5,100,25];
+    num.sort();
+    console.log(num);
+    document.write(num);
+</script>
+<!-- => ye wrong hay because : sort() number ko string ke tarh compare karta hay  -->
+
+<!-- =================================================================================== -->
+
+<h2>Number sort karne ka right way:</h2>
+<p>* Assending order :</p>
+<script>
+ let numbers = [10, 5, 100, 25];
+
+numbers.sort(function(a, b){
+    return a - b;
+});
+
+console.log(numbers);  
+document.write(numbers);  
+</script>
+
+<!-- ==================================================================================== -->
+
+<p>* Desending order :</p>
+<script>
+    numbers.sort(function(a,b){
+        return b-a;
+    });
+
+console.log(numbers);
+document.write(numbers);
+</script>
+
+<!-- ================================================================================== -->
+
+<!-- Note : sort() orignal array ko modify kar deta hy 
+if origanal array ko sort rakhna ho : -->
+<script>
+let newArr = [...numbers].sort((a,b)=>a-b);
+</script>
+
+
+</body>
+</html>

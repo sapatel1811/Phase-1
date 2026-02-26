@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => flat ek array method hay 
+=> ye nested array ko simple array me convert karta hy. -->
+
+<h2>Basic example :</h2>
+<script>
+    let arr = [1, 2, [3, 4]];
+
+let result = arr.flat();
+
+console.log(result);
+document.write(result);
+</script>
+
+<!-- ======================================================================================= -->
+
+<h2>Nested Example:</h2>
+<script>
+    let arry = [1, 2, [3, [4, 5]]];
+console.log(arry.flat());
+document.write(arr.flat());
+</script>
+
+<!-- ================================================================================== -->
+
+<h2>parameter example:</h2>
+<script>
+    let array = [1, 2, [3, [4, 5]]];
+console.log(array.flat(2));
+</script>
+
+<!-- ================================================================================ -->
+ 
+<!-- * note: 
+ => ye orignal array change nahi karta 
+ => ye new array return karta hy
+ => defult deepth = 1
+ => mostly nested data clean karne ke liye use hota hy  -->
+</body>
+</html>

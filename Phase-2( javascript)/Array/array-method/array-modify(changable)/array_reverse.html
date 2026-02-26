@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h2>11) array reverse () : array ka element order ulta kar dena </h2>
+<!-- => array ko revrse karne ke diffrent way : -->
+ a) js built in method in reverse:
+ <script> 
+ let arr = [1,2,3,4,5,6];
+ arr.reverse();
+console.log(arr);
+document.write(arr);
+</script> <br><hr>
+
+<!-- ===================================================================================== -->
+
+b)manual reverse (loop se ):
+<script>
+    let array = [1, 2, 3, 4, 5];
+let reversedArr = [];
+
+for (let i = array.length - 1; i >= 0; i--) {
+    reversedArr.push(array[i]);
+}
+console.log(reversedArr);
+document.write(reversedArr);
+</script><br><hr>
+
+<!-- ====================================================================================== -->
+
+c) in place-reverse(swap technique):
+<script>
+    let num = [0,1,2,3,4,5,6,7,8,9];
+    for (let i = 0; i<num.length/2; i++){
+        let temp = num[i];
+        num[i]= num[num.length-1-i];
+        num[num.length-1-i]=temp    
+    }
+    console.log(num);
+    document.write(num);
+</script>
+
+</body>
+</html>

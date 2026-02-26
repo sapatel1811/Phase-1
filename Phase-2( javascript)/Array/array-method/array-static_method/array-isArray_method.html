@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => ye ek static method hay 
+=> ye check karta hy koi value array hy ya nahi 
+=> boolan (true/false) return karta hy -->
+<h2> Simple example:</h2>
+<script>
+    let arr = [1, 2, 3];
+let num = 10;
+
+console.log(Array.isArray(arr)); // true
+console.log(Array.isArray(num)); // false
+
+document.write(Array.isArray(arr)+ "<br>");
+document.write(Array.isArray(arr ));
+</script>
+
+<!-- ================================================================================ -->
+ <h2>real life example:</h2>
+ <script>
+    function processCart(cart) {
+    if(Array.isArray(cart)) {
+        console.log("Cart is valid");
+        document.write("cart is valid..." + "<br>")
+    } else {
+        console.log("Invalid cart format");
+        document.write("invalid cart..."); 
+    }
+}
+
+processCart([ "Milk", "Bread" ]); // Cart is valid
+processCart("Milk");               // Invalid cart format
+
+ </script>
+</body>
+</html>

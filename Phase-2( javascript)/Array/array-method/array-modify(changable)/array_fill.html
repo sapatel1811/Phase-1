@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => array fill : array ke element ko ek hi value se replce kar deta hy
+=> js offical rule : array.fill(value,start,end)
+=>                                 9    2     4
+-->
+<h2>simple example of fill()</h2>
+<script>
+let arr = [1, 2, 3, 4, 5];
+arr.fill(0);
+console.log(arr);
+document.write(arr);
+</script>
+
+<!-- ========================================================================================= -->
+
+<h2>Start index ke sath:</h2>
+<script>
+let arry = [1, 2, 3, 4, 5];
+arry.fill(9, 2);
+console.log(arry);
+document.write(arry);
+</script>
+
+<!-- ================================================================================== -->
+
+<h2>start & end dono ke sath</h2>
+<script>
+let array = [1, 2, 3, 4, 5];
+array.fill(7, 1, 4);
+console.log(array);
+document.write(array);
+</script>
+
+<!-- ======================================================================================= -->
+
+<h2>empty array ko defult value se fill karna</h2>
+<script>
+let num = new Array(5).fill("Hello");
+console.log(num);
+document.write(num);
+</script>
+
+<!-- ================================================================================== -->
+
+<!-- Note: fill() origanl array ko change karta hy.
+=> ye new array return karta hy, lekin orignal be change hota hy -->
+<script>
+    let arryy = [1,2,3];
+let newArr = arryy.fill(0);
+
+console.log(arryy);     // [0,0,0]
+console.log(newArr);  // [0,0,0]
+
+</script>
+</body>
+</html>

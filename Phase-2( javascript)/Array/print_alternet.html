@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => it means : har dusra element (every second element)
+=> like : let arr = [10, 20, 30, 40, 50, 60];
+=> jha : 1st -> liya 
+       : 2nd -> give up 
+       : 3rd -> next -->
+
+    <script>
+        let arr = [10, 20, 30, 40, 50, 60];
+
+for (let i = 0; i < arr.length; i += 2) {
+    console.log(arr[i]);
+    document.write(arr[i] + "<br>");
+}
+    </script><br>
+
+<!-- ================================================================================== -->
+
+<!-- => if when we start 2nd element : -->
+ <script>
+    for (let i = 1; i < arr.length; i += 2) {
+    console.log(arr[i]);
+    document.write(arr[i] + "<br>")
+}
+ </script>
+</body>
+</html>

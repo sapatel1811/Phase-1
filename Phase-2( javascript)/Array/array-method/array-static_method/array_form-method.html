@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- =>  Array.from() ek static method hai
+=>  Ye array-like ya iterable value ko real array me convert karta hai  -->
+<h2> Simple example:</h2>
+<script>
+    let name = "Sapna";
+
+let result = Array.from(name);
+
+console.log(result);
+document.write(result);
+</script><br>
+
+<!-- ================================================================================== -->
+
+<script>
+let numbers = Array.from([1, 2, 3], num => num * 2);
+console.log(numbers);
+document.write(numbers);
+</script>
+
+</body>
+</html>

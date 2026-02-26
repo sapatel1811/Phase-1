@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => array join() all elements ko sab string me convert karta hy
+=> or unke bech me aap jo caho wo sepreter laga skte hy  
+* syntex : array.join(sepretor)
+=> sepretor : jo chej element ke bech me lagani ho 
+-->
+
+<h2> Defult join(): </h2>
+<script>
+    let arr =["a","b","c"];
+    let result = arr.join();
+    console.log(result);
+    document.write(result);
+</script>
+<!-- => agr sepretor nahi dete to by defult (,) comma lagata . -->
+
+<!-- ==================================================================================== -->
+
+<h2>Custom seprater :</h2>
+<script>
+let arry =["A","B","C","D"];
+let resultt = arry.join("-");
+console.log(resultt);
+document.write(resultt);
+</script>
+
+<!-- =============================================================================== -->
+
+<h2>Space separter : </h2>
+<script>
+    let word =["hello","how","are","you","."];
+    let sentence = word.join(" ");
+    console.log(sentence);
+    document.write(sentence);
+</script>
+
+<!-- ================================================================================= -->
+
+<h2>Empty string sepreter : </h2>
+<script>
+  let letters = ["H", "E", "L", "L", "O"];
+
+let wordd = letters.join("");
+
+console.log(wordd);
+    document.write(wordd);
+</script>
+
+
+</body>
+</html>
