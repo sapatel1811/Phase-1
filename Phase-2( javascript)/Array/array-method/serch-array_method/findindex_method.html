@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => findindex: array me se 1st element ka index return karta hy 
+=> jo condition satisfy kare 
+=> agr koi match na mile to -1 return kare  
+=> ye element nahi index number return karta hy 
+-->
+<script>
+    let numbers = [10, 25, 60, 40, 80];
+
+let result = numbers.findIndex(num => num > 50);
+
+console.log(result);
+document.write(result);
+</script>
+
+<!-- =================================================================================== -->
+
+<h3>even number :</h3>
+<script>
+    let nums = [11, 13, 15, 18, 20];
+
+let evenIndex = nums.findIndex(n => n % 2 === 0);
+
+console.log(evenIndex);
+document.write(evenIndex);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => include(): check karta hy array me koi value exist karti hy ya nahi 
+=> and return karta hy : true / false 
+=> ye index return nahi karta 
+-->
+<h3>simple example :</h3>
+<script>
+    let animal = ["cat","dog","rat","pet"];
+    console.log(animal.includes("rat"));
+    document.write(animal.includes("bat"));
+</script>
+
+<!-- => agr value array me hoga to true milega 
+=> if value array me na ho to false milega  -->
+
+<!-- ============================================================================= -->
+
+<h3>start position check :</h3>
+<script>
+    let color =["white","black","red","yellow"];
+    document.write(color.includes("black",3));
+</script>
+
+</body>
+</html>

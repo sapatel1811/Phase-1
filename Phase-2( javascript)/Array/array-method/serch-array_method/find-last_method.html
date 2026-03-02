@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => findLast method() : array se last element return karta hy 
+=> jo condition staisfy kare 
+=> agr koi match na mile -> undifinded
+=> ye bilkul find jesa hi hy but diffrence ye hy ki :
+    - find() : left -> right search 
+    - findlast() : right -> left search  
+    
+* syntex : array.findlast(element => condition);
+    -->
+
+    <h3> simple numbers check:</h3>
+    <script>
+        let numbers = [10, 25, 60, 40, 80];
+
+let result = numbers.findLast(num => num > 50);
+
+console.log(result); 
+document.write(result);
+    </script>
+
+<!-- ================================================================================= -->
+
+<h3>compare with find():</h3>
+<script>
+console.log(numbers.find(num => num > 50));     
+console.log(numbers.findLast(num => num > 50)); 
+
+document.write(numbers.find(num => num > 50)+ "<br>");
+document.write(numbers.findLast(num => num >50));
+</script>
+
+<!-- ================================================================================= -->
+
+<h3>even number check:</h3>
+<script>
+    let nums = [11, 13, 15, 18, 20];
+
+let resultt = nums.findLast(n => n % 2 === 0);
+
+console.log(resultt);
+document.write(resultt);
+</script>
+
+<!-- =============================================================================== -->
+
+<h3>object check :</h3>
+<script>
+    let users = [
+  { id: 1, name: "Sapna" },
+  { id: 2, name: "Riya" },
+  { id: 3, name: "Sapna" }
+];
+
+let resul = users.findLast(u => u.name === "Sapna");
+
+console.log(resul);
+document.write(resul);
+</script>
+
+</body>
+</html>

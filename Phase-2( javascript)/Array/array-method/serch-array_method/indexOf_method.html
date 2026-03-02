@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => indexof() : position find
+=> agr value mill gya -> index return
+=> agr nahi mile -> -1 return karta hy
+
+* syntex: array.indexof(item,start);
+
+-->
+
+<h3>1) simple example:</h3>
+<script>
+    let fruits =["apple","banana","mango"];
+    //console print
+    console.log(fruits.indexOf("mango"));
+    // dom print
+    document.write(fruits.indexOf("mango")+ "<br>"); // value mila hy
+    document.write(fruits.indexOf()); // without value 
+</script>
+
+<!-- ===================================================================================== -->
+
+<h3>2) dublicate value :</h3>
+<script>
+    let fruit =["banana","apple","mango","apple"];
+    document.write(fruit.indexOf("apple"));
+</script>
+<!-- => if multipal maching value ho to , 1st jo match hoga uska he value index milega -->
+
+<!-- ============================================================================== -->
+ 
+<h3>3) search with start position :</h3>
+<script>
+    let num =["1","2","3","4","5"];
+    document.write(num.indexOf("5",1));
+</script>
+<!-- => index hamesha 0 se search karega agr usko element mila to index number print karega
+=> nahi mila value to -1 print karega  -->
+</body>
+</html>
