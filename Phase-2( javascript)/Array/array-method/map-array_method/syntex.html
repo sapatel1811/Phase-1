@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => map(): ye ek built un object hy 
+=> key value pair store krta hy , and keys kisi be type ki ho skti hy
+
+* syntex: let myMap= new Map()
+-->
+
+<!-- =========================================================================== -->
+
+<!-- 1) set map() : value add karta hy -->
+<script>
+let map = new Map();
+map.set("name","sp");
+map.set("age",23);
+console.log(map);
+document.write(map);
+</script>
+
+<!-- ========================================================================= -->
+
+<!-- 2) get map() : value retrive krta hy  -->
+ <script>
+    console.log(map.get("name"));
+ </script>
+
+ <!-- ============================================================================= -->
+
+ <!-- 3) has map(): check karta hy key exist karta hy ya nahi  -->
+  <script>
+    console.log(map.has("age")); // if agr age ho to : value true else false
+  </script>
+
+<!-- ================================================================================= -->
+
+<!-- 4) delete map(): key remove karta hay -->
+ <script>
+    map.delete("age");
+ </script>
+
+ <!-- ================================================================================= -->
+
+ <!-- 5) clear map() : all remove krta hy -->
+  <script>
+    map.clear();
+  </script>
+
+  <!-- ================================================================================== -->
+
+  <!-- 6) loop in map() method -->
+   <script>
+    let  mapp = new Map([
+        ["name","prem"],
+        ["age",17]
+    ]);
+    for(let[key,value]of mapp){
+        console.log(key,value);
+    }
+   </script>
+
+</body>
+</html>

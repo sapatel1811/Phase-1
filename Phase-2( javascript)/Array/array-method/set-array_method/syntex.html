@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => set () : js ka ek dublicate alue hy .
+=> ye uniqe value store karta hy , but dublicate value remove karta hy. 
+* syntx : let myset = new set()
+=> ye array se create kar skte ho .
+=> value primitve or abject koi be type ki ho skati hy 
+
+* why use set :
+=> dublicate remove karne ke liye 
+=> unique value store karne ke liye 
+=> fast loop ke liye 
+
+-->
+
+<!-- => basic print set(): create with array -->
+<script>
+    let num = new Set([1,2,3,3,4,5]);
+    console.log(num);
+    document.write(num);
+</script><br>
+
+<!-- ==================================================================================== -->
+
+<!-- 1) add() : value add karta hy -->
+ <script>
+    let s = new Set();
+    s.add(10);
+    s.add(20);
+    s.add(10); // dublicate remove 
+    console.log(s);
+    document.write(s);
+ </script><br>
+
+<!-- =================================================================================== -->
+
+<!-- 2) delete() : value remove krta hy  -->
+ <script>
+    s.delete(10);
+    console.log(s);
+    document.write(s);
+ </script>
+
+ <!-- =============================================================================== -->
+
+ <!-- 3) has() : check karta hy value exist karti hy ya nahi  -->
+  <script>
+    console.log(s.has(20));// if value 30 ho to : flase , value 20 ho to :20
+  </script>
+  
+<!-- ==================================================================================== -->
+
+ <!-- 4) clear(): all remove kar dega  -->
+  <script>
+    s.clear();
+  </script>
+
+  <!-- =========================================================================== -->
+
+  <!-- 5) size() : length check karta hy  -->
+   <script>
+    console.log(s.size);
+   </script><br>
+
+<!-- ==================================================================================== -->
+
+<!-- 6) array se dublicate remove karna  -->
+<script>
+let arr =[1,2,3,3,4,4,5];
+let unique = [...new Set(arr)];
+console.log(unique);
+document.write(unique);
+</script>
+
+<!-- ========================================================================== -->
+
+<!-- 7) loop set karna  -->
+ <script>
+    let p = new Set([10,20,30,40]);
+    for(let value of p){
+    console.log(value);
+    }
+ </script>
+ 
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <style>
+        .container {
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        button {
+            padding: 8px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+        #dashboard {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="loginForm">
+    <h2>Login Form</h2>
+
+    <input type="text" id="username" placeholder="Enter Username">
+    <input type="text" id="email" placeholder="Enter Email">
+    <button onclick="login()">Login</button>
+
+    <p id="message"></p>
+</div>
+
+<div id="dashboard">
+    <h2>Welcome to Dashboard</h2>
+    <p>You have successfully logged in!</p>
+</div>
+
+<script>
+function login() {
+
+    let username = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message");
+
+    // Username: 4-12 characters, letters + numbers only
+    let usernamePattern = /^[A-Za-z0-9]{4,12}$/;
+
+    // Email regex
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    if (username === "" || email === "") {
+        message.textContent = "All fields are required!";
+        message.className = "error";
+        return;
+    }
+
+    if (!usernamePattern.test(username)) {
+        message.textContent = "Username must be 4-12 letters or numbers only!";
+        message.className = "error";
+        return;
+    }
+
+    if (!emailPattern.test(email)) {
+        message.textContent = "Please enter a valid email!";
+        message.className = "error";
+        return;
+    }
+
+    // If everything valid → Show Dashboard
+    message.textContent = "Login Successful!";
+    message.className = "success";
+
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+}
+</script>
+
+<!-- trim => iska uska space remove karne ke liye hota hy 
+=> like , muje emil me sapna likhna ho : "  sapna  " without trime 
+=> with  trime me space nahi leta : "sapna"
+=> trime only string ke liye hota hy  -->
+
+</body>
+</html>

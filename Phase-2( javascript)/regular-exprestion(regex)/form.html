@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration With Filter</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="myForm">
+
+    <input type="text" id="username" placeholder="Username"
+           pattern="[A-Za-z0-9]{4,12}" required><br>
+
+    <input type="email" id="email" placeholder="Email"
+           pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" required><br>
+
+    <input type="password" id="password"
+           placeholder="Password"
+           pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}" required>
+
+    <input type="checkbox" onclick="togglePassword()"> Show Password<br>
+
+    <input type="tel" id="phone" placeholder="Phone"
+           pattern="[6-9]{1}[0-9]{9}" required><br>
+
+    <input type="text" id="pin" placeholder="PIN Code"
+           pattern="[0-9]{6}" required><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<!--  Filter Section -->
+<h3>Search User</h3>
+<input type="text" id="search" placeholder="Search by Username or Email" onkeyup="filterData()">
+
+<!-- Table -->
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Phone</th>
+            <th>PIN</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+
+let users = []; // Store all users in array
+
+function togglePassword() {
+    let pass = document.getElementById("password");
+    pass.type = pass.type === "password" ? "text" : "password";
+}
+
+// Submit
+document.getElementById("myForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let user = {
+        username: username.value.trim(),
+        email: email.value.trim(),
+        password: "*".repeat(password.value.length),
+        phone: phone.value.trim(),
+        pin: pin.value.trim()
+    };
+
+    users.push(user);
+    displayData(users);
+
+    this.reset();
+});
+
+// Display Function
+function displayData(data) {
+    let table = document.querySelector("#dataTable tbody");
+    table.innerHTML = "";
+
+    data.forEach(user => {
+        table.innerHTML += `
+            <tr>
+                <td>${user.username}</td>
+                <td>${user.email}</td>
+                <td>${user.password}</td>
+                <td>${user.phone}</td>
+                <td>${user.pin}</td>
+            </tr>
+        `;
+    });
+}
+
+// Filter Function
+function filterData() {
+    let searchValue = document.getElementById("search").value.toLowerCase();
+
+    let filtered = users.filter(user =>
+        user.username.toLowerCase().includes(searchValue) ||
+        user.email.toLowerCase().includes(searchValue)
+    );
+
+    displayData(filtered);
+}
+
+</script>
+
+</body>
+</html>
