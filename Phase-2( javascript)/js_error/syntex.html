@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => js error tab hota hy jab program me koi galti ho jisse code sahi tarh se 
+execute nahi ho pata hy
+=> error ki wajh se :
+-> code stop ho jata hy
+- wrong output mil sakta hy 
+- program crash ho skata hy 
+
+=> js me 3 catogries hoti hay 
+1) syntex error
+2) runtime error
+3) logical error
+-->
+<!-- 1) refrence error : jab tum kisi ese variable ko use karte ho jo exist hi nahi karta  -->
+<script>
+    console.log(name);
+</script>
+<!-- => refrence error : name is not defindeded 
+ex: tum kisi ese insan ko bulao jo room me hi nahi hy  
+-->
+
+<!-- ==================================================================================== -->
+
+<!-- 2)  type error : jab galt type par galt opration karo  -->
+<script>
+    let num = 10;
+    num.touppercase();
+</script>
+<!-- => number par string method use ki 
+=> type error
+ex: bike me desal dalna -->
+
+<!-- ================================================================================ -->
+
+<!-- 3) range error : jab value allowed limite ke bahr ho  -->
+ <script>
+    let arr = new array(-1);
+ </script>
+ <!-- => array ka size negitive nahi ho skata 
+ => rangeerror
+ ex: exam me 150/100 likhna  -->
+
+ <!-- =============================================================================== -->
+
+ <!-- 4) URI error : encode url/decode url me galat formate ho -->
+  <script>
+decodeURI("%");
+  </script>
+<!-- => invalid uri
+ex: wrong website addres likhna  -->
+
+<!-- ================================================================================== -->
+
+<!-- 5) syntex error : code likhne ka rule tod diya  -->
+ 
+    let a = 10
+    console.log(a
+
+<!-- => brcket close nahi hy
+ex: grammer mistek -->
+
+<!-- ================================================================================= -->
+
+<!-- 6) silent error : code galt hay , lekin browser error nahi deta ,
+or code fill ho jata hy silently  -->
+
+<!-- non-static mode 
+x = 10;
+
+static mode 
+"user strict";
+x =10; -->
+
+<!-- => error ayega 
+=> ex: calculaton me galt calculation ho rha hy but error nahi aa rha hy -->
+</body>
+</html>

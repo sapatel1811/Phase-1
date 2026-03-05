@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- * js me primitive data ype wo hote hy jo :
+=> simple value store karte hy 
+=> immutable hote hy (chnage nahi hote , new value banta hy) 
+=>  stack memeory me store hote hy 
+=> copy by value hote hy
+* js me 7 primitive data hote hy:
+-->
+
+<!-- 1) number : ye integer , decimal , nagitive sab ho sakta hy  -->
+ <script>
+    let age =  21;
+    let prise = 99.99;
+    let temp = -10;
+    console.log(typeof age);
+    document.write(typeof age);
+ </script><br>
+
+ <!-- => infinity be number hay 
+ => nan be number hay -->
+
+ <!-- ================================================================================= -->
+
+ <!-- 2)string : text ko store karta hy  -->
+  <script>
+    let name ="kishori";
+    let city ='ahmdabad';
+    let msg =`hello ${name}`;
+    console.log(typeof name);
+    document.write(typeof name);
+  </script>
+
+  <!-- => string immutable hota hy -->
+   <script>
+    let str = "Hello";
+str[0] = "Y";
+console.log(str); // Hello (change nahi hua)
+   </script><br>
+
+  <!-- ================================================================================= -->
+
+  <!-- 3)boolean : only 2 value hoti hy -->
+   <script>
+    let isstudent = true;
+    let isadmin = false;
+    console.log(typeof isstudent);
+    document.write(typeof isstudent);
+   </script><br>
+   <!-- => mostly condition me use hota hy -->
+
+<!-- ========================================================================== -->
+
+<!-- 4)undefinded : variable declare kiye lekin value define nahi ki -->
+ <script>
+    let x;
+    console.log(x);
+    console.log(typeof x);
+    document.write(x + "  ");
+    document.write(typeof x);
+ </script>
+ 
+</body>
+</html> 

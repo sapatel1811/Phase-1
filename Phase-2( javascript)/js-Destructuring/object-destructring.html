@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => Object ke andar ki properties ko direct variables me nikal lena
+bina object.property baar-baar likhe
+=> means structre object ko tod ke nikalna 
+* syntex : let {key-1,key-2,key-3} = objectname;
+-->
+
+<script> 
+let user = { // user.ane likhne ki jagh 
+  name: "Sapna",
+  age: 21
+};
+
+let { name, age } = user; // direct variable mil gya 
+
+console.log(name); 
+console.log(age);
+
+document.write(name + "<br>");
+document.write(age);
+</script><br>
+
+<!-- =================================================================================== -->
+
+<script>
+    
+let student = {
+  nam: "Sapna",
+  age: 21,
+  city: "Ahmedabad"
+};
+
+let { nam, city } = student;
+
+console.log(city);
+
+document.write(city);
+</script><br>
+
+<!-- ============================================================================ -->
+
+<!-- => rename karna : if variable ka name change karna ho  -->
+ <script>
+    let users = {
+        name:"sapna" // object ki key
+    };
+    let {name:username}= users;
+    console.log(username); //new variable
+    document.write(username);
+ </script><br>
+
+<!-- ================================================================================ -->
+
+<!-- defult value  -->
+ <script>
+    let use ={
+name:"kishori"
+    };
+    let {ag = 18} = user;
+    console.log(ag);
+    document.write(ag); // ager object me age value nahi hota to defult value lagta
+ </script><br>
+
+<!-- =============================================================================== -->
+
+<!-- => function perameter -->
+ <script>
+function showuser ({city,country}){
+    console.log(city,country);
+    document.write(city +"<br>"+ country );
+}
+showuser({country:"GUJRAT",city:"ahmdabad"});
+ </script>
+
+ <!-- => object destructing me {} ka use hota hy
+ => key name match hona chiye 
+ => order imporetent nahi hota 
+ => code clean and redable banta hy -->
+</body>
+</html>

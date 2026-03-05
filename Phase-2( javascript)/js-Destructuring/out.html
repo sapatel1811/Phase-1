@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+</head>
+<body>
+
+<script>
+
+//  Array Destructuring:
+// =>  array ki value ko directly alg alg variable me nikal lena bina array[index] likhe .
+let fruits = ["Apple", "Mango", "Banana"];
+let [first, second] = fruits;
+
+console.log("First Fruit:", first);
+console.log("Second Fruit:", second);
+
+document.write("first fruit : ",first +"<br>");
+document.write("second fruit : ",second);
+</script><br><hr>
+
+<!-- =============================================================================== -->
+
+<script>
+//  Skipping Value:
+// => array me jo value hamko nahi chiye usko ignore krna only coma(,) laga kar
+let numbers = [10, 20, 30];
+let [a, , c] = numbers;
+
+console.log("A:", a);
+console.log("C:", c);
+
+document.write("A:",a + "   ");
+document.write("C:",c);
+</script><br><hr>
+
+<!-- =============================================================================== -->
+
+<script>
+// Default Value:
+// => if array ya object me koi value missing ya undefinded ho to ham ek backup 
+// value set kar skte hy 
+let colors = ["Red"];
+let [color1, color2 = "Green"] = colors;
+
+console.log("Color1:", color1);
+console.log("Color2:", color2);
+
+document.write("Color1:", color1 +"<br>");
+document.write("Color2:", color2);
+</script><br><hr>
+
+<!-- ============================================================================ -->
+
+ <script>
+//  Swapping Variables:
+// => 2 variable ke value ko apas me badl dena 
+let x = 5;
+let y = 10;
+
+[x, y] = [y, x];
+
+console.log("After Swap X:", x);
+console.log("After Swap Y:", y);
+
+document.write("After Swap X:", x +"<br>");
+document.write("After Swap Y:", y);
+</script><br><hr>
+
+<!-- ============================================================================ -->
+
+<script>
+// Rest Operator:
+// => jo value alg variable me nahi gyi wo sab(...) ek hi array me store ho jate hy 
+let marks = [90, 85, 88, 70];
+let [topscore, ...others] = marks;
+
+console.log("Top Marks:", topscore);
+console.log("Other Marks:", others);
+
+document.write("Top Marks:", topscore + "<br>");
+document.write("Other Marks:", others);
+</script><br><hr>
+
+<!-- ====================================================================== -->
+
+<script>
+//  Object Destructuring:
+// => object ki proprty ko directly variable me nikal lena bina object.proprty bar bar likhe
+
+let user = {
+  name: "Sapna",
+  age: 21,
+  city: "Ahmedabad"
+};
+
+let { name, age } = user;
+
+console.log("Name:", name);
+console.log("Age:", age);
+
+document.write("Name:", name + "<br>");
+document.write("Age:", age);
+</script><br><hr>
+
+<!-- ======================================================================= -->
+
+<script>
+//  Rename Variable:
+// => object ki property ka name same rhta hy but variable ka name ham apni marji
+// se likh skate hy
+let { city: userCity } = user;
+
+console.log("City:", userCity);
+
+document.write("City:", userCity);
+</script><br><hr>
+
+<!-- =========================================================================== -->
+
+<script>
+//  Default Value in Object
+let { country = "India" } = user;
+
+console.log("Country:", country);
+
+document.write("Country:", country);
+</script><br><hr>
+
+<!-- ===================================================================== -->
+
+<script>
+//  Function Parameter Destructuring
+function showUser({ name, age }) {
+  console.log("Function Name:", name);
+  console.log("Function Age:", age);
+
+ document.write("Function Name:", name + "<br>");
+document.write("Function Age:", age);  
+}
+
+showUser(user);
+
+</script>
+
+</body>
+</html>
+
+ 

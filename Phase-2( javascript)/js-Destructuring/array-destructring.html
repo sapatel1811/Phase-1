@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => jab array ki value ko variable me nikalte hy 
+syntex : let [var1, var2, var3] = arrayName; 
+-->
+ <script>
+   let colors = ["Red", "Green", "Blue"];
+
+let [first, second] = colors;
+
+console.log(first);  
+console.log(second); 
+
+document.write(first + "<br>");
+document.write(second);
+ </script><br>
+
+ <!-- ==================================================================================== -->
+
+ <!-- 2) skip value : if beech ki value nahi chiye to  -->
+  <script>
+    let numbers =[10,20,30,40,50];
+    let [a,,c]=numbers;
+    console.log(a);
+    console.log(c);
+
+    document.write(a +"<br>");
+    document.write(c);
+  </script><br>
+
+  <!-- ============================================================================== -->
+
+   <!-- 3) defult value :agr value mising ho to defult use hota hy -->
+<script>
+let animals = ["dog"];
+
+let [firstt, secondd = "tiger"] = animals;
+
+console.log(firstt);   
+console.log(secondd); 
+
+document.write(firstt + "<br>");
+document.write(secondd);
+</script><br>
+
+<!-- ================================================================================== -->
+
+<!-- 4) swap values: without extra variable  -->
+ <script>
+    let x = 5;
+    let y =8;
+    [x,y] =[y,x];
+    console.log(x);
+    console.log(y);
+
+    document.write(x +"<br>");
+    document.write(y);
+ </script>
+
+</body>
+</html>
+
+
