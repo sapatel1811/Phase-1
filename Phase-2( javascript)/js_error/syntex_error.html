@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => js syntex error : ye error tab ata hy jab code ko likhne ka rule (syntex) galt ho jata hy
+=> means : js syntex ko code smajh nahi ata , isliye program run hone se pahle hi error aa jata hy
+=> code ka gamar alg ho gya ho to syntex error ata hy      -->
+
+<!-- 1) missing brackets error : jab (),{},[] proprly close nahi hote .
+
+<script>
+    let a = 10;
+    if(a>5{
+        console.log("hello");
+    } 
+</script>
+=> ) : missing hay 
+--> 
+
+<!-- => correct way : -->
+<script>
+    let a = 10;
+    if(a>5){
+        console.log("hello");
+    }
+</script>
+
+<!-- =============================================================================== -->
+
+<!-- 2) missing quotes error : jab string ke quotes close nahi hote.
+<script>
+    let name = "sp;
+    console.log(name);
+</script>
+
+=> closing quotes nahi hy 
+     -->
+<script>
+    let name = "sapna";
+    console.log(name);
+</script>
+
+<!-- ================================================================================== -->
+
+<!-- 3) missing comma error : array ya object me comma bhul jana 
+<script>
+    let arr =[1 2 3 ];
+</script>
+=> Error : comma is missing  -->
+<script>
+    let arr = [1,2,3];
+</script>
+
+<!-- ================================================================================== -->
+
+<!-- 4) unexpeted token error : jab js ko esa cherecter milta hy jo wha allowed nahi karta hy 
+<script>
+    let a = 10;
+    let b = 20;
+    console.log(a+b));
+</script> 
+=> Error : extra ) 
+-->
+
+<!-- => console me ata hy : Uncaught syntexerror: unexpected token')'' -->
+ 
+
+
+</body>
+</html>

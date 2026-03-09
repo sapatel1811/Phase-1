@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => js me error statement ka use program me ane wale errors ko handle karne ke liye hota hy
+=> isse program cresh nahi hota oe ham error ka msg show kar skte hy
+=> js me error handling ke liye mainaly ye ststements use hote hy 
+1) try
+2) catch
+3) finaly   
+4) throw -->
+
+<!-- ================================================================================ -->
+
+ <!-- 1) try statement : try block me wo code likhte hy jisme error ane ke posibility 
+  hoti hy  -->
+
+  <!-- <script>
+    try{
+        console.log(a);
+    }
+  </script> -->
+
+<!-- => ager error ata hy to control catch block me chla jata hy -->
+ <script>
+    try {
+        let a = b =10;
+        document.write(a);
+    }
+    catch{
+        document.write("error aa gya ");
+    }
+ </script>
+
+<!-- ================================================================================= -->
+
+<!-- 2) catch ststement : catch block error ko catch(handle)karta hy -->
+ <script>
+    try {
+  console.log(a);
+}
+catch(error){
+  console.log("Error occurred");
+}
+ </script>
+<!-- => a : variable define nahi hy -> rfrence error ata hy ,lekin catch usko 
+ hendle kar leta hy -->
+
+<!-- =================================================================================== -->
+
+<!-- 3)try + catch : -->
+<script>
+try {
+  let num = 10;
+  num.toUpperCase();
+}
+catch(error){
+  console.log("Type error occurred");
+}
+</script> 
+
+<!-- =============================================================================== -->
+
+<!-- 4) finaly ststemenet : ye always run hota hy fir cahe error aye ya nhai  -->
+<script>
+    let age = 15;
+try {
+  if(age < 18){
+     throw "You are not eligible";
+  }
+}
+catch(error){
+  console.log(error);
+}
+</script>
+
+<!-- ================================================================================== -->
+
+<!-- 5) unconditional catch block : means catch block bina kisi perameter ke use karna 
+=> isme ham error object ko use nahi karte, serf error ane par direct execute kar dete hy  -->
+
+<!-- try {
+    //risky code 
+}
+catch{
+    error ane par ye execute hoga 
+} -->
+
+<script>
+try {
+  let result = a + 10;   // a define nahi hai
+  document.write(result);
+}
+catch {
+  document.write("Error aa gaya");
+}
+</script>
+<!-- ============================== -->
+<script>   
+try {
+  JSON.parse('{"name":"Rahul", age:25}');
+}
+catch {
+  document.write("JSON format galat hai");
+}
+</script>   
+
+<!-- =================================================================================== -->
+
+<!-- * importrnt point : 
+=> catch bina perameter ke be likh sakte hy 
+=> jab error ka details use nahi karna ho to unconditinal catch use karte hy  -->
+
+<!-- ================================================================================== -->
+
+<!-- 6) conditinaol catch block : catch block me error object ko use kar ke condition check karna 
+=> isme ham diffrent type ke error ke liye alag lag cony ko use kar skate hy  -->
+
+<!-- * syntex :  -->
+<script>
+    try {
+  // risky code
+}
+catch(error) {
+
+  if(error instanceof TypeError){
+    console.log("Type Error aaya hai");
+  }
+  else if(error instanceof ReferenceError){
+    console.log("Reference Error aaya hai");
+  }
+  else{
+    console.log("Koi aur error hai");
+  }
+}
+</script>
+
+<!-- ============================================== -->
+<!-- * refrence error : -->
+
+<script>  
+try {
+  let a = b + 10;   // b define nahi hai
+}
+catch(err){
+
+  if(err instanceof ReferenceError){
+    document.write("Reference Error aaya hai");
+  }
+
+  else{
+    document.write("Koi aur error hai");
+  }
+
+}
+</script>
+
+<!-- ======================= -->
+
+
+
+
+</body>
+</html>

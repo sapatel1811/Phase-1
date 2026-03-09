@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => js ka ek built in function hay jo string ko js code kitrah execute karta hy 
+=> eval string ke ander likhe js code ko run kar deta hy  -->
+
+<!-- * syntex: eval(string)
+=> string wo text jisme js code likha gya ho  -->
+
+<script>
+    let x =10;
+    let y = 20;
+    let result = eval("x+y");
+    console.log(result);
+</script>
+
+<!-- => x+y ye ek string hay lekin eval usko js exprestion bna ke calculate kar deta hy  -->
+<!-- ================================================================================== -->
+
+<!-- 2) mathametical expression  -->
+<script>
+    let experstion = "5 * 10 +2";
+    let resultt = eval(exprestion);
+    console.log(resultt);
+</script>
+<!-- => eval ne string "5*10+2" ko js calculation bana diya  -->
+<!-- =================================================================================== -->
+
+<!-- 3) variable create karna : -->
+<script>
+    eval("let num = 50 ");
+    console.log(num);
+</script>
+<!-- => eval ke ander variable create hua aur program me use ho gya -->
+<!-- =================================================================================== -->
+
+<!-- 4) function run karna  -->
+<script>
+    eval("function hello(){console.log('hello js');}");
+    hello();
+</script>
+<!-- => eval ne string me likhe function ko create aur run kar diya -->
+
+<!-- =================================================================================== -->
+ 
+<!-- eval use karna dangerous ku mana jata hy :
+=> 1) security risk :if user input directly eval me chala jaye to malisious code
+ run ho skata hy 
+=>2) perfomance slow : eval code ko runtime par parse karta hy isliye program 
+ slow ho jata hy 
+=> 3) debugging difficult : eval use karne se code ko debug karna muskil ho jata hy 
+ -->
+</body>
+</html>

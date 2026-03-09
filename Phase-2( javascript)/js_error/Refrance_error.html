@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => Refreance error : ye error tab ata hy jab js kisi variable ya object ko use karta 
+hy jo exist hi nahi karta
+=> ya scope me avaliable hi nahi hota 
+=> jis variable ko use kar rahe ho wo declare hi nahi hua ho to refrence error ata hi hy 
+=> browser console me usually message ata hy   
+=> uncaught refrenceerror : variable name is not define 
+-->
+<!-- 1) variable  not define : jab variable declare nahi hua ho 
+=> console.log(a); 
+=>  uncaught refrenceerror : variable name is not define
+* correct way:  -->
+<script>
+    let a = 10;
+    console.log(a);
+</script>
+
+<!-- ================================================================================== -->
+
+<!-- 2) typing / spelling mistack : kbhi kbhi variable  ka name likh dene se be 
+ refrence error ata hy 
+ 
+
+ <script>
+    let name = " sapana";
+    console.log(nam);
+ </script>
+ => error : kuki name pura nahi likha hy 
+
+-->
+
+<!-- ===================================================================================== -->
+
+<!-- 3) function not define : jab koi function call karte hy or wo exist nahi karta
+=> hello() -->
+</body>
+</html>

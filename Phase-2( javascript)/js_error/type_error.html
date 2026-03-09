@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => type error : ye tab ata hy jab js me kisi value par aisa opration kar diya jaye 
+jo us type ke liye allowed nahi hay.
+=> jab data ka type galt ho aur us par wrong method ya opration use kar 
+diya jaye to type error ata hy 
+=> browser console me msg ata hy :
+- uncaught type error  -->
+
+<!-- ================================================================================ -->
+
+<!-- 1) number par stringg method use karna :  -->
+
+<script>
+    let num = 10;
+    num.touppercase();
+</script>
+
+<!-- => error : uncaught type error : num.touppercase is nota a function 
+ => touppecase  string method hy,number par use nahi ho skta 
+  -->
+ <script>
+    let text = "hello";
+    console.log(next.touppercase());
+ </script>
+
+<!-- ============================================================================ -->
+
+<!-- 3) undifinded par property use karna :  -->
+
+<script>
+    let user;
+    console.log(user.name);
+</script>
+<!-- => uncaught type error : cannot read properties  of undefinded  -->
+ <script>
+    let users = {name:"sapna"};
+    console.log(user.name);
+ </script>
+
+ <!-- =========================================================================== -->
+
+ <!-- 4) null par method use karna :  -->
+  <script>
+    let data = null;
+    data.tostring();
+  </script>
+  <!-- => uncaught error : cannot read properties of null 
+   => kuki null par method call nahi kar skte 
+   -->
+
+<!-- ================================================================================== -->
+
+<!-- 5) non function ko function ki trah call karana  -->
+
+<script>
+    let a = 10;
+    a();
+</script>
+
+<!-- => uncaught typeerror : a is not a function 
+=> resone : a number hy function nahi  -->
+<script>
+    function q(){
+        console.log("hello");
+    }
+    a();
+</script>
+
+<!-- ================================================================================== -->
+
+<!-- 6) constent ko change karna 
+<script>
+    const num = 10;
+    num = 20;
+</script>
+=> uncaught type error : assignment to constent variable 
+=> const variable ko reasign nahi kar skte  -->
+
+</body>
+</html>

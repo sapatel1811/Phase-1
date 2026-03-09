@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => URI error : ye error tab ata hy jab  js me URI(uniform resource identifyer)
+ ko encode ya decode karte time invalid formet mill jata hy 
+
+=>js me uri ko hendle karne ke liye kuch functions hote hy :
+1) encode uri ()
+2) decode uri()
+3) encode uri component()
+4) decode uri component()
+=> agr in function ko galt uri string mil jaye to urierror ata hy 
+=> jab uri encode ya decode karte time invalid formate  mile to urierror ata hy 
+=> console me error msg ata hy :
+- uncaught urierror: uri malformated -->
+
+<!-- =============================================================================== -->
+
+<!-- 1) decode uri() me invalid uri() : ager string properly encode nhi hy 
+ to decode krte time error ata hy 
+ => example : decodeuri("%");
+ => % ke bad hexadesimal code hona chiye
+ -->
+
+<!-- ================================================================================= -->
+
+<!-- 2) decode uri component() me invalid encoding :
+* example : decodeuricomponent("%E0%A4%A");
+=> encoding incomplit hy isliye js decode nahi kar pa rha hy -->
+
+<!-- ================================================================================== -->
+ 
+ <!-- 3) correct example : (proper uri encoding) -->
+ <script>
+    let url = "https://example.com/my page";
+
+let encoded = encodeURI(url);
+console.log(encoded);
+ </script>
+
+ <!-- => ab decode karte hy -->
+  <script>
+    let decoded = decodeURI(encoded);
+    console.log(decoded);
+  </script>
+
+</body>
+</html>
