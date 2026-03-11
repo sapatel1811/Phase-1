@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prime Number Checker</title>
+<style>
+
+
+
+input{
+    padding: 8px;
+    font-size: 16px;
+}
+
+button{
+    padding: 8px 15px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#result{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Prime Number Checker:</h2>
+
+<input type="number" id="num" placeholder="Enter number">
+
+<button onclick="checkPrime()">Check</button>
+
+<div id="result"></div>
+
+<script>
+
+let input = document.getElementById("num");
+
+input.addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        checkPrime();
+    }
+});
+
+function checkPrime(){
+
+let number = document.getElementById("num").value;
+let result = document.getElementById("result");
+
+if(number === ""){
+    result.innerHTML = "Please enter a number";
+    result.style.color = "orange";
+    return;
+}
+
+number = Number(number);
+
+let prime = true;
+
+if(number <= 1){
+    prime = false;
+}else{
+
+for(let i=2; i<number; i++){
+    if(number % i == 0){
+        prime = false;
+        break;
+    }
+}
+
+}
+
+if(prime){
+    result.innerHTML = number + " is a Prime Number";
+    result.style.color = "green";
+}else{
+    result.innerHTML = number + " is Not a Prime Number";
+    result.style.color = "red";
+}
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => ek class dusri class ke properties or method use kar skate hy 
+=> means child class prent class ke feature ko inherit kar skti hy
+=> isse code resuse hota hy or code chota and clean ho jata hy
+* inheritance : ek class ka dusri class ke properties or method ko use karna.  -->
+
+<!-- * syntex: class Parent {
+}
+class Child extends Parent {
+} -->
+
+<script>
+    class Animal{ //animal: perent class
+        eat(){
+            console.log("animal is eating");
+        }
+    }
+    class dog extends Animal{ // dog: child class
+        bark(){
+            document.write("dog is barking"); 
+        }
+    }
+    let d1 = new dog();
+    d1.eat();
+    d1.bark();
+</script><br><br>
+
+<!-- ================================================================================= -->
+
+<!-- * construter inheritance example : -->
+ <script>
+        class Person {
+
+  constructor(name){
+    this.name = name;
+  }
+
+  showName(){
+    console.log(this.name);
+    document.write(this.name);
+  }
+
+}
+
+class Student extends Person {
+
+  constructor(name, course){
+    super(name);
+    this.course = course;
+  }
+
+  showCourse(){
+    console.log(this.course);
+    document.write(this.course);
+  }
+
+}
+
+let s1 = new Student("Rahul","JavaScript");
+
+s1.showName();
+s1.showCourse();
+ </script><br><br>
+
+ <!-- ================================================================================ -->
+  <!-- * inheritance benifit
+  => code reusability: same code ko bar bar nahi likhna padta 
+  => easy maintanace: code change karna easy ho jata hy 
+  => clean code : code simple and read able hota hy 
+  
+  * perent class
+        |
+    child class
+        |
+    properties + method inherit
+        
+  -->
+<!-- ================================================================================= -->
+
+ <!-- * inheritance ke 5 type :
+ 1) single inheritance 
+ 2) multipal inheritance 
+ 3) hirechicale inheritance 
+ 4) multilevel inheritance 
+ 5) hybrid inheritance  -->
+
+ <!-- ================================================================================== -->
+  <!-- 1) single inheritance : jab ek child class perent class ki property or method ko 
+   inherite kare 
+   => matlb ek perent ek child relationship hota hy 
+
+   * syntex: class perent {
+   }
+   class child extend perent{
+   }
+=> yha perent : perent class
+=> child : child class
+
+*  perent 
+    |
+  child
+
+   -->
+<script>
+        class Vehicle {
+
+  start(){
+    console.log("Vehicle Started");
+    document.write("vehicle started ");
+  }
+
+}
+
+class Car extends Vehicle {
+
+  openDoor(){
+    console.log("Car Door Open");
+    document.write(" car door open");
+  }
+
+}
+
+let c1 = new Car();
+
+c1.start();
+c1.openDoor();
+</script><br>
+
+<!-- ============================================================================== -->
+<!-- 2) multipal inheritance: 
+=> jab ek child class ek se jada perent class ke properties and method ko inherit kare.
+* imp :
+=> js me classes direct multipal inheritance suport nahi karti.
+
+=> class child extend perent1,perent2 (esa direct nahi likh skate hy) 
+
+* perent-1       perent-2
+        \         /
+        child class
+-->
+
+<script>
+    class person{
+        walk(){
+            document.write("person can walk");
+        }
+    }
+    class student{
+        study(){
+            document.write("student can study");
+        }
+    }
+    class boy {}
+    Object.assign(boy.prototype,person.prototype,student.prototype);
+
+    let b1 = new boy();
+    b1.walk;
+    b1.study;
+</script>
+<!-- ====================================================== -->
+<!-- * another example ; -->
+ <script>
+    class Teacher {
+
+  teach(){
+    console.log("Teacher teaches");
+  }
+
+}
+
+class Singer {
+
+  sing(){
+    console.log("Singer sings");
+  }
+
+}
+
+class Personn {}
+
+Object.assign(Personn.prototype, Teacher.prototype, Singer.prototype);
+
+let p = new Personn();
+
+p.teach;
+p.sing;
+ </script><br>
+
+<!-- =============================================================================== -->
+ <!-- 3) Hierarchical inheriance : 
+ => jab ek perent class se multipal child inherit karti he 
+ => means  ek perent class ke feture ko bhot sari child claes use kar rhi hy 
+ * parent 
+    /   \
+child   child -->
+<script>
+    class Animall {
+
+  eat(){
+    console.log("Animall is eating");
+  }
+
+}
+
+class Dog extends Animall {
+
+  bark(){
+    console.log("Dog is barking");
+  }
+
+}
+
+class Cat extends Animall {
+
+  meow(){
+    console.log("Cat is meowing");
+  }
+
+}
+
+let a1 = new Dog();
+d1.eat();
+d1.bark();
+
+let a2 = new Cat();
+c1.eat ;
+c1.meow ;
+</script>
+<!-- =================================================================================== -->
+ <!-- 4) multilevel inheritance : 
+=> jab ek claass dusri class se inherit kare or duri class 3 ko inherite kare usko ....
+* granperent
+      |
+    perent
+      |
+    child -->
+
+    <script>
+        class Aniimal {
+
+  eat(){
+    console.log("Animal is eating");
+  }
+
+}
+
+class Dogg extends Aniimal {
+
+  bark(){
+    console.log("Dog is barking");
+  }
+
+}
+
+class Puppy extends Dogg {
+
+  weep(){
+    console.log("Puppy is weeping");
+  }
+
+}
+
+let p1 = new Puppy();
+
+p1.eat;
+p1.bark;
+p1.weep;
+</script>
+
+<!-- ================================================================================ -->
+ <!-- 5) hybrid inhritance : 
+=> jab 2 ya us se jada inherttance type ko combine kar ke ek inheritence sturture
+  bnaya jata hy
+=> hirichical + multilevel combine h skata hy:
+* animal
+  /    \
+dog   cat
+/
+puppy
+=> animal : perrent class
+=> dog & cat : animal se inherit(hirechical)
+=> puppy : dog se inherit (multilevel) -->
+
+<script>
+    class Animaal {
+
+  eat(){
+    console.log("Animal is eating");
+    document.write("animal is eating");
+  }
+
+}
+
+class Doog extends Animaal {
+
+  bark(){
+    console.log("Dog is barking");
+    document.write("dog is barking");
+  }
+
+}
+
+class Ccat extends Animaal {
+
+  meow(){
+    console.log("Cat is meowing");
+    document.write("cat is meowing");
+  }
+
+}
+
+class Puppyy extends Doog {
+
+  weep(){
+    console.log("Puppy is weeping");
+    document.write("puppy is weeping");
+  }
+
+}
+
+let p11 = new Puppyy();
+
+p11.eat;
+p11.bark;
+p11.weep;
+</script>
+
+</body>
+</html>     

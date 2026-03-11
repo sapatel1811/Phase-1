@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => class se banne wali instance ko object kehte hy 
+=> ye ek special function hota hy jo multipal object create karne ke liye use hota hy 
+=> constructer ek templete jesa hota hy jisse ek hi struture ke multipal object bna skate hy  
+-->
+
+<!-- ============================================================================ -->
+
+ <!-- * syntex : 
+ => function constructerName(pera1,pera2){
+    this.property1 = pera1;
+    this.property2 = pera2;
+ } -->
+
+<script>
+    function student(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    let s1 = new student("sp",20);
+    let s2 = new student("ps",26);
+    document.write(s1.name );
+    document.write(s2.age);
+</script><br><br>
+
+<!-- ================================================================================== -->
+
+<!-- * constructer me method add karna : -->
+ <script>
+    function car(brand , color){
+        this.brand = brand;
+        this.color = color;
+        this.start = function (){
+            document.write(this.brand + "car started");
+        }
+    }
+    let c1 = new car ("toyta","black");
+    c1.start();
+ </script>
+
+ <!-- =============================================================================== -->
+
+ <!-- * why use Constructor: 
+ => multipal similar object crete karne ke liye.
+ => code repete hone se bachane ke liye . 
+ => object structer maintanin karne ke liye .
+ => oop programming me  -->
+</body>
+</html>

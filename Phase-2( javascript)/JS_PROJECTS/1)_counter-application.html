@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+
+h2{
+    margin-bottom:20px;
+}
+
+#number{
+    margin:20px;
+    font-size:40px;
+}
+
+button{
+    padding:10px 20px;
+    margin:5px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+#message{
+    margin-top:20px;
+    font-size:18px;
+    color:blue;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Counter Application:</h2>
+
+<div id="number">0</div>
+
+<button onclick="increase()">Increase</button>
+<button onclick="decrease()">Decrease</button>
+<button onclick="reset()">Reset</button>
+
+<p id="message"></p>
+
+<script>
+
+let count = 0;
+
+function increase(){
+    count = count + 1;
+    document.getElementById("number").innerHTML = count;
+    document.getElementById("message").innerHTML = "Click on Increment";
+}
+
+function decrease(){
+    count = count - 1;
+    document.getElementById("number").innerHTML = count;
+    document.getElementById("message").innerHTML = "Click on Decrement";
+}
+
+function reset(){
+    count = 0;
+    document.getElementById("number").innerHTML = count;
+    document.getElementById("message").innerHTML = "Counter Reset";
+}
+
+</script>
+
+</body>
+</html>

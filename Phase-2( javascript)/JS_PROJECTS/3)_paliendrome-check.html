@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => palindrome ese word ya number hote hy jo front and back dono position me 
+same padhe jate hy .
+=> short : if kisi value ko revrsce karne par same value mile use .......
+=> like : number = 121
+=> word : madam 
+
+=> palindrome 2 step se find kiye jate hy 
+step_1) number ya word ko reverce karo 
+step_2) us reverce number ko compare karo 
+               ||
+    same hoga to (palindrome)
+-->
+
+<h2>Palindrome Checker</h2>
+<input type="text" id="num" placeholder="Enter number">
+<button onclick="checkPalindrome()">Check</button>
+<p id="result"></p>
+
+<script>
+function checkPalindrome(){
+
+let num = document.getElementById("num").value;
+let reverse = num.split("").reverse().join("");
+
+if(num == reverse){
+document.getElementById("result").innerHTML = "Palindrome Number";
+}else{
+document.getElementById("result").innerHTML = "Not Palindrome";
+}
+
+}
+
+</script>
+</body>
+</html>

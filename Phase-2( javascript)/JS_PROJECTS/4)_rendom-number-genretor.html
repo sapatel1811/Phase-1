@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => rendom number ganretor : tab use kiya jata hy jab hamko diffrent value chiye hota hy 
+* example : games , otp genretor , lottry system , password genretor , dice roll simulation 
+-->
+
+<style>
+.container{
+    background: white;
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input{
+    width: 80px;
+    padding: 5px;
+    margin: 10px;
+}
+
+button{
+    padding: 8px 15px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#result{
+    font-size: 25px;
+    margin: 20px;
+}
+
+</style>
+<div class="container">
+
+<h2>Random Number Generator</h2>
+
+<label>Min:</label>
+<input type="number" id="min" value="1"><br>
+
+<label>Max:</label>
+<input type="number" id="max" value="10">
+
+<br>
+
+<button onclick="generate()">Generate</button>
+<button onclick="reset()">Reset</button>
+
+<div id="result">Result will appear here</div>
+
+</div>
+
+<script>
+
+function generate(){
+
+let min = Number(document.getElementById("min").value);
+let max = Number(document.getElementById("max").value);
+
+if(min >= max){
+alert("Enter valid range");
+return;
+}
+
+let random = Math.floor(Math.random() * (max - min + 1)) + min;
+
+document.getElementById("result").innerHTML = random;
+
+}
+
+function reset(){
+
+document.getElementById("min").value = 1;
+document.getElementById("max").value = 10;
+document.getElementById("result").innerHTML = "Result will appear here";
+
+}
+
+</script>
+</body>
+</html>

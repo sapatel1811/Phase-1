@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => constructor ek special function hota hy , jo object create hote hi
+ automaticly run hota hy , iska use object ki property ko initial value dene ke liye hota hy 
+=> constructor ek special method hay jo class ka object banane par
+  automaticly call  hota hy  -->
+
+<script>
+class Student {
+
+constructor(name , age) {
+this.name = name;
+this.age = age;
+}
+}
+let s1 = new Student("sp", 20);
+
+console.log(s1.name);
+console.log(s1.age);
+
+document.write(s1.name);
+document.write(s1.age);
+</script>
+
+</body>
+</html>

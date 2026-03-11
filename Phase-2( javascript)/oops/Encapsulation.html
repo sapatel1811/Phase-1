@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => data(variable) or method(function) ko ek hi object ya class ke ander band
+kar dena or direct acces ko control karna.
+=> means data ko hide karna or usko acces karne ke liye proper method dena.
+=> isko data hiding be bolte hy
+* simple defination : encapusulation = data + method ko ek unit(class/object) me rakhna or 
+data ko direct access se protcuct karna. -->
+
+<!-- ================================================================================= -->
+ <!-- * without encapsulation..... -->
+<script>
+    let person = {
+        name :"sp",
+        balance:5000
+    };
+    person.balance = -2000;
+    document.write(person.balance + "<br>");
+</script>
+<!-- => yha koi be balance ko direct change kar skte hy , isliye data secure nahi hy  -->
+
+<!-- =================================================================================== -->
+ <!-- * encapsulation using class..... -->
+  <script>
+   class BankAccount {
+
+  constructor(name, balance) {
+    this.name = name;
+    this.balance = balance;
+  }
+
+  deposit(amount) {
+    this.balance += amount;
+  }
+
+  withdraw(amount) {
+    if (amount <= this.balance) {
+      this.balance -= amount;
+    } else {
+      console.log("Insufficient Balance");
+      document.write("Insuffient Balance");
+    }
+  }
+
+  checkBalance() {
+    console.log("Balance is: " + this.balance);
+    document.write("Balance is: "+ this.balance);
+  }
+}
+
+let acc1 = new BankAccount("Rahul", 5000);
+
+acc1.deposit(2000);
+acc1.withdraw(1000);
+acc1.checkBalance();
+  </script>
+
+<!-- => yha balnace direct change nahi ho rha hy 
+=> method ke through change ho rha hy. 
+=> isliye ye encpasulation hay .
+-->
+
+<!-- ==================================================================================== -->
+<!-- * real data hiding example.(private field) -->
+
+<script>
+    class BankAccount {
+
+  #balance;
+
+  constructor(balance) {
+    this.#balance = balance;
+  }
+
+  deposit(amount) {
+    this.#balance += amount;
+  }
+
+  getBalance() {
+    return this.#balance;
+  }
+
+}
+
+let acc = new BankAccount(5000);
+
+acc.deposit(2000);
+
+console.log(acc.getBalance());
+document.write(acc.getBalance());
+</script>
+<!-- => error ayega because balance private hy. -->
+
+<!-- ============================================================================ -->
+
+<!-- * encapsulation:
+data + methods
+    |
+class / object
+    |
+direct acess block
+    |
+acces through methods -->
+</body>
+</html>
