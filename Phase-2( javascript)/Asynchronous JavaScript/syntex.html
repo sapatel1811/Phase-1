@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- * Asynchronous JavaScript :
+=> iska matlab hota hy ki js ek kam complete hone ka wait kiye baina dusra kam start kar de 
+=> ye mainly api call,file loding, timer, database request jese kam ke liye use hota hy 
+
+* example : ager kisi data ko lane me 5 second lagta hy to, js tab tak program
+ ko block nahi karti, code ko run karti hy 
+--> 
+ <script>
+    document.write("Start ");
+     setTimeout (function(){
+        document.write("This message aaper sfter 3 secounds.....");
+     }, 3000);
+     document.write("End");
+ </script>
+ <!-- => start print hota hy
+ => settimeout() 3 secound ka timer start karta hy 
+ => js wait nahi karti or end print kar deti hy 
+ => 3 secound bad callback function run hota hy -->
+
+ <!-- ==================================================================================== -->
+ <script>
+    function orderFood() {
+  console.log("Food Ordered");
+
+  setTimeout(function () {
+    console.log("Food Ready");
+  }, 2000);
+}
+
+console.log("Customer arrives");
+
+orderFood();
+
+console.log("Customer waiting");
+ </script>
+<!-- => custmore ne food order kiya 
+=> food banne me 2 secound lagte hy 
+=> tab tak program baki ka code run karta hay 
+=> jab food ready hota hy tab message ata hy -->
+
+<!-- ================================================================================== -->
+
+ <!-- * use of asynchronous js : 
+ => api se data fatch karane me 
+ => file upload / downdload me 
+ => timmer or dealy me 
+ => database request me  -->
+</body>
+</html>

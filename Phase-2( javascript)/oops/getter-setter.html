@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- * Getter : ye ek method hota hy jo object ki property ko read/return karta hy.
+ => property ki value get karne ke liye .
+ => get method se define hota hy 
+ => isme genraly return stetment hota hy 
+-->
+
+<script>
+    let person ={
+        firstname: "sp",
+        lastname:"patel",
+        get fullname(){
+            return this.firstname + " " + this.lastname;
+        }
+    };
+ document.write(person.fullname);
+</script>
+<!-- => get fullname() : getter method hay 
+=> jab person.fulname call kiya : getter run hua 
+=> and firstname + lastname return kiya  -->
+
+<!-- ==================================================================================== -->
+
+<!-- 
+* Setter : ye ek  method hota hy jo object ki property ki value ko set ya update karta hy
+or usme validation be laga skate hy .
+=> property ki value set karne ke liye.
+=> isme perameter pass hota hy 
+-->
+<script>
+    let personn = {
+        firstname:"",
+        set name(value){
+            this.firstname = value;
+
+        }
+    };
+    personn.name ="ps";
+    document.write(personn.firstname);
+</script>
+</body>
+</html>

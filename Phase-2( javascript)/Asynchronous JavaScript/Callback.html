@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => callback function ek esa function hay jo kisi dusre function ko argument ke roop me 
+diya jata hy or bad me call hota hy 
+=> function ke ander function pass karna or usko bad me execute karna. -->
+
+<!-- * simple callback function:  -->
+ <script>
+    function greet(name,callback){
+        document.write("hello " + name);
+        callback();
+    }
+    function saybye(){
+        document.write("Good bye!");
+    }
+    greet("sp ",saybye);
+ </script>
+
+ <!-- =========================================================================== -->
+
+<!-- * Asynchronous Callback: -->
+<script>
+    console.log("Start");
+    document.write("start");
+
+setTimeout(function () {
+  console.log("Data Loaded");
+  document.write("data loaded");
+}, 2000);
+
+console.log("End");
+document.write("end");
+</script>
+
+<!-- ================================================================================ -->
+
+</body>
+</html>
+
