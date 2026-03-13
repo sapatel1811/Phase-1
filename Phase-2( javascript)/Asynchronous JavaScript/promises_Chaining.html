@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => promises Chaining ka means ek promise ke .than() ke bad dusra .than()
+lagana,taki ek asynchronous khatm hone ke bad next task autometically run ho jaye.
+=> ek promisis ka result dusre promises ko pass karna ....
+=> isse code clean redable and callback hell se bachane ke liye kiya jata hy  -->
+<script>
+  let promise = new Promise(function(resolve, reject){
+    resolve(5);
+});
+
+promise
+.then(function(result){
+    document.write("First then:", result  + "<br>");
+    return result * 2;
+})
+.then(function(result){
+    document.write("Second then:", result + "<br>");
+    return result * 3;
+})
+.then(function(result){
+    document.write("Third then:", result + "<br>");
+});
+</script>
+
+<!-- * step bay step working :
+1) promises start hua resolve (5) ho gya 
+2) phle than() run hus fir 5 print hua 
+3) usne return result * 2 kiya => value 10 ban gyi ,
+4) ye 10 next then() me chla gya 
+5) secound then() me 10  print hua or return result *3 hua => 30,
+6) third then() me 30 print hoga   -->
+
+<!-- ========================================================================= -->
+ 
+<script>
+function getUser(){
+    return new Promise(function(resolve){
+        resolve("User ID: 101");
+    });
+}
+
+function getUserData(id){
+    return new Promise(function(resolve){
+        resolve(id + " -> User Data");
+    });
+}
+
+function getUserPost(data){
+    return new Promise(function(resolve){
+        resolve(data + " -> User Posts");
+    });
+}
+
+getUser()
+.then(function(id){
+    console.log(id);
+    return getUserData(id);
+})
+.then(function(data){
+    console.log(data);
+    return getUserPost(data);
+})
+.then(function(post){
+    console.log(post);
+});
+</script><br>
+
+<!-- =============================================================================== -->
+
+<!-- *   promise Chaining ka main rule : 
+=> promise
+     |
+   then()
+    |
+  then()
+   |
+ then()
+
+ => har .then() ek new value return karta hy 
+ => jo value return hoti hy wo next then me jati hy 
+  -->
+
+<!-- ================================================================================ -->
+
+<!-- * retruning promise Chaining :
+=> promise Chaining ke andr kabhi kabhi .then() ke ander ek or promise return karte hy 
+* concept :
+step1() => then() => return step2()=> then() 
+=> ek promises ka result dusre ko pass hota hy 
+-->
+<script>
+
+    function step1(){
+    return new Promise(function(resolve){
+        setTimeout(function(){
+            console.log("Step 1 complete");
+            document.write("step 1 is completed..." + "<br>");
+            resolve(10);
+        },1000);
+    });
+}
+
+function step2(value){
+    return new Promise(function(resolve){
+        setTimeout(function(){
+            console.log("Step 2 complete");
+            document.write("step 2 is completed..." + "<br>");
+            resolve(value * 2);
+        },1000);
+    });
+}
+
+step1()
+.then(function(result){
+    return step2(result);
+})
+.then(function(result){
+    console.log("Final Result:",result);
+    document.write("final result:", result + "<br>");
+});
+</script>
+<!-- ==================================================================================== -->
+<!-- * error handling in promises Chaining :
+=> if chain me kisi be step me error aye to catch() ka use karte hy -->
+<script>
+let promisee = new Promise(function(resolve,reject){
+
+let error = true;
+
+if(error){
+reject("Something went wrong");
+}
+else{
+resolve("Success");
+}
+
+});
+
+promise
+.then(function(data){
+console.log(data);
+document.write(data);
+})
+.catch(function(error){
+console.log(error);
+document.write(error);
+});
+</script>
+ 
+</body>
+</html>

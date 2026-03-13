@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- * Async :
+=> keyword function ke aage lagaya jata hy 
+=> ye function always promise return karta hy  -->
+<script>
+async function test() {
+    return "Hello";    
+}
+test().then(function(data){
+document.write(data);
+});
+</script>
+<!-- => yha hello autometically promise.resolve ("hello") ban jata hy  -->
+
+<!-- ================================================================================== -->
+ <!-- * Await:
+ => promise complete hone ka wait kare.
+ => fir uska result return karo 
+ => await only async ke ander hi use hota hy -->
+ <script>
+    function getData(){
+
+return new Promise(function(resolve){
+
+setTimeout(function(){
+resolve("Data Loaded " + "<br>");
+},2000);
+
+});
+
+}
+
+async function showData(){
+
+let result = await getData();
+
+console.log(result);
+document.write(result);
+
+}
+
+showData();
+ </script>
+
+<!-- ================================================================================ -->
+<!-- => show data call hua
+=> await getdata() promise complte hone ka wait karta hy 
+=> promises resolve hone ke bad data loded milta hy 
+=> concolw me print ho jata hy 
+-->
+
+<script>
+    function step1(){
+return new Promise(resolve => setTimeout(()=>resolve("Step 1 is  done"),1000));
+}
+
+function step2(){
+return new Promise(resolve => setTimeout(()=>resolve("Step 2 is done"),2000));
+}
+
+function step3(){
+    return new Promise(resolve => setTimeout(()=>resolve("Step 3 is done"),3000));
+}
+
+async function process(){
+
+let s1 = await step1();
+console.log(s1);
+document.write(s1 + "<br>");
+
+let s2 = await step2();
+console.log(s2);
+document.write(s2 + "<br>");
+
+let s3 = await step3();
+document.write(s3 + "<br>");
+
+}
+
+process();
+</script>   
+</body>
+</html>
