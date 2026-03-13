@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- => ye js ka ek object hay jo asynchronous opration ka result future me milega ki nahi usko 
+reperesent karta hy. 
+=> promises ek gerenty hoti hy ki future me koi kam complet hoga or uska result milega 
+ya error milega .
+
+* promises ke 3 states hota hy:
+1) pending : jab promises stsrt hota hy or abhi result nahi aya hota hy 
+2) fulfild (resolved) : jab promisis succesfuly complte ho jata hy 
+3) rejected : jab promises fail ya error aa jata hy  -->
+
+<script>
+    let  mypromise = new Promise(function(resolve,reject){
+            let success = true;
+            if(success){
+                resolve("data loded succesfuly");
+            }
+            else{
+                reject("error loding data");
+            }
+});
+mypromise
+.then(function(result){
+    document.write(result);
+})
+.catch(function(error)
+{
+    document.write(error)
+})
+</script>
+<!-- ============================================================================ -->
+ <!-- * step by step working:
+ => new promises : se ek promises object create hota hy
+ => promisis ke ander 2 perameters hote hy 
+ 1) resolve : success ke liye
+ 2) reject : error ke liye 
+ => ager condition true hy : resolve call hoga 
+ => ager condiion false ho : reject hoga 
+ => .than : jab promises succesfuly complet ho jata hy tab run hota hy
+ => .catch : jab promises fail ho jata hy tab run hota hy  -->
+
+ <script>
+    let promise = new Promise(function(resolve,reject){
+
+    setTimeout(function(){
+        resolve("Data Received");
+    },2000);
+
+});
+
+promise.then(function(data){
+    console.log(data);
+});
+ </script>
+
+ <!-- ============================================================================= -->
+
+ <!-- * why use :
+ => asynchronous opration handle ke liye
+ => callback hell avoid karne ke liye 
+ => code ko clean and redable bnane ke liye  -->
+</body>
+</html>

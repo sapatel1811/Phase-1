@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- => ye js ke asynchronous programming ka ek concept hay , ye tab hota hy jab bhot sare callback 
+ek dusre ke ander nested ho jate hy jisse code complex or difficult to read ho jata hy .
+
+* callback hell kis concept me ata hy :
+- asynchronous callback function
+- nested callback 
+- async opration(api call,file rea , times)
+
+=> matlb jab asynchronous task ko handle ke liye myultipal callback use karte hy or 
+wo ek ke ander ek hote hy to us sitvation ko callback hellbolte hy . -->
+
+<script>
+    setTimeout(function(){
+        document.write("step 1 is completed ....." +" <br>");
+    setTimeout(function(){
+        document.write("step 2 is completed ....." + "<br>");
+    setTimeout(function(){
+        document.write("step 3 is completed .....");
+    
+},1000);
+},2000);
+},3000);
+</script>
+<!-- => yha par callback ke ander callback aa rha hy isliye callback hell hai. -->
+
+<!-- ================================================================================ -->
+ <!-- * callback hell problam:
+ => code bhot messy ho jata hy 
+ => read karna difficult 
+ => debug karna hard 
+ => maintance diffeclut  -->
+
+ <!-- =================================================================================== -->
+  <!-- * callback hell solution :
+  => 1) promises
+  =>2) async / await -->
+
+<!-- ================================================================================= -->
+
+</body>
+</html>
+
