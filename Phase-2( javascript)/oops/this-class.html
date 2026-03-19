@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+/*
+What is this?
+In JavaScript, the this keyword refers to an object.
+
+The this keyword refers to different objects depending on how
+it is used:
+
+*/
+
+class abc{
+	constructor(a,b)
+	{
+		this.x=a;
+		this.y=b;
+	}
+	sum(){
+		document.write((this.x+this.y) + "<br>" );
+	}
+	multi(){
+		document.write((this.x*this.y) + "<br>");
+	}
+	div(){
+		document.write((this.x/this.y) + "<br>");
+	}
+}
+var obj=new abc(5,10);  // intance of class / object
+obj.sum();
+obj.multi();
+obj.div();
+
+/*
+class abc
+{	// javascript build in func which call automatic
+	constructor(a,b){  
+		this.a=a;
+		this.b=b;		
+	}
+	sum()
+	{
+		var sum;
+		sum=this.a+this.b;
+		document.write("<h1>" + sum + "</h1>");
+	}
+}
+class xyz extends abc{
+	constructor(a,b,c){  
+		super(a,b)
+		this.c=c;
+	}
+	multi()
+	{
+		var multi;
+		multi=this.a*this.b*this.c;
+		document.write("<h1>" + multi + "</h1>");
+	}
+}
+
+var obj=new xyz(5,8,10);
+obj.sum();
+obj.multi();
+
+
+*/
+</script>
+
+
+</body>
+</html>
