@@ -12,9 +12,11 @@ function Functioncomponent() {
   )
 }
 
-export default Functioncomponent
+export default Functioncomponent  
 */
 
+// Note = component means part of ui
+//      => page means : fullscreen like complete ui screen 
 
 // rcc 
 
