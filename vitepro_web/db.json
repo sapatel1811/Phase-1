@@ -1,0 +1,117 @@
+{
+  "admin": [
+    {
+      "id": "1753879597600",
+      "name": "admin",
+      "email": "admin@gmail.com",
+      "password": "1234"
+    }
+  ],
+  "user": [
+    {
+      "id": "1754483304340",
+      "name": "akash nagar",
+      "email": "akashnagar@gmail.com",
+      "password": "abc",
+      "mobile": "123456987",
+      "status": "Block"
+    }
+  ],
+  "categories": [
+    {
+      "id": "GwMHWIGHrB4",
+      "cate_name": "Villa",
+      "cate_image": "https://c4.wallpaperflare.com/wallpaper/150/385/134/trees-design-house-lawn-wallpaper-preview.jpg"
+    },
+    {
+      "id": "3Ka8H8F5DOU",
+      "cate_name": "Pent House",
+      "cate_image": "https://homelandregalia.com/wp-content/uploads/2024/08/New-Project.webp"
+    },
+    {
+      "id": "oukuzabFquw",
+      "cate_name": "Farm House",
+      "cate_image": "https://www.architectandinteriorsindia.com/cloud/2024/03/01/0lSSTrQN-Image-23-1200x851.jpg"
+    }
+  ],
+  "properties": [
+    {
+      "id": "O6nuS8cfQ0M",
+      "cate_id": "cw-g98nyQkk",
+      "prop_name": "krishna bunglow",
+      "bedroom": "6",
+      "bathroom": "3",
+      "floor": "3",
+      "prop_area": "250",
+      "price": "67800",
+      "prop_image": "https://www.samava.in/public/frontend/img/banner-img.jpg"
+    },
+    {
+      "id": "jYNFSQrlHE8",
+      "cate_id": "GwMHWIGHrB4",
+      "prop_name": "Radhy villa",
+      "bedroom": "7",
+      "bathroom": "4",
+      "floor": "5",
+      "prop_area": "380",
+      "price": "23400",
+      "prop_image": "https://c4.wallpaperflare.com/wallpaper/150/385/134/trees-design-house-lawn-wallpaper-preview.jpg"
+    },
+    {
+      "id": "KHbwdYbsGtI",
+      "cate_id": "3Ka8H8F5DOU",
+      "prop_name": "Radhy penthouse",
+      "bedroom": "6",
+      "bathroom": "3",
+      "floor": "2",
+      "prop_area": "670",
+      "price": "89700",
+      "prop_image": "https://homelandregalia.com/wp-content/uploads/2024/08/New-Project.webp"
+    },
+    {
+      "id": "rL8mNn4sL6g",
+      "cate_id": "oukuzabFquw",
+      "prop_name": "Trisha farm",
+      "bedroom": "7",
+      "bathroom": "5",
+      "floor": "4",
+      "prop_area": "789",
+      "price": "90885",
+      "prop_image": "https://www.architectandinteriorsindia.com/cloud/2024/03/01/0lSSTrQN-Image-23-1200x851.jpg"
+    }
+  ],
+  "contact": [
+    {
+      "id": "1",
+      "name": "demo",
+      "email": "demo@gmail.com",
+      "mobile": 9722041171,
+      "message": "Demo inquiry"
+    },
+    {
+      "id": "2",
+      "name": "test",
+      "email": "test@gmail.com",
+      "mobile": 9722041171,
+      "message": "test inquiry"
+    },
+    {
+      "id": "f036"
+    },
+    {
+      "id": "1753706013278",
+      "name": "rohan",
+      "email": "rohan@gmail.com",
+      "mobile": "1254879",
+      "message": "Demo mail"
+    },
+    {
+      "id": "1754482653964",
+      "name": "nirav",
+      "email": "nirav@gmail.com",
+      "mobile": "12547878995",
+      "message": "demo msg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
