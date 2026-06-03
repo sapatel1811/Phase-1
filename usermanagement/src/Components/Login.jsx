@@ -63,7 +63,7 @@ function Login() {
           error = "Min 6 chars with Uppercase, Lowercase & Number";
         }
         break;
-        
+
 // confirm password validation...
       case "confirmPassword":
         if (!value) {

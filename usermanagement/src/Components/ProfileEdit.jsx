@@ -109,12 +109,20 @@ function ProfileEdit() {
   <img
     src={
       form.profile ||
-      "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-    }
-    alt="profile"
-    className="rounded-circle border shadow-sm"
-    width="120"
-    height="120"
+      "https://placehold.co/600x400"
+}
+
+onError={(e) => {
+e.currentTarget.src =
+"https://placehold.co/600x400";
+e.currentTarget.onerror = null;
+}}
+
+
+    alt=""
+    className="rounded-circle border shadow-sm object-fit-cover img-fluid"
+    width="50"
+    height="50"
     style={{
       cursor: "pointer",
       objectFit: "cover",
@@ -129,7 +137,6 @@ function ProfileEdit() {
     style={{ display: "none" }}
     onChange={(e) => {
       const file = e.target.files[0];
-
       if (file) {
         const imageUrl = URL.createObjectURL(file);
 
@@ -207,10 +214,6 @@ function ProfileEdit() {
               </div>
 
             </div>
-
-
-
-
           </div>
 
         </div>
