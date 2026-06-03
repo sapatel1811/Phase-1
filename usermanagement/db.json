@@ -12,7 +12,7 @@
       "country": "India",
       "language": "Hindi",
       "job_title": "Developer",
-      "profile": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4NCX5hnpEICczZPGfD8WVwU5-0OEJShnD5A&s",
+      "profile": "https://static.vecteezy.com/system/resources/thumbnails/009/273/280/small/concept-of-loneliness-and-disappointment-in-love-sad-man-sitting-element-of-the-picture-is-decorated-by-nasa-free-photo.jpg",
       "id": "WakFwdJCLQQ"
     },
     {
@@ -179,6 +179,51 @@
       "email": "abhi28@gmail.com",
       "password": "abhi123",
       "id": "oyJ-TH0Jvrk"
+    },
+    {
+      "username": "akshit",
+      "email": "ak12.@gmail.com",
+      "password": "Ak123#",
+      "id": "3kftt8pRemI"
+    },
+    {
+      "username": "sapna",
+      "email": "jk@gmail.com",
+      "password": "Sapatel1811#",
+      "id": "3KwNAwLkdwg"
+    },
+    {
+      "username": "Sapna12.",
+      "email": "pk@gmail.com",
+      "password": "Sapatel1811#",
+      "id": "gE5IVe3IPJc"
+    },
+    {
+      "username": "Ram123.   ",
+      "email": "ram12@gmail.com",
+      "password": "Ram12",
+      "profile": "",
+      "id": "huOPWYlmVxE"
+    },
+    {
+      "username": "Radha123.",
+      "email": "radha28@gmail.com",
+      "password": "Abhi282",
+      "id": "iaGZtPUgyZ0"
+    },
+    {
+      "username": "Admin123.",
+      "email": "admin12@gmail.com",
+      "password": "Admin1234",
+      "profile": "blob:http://localhost:3001/dea64d9f-e9b0-4cfc-a02f-c70d7d6ccfd9",
+      "id": "oBG-NMKudNg"
+    },
+    {
+      "username": "Alay06.",
+      "email": "ap@gmail.com",
+      "password": "Abc@123456",
+      "profile": "blob:http://192.168.1.117:3001/14ea0c1a-7b22-4a4f-9bb7-d2ff44896dad",
+      "id": "IYMqifQ0gWk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

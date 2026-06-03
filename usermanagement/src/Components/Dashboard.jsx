@@ -1,81 +1,208 @@
-import { Link, NavLink, Outlet ,useNavigate } from "react-router-dom";
-import { useState  } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Dashboard() {
   const [userOpen, setUserOpen] = useState(false);
 
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
-   
+  const currentUser = JSON.parse(
+    localStorage.getItem("currentUser")
+  );
+
+  // Logout Function
+  const logout = () => {
+    localStorage.removeItem("currentUser");
+    navigate("/");
+  };
 
   return (
-    <div style={{ backgroundColor: "#f1f3f6", minHeight: "100vh" }}>
-      {/* Navbar */}
-      <nav className="navbar navbar-dark bg-dark px-4"
-        style={{ height: "60px", position: "fixed", width: "100%", top: 0, zIndex: 1000 ,   display: "flex",
-    justifyContent: "space-between" }}>
+    <div
+      style={{
+        backgroundColor: "#f8fafc",
+        minHeight: "100vh",
+      }}
+    >
+      {/* ================= NAVBAR ================= */}
+      <nav
+        className="navbar navbar-dark px-4 shadow-sm"
+        style={{
+          height: "70px",
+          position: "fixed",
+          width: "100%",
+          top: 0,
+          zIndex: 1000,
+          background:
+            "linear-gradient(90deg, #1e293b, #334155)",
+        }}
+      >
+        {/* Logo */}
+        <h4 className="text-white fw-bold m-0">
+          User Management System
+        </h4>
 
-        <h4 className="text-white m-0">User Dashboard</h4>
+        {/* Right Side */}
+        <div className="d-flex align-items-center gap-3">
+          <div
+            className="d-flex align-items-center gap-2 text-white"
+            style={{ cursor: "pointer" }}
+            onClick={() =>
+              navigate("/dashboard/profile")
+            }
+          >
+            
+            {/* <div
+              className="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center"
+              style={{
+                width: "38px",
+                height: "38px",
+                fontWeight: "bold",
+                fontSize: "18px",
+              }}
+            >
+              👤
+            </div> */}
 
-         {/* USERNAME SHOW */}
- <div
-  className="text-white fw-semibold"
-  style={{ cursor: "pointer" }}
-  onClick={() => navigate("/dashboard/profile")}
->
-  👤 {JSON.parse(localStorage.getItem("currentUser"))?.username}
-</div>
+<img
+  src={
+    JSON.parse(localStorage.getItem("currentUser"))
+      ?.profile ||
+    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+  }
+  alt="profile"
+  width="40"
+  height="40"
+  className="rounded-circle border"
+  style={{
+    objectFit: "cover",
+  }}
+/>
 
-</nav>
+
+
+            
+
+            <span className="fw-semibold">
+              {currentUser?.username}
+            </span>
+          </div>
+
+          <button
+            className="btn btn-outline-light btn-sm px-3"
+            onClick={logout}
+          >
+            Logout
+          </button>
+        </div>
+      </nav>
 
       <div className="d-flex">
-        {/* Sidebar */}
-        <div className="bg-white shadow-sm p-3"
-          style={{ width: "250px", minHeight: "100vh", position: "fixed", top: "60px", left: 0 }}>
+        {/* ================= SIDEBAR ================= */}
+        <div
+          className="shadow-sm"
+          style={{
+            width: "250px",
+            minHeight: "100vh",
+            position: "fixed",
+            top: "70px",
+            left: 0,
+            background: "#ffffff",
+            borderRight: "1px solid #e5e7eb",
+          }}
+        >
+          {/* Sidebar Header */}
+          {/* <div className="text-center py-4 border-bottom">
+            <h5 className="fw-bold text-primary mb-1">
+              Admin Panel
+            </h5>
 
-          <h5 className="mb-4">Menu</h5>
+            <small className="text-muted">
+              User Management
+            </small>
+          </div> */}
 
-          <ul className="nav flex-column gap-2">
-
-            {/* HOME */}
+          {/* Menu */}
+          <ul className="nav flex-column p-3 gap-2">
+            {/* Dashboard */}
             <li>
-              <NavLink to="/dashboard" className="nav-link">Dashboard</NavLink>
+              <NavLink
+                to="/dashboard"
+                end
+                className={({ isActive }) =>
+                  `nav-link rounded px-3 py-2 fw-semibold ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "text-dark"
+                  }`
+                }
+              >
+                Dashboard
+              </NavLink>
             </li>
 
-            {/* USER */}
+            {/* User Section */}
             <li>
-              <button className="btn w-100 text-start"
-                onClick={() => setUserOpen(!userOpen)}>
+              <button
+                className="btn w-100 text-start fw-semibold"
+                style={{
+                  background: "#f8fafc",
+                  border: "1px solid #e2e8f0",
+                }}
+                onClick={() =>
+                  setUserOpen(!userOpen)
+                }
+              >
                 User
               </button>
 
               {userOpen && (
-                <ul className="list-unstyled ps-3">
+                <ul className="list-unstyled ps-3 mt-2">
                   <li>
-                    <NavLink to="add" className="nav-link">Add User</NavLink>
+                    <NavLink
+                      to="add"
+                      className={({ isActive }) =>
+                        `nav-link rounded px-2 ${
+                          isActive
+                            ? "text-primary fw-bold"
+                            : "text-secondary"
+                        }`
+                      }
+                    >
+                      Add User
+                    </NavLink>
                   </li>
+
                   <li>
-                    <NavLink to="all" className="nav-link">User List</NavLink>
+                    <NavLink
+                      to="all"
+                      className={({ isActive }) =>
+                        `nav-link rounded px-2 ${
+                          isActive
+                            ? "text-primary fw-bold"
+                            : "text-secondary"
+                        }`
+                      }
+                    >
+                      User List
+                    </NavLink>
                   </li>
                 </ul>
               )}
             </li>
-
-            {/* LOGOUT */}
-            <li>
-              <Link to="/" className="btn btn-danger w-100">
-                Logout
-              </Link>
-            </li>
-
           </ul>
         </div>
 
-
-
-
-        {/* CONTENT */}
-        <div style={{ marginLeft: "250px", marginTop: "60px", width: "100%", padding: "20px" }}>
+        {/* ================= CONTENT ================= */}
+        <div
+          style={{
+            marginLeft: "250px",
+            marginTop: "70px",
+            width: "100%",
+            padding: "25px",
+            backgroundColor: "#f8fafc",
+            minHeight: "100vh",
+          }}
+        >
           <Outlet />
         </div>
       </div>

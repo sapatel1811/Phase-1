@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
@@ -30,8 +29,7 @@ function AddUser() {
   const [user, setUser] = useState(initialValue);
 
   // ORIGINAL USER DATA
-  const [originalUser, setOriginalUser] =
-    useState(initialValue);
+  const [originalUser, setOriginalUser] = useState(initialValue);
 
   // for state function use
   const usStates = State.getStatesOfCountry("IN");
@@ -40,33 +38,23 @@ function AddUser() {
 
   const [errors, setErrors] = useState({});
 
-  const [registeredEmails, setRegisteredEmails] =
-    useState([]);
+  const [registeredEmails, setRegisteredEmails] = useState([]);
 
   // CHECK FORM CHANGED OR NOT
-  const isChanged =
-    JSON.stringify(user) !==
-    JSON.stringify(originalUser);
+  const isChanged = JSON.stringify(user) !== JSON.stringify(originalUser);
 
   // single user data load for edit ke liye
   useEffect(() => {
     // fetch all users to build registered emails list
     const fetchAll = async () => {
       try {
-        const resp = await axios.get(
-          "http://192.168.1.117:3000/users"
-        );
+        const resp = await axios.get("http://192.168.1.117:3000/users");
 
-        const emails = resp.data.map((u) =>
-          (u.email || "").toLowerCase()
-        );
+        const emails = resp.data.map((u) => (u.email || "").toLowerCase());
 
         setRegisteredEmails(emails);
       } catch (err) {
-        console.log(
-          "Failed to fetch users for email check",
-          err
-        );
+        console.log("Failed to fetch users for email check", err);
       }
     };
 
@@ -74,9 +62,7 @@ function AddUser() {
 
     const fetchUser = async () => {
       try {
-        const res = await axios.get(
-          `http://192.168.1.117:3000/users/${id}`
-        );
+        const res = await axios.get(`http://192.168.1.117:3000/users/${id}`);
 
         setUser(res.data);
 
@@ -111,18 +97,11 @@ function AddUser() {
       case "lname":
       case "city": {
         if (!trimmedValue) {
-          error = "Required";
-        } else if (
-          trimmedValue.length < 2 ||
-          trimmedValue.length > 15
-        ) {
-          error =
-            "Must be between 2 and 15 characters.";
-        } else if (
-          !/^[A-Za-z ]+$/.test(trimmedValue)
-        ) {
-          error =
-            "Only letters and spaces allowed.";
+          error = " The field is Required";
+        } else if (trimmedValue.length < 2 || trimmedValue.length > 15) {
+          error = "Must be between 2 and 15 characters.";
+        } else if (!/^[A-Za-z ]+$/.test(trimmedValue)) {
+          error = "Only letters and spaces allowed.";
         }
 
         break;
@@ -130,19 +109,16 @@ function AddUser() {
 
       case "email":
         if (!trimmedValue) {
-          error = "Required";
+          error = " Email is Required";
         } else if (
           !/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/.test(
-            trimmedValue
+            trimmedValue,
           )
         ) {
-          error = "Invalid Email";
+          error = "Please enter a valid email";
         } else if (
-          registeredEmails.includes(
-            trimmedValue.toLowerCase()
-          ) &&
-          trimmedValue.toLowerCase() !==
-            user.email.toLowerCase()
+          registeredEmails.includes(trimmedValue.toLowerCase()) &&
+          trimmedValue.toLowerCase() !== user.email.toLowerCase()
         ) {
           error = "Email already exists";
         }
@@ -158,22 +134,27 @@ function AddUser() {
 
       case "zip_code":
         if (!/^[0-9]{6}$/.test(value)) {
-          error = "Invalid Zip";
+          error = "Zip Code is Required ";
         }
 
         break;
 
       case "dob":
         if (!value) {
-          error = "Select DOB";
+          error = "Select The DOB";
         }
+        break;
 
+      case "state":
+        if (!value) {
+          error = "Select The State";
+        }
         break;
 
       case "language":
       case "job_title":
         if (!value) {
-          error = "Select Option";
+          error = "Select The Option";
         }
 
         break;
@@ -223,16 +204,12 @@ function AddUser() {
 
     setErrors(newErrors);
 
-    if (Object.keys(newErrors).length > 0)
-      return;
+    if (Object.keys(newErrors).length > 0) return;
 
     try {
       // edit code
       if (id) {
-        await axios.put(
-          `http://192.168.1.117:3000/users/${id}`,
-          user
-        );
+        await axios.put(`http://192.168.1.117:3000/users/${id}`, user);
 
         Swal.fire({
           icon: "success",
@@ -242,10 +219,7 @@ function AddUser() {
         });
       } else {
         // add user code
-        await axios.post(
-          "http://192.168.1.117:3000/users",
-          user
-        );
+        await axios.post("http://192.168.1.117:3000/users", user);
 
         Swal.fire({
           icon: "success",
@@ -274,9 +248,7 @@ function AddUser() {
     <div className="container py-4">
       <div className="card shadow border-0">
         <div className="card-header bg-black text-white">
-          <h3 className="mb-0">
-            {id ? "Edit User" : "Add User"}
-          </h3>
+          <h3 className="mb-0">{id ? "Edit User" : "Add User"}</h3>
         </div>
 
         <div className="card-body">
@@ -284,9 +256,7 @@ function AddUser() {
             {/* FIRST + LAST */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  First Name
-                </label>
+                <label className="form-label fw-semibold">First Name</label>
 
                 <input
                   type="text"
@@ -298,15 +268,11 @@ function AddUser() {
                   maxLength={15}
                 />
 
-                <small className="text-danger">
-                  {errors.fname}
-                </small>
+                <small className="text-danger">{errors.fname}</small>
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  Last Name
-                </label>
+                <label className="form-label fw-semibold">Last Name</label>
 
                 <input
                   type="text"
@@ -318,18 +284,14 @@ function AddUser() {
                   maxLength={15}
                 />
 
-                <small className="text-danger">
-                  {errors.lname}
-                </small>
+                <small className="text-danger">{errors.lname}</small>
               </div>
             </div>
 
             {/* EMAIL + PHONE */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  Email
-                </label>
+                <label className="form-label fw-semibold">Email</label>
 
                 <input
                   type="text"
@@ -340,15 +302,11 @@ function AddUser() {
                   placeholder="Enter Email"
                 />
 
-                <small className="text-danger">
-                  {errors.email}
-                </small>
+                <small className="text-danger">{errors.email}</small>
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  Phone
-                </label>
+                <label className="form-label fw-semibold">Phone</label>
 
                 <input
                   type="text"
@@ -356,11 +314,7 @@ function AddUser() {
                   name="phone"
                   value={user.phone}
                   onChange={(e) => {
-                    const value =
-                      e.target.value.replace(
-                        /\D/g,
-                        ""
-                      );
+                    const value = e.target.value.replace(/\D/g, "");
 
                     setUser({
                       ...user,
@@ -369,28 +323,21 @@ function AddUser() {
 
                     setErrors({
                       ...errors,
-                      phone: validateField(
-                        "phone",
-                        value
-                      ),
+                      phone: validateField("phone", value),
                     });
                   }}
                   placeholder="Enter Phone Number"
                   maxLength={10}
                 />
 
-                <small className="text-danger">
-                  {errors.phone}
-                </small>
+                <small className="text-danger">{errors.phone}</small>
               </div>
             </div>
 
             {/* CITY STATE ZIP + DOB */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  City
-                </label>
+                <label className="form-label fw-semibold">City</label>
 
                 <input
                   type="text"
@@ -402,15 +349,11 @@ function AddUser() {
                   maxLength={15}
                 />
 
-                <small className="text-danger">
-                  {errors.city}
-                </small>
+                <small className="text-danger">{errors.city}</small>
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  State
-                </label>
+                <label className="form-label fw-semibold">State</label>
 
                 <select
                   className="form-select"
@@ -425,29 +368,20 @@ function AddUser() {
                     });
                   }}
                 >
-                  <option value="">
-                    Select State
-                  </option>
+                  <option value="">Select State</option>
 
                   {usStates.map((state) => (
-                    <option
-                      key={state.isoCode}
-                      value={state.isoCode}
-                    >
+                    <option key={state.isoCode} value={state.isoCode}>
                       {state.name}
                     </option>
                   ))}
                 </select>
 
-                <small className="text-danger">
-                  {errors.state}
-                </small>
+                <small className="text-danger">{errors.state}</small>
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  Zip Code
-                </label>
+                <label className="form-label fw-semibold">Zip Code</label>
 
                 <input
                   type="text"
@@ -455,11 +389,7 @@ function AddUser() {
                   name="zip_code"
                   value={user.zip_code}
                   onChange={(e) => {
-                    const value =
-                      e.target.value.replace(
-                        /\D/g,
-                        ""
-                      );
+                    const value = e.target.value.replace(/\D/g, "");
 
                     setUser({
                       ...user,
@@ -468,25 +398,18 @@ function AddUser() {
 
                     setErrors({
                       ...errors,
-                      zip_code: validateField(
-                        "zip_code",
-                        value
-                      ),
+                      zip_code: validateField("zip_code", value),
                     });
                   }}
                   placeholder="Enter Zip Code"
                   maxLength={6}
                 />
 
-                <small className="text-danger">
-                  {errors.zip_code}
-                </small>
+                <small className="text-danger">{errors.zip_code}</small>
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  DOB
-                </label>
+                <label className="form-label fw-semibold">DOB</label>
 
                 <input
                   type="date"
@@ -496,18 +419,14 @@ function AddUser() {
                   onChange={onChange}
                 />
 
-                <small className="text-danger">
-                  {errors.dob}
-                </small>
+                <small className="text-danger">{errors.dob}</small>
               </div>
             </div>
 
             {/* LANGUAGE + JOB */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  Language
-                </label>
+                <label className="form-label fw-semibold">Language</label>
 
                 <select
                   className="form-select"
@@ -515,9 +434,7 @@ function AddUser() {
                   value={user.language}
                   onChange={onChange}
                 >
-                  <option value="">
-                    Select Language
-                  </option>
+                  <option value="">Select Language</option>
 
                   <option>English</option>
                   <option>Hindi</option>
@@ -529,15 +446,11 @@ function AddUser() {
                   <option>Punjabi</option>
                 </select>
 
-                <small className="text-danger">
-                  {errors.language}
-                </small>
+                <small className="text-danger">{errors.language}</small>
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">
-                  Job Title
-                </label>
+                <label className="form-label fw-semibold">Job Title</label>
 
                 <select
                   className="form-select"
@@ -545,9 +458,7 @@ function AddUser() {
                   value={user.job_title}
                   onChange={onChange}
                 >
-                  <option value="">
-                    Select Job
-                  </option>
+                  <option value="">Select Job</option>
 
                   <option>Developer</option>
                   <option>Designer</option>
@@ -557,17 +468,13 @@ function AddUser() {
                   <option>Product Manager</option>
                 </select>
 
-                <small className="text-danger">
-                  {errors.job_title}
-                </small>
+                <small className="text-danger">{errors.job_title}</small>
               </div>
             </div>
 
             {/* PROFILE */}
             <div className="mb-4">
-              <label className="form-label fw-semibold">
-                Profile Image
-              </label>
+              <label className="form-label fw-semibold">Profile Image</label>
 
               <div className="row">
                 {/* URL INPUT */}
@@ -577,13 +484,7 @@ function AddUser() {
                     className="form-control"
                     name="profile"
                     placeholder="Paste Image URL"
-                    value={
-                      user.profile.startsWith(
-                        "blob:"
-                      )
-                        ? ""
-                        : user.profile
-                    }
+                    value={user.profile.startsWith("blob:") ? "" : user.profile}
                     onChange={(e) => {
                       setUser({
                         ...user,
@@ -601,14 +502,8 @@ function AddUser() {
                     name="profile"
                     accept="image/*"
                     onChange={(e) => {
-                      if (
-                        e.target.files &&
-                        e.target.files[0]
-                      ) {
-                        const imageUrl =
-                          URL.createObjectURL(
-                            e.target.files[0]
-                          );
+                      if (e.target.files && e.target.files[0]) {
+                        const imageUrl = URL.createObjectURL(e.target.files[0]);
 
                         setUser({
                           ...user,
@@ -640,17 +535,11 @@ function AddUser() {
                 style={{
                   backgroundColor: "#ff6600",
                   borderColor: "#ff6600",
-                  opacity:
-                    id && !isChanged ? 0.6 : 1,
-                  cursor:
-                    id && !isChanged
-                      ? "not-allowed"
-                      : "pointer",
+                  opacity: id && !isChanged ? 0.6 : 1,
+                  cursor: id && !isChanged ? "not-allowed" : "pointer",
                 }}
               >
-                {id
-                  ? "Update User"
-                  : "Add User"}
+                {id ? "Update User" : "Add User"}
               </button>
 
               <button
@@ -669,4 +558,3 @@ function AddUser() {
 }
 
 export default AddUser;
-

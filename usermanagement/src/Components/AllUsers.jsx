@@ -71,7 +71,7 @@ function AllUsers() {
       {/* header */}
       <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
         <h2 className="fw-bold m-0">All Users </h2>
-        <button className="btn btn-primary align-self-start align-self-sm-center" onClick={() => navigate("/add")}>
+        <button className="btn btn-primary align-self-start align-self-sm-center" onClick={() => navigate("/dashboard/add")}>
           Add User
         </button>
       </div>
