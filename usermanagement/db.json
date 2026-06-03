@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "fname": "kishoree",
+      "fname": "kishori",
       "lname": "patel",
       "email": "kishori13@gmail.com",
       "phone": "1234567890",
@@ -89,6 +89,96 @@
       "language": "Tamil",
       "job_title": "Designer",
       "profile": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4NCX5hnpEICczZPGfD8WVwU5-0OEJShnD5A&s"
+    }
+  ],
+  "login": [
+    {
+      "email": "op12@gmail.com",
+      "password": "2345",
+      "id": "RZn3QnjNfEs"
+    },
+    {
+      "email": "kp23@gmail.com",
+      "password": "4567",
+      "id": "x4dsgEtksM4"
+    },
+    {
+      "email": "ip@gmail.com",
+      "password": "1234",
+      "id": "lYKFBwya_ok"
+    },
+    {
+      "username": "sp123",
+      "email": "sp34@gmail.com",
+      "password": "2345",
+      "id": "mPbb5kW9Hf8"
+    },
+    {
+      "username": "kishori1811",
+      "email": "kishori11@gmail.com",
+      "password": "1234",
+      "id": "W5j5AVIlknM"
+    },
+    {
+      "username": "alay",
+      "email": "alay@gmail.com",
+      "password": "1234",
+      "id": "GgfMB3V8Hrg"
+    },
+    {
+      "username": "Alay",
+      "email": "alayp.verve@gmail.com",
+      "password": "abc123",
+      "id": "BR10UkcfiBE"
+    },
+    {
+      "username": "sheetal",
+      "email": "sheetal@gmail.com",
+      "password": "sh1234",
+      "id": "w0SchYHGKrk"
+    },
+    {
+      "username": "Navya34",
+      "email": "navya@gmail.com",
+      "password": "1234",
+      "id": "YJ8XnCdG9VI"
+    },
+    {
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "1234",
+      "id": "ZwErYcn4sVY"
+    },
+    {
+      "username": "sp",
+      "email": "sapnapatela671@gmail.com",
+      "password": "1234",
+      "id": "Yr_FAM0vGi0"
+    },
+    {
+      "username": "patel abhishek",
+      "email": "abhi@gmail.com",
+      "password": "1234",
+      "profile": "https://img.magnific.com/free-photo/closeup-shot-beautiful-butterfly-with-interesting-textures-orange-petaled-flower_181624-7640.jpg?semt=ais_hybrid&w=740&q=80",
+      "id": "Q8b3jai_ZOs"
+    },
+    {
+      "username": "gdrs",
+      "email": "alayp@gmail.com",
+      "password": "abc123",
+      "id": "3-m3tdSGnSk"
+    },
+    {
+      "username": "kishori12",
+      "email": "kishori12@gmail.com",
+      "password": "1234",
+      "id": "4WYyud_TP-g"
+    },
+    {
+      "username": "abhishek28",
+      "email": "abhi28@gmail.com",
+      "password": "abhi123",
+      "id": "oyJ-TH0Jvrk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

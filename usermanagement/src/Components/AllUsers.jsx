@@ -76,131 +76,111 @@ function AllUsers() {
         </button>
       </div>
 
+
       {/* table */}
-      <div className="card shadow border-0">
-        <div className="card-body table-responsive w-100 p-0 p-sm-3">
-          <table className="table table-bordered table-hover align-middle text-nowrap m-0">
-            <thead className="table-dark text-center">
-              <tr>
-                <th>S.no</th>
-                <th>Profile</th>
-                <th>Full Name</th>
 
-                {/* <th>First Name</th> */}
-                {/* <th>Last Name</th> */}
+      <div className="card shadow border-0 overflow-auto">
+  <div className="card-body table-responsive p-0 p-md-3">
+    <table className="table table-bordered table-hover table-sm align-middle text-nowrap m-0">
+      <thead className="table-dark text-center">
+        <tr>
+          <th scope="col">S.no</th>
+          <th scope="col">Profile</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Job Title</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
 
-                <th>Email</th>
+      <tbody>
+        {users.length > 0 ? (
+          users.map((user, index) => (
+            <tr key={user.id} className="text-center">
+              <td>{index + 1}</td>
 
-                {/* <th>Phone</th> */}
-                {/* <th>City</th> */}
-                {/* <th>State</th> */}
-                {/* <th>Zip</th> */}
-                {/* <th>DOB</th> */}
+              {/* PROFILE */}
+              <td>
+                {user.profile ? (
+                  <img
+                    src={user.profile}
+                    alt=""
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        "https://placehold.co/600x400";
+                      e.currentTarget.onerror = null;
+                    }}
+                    width="40"
+                    height="40"
+                    className="rounded-circle border object-fit-cover img-fluid"
+                  />
+                ) : (
+                  <img
+                    src="https://placehold.co/600x400"
+                    alt=""
+                    width="40"
+                    height="40"
+                    className="rounded-circle border object-fit-cover img-fluid"
+                  />
+                )}
+              </td>
 
-                {/* <th>Country</th> */}
+              {/* NAME */}
+              <td>{user.fname + " " + user.lname}</td>
 
-                {/* <th>Language</th> */}
+              {/* EMAIL */}
+              <td>{user.email}</td>
 
-                <th>Job Title</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.length > 0 ? (
-                users.map((user, index) => (
-                  <tr key={user.id} className="text-center">
-                    {/* ID */}
-                    {/* <td>{user.id}</td> */}
-                    <td>{index + 1}</td>
+              {/* JOB TITLE */}
+              <td>{user.job_title}</td>
 
-                    {/* PROFILE */}
-                    <td>
-                      {user.profile ? (
-                        <img
-                          src={user.profile}
-                          alt=""
-                          onError={(e) => {
-                            e.currentTarget.src = "https://placehold.co/600x400"; // Your default image URL
-                            e.currentTarget.onerror = null; // Prevents infinite loops if default image also fails
-                          }}
-                          width="40"
-                          height="40"
-                          className="rounded-circle border object-fit-cover img-fluid"
-                        />
-                      ) : (
-                        <img
-                          src="https://placehold.co/600x400"
-                          alt=""
-                          width="40"
-                          height="40"
-                          className="rounded-circle border object-fit-cover img-fluid"
-                        />
-                      )}
-                    </td>
+              {/* ACTIONS */}
+              <td>
+                <div className="d-flex flex-wrap gap-2 justify-content-center">
+                  {/* EDIT */}
+                  <button
+                    className="btn btn-warning btn-sm"
+                    onClick={() =>
+                      navigate(`/dashboard/edit/${user.id}`)
+                    }
+                  >
+                    Edit
+                  </button>
 
-                    {/* FIRST NAME */}
-                    <td>{user.fname + " " + user.lname}</td>
-                    {/* LAST NAME */}
-                    {/* <td>{user.lname}</td> */}
-                    {/* EMAIL */}
-                    <td>{user.email}</td>
-                    {/* PHONE */}
-                    {/* <td>{user.phone}</td> */}
-                    {/* CITY */}
-                    {/* <td>{user.city}</td> */}
-                    {/* STATE */}
-                    {/* <td>{user.state}</td> */}
-                    {/* ZIP */}
-                    {/* <td>{user.zip_code}</td> */}
-                    {/* DOB */}
-                    {/* <td>{user.dob}</td> */}
+                  {/* DELETE */}
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => removeUser(user.id)}
+                  >
+                    Delete
+                  </button>
 
-                    {/* <td>{user.country}</td> */}
-                    {/* LANGUAGE */}
-                    {/* <td>{user.language}</td> */}
-                    {/* JOB TITLE */}
-                    <td>{user.job_title}</td>
-                    {/* ACTIONS */}
-                    <td>
-                      <div className="d-flex gap-2 justify-content-center">
-                        {/* EDIT */}
-                        <button
-                          className="btn btn-warning btn-sm"
-                          onClick={() => navigate(`/edit/${user.id}`)}
-                        >
-                          Edit
-                        </button>
+                  {/* VIEW */}
+                  <button
+                    className="btn btn-success btn-sm"
+                    onClick={() =>
+                      navigate(`/dashboard/view/${user.id}`)
+                    }
+                  >
+                    View
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="15" className="text-center text-muted py-4">
+              No Users Found
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div>
+</div>
 
-                        {/* DELETE */}
-                        <button
-                          className="btn btn-danger btn-sm"
-                          onClick={() => removeUser(user.id)}
-                        >
-                          Delete
-                        </button>
 
-                        {/* view button */}
-                        <button
-                          className="btn btn-success btn-sm"
-                          onClick={() => navigate(`/view/${user.id}`)}
-                        >
-                          View
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="15" className="text-center text-muted py-4">
-                    No Users Found{" "}
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
   );
 }

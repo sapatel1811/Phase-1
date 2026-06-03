@@ -258,7 +258,7 @@ function AddUser() {
       // reset form data after submit
       setUser(initialValue);
 
-      navigate("/all");
+      navigate("/dashboard/all");
     } catch (error) {
       console.log(error);
 
@@ -523,6 +523,10 @@ function AddUser() {
                   <option>Hindi</option>
                   <option>Gujarati</option>
                   <option>Tamil</option>
+                  <option>Odia (formerly Oriya)</option>
+                  <option>Tamil</option>
+                  <option>Sanskrit</option>
+                  <option>Punjabi</option>
                 </select>
 
                 <small className="text-danger">
@@ -548,6 +552,9 @@ function AddUser() {
                   <option>Developer</option>
                   <option>Designer</option>
                   <option>Manager</option>
+                  <option>Finance & Accounting</option>
+                  <option>Human Resources (HR)</option>
+                  <option>Product Manager</option>
                 </select>
 
                 <small className="text-danger">
@@ -649,7 +656,7 @@ function AddUser() {
               <button
                 type="button"
                 className="btn btn-secondary w-50"
-                onClick={() => navigate("/all")}
+                onClick={() => navigate("/dashboard/all")}
               >
                 Cancel
               </button>

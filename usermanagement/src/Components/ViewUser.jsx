@@ -40,7 +40,8 @@ function ViewUser() {
           <div className="d-flex align-items-center gap-4 flex-wrap">
             {/* User Image */}
             {/* <img
-          src={user.image || "https://via.placeholder.com/100"}
+          src={user.
+           || "https://via.placeholder.com/100"}
           alt="profile"
           className="rounded-circle border" 
           width="100"

@@ -5,33 +5,24 @@ import Home from "./Components/Home";
 import AddUser from "./Components/AddUser";
 import AllUsers from "./Components/AllUsers";
 import ViewUser from "./Components/ViewUser";
+import Login from "./Components/Login";
+import ProfileEdit from "./Components/ProfileEdit";
 
 function App() {
-
   return (
-
     <BrowserRouter>
-      <Routes>  
-        <Route path="/" element={  <Dashboard /> }>
-          {/* HOME */}
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+       <Route path="profile" element={<ProfileEdit />}/>
+
           <Route index element={<Home />} />
-
-          {/* ADD USER */}
           <Route path="add" element={<AddUser />} />
-
-          {/* ALL USERS */}
           <Route path="all" element={<AllUsers />} />
-
-          {/* EDIT USER */}
           <Route path="edit/:id" element={<AddUser />} />
-
-              {/* view user */}
-            <Route path="/view/:id" element={<ViewUser />} />
-            
-          </Route>
-    
+          <Route path="view/:id" element={<ViewUser />} />
+        </Route>
       </Routes>
-
     </BrowserRouter>
   );
 }
