@@ -26,50 +26,59 @@ function Login() {
     email: "",
     password: "",
     confirmPassword: "",
+    login: "",
   });
 
   // Validation Function
   const validateField = (name, value) => {
     let error = "";
 
+    // use for username validation ...
     switch (name) {
       case "username":
         if (!value.trim()) {
-          error = "Username is required";
-        } else if (
-          !/^(?=.*[A-Za-z])(?=.*\d)(?=.*\.)[A-Za-z\d. ]{3,20}$/.test(value)
-        ) {
-          error =
-            "Username must be 3-20 characters and contain at least one letter, one number, and one dot";
+          error = "Please enter a username";
+        } else if (value.trim().length < 3) {
+          error = "Username must be at least 3 characters long";
+        } else if (value.trim().length > 20) {
+          error = "Username cannot exceed 20 characters";
         }
         break;
 
       // email validation ...
       case "email":
         if (!value.trim()) {
-          error = "Email is required";
+          error = "Please enter your email address";
         } else if (
           !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(value)
         ) {
-          error = "Please enter a valid email";
+          error = "Please enter a valid email address";
         }
         break;
 
       // password validation..
       case "password":
         if (!value) {
-          error = "Password is required";
+          error = "Please enter your password";
         } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(value)) {
-          error = "Min 6 chars with Uppercase, Lowercase & Number";
+          error =
+            "Password must contain at least 6 characters, including uppercase, lowercase, and a number";
         }
         break;
 
-// confirm password validation...
+      // confirm password validation...
+      // case "confirmPassword":
+      //   if (!value) {
+      //     error = "Confirm Password is required";
+      //   } else if (value !== form.password) {
+      //     error = "";
+      //   }
+      //   break;
       case "confirmPassword":
         if (!value) {
-          error = "Confirm Password is required";
+          error = "Please confirm your password";
         } else if (value !== form.password) {
-          error = "Password and Confirm Password do not match";
+          error = "Passwords do not match. Please try again.";
         }
         break;
 
@@ -89,10 +98,11 @@ function Login() {
       [name]: value,
     });
 
-    setErrors({
-      ...errors,
+    setErrors((prev) => ({
+      ...prev,
       [name]: validateField(name, value),
-    });
+      login: "",
+    }));
   };
 
   // Full Form Validation
@@ -138,7 +148,7 @@ function Login() {
         password: form.password,
       });
 
-      toast.success("Account Created Successfully");
+      toast.success("Your account has been created successfully");
 
       setForm({
         username: "",
@@ -152,6 +162,7 @@ function Login() {
         email: "",
         password: "",
         confirmPassword: "",
+        login: "",
       });
 
       setIsLogin(true);
@@ -164,13 +175,24 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    setErrors((prev) => ({
+      ...prev,
+      login: "",
+    }));
+
     if (!form.email.trim()) {
-      toast.error("Email is required");
+      setErrors((prev) => ({
+        ...prev,
+        login: "Please enter your email address",
+      }));
       return;
     }
 
     if (!form.password.trim()) {
-      toast.error("Password is required");
+      setErrors((prev) => ({
+        ...prev,
+        login: "Please enter your password",
+      }));
       return;
     }
 
@@ -181,19 +203,35 @@ function Login() {
 
       const user = res.data[0];
 
-      if (user && user.password === form.password) {
-        localStorage.setItem("currentUser", JSON.stringify(user));
-
-        toast.success(`Welcome ${user.username}`);
-
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 1000);
-      } else {
-        toast.error("Invalid Email or Password");
+      if (!user) {
+        setErrors((prev) => ({
+          ...prev,
+          login: "No account found with this email address",
+        }));
+        return;
       }
+
+      if (user.password !== form.password) {
+        setErrors((prev) => ({
+          ...prev,
+          login: "Invalid email address or password",
+        }));
+        return;
+      }
+
+      toast.success(`Welcome back, ${user.username}`);
+
+localStorage.setItem("currentUser", JSON.stringify(user));
+
+setTimeout(() => {
+  navigate("/dashboard");
+}, 1000);
+
     } catch (err) {
-      toast.error("Server Error");
+      setErrors((prev) => ({
+        ...prev,
+        login: "Unable to sign in. Please try again later.",
+      }));
     }
   };
 
@@ -265,21 +303,26 @@ function Login() {
                       placeholder="Enter Password"
                       value={form.password}
                       onChange={handleChange}
-                      maxlength={16}
+                      maxLength={16}
                     />
 
                     <button
                       type="button"
-                      className="btn btn-outline-secondary" 
+                      className="btn btn-outline-secondary"
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {/* {showPassword ? "Hide" : "Show"} */}
-                      <i className={`bi ${showConfirmPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+                      <i
+                        className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}
+                      ></i>
                     </button>
-
                   </div>
 
-                  <small className="text-danger">{errors.password}</small>
+                  {/* <small className="text-danger">{errors.password}</small> */}
+
+                  {!isLogin && (
+                    <small className="text-danger">{errors.password}</small>
+                  )}
                 </div>
 
                 {!isLogin && (
@@ -292,7 +335,7 @@ function Login() {
                         placeholder="Confirm Password"
                         value={form.confirmPassword}
                         onChange={handleChange}
-                        maxlength={16}
+                        maxLength={16}
                       />
 
                       <button
@@ -303,16 +346,19 @@ function Login() {
                         }
                       >
                         {/* {showConfirmPassword ? "Hide" : "Show"} */}
-                        <i className={`bi ${showConfirmPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+                        <i
+                          className={`bi ${showConfirmPassword ? "bi-eye-slash" : "bi-eye"}`}
+                        ></i>
                       </button>
-
-
-
                     </div>
 
-                    <small className="text-danger">
-                      {errors.confirmPassword}
-                    </small>
+                    {/* <small className="text-danger">{errors.confirmPassword}</small> */}
+
+                    {!isLogin && (
+                      <small className="text-danger">
+                        {errors.confirmPassword}
+                      </small>
+                    )}
                   </div>
                 )}
 
@@ -322,7 +368,17 @@ function Login() {
                 >
                   {isLogin ? "Login" : "Signup"}
                 </button>
+
+                {isLogin && errors.login && (
+                  <div className="text-danger text-center mt-2 small">
+                    {errors.login}  
+                  </div>
+                )}
               </form>
+
+
+
+              
 
               {/* Switch */}
               <div className="text-center mt-4">

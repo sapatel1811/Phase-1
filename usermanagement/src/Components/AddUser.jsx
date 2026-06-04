@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from "react";
+//useeffect : api call and side effect dur karne ke liye 
+//usestate : state manage karne ke liye 
+
 import Swal from "sweetalert2";
+// swal : popup alaert ke liye 
+
 import { useNavigate, useParams } from "react-router-dom";
+//usenavigate : redirect karne ke liye 
+//useparms : url se id lene ke liye
+
 import axios from "axios";
+// axios: api call karane ke liye 
 
 // for pre build state option
 import { State } from "country-state-city";
 
+
+// initial value : form reset karne ke liye and state initialize karne ke liye , 
+// form ke sare fields ka initial value ek object me store kar liya hai , 
+// taki form reset karne me asani ho aur state initialize karne me bhi asani ho .
 const initialValue = {
   id: "",
   fname: "",
@@ -369,7 +382,7 @@ function AddUser() {
                   }}
                 >
                   <option value="">Select State</option>
-
+``
                   {usStates.map((state) => (
                     <option key={state.isoCode} value={state.isoCode}>
                       {state.name}
@@ -534,7 +547,7 @@ function AddUser() {
                 className="btn w-50 text-white"
                 style={{
                   backgroundColor: "#ff6600",
-                  borderColor: "#ff6600",
+                  borderColor: "#973e03",
                   opacity: id && !isChanged ? 0.6 : 1,
                   cursor: id && !isChanged ? "not-allowed" : "pointer",
                 }}

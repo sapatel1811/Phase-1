@@ -1,14 +1,13 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ProfileIcon from "./ProfileIcon";
 
 function Dashboard() {
   const [userOpen, setUserOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  const currentUser = JSON.parse(
-    localStorage.getItem("currentUser")
-  );
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   // Logout Function
   const logout = () => {
@@ -32,25 +31,21 @@ function Dashboard() {
           width: "100%",
           top: 0,
           zIndex: 1000,
-          background:
-            "linear-gradient(90deg, #1e293b, #334155)",
+          background: "linear-gradient(90deg, #1e293b, #334155)",
         }}
       >
         {/* Logo */}
-        <h4 className="text-white fw-bold m-0">
-          User Management System
-        </h4>
+        <h4 className="text-white fw-bold m-0">User Management System</h4>
 
         {/* Right Side */}
         <div className="d-flex align-items-center gap-3">
           <div
             className="d-flex align-items-center gap-2 text-white"
             style={{ cursor: "pointer" }}
-            onClick={() =>
-              navigate("/dashboard/profile")
-            }
+            onClick={() => navigate("/dashboard/profile-edit")}
           >
-            
+            <ProfileIcon />
+
             {/* <div
               className="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center"
               style={{
@@ -63,7 +58,9 @@ function Dashboard() {
               👤
             </div> */}
 
-<img
+            {/* 4-6-2026 */}
+
+            {/* <img
   src={
     JSON.parse(localStorage.getItem("currentUser"))
       ?.profile ||
@@ -76,15 +73,9 @@ function Dashboard() {
   style={{
     objectFit: "cover",
   }}
-/>
+/> */}
 
-
-
-            
-
-            <span className="fw-semibold">
-              {currentUser?.username}
-            </span>
+            <span className="fw-semibold">{currentUser?.username}</span>
           </div>
 
           <button
@@ -128,13 +119,11 @@ function Dashboard() {
               <NavLink
                 to="/dashboard"
                 end
-                className={({ isActive }) =>
-                  `nav-link rounded px-3 py-2 fw-semibold ${
-                    isActive
-                      ? "bg-primary text-white"
-                      : "text-dark"
-                  }`
-                }
+                className="nav-link rounded px-3 py-2 fw-semibold"
+                style={({ isActive }) => ({
+                  backgroundColor: isActive ? "#ff6600" : "transparent",
+                  color: isActive ? "white" : "black",
+                })}
               >
                 Dashboard
               </NavLink>
@@ -148,9 +137,7 @@ function Dashboard() {
                   background: "#f8fafc",
                   border: "1px solid #e2e8f0",
                 }}
-                onClick={() =>
-                  setUserOpen(!userOpen)
-                }
+                onClick={() => setUserOpen(!userOpen)}
               >
                 User
               </button>
@@ -160,13 +147,11 @@ function Dashboard() {
                   <li>
                     <NavLink
                       to="add"
-                      className={({ isActive }) =>
-                        `nav-link rounded px-2 ${
-                          isActive
-                            ? "text-primary fw-bold"
-                            : "text-secondary"
-                        }`
-                      }
+                      className="nav-link rounded px-3 py-2 fw-bold"
+                      style={({ isActive }) => ({
+                        backgroundColor: isActive ? "#ff6600" : "transparent",
+                        color: isActive ? "#fff" : "#6c757d",
+                      })}
                     >
                       Add User
                     </NavLink>
@@ -175,15 +160,27 @@ function Dashboard() {
                   <li>
                     <NavLink
                       to="all"
-                      className={({ isActive }) =>
-                        `nav-link rounded px-2 ${
-                          isActive
-                            ? "text-primary fw-bold"
-                            : "text-secondary"
-                        }`
-                      }
+                      className="nav-link rounded px-3 py-2 fw-bold"
+                      style={({isActive})=>({
+                        backgroundColor: isActive ? "#ff6600" : "transparent",
+                        color: isActive ? "#fff" : "#6c757d",
+                      })}
                     >
                       User List
+                    </NavLink>
+                  </li>
+
+                  {/* NEW PROFILE SETTINGS */}
+                  <li>
+                    <NavLink
+                      to="profile-edit"
+                       className="nav-link rounded px-3 py-2 fw-bold"
+                      style={({isActive})=>({
+                        backgroundColor: isActive ? "#ff6600" : "transparent",
+                        color: isActive ? "#fff" : "#6c757d",
+                      })}
+                    >
+                      Settings
                     </NavLink>
                   </li>
                 </ul>
