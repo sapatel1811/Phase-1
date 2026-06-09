@@ -10,7 +10,7 @@
       "zip_code": "380026",
       "dob": "2026-03-13",
       "country": "India",
-      "language": "Hindi",
+      "language": "Gujarati",
       "job_title": "Developer",
       "profile": "https://static.vecteezy.com/system/resources/thumbnails/009/273/280/small/concept-of-loneliness-and-disappointment-in-love-sad-man-sitting-element-of-the-picture-is-decorated-by-nasa-free-photo.jpg",
       "id": "WakFwdJCLQQ"
@@ -58,7 +58,7 @@
       "country": "",
       "language": "Gujarati",
       "job_title": "Manager",
-      "profile": "https://cdn.pixabay.com/photo/2017/07/24/19/57/tiger-2535888_640.jpg"
+      "profile": "blob:http://localhost:3001/9819c144-b6ab-4011-9d8d-d1a8729cc92c"
     },
     {
       "id": "xScZz3dQyTk",
@@ -71,9 +71,9 @@
       "zip_code": "380026",
       "dob": "2026-10-16",
       "country": "",
-      "language": "English",
+      "language": "Hindi",
       "job_title": "Developer",
-      "profile": "https://img.magnific.com/free-photo/closeup-shot-beautiful-butterfly-with-interesting-textures-orange-petaled-flower_181624-7640.jpg?semt=ais_hybrid&w=740&q=80"
+      "profile": "https://cdn.pixabay.com/photo/2017/07/24/19/57/tiger-2535888_640.jpg"
     },
     {
       "id": "F16926_Js_I",
@@ -88,161 +88,70 @@
       "country": "",
       "language": "Tamil",
       "job_title": "Designer",
-      "profile": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4NCX5hnpEICczZPGfD8WVwU5-0OEJShnD5A&s"
+      "profile": "blob:http://localhost:3001/d2f79f7e-7db1-4b63-9cb1-0ced152336e2"
     },
     {
-      "id": "CnnY3T8Uink",
-      "fname": "sapna",
-      "lname": "patel",
-      "email": "sapnapatela6711@gmail.com",
-      "phone": "7861817955",
-      "city": "Bhubaneshwar",
-      "state": "HP",
-      "zip_code": "234522",
-      "dob": "2026-06-25",
+      "id": "-9kwIdODnYI",
+      "fname": "Diya",
+      "lname": "Joshi",
+      "email": "Diya12@gmail.com",
+      "phone": "1234567890",
+      "city": "Ahmdabad",
+      "state": "GJ",
+      "zip_code": "380026",
+      "dob": "2026-06-26",
+      "country": "",
+      "language": "Gujarati",
+      "job_title": "Product Manager",
+      "profile": "https://img.magnific.com/free-photo/closeup-shot-beautiful-butterfly-with-interesting-textures-orange-petaled-flower_181624-7640.jpg?semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      "id": "5rakCOcgyK8",
+      "fname": "Riddhi",
+      "lname": "Patel",
+      "email": "riddhi@gmail.com",
+      "phone": "0987654321",
+      "city": "Mumbai",
+      "state": "GA",
+      "zip_code": "234564",
+      "dob": "2026-06-20",
       "country": "",
       "language": "English",
-      "job_title": "Designer",
-      "profile": "https://static.vecteezy.com/system/resources/thumbnails/009/273/280/small/concept-of-loneliness-and-disappointment-in-love-sad-man-sitting-element-of-the-picture-is-decorated-by-nasa-free-photo.jpg"
+      "job_title": "Developer",
+      "profile": "blob:http://localhost:3001/a87b6caa-4f70-4f13-8611-4e534f3b58ee"
+    },
+    {
+      "id": "0BCiHHhYlHU",
+      "fname": "vishnu",
+      "lname": "morya",
+      "email": "vishu@gmail.com",
+      "phone": "7861817955",
+      "city": "Ahmdabad",
+      "state": "GJ",
+      "zip_code": "234564",
+      "dob": "2026-06-11",
+      "country": "",
+      "language": "Hindi",
+      "job_title": "Human Resources (HR)",
+      "profile": "https://img.magnific.com/free-vector/character-reading-book-instead-working_23-2148498578.jpg?semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      "id": "UQ875ZXGNxc",
+      "fname": "Riddhi",
+      "lname": "patel",
+      "email": "riddhi12@gmail.com",
+      "phone": "1234567890",
+      "city": "Panaji",
+      "state": "KA",
+      "zip_code": "890067",
+      "dob": "2026-06-13",
+      "country": "",
+      "language": "Gujarati",
+      "job_title": "Finance & Accounting",
+      "profile": "https://img.magnific.com/premium-vector/woman-is-engaged-work-her-laptop-while-seated-comfortably-stylish-living-room-filled-with-plants-woman-working-living-room-with-laptop-flat-illustration_585735-45875.jpg?semt=ais_hybrid&w=740&q=80"
     }
   ],
   "login": [
-    {
-      "email": "op12@gmail.com",
-      "password": "2345",
-      "id": "RZn3QnjNfEs"
-    },
-    {
-      "email": "kp23@gmail.com",
-      "password": "4567",
-      "id": "x4dsgEtksM4"
-    },
-    {
-      "email": "ip@gmail.com",
-      "password": "1234",
-      "id": "lYKFBwya_ok"
-    },
-    {
-      "username": "sp123",
-      "email": "sp34@gmail.com",
-      "password": "2345",
-      "id": "mPbb5kW9Hf8"
-    },
-    {
-      "username": "kishori1811",
-      "email": "kishori11@gmail.com",
-      "password": "1234",
-      "id": "W5j5AVIlknM"
-    },
-    {
-      "username": "alay",
-      "email": "alay@gmail.com",
-      "password": "1234",
-      "id": "GgfMB3V8Hrg"
-    },
-    {
-      "username": "Alay",
-      "email": "alayp.verve@gmail.com",
-      "password": "abc123",
-      "id": "BR10UkcfiBE"
-    },
-    {
-      "username": "sheetal",
-      "email": "sheetal@gmail.com",
-      "password": "sh1234",
-      "id": "w0SchYHGKrk"
-    },
-    {
-      "username": "Navya34",
-      "email": "navya@gmail.com",
-      "password": "1234",
-      "id": "YJ8XnCdG9VI"
-    },
-    {
-      "username": "admin",
-      "email": "admin@gmail.com",
-      "password": "1234",
-      "id": "ZwErYcn4sVY"
-    },
-    {
-      "username": "sp",
-      "email": "sapnapatela671@gmail.com",
-      "password": "1234",
-      "id": "Yr_FAM0vGi0"
-    },
-    {
-      "username": "patel abhishek",
-      "email": "abhi@gmail.com",
-      "password": "1234",
-      "profile": "https://img.magnific.com/free-photo/closeup-shot-beautiful-butterfly-with-interesting-textures-orange-petaled-flower_181624-7640.jpg?semt=ais_hybrid&w=740&q=80",
-      "id": "Q8b3jai_ZOs"
-    },
-    {
-      "username": "gdrs",
-      "email": "alayp@gmail.com",
-      "password": "abc123",
-      "id": "3-m3tdSGnSk"
-    },
-    {
-      "username": "kishori12",
-      "email": "kishori12@gmail.com",
-      "password": "1234",
-      "id": "4WYyud_TP-g"
-    },
-    {
-      "username": "abhishek28",
-      "email": "abhi28@gmail.com",
-      "password": "abhi123",
-      "id": "oyJ-TH0Jvrk"
-    },
-    {
-      "username": "akshit",
-      "email": "ak12.@gmail.com",
-      "password": "Ak123#",
-      "id": "3kftt8pRemI"
-    },
-    {
-      "username": "sapna",
-      "email": "jk@gmail.com",
-      "password": "Sapatel1811#",
-      "id": "3KwNAwLkdwg"
-    },
-    {
-      "username": "Sapna12.",
-      "email": "pk@gmail.com",
-      "password": "Sapatel1811#",
-      "id": "gE5IVe3IPJc"
-    },
-    {
-      "username": "Ram123.   ",
-      "email": "ram12@gmail.com",
-      "password": "Ram12",
-      "profile": "",
-      "id": "huOPWYlmVxE"
-    },
-    {
-      "username": "Radha123.",
-      "email": "radha28@gmail.com",
-      "password": "Abhi282",
-      "id": "iaGZtPUgyZ0"
-    },
-    {
-      "username": "Admin123.",
-      "email": "admin12@gmail.com",
-      "password": "Admin1234",
-      "fname": "sapna",
-      "lname": "patel",
-      "phone": "7861817955",
-      "city": "ahmedabad",
-      "state": "Gujrat",
-      "zip_code": "380026",
-      "dob": "2026-06-24",
-      "language": "fwgrtg",
-      "job_title": "ere3q",
-      "gender": "Female",
-      "profile": "",
-      "id": "oBG-NMKudNg"
-    },
     {
       "username": "Alay06.",
       "email": "ap@gmail.com",
@@ -311,35 +220,35 @@
     {
       "username": "book12",
       "email": "book12@gmail.com",
-      "password": "Abcd123*",
+      "password": "Abcd1234*",
       "id": "D1qB76QA83o",
-      "fname": "",
-      "lname": "",
-      "phone": "",
-      "city": "wed",
-      "state": "",
-      "zip_code": "df",
-      "dob": "",
-      "language": "",
-      "job_title": "",
-      "gender": "",
-      "profile": ""
+      "fname": "Book",
+      "lname": "mine",
+      "phone": "1234567890",
+      "city": "Jaipur",
+      "state": "RJ",
+      "zip_code": "09998",
+      "dob": "2026-06-18",
+      "language": "Gujarati",
+      "job_title": "Finance & Accounting",
+      "gender": "Male",
+      "profile": "blob:http://localhost:3001/0e5a71dc-a62a-40a0-873b-80bf6a4b825c"
     },
     {
       "username": "diya12",
       "email": "diya12@gmail.com",
-      "password": "Diyu1234*",
-      "fname": "",
-      "lname": "",
-      "phone": "",
-      "city": "",
-      "state": "",
-      "zip_code": "",
-      "dob": "",
-      "language": "",
-      "job_title": "",
-      "gender": "",
-      "profile": "",
+      "password": "Diya12*3",
+      "fname": "Diya",
+      "lname": "Joshi",
+      "phone": "1234567891",
+      "city": "Ahmdabad",
+      "state": "GJ",
+      "zip_code": "23456",
+      "dob": "2003-08-18",
+      "language": "Gujarati",
+      "job_title": "Product Manager",
+      "gender": "Female",
+      "profile": "blob:http://localhost:3001/38657fd6-45b9-4ea6-bff5-2741b54b3f24",
       "id": "FSgxTCn959Q"
     }
   ],

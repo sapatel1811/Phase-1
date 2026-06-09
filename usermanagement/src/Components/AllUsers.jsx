@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 function AllUsers() {
   const [users, setUsers] = useState([]);
@@ -22,11 +24,7 @@ function AllUsers() {
     } catch (error) {
       console.log(error);
 
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Failed to load users",
-      });
+      toast.error("Failed to load users");
     }
   };
 
@@ -46,25 +44,50 @@ function AllUsers() {
       try {
         await axios.delete(`http://192.168.1.117:3000/users/${id}`);
 
-        Swal.fire({
-          icon: "success",
-          title: "Deleted",
-          text: "User Deleted Successfully",
-          confirmButtonColor: "#0d6efd",
-        });
+       toast.success("User Deleted Successfully");
 
         loadUsers();
       } catch (error) {
         console.log(error);
 
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "Delete failed",
-        });
+       toast.error("Delete Failed");
       }
     }
   };
+
+
+  // serch 
+  const [search, setSearch] = useState("");
+
+
+  // pagination
+const [currentPage, setCurrentPage] = useState(1);
+const usersPerPage = 5;
+
+
+// serch...
+  const filteredUsers = users.filter((user) =>
+  `${user.fname} ${user.lname} ${user.email} ${user.job_title}`
+    .toLowerCase()
+    .includes(search.toLowerCase())
+);
+
+
+// pagination
+const indexOfLastUser = currentPage * usersPerPage;
+const indexOfFirstUser = indexOfLastUser - usersPerPage;
+
+const currentUsers = filteredUsers.slice(
+  indexOfFirstUser,
+  indexOfLastUser
+);
+
+const totalPages = Math.ceil(
+  filteredUsers.length / usersPerPage
+);
+
+
+
 
   return (
     <div className="container-fluid py-4 col-12 col-xl-10 mx-auto">
@@ -75,6 +98,23 @@ function AllUsers() {
           Add User
         </button>
       </div>
+
+
+{/* serch */}
+      <div className="row mb-3">
+  <div className="col-md-4">
+    <input
+      type="text"
+      className="form-control"
+      placeholder="Search user..."
+      value={search}
+      onChange={(e) => {
+  setSearch(e.target.value);
+  setCurrentPage(1);
+}}
+    />
+  </div>
+</div>
 
 
       {/* table */}
@@ -95,9 +135,12 @@ function AllUsers() {
 
       <tbody>
         {users.length > 0 ? (
-          users.map((user, index) => (
+          currentUsers.map((user, index) => (
             <tr key={user.id} className="text-center">
-              <td>{index + 1}</td>
+              {/* <td>{index + 1}</td> */}
+
+               {/* serial no    */}
+                 <td>{indexOfFirstUser + index + 1}</td>
 
               {/* PROFILE */}
               <td>
@@ -125,6 +168,7 @@ function AllUsers() {
                 )}
               </td>
 
+          
               {/* NAME */}
               <td>{user.fname + " " + user.lname}</td>
 
@@ -135,6 +179,11 @@ function AllUsers() {
               <td>{user.job_title}</td>
 
               {/* ACTIONS */}
+
+
+
+
+              
               <td>
                 <div className="d-flex flex-wrap gap-2 justify-content-center">
                   {/* EDIT */}
@@ -164,6 +213,8 @@ function AllUsers() {
                   >
                     View
                   </button>
+
+                  
                 </div>
               </td>
             </tr>
@@ -177,6 +228,47 @@ function AllUsers() {
         )}
       </tbody>
     </table>
+
+
+{/* pagination */}
+<div className="d-flex justify-content-between align-items-center mt-3">
+  <span className="text-muted">
+    Showing {currentUsers.length} of {filteredUsers.length} users
+  </span>
+
+  <div>
+    <button
+      className="btn btn-outline-secondary btn-sm me-2"
+      disabled={currentPage === 1}
+      onClick={() =>
+        setCurrentPage(currentPage - 1)
+      }
+    >
+      Previous
+    </button>
+
+    <span className="fw-bold mx-2">
+      {currentPage} / {totalPages}
+    </span>
+
+    <button
+      className="btn btn-outline-secondary btn-sm"
+      disabled={currentPage === totalPages}
+      onClick={() =>
+        setCurrentPage(currentPage + 1)
+      }
+    >
+      Next
+    </button>
+  </div>
+</div>
+
+<ToastContainer
+  position="top-right"
+  autoClose={2500}
+  theme="colored"
+/>
+
   </div>
 </div>
 

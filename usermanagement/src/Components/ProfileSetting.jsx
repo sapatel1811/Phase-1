@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import PasswordSetting from "./PasswordSetting";
 import { State } from "country-state-city";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ProfileSetting() {
   const navigate = useNavigate();
@@ -35,6 +37,78 @@ function ProfileSetting() {
 
   const [activeTab, setActiveTab] = useState("profile");
 
+  // for validation ke liye  8-jun.....
+  const [errors, setErrors] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    phone: "",
+    city: "",
+    zip_code: "",
+  });
+
+  // for validation ke liye 8-jun
+  const validateField = (name, value) => {
+    let error = "";
+
+    switch (name) {
+     case "fname":
+  if (!value.trim()) {
+    error = "First Name is required";
+  } else if (!/^[A-Za-z ]+$/.test(value)) {
+    error = "Only letters allowed";
+  }
+  break;
+
+     case "lname":
+  if (!value.trim()) {
+    error = "Last Name is required";
+  } else if (!/^[A-Za-z ]+$/.test(value)) {
+    error = "Only letters allowed";
+  }
+  break;
+
+      case "email":
+        if (!value.trim()) {
+          error = "Email is required";
+        } else if (
+          !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(value)
+        ) {
+          error = "Enter valid email address";
+        }
+        break;
+
+     case "phone":
+  if (!value.trim()) {
+    error = "Mobile Number is required";
+  } else if (!/^[6-9]\d{9}$/.test(value)) {
+    error = "Enter valid 10 digit Indian mobile number";
+  }
+  break;
+
+      case "city":
+  if (!value.trim()) {
+    error = "City is required";
+  } else if (!/^[A-Za-z ]+$/.test(value)) {
+    error = "Only letters allowed";
+  }
+  break;
+
+     case "zip_code":
+  if (!value.trim()) {
+    error = "Zip Code is required";
+  } else if (!/^\d{5}$/.test(value)) {
+    error = "Zip Code must be exactly 5 digits";
+  }
+  break;
+
+      default:
+        break;
+    }
+
+    return error;
+  };
+
   useEffect(() => {
     if (currentUser) {
       const data = {
@@ -61,9 +135,51 @@ function ProfileSetting() {
 
   const isChanged = JSON.stringify(form) !== JSON.stringify(original);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  // new added handle change 8-jun..
+ const handleChange = (e) => {
+  const { name } = e.target;
+  let value = e.target.value;
+  let error = "";
+
+  if (name === "fname" || name === "lname" || name === "city") {
+    if (/[^A-Za-z ]/.test(value)) {
+      error = "Name can only contain letters, spaces, and standard punctuation.";
+    }
+
+    value = value.replace(/[^A-Za-z ]/g, "");
+  }
+
+  if (name === "phone") {
+    if (/[^0-9]/.test(value)) {
+      error = "Only numbers are allowed";
+    }
+
+    value = value.replace(/\D/g, "").slice(0, 10);
+  }
+
+  if (name === "zip_code") {
+    if (/[^0-9]/.test(value)) {
+      error = "Please enter a valid number-digit PIN code.";
+    }
+
+    value = value.replace(/\D/g, "").slice(0, 5);
+  }
+
+  setForm({
+    ...form,
+    [name]: value,
+  });
+
+  setErrors({
+    ...errors,
+    [name]: error || validateField(name, value),
+  });
+};
+
+
+  // const handleChange = (e) => {
+  //   setForm({ ...form, [e.target.name]: e.target.value });
+  // };
 
   const updateProfile = async () => {
     try {
@@ -77,10 +193,14 @@ function ProfileSetting() {
         JSON.stringify({ ...currentUser, ...form }),
       );
 
-      Swal.fire("Success", "Profile Updated", "success");
+      toast.success("Profile Updated Successfully");
+      setTimeout(() => {
       navigate("/dashboard");
+      }, 3000);
+
+
     } catch (err) {
-      Swal.fire("Error", "Update Failed", "error");
+      toast.error("Update Failed");
     }
   };
 
@@ -133,7 +253,7 @@ function ProfileSetting() {
               {activeTab === "profile" && (
                 <>
                   {/* <div>
-                    <h4>Password Settings</h4>
+                    <h4>Password Settings  </h4>
 
                     <input
                       type="password"
@@ -183,7 +303,7 @@ function ProfileSetting() {
                         }}
                         onClick={() => fileRef.current.click()}
                       >
-                        📷
+                        
                       </button> */}
                     </div>
 
@@ -238,9 +358,12 @@ function ProfileSetting() {
                         name="fname"
                         value={form.fname}
                         onChange={handleChange}
-                        className="form-control"
+                        className={`form-control ${
+                          errors.fname ? "is-invalid" : ""
+                        }`}
                         placeholder="First Name"
                       />
+                      <small className="text-danger">{errors.fname}</small>
                     </div>
 
                     <div className="col-md-6 mb-4">
@@ -253,9 +376,12 @@ function ProfileSetting() {
                         name="lname"
                         value={form.lname}
                         onChange={handleChange}
-                        className="form-control"
+                        className={`form-control ${
+                          errors.lname ? "is-invalid" : ""
+                        }`}
                         placeholder="Last Name"
                       />
+                      <small className="text-danger">{errors.lname}</small>
                     </div>
 
                     <div className="col-md-6 mb-4">
@@ -266,9 +392,12 @@ function ProfileSetting() {
                         name="email"
                         value={form.email}
                         onChange={handleChange}
-                        className="form-control"
+                        className={`form-control ${
+                          errors.email ? "is-invalid":""
+                        }`}
                         placeholder="example@gmail.com"
                       />
+                      <small className="text-danger">{errors.email}</small>
                     </div>
 
                     <div className="col-md-6 mb-4">
@@ -281,9 +410,13 @@ function ProfileSetting() {
                         name="phone"
                         value={form.phone}
                         onChange={handleChange}
-                        className="form-control"
+                        className={`form-control ${
+                          errors.phone ? "is-invalid":""
+                        }`}
                         placeholder="0806 123 7890"
                       />
+                    
+                    <small className="text-danger">{errors.phone}</small>
                     </div>
 
                     <div className="col-md-6 mb-4">
@@ -333,9 +466,13 @@ function ProfileSetting() {
                         name="city"
                         value={form.city}
                         onChange={handleChange}
-                        className="form-control"
+                         className={`form-control ${
+                          errors.city ? "is-invalid":""
+                        }`}
+                        
                       />
-                    </div>
+                  <small className="text-danger">{errors.city}</small>
+              </div>
 
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">State</label>
@@ -364,8 +501,11 @@ function ProfileSetting() {
                         name="zip_code"
                         value={form.zip_code}
                         onChange={handleChange}
-                        className="form-control"
+                        className={`form-control ${
+                          errors.zip_code ? "is-invalid":""
+                        }`}
                       />
+                  <small className="text-danger">{errors.zip_code}</small>
                     </div>
 
                     <div className="col-md-6 mb-4">
@@ -393,8 +533,8 @@ function ProfileSetting() {
                       >
                         <option value="">Select Language</option>
 
-                        <option>English</option>
                         <option>Hindi</option>
+                        <option>English</option>
                         <option>Gujarati</option>
                         <option>Tamil</option>
                         <option>Odia (formerly Oriya)</option>
@@ -431,6 +571,12 @@ function ProfileSetting() {
               )}
               {/* PASSWORD TAB */}
               {activeTab === "password" && <PasswordSetting />}
+              {/* use for  */}
+              <ToastContainer
+                position="top-right"
+                autoClose={2500}
+                theme="colored"
+              />
             </div>
           </div>
         </div>

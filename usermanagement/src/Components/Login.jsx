@@ -375,9 +375,6 @@ setTimeout(() => {
                   </div>
                 )}
               </form>
-
-
-
               
 
               {/* Switch */}

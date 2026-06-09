@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function PasswordSetting() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -11,6 +12,8 @@ function PasswordSetting() {
     newPassword: "",
     confirmPassword: "",
   });
+
+  const navigate = useNavigate();
 
   //password validation function
   const [errors, setErrors] = useState({
@@ -38,7 +41,7 @@ function PasswordSetting() {
       case "newPassword":
         if (!value) {
           error = "Please enter your password";
-        } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(value)) {
+        } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value)) {
           error =
             "Password must contain at least 6 characters, including uppercase, lowercase, and a number";
         }
@@ -136,6 +139,12 @@ function PasswordSetting() {
       return;
     }
 
+// User current password hi dobara set na kar sake
+    if (passwords.currentPassword === passwords.newPassword) {
+  toast.error("New password must be different from current password");
+  return;
+} 
+
     try {
       const updatedUser = {
         ...currentUser,
@@ -176,12 +185,14 @@ function PasswordSetting() {
             <input
               type={showPassword.current ? "text" : "password"}
               name="currentPassword"
+              autoComplete="current-password"
               className={`form-control ${
                 errors.currentPassword ? "is-invalid" : ""
               }`}
               value={passwords.currentPassword}
               onChange={handleChange}
               maxLength={16}
+              
             />
 
             <button
@@ -212,6 +223,7 @@ function PasswordSetting() {
             <input
               type={showPassword.new ? "text" : "password"}
               name="newPassword"
+              autoComplete="new-password"
               className={`form-control ${
                 errors.newPassword ? "is-invalid" : ""
               }`}
@@ -246,6 +258,7 @@ function PasswordSetting() {
             <input
               type={showPassword.confirm ? "text" : "password"}
               name="confirmPassword"
+              autoComplete="new-password"
               className={`form-control ${
                 errors.confirmPassword ? "is-invalid" : ""
               }`}
@@ -285,6 +298,25 @@ function PasswordSetting() {
         >
           Update Password
         </button>
+  <button
+    type="button"
+    className="btn btn-secondary"
+    onClick={() => {
+
+//  console.log("Cancel Clicked");
+
+    setPasswords({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+
+  navigate("/dashboard/profile-edit");
+    }}
+    > Cancle </button>
+
+
+
       </form>
       <ToastContainer position="top-right" autoClose={2500} theme="colored" />
     </>

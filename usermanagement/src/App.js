@@ -12,6 +12,11 @@ import ProfileSetting from "./Components/ProfileSetting";
 import PasswordSetting from "./Components/PasswordSetting";
 
 
+import UserReports from "./Components/Reports/UserReports";
+// import ExportReports from "./Components/Reports/ExportReports";
+// import ActivityLogs from "./Components/Reports/ActivityLogs";
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +29,11 @@ function App() {
           <Route index element={<Home />} />
           <Route path="add" element={<AddUser />} />
           <Route path="all" element={<AllUsers />} />
+
+  <Route path="reports/users" element={<UserReports />} />
+  {/* <Route path="reports/export" element={<ExportReports />} /> */}
+  {/* <Route path="reports/activity" element={<ActivityLogs />} /> */}
+
           <Route path="edit/:id" element={<AddUser />} />
           <Route path="view/:id" element={<ViewUser />} />
 

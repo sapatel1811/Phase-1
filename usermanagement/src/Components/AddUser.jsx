@@ -14,6 +14,8 @@ import axios from "axios";
 
 // for pre build state option
 import { State } from "country-state-city";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 
 // initial value : form reset karne ke liye and state initialize karne ke liye , 
@@ -564,6 +566,11 @@ function AddUser() {
               </button>
             </div>
           </form>
+           <ToastContainer
+                position="top-left"
+                autoClose={2500}
+                theme="colored"
+              />
         </div>
       </div>
     </div>

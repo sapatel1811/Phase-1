@@ -4,6 +4,7 @@ import ProfileIcon from "./ProfileIcon";
 
 function Dashboard() {
   const [userOpen, setUserOpen] = useState(false);
+  const [reportsOpen, setReportsOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -139,7 +140,7 @@ function Dashboard() {
                 }}
                 onClick={() => setUserOpen(!userOpen)}
               >
-                User
+                User Management
               </button>
 
               {userOpen && (
@@ -180,14 +181,76 @@ function Dashboard() {
                         color: isActive ? "#fff" : "#6c757d",
                       })}
                     >
-                      Settings
+                      Profile Settings
                     </NavLink>
                   </li>
                 </ul>
               )}
             </li>
-          </ul>
-        </div>
+          
+<li>
+  <button
+    className="btn w-100 text-start fw-semibold"
+    style={{
+      background: "#f8fafc",
+      border: "1px solid #e2e8f0",
+    }}
+    onClick={() => setReportsOpen(!reportsOpen)}
+  >
+  Reports
+  </button>
+
+  {reportsOpen && (
+    <ul className="list-unstyled ps-3 mt-2">
+
+      <li>
+        <NavLink
+          to="reports/users"
+          className="nav-link rounded px-3 py-2 fw-bold"
+          style={({ isActive }) => ({
+            backgroundColor: isActive ? "#ff6600" : "transparent",
+            color: isActive ? "#fff" : "#6c757d",
+          })}
+        >
+        User Reports
+        </NavLink>
+      </li>
+
+
+      {/* <li>
+        <NavLink
+          to="reports/activity"
+          className="nav-link rounded px-3 py-2 fw-bold"
+          style={({ isActive }) => ({
+            backgroundColor: isActive ? "#ff6600" : "transparent",
+            color: isActive ? "#fff" : "#6c757d",
+          })}
+        >
+        Activity Logs
+        </NavLink>
+      </li> */}
+
+
+       {/* <li>
+        <NavLink
+          to="reports/export"
+          className="nav-link rounded px-3 py-2 fw-bold"
+          style={({ isActive }) => ({
+            backgroundColor: isActive ? "#ff6600" : "transparent",
+            color: isActive ? "#fff" : "#6c757d",
+          })}
+        >
+        Export Reports
+        </NavLink>
+      </li> */}
+
+    </ul>
+  )}
+</li>
+
+
+</ul>
+</div>
 
         {/* ================= CONTENT ================= */}
         <div
