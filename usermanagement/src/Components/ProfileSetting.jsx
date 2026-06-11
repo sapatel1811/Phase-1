@@ -37,7 +37,7 @@ function ProfileSetting() {
 
   const [activeTab, setActiveTab] = useState("profile");
 
-  // for validation ke liye  8-jun.....
+  // for validation ke liye
   const [errors, setErrors] = useState({
     fname: "",
     lname: "",
@@ -47,26 +47,26 @@ function ProfileSetting() {
     zip_code: "",
   });
 
-  // for validation ke liye 8-jun
+  // for validation ke liye
   const validateField = (name, value) => {
     let error = "";
 
     switch (name) {
-     case "fname":
-  if (!value.trim()) {
-    error = "First Name is required";
-  } else if (!/^[A-Za-z ]+$/.test(value)) {
-    error = "Only letters allowed";
-  }
-  break;
+      case "fname":
+        if (!value.trim()) {
+          error = "First Name is required";
+        } else if (!/^[A-Za-z ]+$/.test(value)) {
+          error = "Only letters allowed";
+        }
+        break;
 
-     case "lname":
-  if (!value.trim()) {
-    error = "Last Name is required";
-  } else if (!/^[A-Za-z ]+$/.test(value)) {
-    error = "Only letters allowed";
-  }
-  break;
+      case "lname":
+        if (!value.trim()) {
+          error = "Last Name is required";
+        } else if (!/^[A-Za-z ]+$/.test(value)) {
+          error = "Only letters allowed";
+        }
+        break;
 
       case "email":
         if (!value.trim()) {
@@ -78,29 +78,29 @@ function ProfileSetting() {
         }
         break;
 
-     case "phone":
-  if (!value.trim()) {
-    error = "Mobile Number is required";
-  } else if (!/^[6-9]\d{9}$/.test(value)) {
-    error = "Enter valid 10 digit Indian mobile number";
-  }
-  break;
+      case "phone":
+        if (!value.trim()) {
+          error = "Mobile Number is required";
+        } else if (!/^[6-9]\d{9}$/.test(value)) {
+          error = "Enter valid 10 digit Indian mobile number";
+        }
+        break;
 
       case "city":
-  if (!value.trim()) {
-    error = "City is required";
-  } else if (!/^[A-Za-z ]+$/.test(value)) {
-    error = "Only letters allowed";
-  }
-  break;
+        if (!value.trim()) {
+          error = "City is required";
+        } else if (!/^[A-Za-z ]+$/.test(value)) {
+          error = "Only letters allowed";
+        }
+        break;
 
-     case "zip_code":
-  if (!value.trim()) {
-    error = "Zip Code is required";
-  } else if (!/^\d{5}$/.test(value)) {
-    error = "Zip Code must be exactly 5 digits";
-  }
-  break;
+      case "zip_code":
+        if (!value.trim()) {
+          error = "Zip Code is required";
+        } else if (!/^\d{5}$/.test(value)) {
+          error = "Zip Code must be exactly 5 digits";
+        }
+        break;
 
       default:
         break;
@@ -136,46 +136,46 @@ function ProfileSetting() {
   const isChanged = JSON.stringify(form) !== JSON.stringify(original);
 
   // new added handle change 8-jun..
- const handleChange = (e) => {
-  const { name } = e.target;
-  let value = e.target.value;
-  let error = "";
+  const handleChange = (e) => {
+    const { name } = e.target;
+    let value = e.target.value;
+    let error = "";
 
-  if (name === "fname" || name === "lname" || name === "city") {
-    if (/[^A-Za-z ]/.test(value)) {
-      error = "Name can only contain letters, spaces, and standard punctuation.";
+    if (name === "fname" || name === "lname" || name === "city") {
+      if (/[^A-Za-z ]/.test(value)) {
+        error =
+          "Name can only contain letters, spaces, and standard punctuation.";
+      }
+
+      value = value.replace(/[^A-Za-z]/g, "");
     }
 
-    value = value.replace(/[^A-Za-z ]/g, "");
-  }
+    if (name === "phone") {
+      if (/[^0-9]/.test(value)) {
+        error = "Only numbers are allowed";
+      }
 
-  if (name === "phone") {
-    if (/[^0-9]/.test(value)) {
-      error = "Only numbers are allowed";
+      value = value.replace(/\D/g, "").slice(0, 10);
     }
 
-    value = value.replace(/\D/g, "").slice(0, 10);
-  }
+    if (name === "zip_code") {
+      if (/[^0-9]/.test(value)) {
+        error = "Please enter a valid number-digit PIN code.";
+      }
 
-  if (name === "zip_code") {
-    if (/[^0-9]/.test(value)) {
-      error = "Please enter a valid number-digit PIN code.";
+      value = value.replace(/\D/g, "").slice(0, 5);
     }
 
-    value = value.replace(/\D/g, "").slice(0, 5);
-  }
+    setForm({
+      ...form,
+      [name]: value,
+    });
 
-  setForm({
-    ...form,
-    [name]: value,
-  });
-
-  setErrors({
-    ...errors,
-    [name]: error || validateField(name, value),
-  });
-};
-
+    setErrors({
+      ...errors,
+      [name]: error || validateField(name, value),
+    });
+  };
 
   // const handleChange = (e) => {
   //   setForm({ ...form, [e.target.name]: e.target.value });
@@ -195,10 +195,8 @@ function ProfileSetting() {
 
       toast.success("Profile Updated Successfully");
       setTimeout(() => {
-      navigate("/dashboard");
+        navigate("/dashboard");
       }, 3000);
-
-
     } catch (err) {
       toast.error("Update Failed");
     }
@@ -209,10 +207,26 @@ function ProfileSetting() {
   };
 
   return (
+    
     <div className="container-fluid py-4">
-      <div className="row">
+      <div className="mb-4">
+      <h3 className="fw-bold">Profile</h3>
+      </div>
+
+<div className="mb-7">
+<button
+  className="btn btn-outline-dark"
+  onClick={() => navigate(-3)}
+>
+  <i className="bi bi-arrow-left me-2"></i>
+  Go Back
+</button>
+</div>
+
+
+    <div className="row">
         {/* LEFT SIDEBAR */}
-        <div className="col-md-3">
+        {/* <div className="col-md-9">
           <div className="card border-0 shadow-sm">
             <div className="list-group list-group-flush">
               <button
@@ -244,14 +258,49 @@ function ProfileSetting() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* RIGHT CONTENT */}
-        <div className="col-md-9">
-          <div className="card shadow-sm border-0">
+        <div className="col-md-12">
+          <div
+            className="card shadow-sm border-0"
+            style={{
+              borderRadius: "10px",
+            }}
+          >
             <div className="card-body p-4">
+              <div className="d-flex gap-2 mb-3">
+                <button
+                  className={`btn btn-sm ${
+                    activeTab === "profile" ? "btn-dark" : "btn-light border"
+                  }`}
+                  onClick={() => setActiveTab("profile")}
+                >
+                  Profile
+                </button>
+
+                <button
+                  className={`btn btn-sm ${
+                    activeTab === "password" ? "btn-dark" : "btn-light border"
+                  }`}
+                  onClick={() => setActiveTab("password")}
+                >
+                  Security
+                </button>
+
+              </div>
               {activeTab === "profile" && (
                 <>
+                  <div
+                    className="text-white px-3 py-2 mb-4"
+                    style={{
+                      backgroundColor: "#1f2937",
+                      borderRadius: "4px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Personal Information
+                  </div>
                   {/* <div>
                     <h4>Password Settings  </h4>
 
@@ -277,7 +326,7 @@ function ProfileSetting() {
                   </div> */}
 
                   {/* PROFILE SECTION */}
-                  <div className="d-flex align-items-center gap-4 mb-5 flex-wrap">
+                  <div className="text-center mb-5">
                     <div className="position-relative">
                       <img
                         src={
@@ -285,12 +334,14 @@ function ProfileSetting() {
                           "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                         }
                         alt=""
-                        width="120"
-                        height="120"
+                        width="140"
+                        height="140"
                         className="rounded-circle border"
                         style={{
                           objectFit: "cover",
                         }}
+                        onClick={() => fileRef.current.click()}
+                        title="Edit Profile Picture"
                       />
 
                       {/* <button
@@ -307,7 +358,7 @@ function ProfileSetting() {
                       </button> */}
                     </div>
 
-                    <div>
+                    <div className="mt-3">
                       <button
                         className="btn text-white me-2"
                         style={{
@@ -336,10 +387,16 @@ function ProfileSetting() {
                         const file = e.target.files[0];
 
                         if (file) {
-                          setForm({
-                            ...form,
-                            profile: URL.createObjectURL(file),
-                          });
+                          const reader = new FileReader();
+
+                          reader.onloadend = () => {
+                            setForm({
+                              ...form,
+                              profile: reader.result,
+                            });
+                          };
+
+                          reader.readAsDataURL(file);
                         }
                       }}
                     />
@@ -393,7 +450,7 @@ function ProfileSetting() {
                         value={form.email}
                         onChange={handleChange}
                         className={`form-control ${
-                          errors.email ? "is-invalid":""
+                          errors.email ? "is-invalid" : ""
                         }`}
                         placeholder="example@gmail.com"
                       />
@@ -411,12 +468,12 @@ function ProfileSetting() {
                         value={form.phone}
                         onChange={handleChange}
                         className={`form-control ${
-                          errors.phone ? "is-invalid":""
+                          errors.phone ? "is-invalid" : ""
                         }`}
                         placeholder="0806 123 7890"
                       />
-                    
-                    <small className="text-danger">{errors.phone}</small>
+
+                      <small className="text-danger">{errors.phone}</small>
                     </div>
 
                     <div className="col-md-6 mb-4">
@@ -466,13 +523,12 @@ function ProfileSetting() {
                         name="city"
                         value={form.city}
                         onChange={handleChange}
-                         className={`form-control ${
-                          errors.city ? "is-invalid":""
+                        className={`form-control ${
+                          errors.city ? "is-invalid" : ""
                         }`}
-                        
                       />
-                  <small className="text-danger">{errors.city}</small>
-              </div>
+                      <small className="text-danger">{errors.city}</small>
+                    </div>
 
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">State</label>
@@ -502,10 +558,10 @@ function ProfileSetting() {
                         value={form.zip_code}
                         onChange={handleChange}
                         className={`form-control ${
-                          errors.zip_code ? "is-invalid":""
+                          errors.zip_code ? "is-invalid" : ""
                         }`}
                       />
-                  <small className="text-danger">{errors.zip_code}</small>
+                      <small className="text-danger">{errors.zip_code}</small>
                     </div>
 
                     <div className="col-md-6 mb-4">
@@ -546,13 +602,13 @@ function ProfileSetting() {
 
                   {/* BUTTONS */}
 
-                  <div className="d-flex gap-2 mt-3">
+                  <div className="d-flex justify-content-end gap-2 mt-4">
                     {isChanged && (
                       <button
                         className="btn w-10 text-white"
                         style={{
                           backgroundColor: "#ff6600",
-                          borderColor: "#973e03",
+                          borderColor: "#b94d05",
                         }}
                         onClick={updateProfile}
                       >

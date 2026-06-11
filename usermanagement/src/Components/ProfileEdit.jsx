@@ -3,7 +3,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-
 function ProfileEdit() {
   const navigate = useNavigate();
 
@@ -65,6 +64,7 @@ function ProfileEdit() {
 
   return (
     <div className="container py-4">
+      
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
           <div className="card shadow border-0 rounded-4">
@@ -103,13 +103,16 @@ function ProfileEdit() {
 
               <div className="text-center mb-3">
                 <img
-                  src={form.profile || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
+                  src={
+                    form.profile ||
+                    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                  }
                   onError={(e) => {
                     e.currentTarget.src = "https://placehold.co/600x400";
                     e.currentTarget.onerror = null;
                   }}
                   alt=""
-                  className="rounded-circle border shadow-sm object-fit-cover img-fluid"
+                  className="rounded-circle border shadow-sm object-fit-cover"
                   width="60"
                   height="60"
                   style={{
@@ -126,13 +129,18 @@ function ProfileEdit() {
                   style={{ display: "none" }}
                   onChange={(e) => {
                     const file = e.target.files[0];
-                    if (file) {
-                      const imageUrl = URL.createObjectURL(file);
 
-                      setForm({
-                        ...form,
-                        profile: imageUrl,
-                      });
+                    if (file) {
+                      const reader = new FileReader();
+
+                      reader.onloadend = () => {
+                        setForm({
+                          ...form,
+                          profile: reader.result,
+                        });
+                      };
+
+                      reader.readAsDataURL(file);
                     }
                   }}
                 />
@@ -194,7 +202,7 @@ function ProfileEdit() {
                   className="btn btn-secondary w-100"
                   onClick={() => navigate("/dashboard")}
                 >
-                  Cancel  
+                  Cancel
                 </button>
               </div>
             </div>

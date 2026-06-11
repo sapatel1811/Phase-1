@@ -90,20 +90,43 @@ function Login() {
   };
 
   // Input Change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+const handleChange = (e) => {
+  const { name, value } = e.target;
 
-    setForm({
-      ...form,
-      [name]: value,
-    });
+  const updatedForm = {
+    ...form,
+    [name]: value,
+  };
 
+  setForm(updatedForm);
+
+  setErrors((prev) => ({
+    ...prev,
+    [name]: validateField(name, value),
+    login: "",
+  }));
+
+  // real-time confirm password check
+  if (name === "password" && form.confirmPassword) {
     setErrors((prev) => ({
       ...prev,
-      [name]: validateField(name, value),
-      login: "",
+      confirmPassword:
+        form.confirmPassword !== value
+          ? "Passwords do not match. Please try again."
+          : "",
     }));
-  };
+  }
+
+  if (name === "confirmPassword") {
+    setErrors((prev) => ({
+      ...prev,
+      confirmPassword:
+        value !== form.password
+          ? "Passwords do not match. Please try again."
+          : "",
+    }));
+  }
+};
 
   // Full Form Validation
   const validateForm = () => {
@@ -120,6 +143,8 @@ function Login() {
         newErrors[key] = error;
       }
     });
+
+    
 
     setErrors(newErrors);
 
@@ -172,68 +197,61 @@ function Login() {
   };
 
   // Login
-  const handleLogin = async (e) => {
-    e.preventDefault();
+const handleLogin = async (e) => {
+  e.preventDefault();
 
+  let newErrors = {};
+
+  if (!form.email.trim()) {
+    newErrors.email = "Please enter your email address";
+  }
+
+  if (!form.password.trim()) {
+    newErrors.password = "Please enter your password";
+  }
+
+  if (Object.keys(newErrors).length > 0) {
     setErrors((prev) => ({
       ...prev,
-      login: "",
+      ...newErrors,
     }));
+    return;
+  }
 
-    if (!form.email.trim()) {
+  try {
+    const res = await axios.get(
+      `http://192.168.1.117:3000/login?email=${form.email}`
+    );
+
+    const user = res.data[0];
+
+    if (!user) {
       setErrors((prev) => ({
         ...prev,
-        login: "Please enter your email address",
+        email: "No account found with this email",
       }));
       return;
     }
 
-    if (!form.password.trim()) {
-      setErrors((prev) => ({
-        ...prev,
-        login: "Please enter your password",
-      }));
-      return;
-    }
+  if (user.password !== form.password) {
+  setErrors((prev) => ({
+    ...prev,
+    password: "Incorrect password ",
+  }));
+  return;
+}
 
-    try {
-      const res = await axios.get(
-        `http://192.168.1.117:3000/login?email=${form.email}`,
-      );
+    toast.success(`Welcome back ${user.username}`);
 
-      const user = res.data[0];
-
-      if (!user) {
-        setErrors((prev) => ({
-          ...prev,
-          login: "No account found with this email address",
-        }));
-        return;
-      }
-
-      if (user.password !== form.password) {
-        setErrors((prev) => ({
-          ...prev,
-          login: "Invalid email address or password",
-        }));
-        return;
-      }
-
-      toast.success(`Welcome back, ${user.username}`);
-
-localStorage.setItem("currentUser", JSON.stringify(user));
-
+    localStorage.setItem("currentUser", JSON.stringify(user));
 setTimeout(() => {
-  navigate("/dashboard");
-}, 1000);
 
-    } catch (err) {
-      setErrors((prev) => ({
-        ...prev,
-        login: "Unable to sign in. Please try again later.",
-      }));
-    }
-  };
+    navigate("/dashboard");
+    }, 1500);
+  } catch (err) {
+    toast.error("Server Error");
+  }
+};
 
   return (
     <>
@@ -288,6 +306,7 @@ setTimeout(() => {
                     className="form-control form-control-lg"
                     placeholder="Enter Email"
                     value={form.email}
+                    autoComplete="email"
                     onChange={handleChange}
                   />
 
@@ -305,12 +324,15 @@ setTimeout(() => {
                       onChange={handleChange}
                       maxLength={16}
                     />
+                    
 
                     <button
                       type="button"
                       className="btn btn-outline-secondary"
                       onClick={() => setShowPassword(!showPassword)}
                     >
+
+
                       {/* {showPassword ? "Hide" : "Show"} */}
                       <i
                         className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}
@@ -318,10 +340,16 @@ setTimeout(() => {
                     </button>
                   </div>
 
-                  {/* <small className="text-danger">{errors.password}</small> */}
+                      {/* signup password */}
+                  <small className="text-danger">{errors.password}</small>
 
+
+                    {/* login password */}
                   {!isLogin && (
                     <small className="text-danger">{errors.password}</small>
+                  //  login: "Please enter your email address",
+
+
                   )}
                 </div>
 
@@ -355,9 +383,9 @@ setTimeout(() => {
                     {/* <small className="text-danger">{errors.confirmPassword}</small> */}
 
                     {!isLogin && (
-                      <small className="text-danger">
-                        {errors.confirmPassword}
-                      </small>
+                     <small className="text-danger">
+                       {errors.confirmPassword}
+                       </small>
                     )}
                   </div>
                 )}
@@ -369,11 +397,12 @@ setTimeout(() => {
                   {isLogin ? "Login" : "Signup"}
                 </button>
 
-                {isLogin && errors.login && (
+                {/* {isLogin && errors.login && (
                   <div className="text-danger text-center mt-2 small">
                     {errors.login}  
+                    
                   </div>
-                )}
+                )} */}
               </form>
               
 
@@ -409,6 +438,9 @@ setTimeout(() => {
             </div>
           </div>
         </div>
+
+
+
       </div>
 
       <ToastContainer position="top-right" autoClose={2500} theme="colored" />

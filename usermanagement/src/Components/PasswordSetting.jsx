@@ -313,7 +313,7 @@ function PasswordSetting() {
 
   navigate("/dashboard/profile-edit");
     }}
-    > Cancle </button>
+    > Cancel </button>
 
 
 

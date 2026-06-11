@@ -35,6 +35,21 @@ const initialValue = {
   language: "",
   job_title: "",
   profile: "",
+    status: "active",
+};
+
+// Field names mapping for validation error messages
+const fieldNames = {
+  fname: "First Name",
+  lname: "Last Name",
+  city: "City",
+  email: "Email",
+  phone: "Phone",
+  zip_code: "ZIP Code",
+  dob: "Date of Birth",
+  state: "State",
+  language: "Language",
+  job_title: "Job Title",
 };
 
 function AddUser() {
@@ -110,69 +125,72 @@ function AddUser() {
     switch (name) {
       case "fname":
       case "lname":
-      case "city": {
+      case "city":
         if (!trimmedValue) {
-          error = " The field is Required";
+          error = `${fieldNames[name]} is required.`;
         } else if (trimmedValue.length < 2 || trimmedValue.length > 15) {
-          error = "Must be between 2 and 15 characters.";
+          error = `${fieldNames[name]} must be between 2 and 15 characters.`;
         } else if (!/^[A-Za-z ]+$/.test(trimmedValue)) {
-          error = "Only letters and spaces allowed.";
+          error = `${fieldNames[name]} can only contain letters and spaces.`;
         }
-
         break;
-      }
 
       case "email":
         if (!trimmedValue) {
-          error = " Email is Required";
+          error = " Email address is Required";
         } else if (
           !/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/.test(
             trimmedValue,
           )
         ) {
-          error = "Please enter a valid email";
+          error = "Please enter a valid email address.";
         } else if (
           registeredEmails.includes(trimmedValue.toLowerCase()) &&
           trimmedValue.toLowerCase() !== user.email.toLowerCase()
         ) {
-          error = "Email already exists";
+          error = "This email address is already registered.";
         }
 
         break;
 
       case "phone":
         if (!/^[0-9]{10}$/.test(value)) {
-          error = "10 digit number required";
+          error = "Phone number is Required.";
         }
 
         break;
 
       case "zip_code":
         if (!/^[0-9]{6}$/.test(value)) {
-          error = "Zip Code is Required ";
+          error = "ZIP code is Required.";
         }
 
         break;
 
       case "dob":
         if (!value) {
-          error = "Select The DOB";
+          error = "Please select your date of birth.";
         }
         break;
 
       case "state":
         if (!value) {
-          error = "Select The State";
+          error = "Please select a state.";
         }
         break;
 
+        // language + job tittle
       case "language":
-      case "job_title":
-        if (!value) {
-          error = "Select The Option";
-        }
+  if (!value) {
+    error = "Please select a language.";
+  }
+  break;
 
-        break;
+case "job_title":
+  if (!value) {
+    error = "Please select a job title.";
+  }
+  break;
 
       default:
         break;
@@ -187,7 +205,7 @@ function AddUser() {
 
     let fieldValue = value;
 
-    // FILE
+    // FILE  of validation 
     if (files && files[0]) {
       fieldValue = URL.createObjectURL(files[0]);
     }
@@ -487,6 +505,28 @@ function AddUser() {
               </div>
             </div>
 
+
+
+
+
+{/* active */}
+<div className="col-md-6 mb-3">
+  <label className="form-label fw-semibold">
+    Status
+  </label>
+
+  <select
+    className="form-select"
+    name="status"
+    value={user.status}
+    onChange={onChange}
+  >
+    <option value="active">Active</option>
+    <option value="inactive">Inactive</option>
+  </select>
+</div>
+
+
             {/* PROFILE */}
             <div className="mb-4">
               <label className="form-label fw-semibold">Profile Image</label>
@@ -512,21 +552,31 @@ function AddUser() {
                 {/* FILE INPUT */}
                 <div className="col-md-6">
                   <input
-                    type="file"
-                    className="form-control"
-                    name="profile"
-                    accept="image/*"
-                    onChange={(e) => {
-                      if (e.target.files && e.target.files[0]) {
-                        const imageUrl = URL.createObjectURL(e.target.files[0]);
+  type="file"
+  className="form-control"
+  name="profile"
+  accept="image/*"
+  onChange={(e) => {
+    const file = e.target.files[0];
 
-                        setUser({
-                          ...user,
-                          profile: imageUrl,
-                        });
-                      }
-                    }}
-                  />
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        setUser((prev) => ({
+          ...prev,
+          profile: reader.result,
+        }));
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }}
+/>
+
+
+
+
                 </div>
               </div>
 

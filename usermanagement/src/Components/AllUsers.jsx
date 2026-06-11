@@ -155,7 +155,7 @@ const totalPages = Math.ceil(
                     }}
                     width="40"
                     height="40"
-                    className="rounded-circle border object-fit-cover img-fluid"
+                    className="rounded-circle border object-fit-cover "
                   />
                 ) : (
                   <img
@@ -163,7 +163,7 @@ const totalPages = Math.ceil(
                     alt=""
                     width="40"
                     height="40"
-                    className="rounded-circle border object-fit-cover img-fluid"
+                    className="rounded-circle border object-fit-cover "
                   />
                 )}
               </td>
@@ -184,39 +184,47 @@ const totalPages = Math.ceil(
 
 
               
-              <td>
-                <div className="d-flex flex-wrap gap-2 justify-content-center">
-                  {/* EDIT */}
-                  <button
-                    className="btn btn-warning btn-sm"
-                    onClick={() =>
-                      navigate(`/dashboard/edit/${user.id}`)
-                    }
-                  >
-                    Edit
-                  </button>
+             <td>
+  <div className="d-flex justify-content-center gap-2">
 
-                  {/* DELETE */}
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => removeUser(user.id)}
-                  >
-                    Delete
-                  </button>
+    {/* View */}
+    <button
+      className="btn btn-outline-success btn-sm rounded-circle d-flex align-items-center justify-content-center"
+      style={{ width: "38px", height: "38px" }}
+      onClick={() => navigate(`/dashboard/view/${user.id}`)}
+      title="View"
+    >
+      <i className="bi bi-eye-fill"></i>
+    </button>
 
-                  {/* VIEW */}
-                  <button
-                    className="btn btn-success btn-sm"
-                    onClick={() =>
-                      navigate(`/dashboard/view/${user.id}`)
-                    }
-                  >
-                    View
-                  </button>
+    {/* Edit */}
+    <button
+      className="btn btn-outline-primary btn-sm rounded-circle d-flex align-items-center justify-content-center"
+      style={{ width: "38px", height: "38px" }}
+      onClick={() => navigate(`/dashboard/edit/${user.id}`)}
+      title="Edit"
+    >
+      <i className="bi bi-pencil-fill"></i>
+    </button>
 
-                  
-                </div>
-              </td>
+    {/* Delete */}
+    <button
+      className="btn btn-outline-danger btn-sm rounded-circle d-flex align-items-center justify-content-center"
+      style={{ width: "38px", height: "38px" }}
+      onClick={() => removeUser(user.id)}
+      title="Delete"
+    >
+      <i className="bi bi-trash-fill"></i>
+    </button>
+
+
+
+    
+
+  </div>
+</td>
+
+
             </tr>
           ))
         ) : (

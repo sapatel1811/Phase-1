@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 
-function ViewUser() {
+  function ViewUser() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
