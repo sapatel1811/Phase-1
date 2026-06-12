@@ -135,7 +135,7 @@ function ProfileSetting() {
 
   const isChanged = JSON.stringify(form) !== JSON.stringify(original);
 
-  // new added handle change 8-jun..
+  // new added handle change 
   const handleChange = (e) => {
     const { name } = e.target;
     let value = e.target.value;
@@ -209,21 +209,11 @@ function ProfileSetting() {
   return (
     
     <div className="container-fluid py-4">
+
       <div className="mb-4">
       <h3 className="fw-bold">Profile</h3>
       </div>
-
-<div className="mb-7">
-<button
-  className="btn btn-outline-dark"
-  onClick={() => navigate(-3)}
->
-  <i className="bi bi-arrow-left me-2"></i>
-  Go Back
-</button>
-</div>
-
-
+      
     <div className="row">
         {/* LEFT SIDEBAR */}
         {/* <div className="col-md-9">

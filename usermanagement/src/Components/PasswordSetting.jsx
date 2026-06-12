@@ -94,13 +94,7 @@ function PasswordSetting() {
     return Object.keys(newErrors).length === 0;
   };
 
-  //   const handleChange = (e) => {
-  //     setPasswords({
-  //       ...passwords,
-  //       [e.target.name]: e.target.value,
-  //     });
-  //   };
-
+  
   // validation change handle function...
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -171,15 +165,18 @@ function PasswordSetting() {
   };
 
   return (
-    <>
+
+    <>    
       <form
         onSubmit={(e) => {
           e.preventDefault();
           updatePassword();
         }}
       >
-        <div className="mb-3">
-          <label>Current Password</label>
+       <div className="mb-3">
+          <label>Current Password
+          <span class="text-danger"> * </span>
+          </label>
 
           <div className="input-group">
             <input
@@ -217,7 +214,9 @@ function PasswordSetting() {
         </div>
 
         <div className="mb-3">
-          <label>New Password</label>
+          <label>New Password
+            <sapn class="text-danger"> * </sapn>
+          </label>
 
           <div className="input-group">
             <input
@@ -252,7 +251,9 @@ function PasswordSetting() {
         </div>
 
         <div className="mb-3">
-          <label>Confirm Password</label>
+          <label>Confirm Password
+            <sapn class="text-danger"> * </sapn>
+          </label>
 
           <div className="input-group">
             <input
@@ -303,17 +304,18 @@ function PasswordSetting() {
     className="btn btn-secondary"
     onClick={() => {
 
-//  console.log("Cancel Clicked");
-
     setPasswords({
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
+
   });
 
-  navigate("/dashboard/profile-edit");
+  navigate("/dashboard");
     }}
-    > Cancel </button>
+> Cancel </button>
+
+
 
 
 

@@ -22,7 +22,7 @@ function AllUsers() {
 
       setUsers(res.data);
     } catch (error) {
-      console.log(error);
+      console.log(error); 
 
       toast.error("Failed to load users");
     }
@@ -55,22 +55,37 @@ function AllUsers() {
     }
   };
 
-
   // serch 
   const [search, setSearch] = useState("");
 
 
+  const [statusFilter, setStatusFilter] = useState("all");
+
   // pagination
 const [currentPage, setCurrentPage] = useState(1);
-const usersPerPage = 5;
+const usersPerPage = 6;
 
 
 // serch...
-  const filteredUsers = users.filter((user) =>
-  `${user.fname} ${user.lname} ${user.email} ${user.job_title}`
+//   const filteredUsers = users.filter((user) =>
+//   `${user.fname} ${user.lname} ${user.email} ${user.job_title}`
+//     .toLowerCase()
+//     .includes(search.toLowerCase())
+// );
+
+
+const filteredUsers = users.filter((user) => {
+  const matchesSearch = `${user.fname} ${user.lname} ${user.email} ${user.job_title}`
     .toLowerCase()
-    .includes(search.toLowerCase())
-);
+    .includes(search.toLowerCase());
+
+  const matchesStatus =
+    statusFilter === "all"
+      ? true
+      : user.status?.toLowerCase() === statusFilter;
+
+  return matchesSearch && matchesStatus;
+});
 
 
 // pagination
@@ -86,11 +101,25 @@ const totalPages = Math.ceil(
   filteredUsers.length / usersPerPage
 );
 
+useEffect(() => {
+  console.log("ALL USERS:", users);
+}, [users]);
 
+
+const toggleStatus = async (user) => {
+  const newStatus = user.status === "active" ? "inactive" : "active";
+
+  await axios.patch(
+    `http://192.168.1.117:3000/users/${user.id}`,
+    { status: newStatus }
+  );
+
+  loadUsers(); //  REAL TIME UPDATE
+};
 
 
   return (
-    <div className="container-fluid py-4 col-12 col-xl-10 mx-auto">
+    <div className="container py-4">
       {/* header */}
       <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
         <h2 className="fw-bold m-0">All Users </h2>
@@ -101,7 +130,7 @@ const totalPages = Math.ceil(
 
 
 {/* serch */}
-      <div className="row mb-3">
+      {/* <div className="row mb-3">
   <div className="col-md-4">
     <input
       type="text"
@@ -114,12 +143,43 @@ const totalPages = Math.ceil(
 }}
     />
   </div>
+</div> */}
+
+{/* 11-6 */}
+<div className="row mb-3">
+  <div className="col-md-6">
+    <input
+      type="text"
+      className="form-control"
+      placeholder="Search user..."
+      value={search}
+      onChange={(e) => {
+        setSearch(e.target.value);
+        setCurrentPage(1);
+      }}
+    />
+  </div>
+
+  <div className="col-md-3">
+    <select
+      className="form-select"
+      value={statusFilter}
+      onChange={(e) => {
+        setStatusFilter(e.target.value);
+        setCurrentPage(1);
+      }}
+    >
+      <option value="all">All Users</option>
+      <option value="active">Active Users</option>
+      <option value="inactive">Inactive Users</option>
+    </select>
+  </div>
 </div>
 
 
-      {/* table */}
 
-      <div className="card shadow border-0 overflow-auto">
+{/* table */}
+<div className="card shadow border-0 overflow-auto">
   <div className="card-body table-responsive p-0 p-md-3">
     <table className="table table-bordered table-hover table-sm align-middle text-nowrap m-0">
       <thead className="table-dark text-center">
@@ -169,21 +229,18 @@ const totalPages = Math.ceil(
               </td>
 
           
-              {/* NAME */}
-              <td>{user.fname + " " + user.lname}</td>
+{/* NAME */}
+<td>{user.fname + " " + user.lname}</td>
 
-              {/* EMAIL */}
-              <td>{user.email}</td>
+{/* EMAIL */}
+<td>{user.email}</td>
 
-              {/* JOB TITLE */}
-              <td>{user.job_title}</td>
+{/* JOB TITLE */}
+<td>{user.job_title}</td>
 
-              {/* ACTIONS */}
+{/* ACTIONS */}
 
-
-
-
-              
+  
              <td>
   <div className="d-flex justify-content-center gap-2">
 
@@ -218,24 +275,48 @@ const totalPages = Math.ceil(
     </button>
 
 
-
-    
-
-  </div>
+{/* actionlog */}
+<div
+  onClick={() => toggleStatus(user)}
+  style={{
+    width: "40px",
+    height: "20px",
+    borderRadius: "30px",
+    background: user.status === "active" ? "#22c55e" : "#dc3545",
+    display: "flex",
+    alignItems: "center",
+    padding: "3px",
+    cursor: "pointer",
+    transition: "0.3s",
+  }}
+>
+  <div
+    style={{
+      width: "15px",
+      height: "15px",
+      borderRadius: "50%",
+      background: "#fff",
+      transform:
+      user.status === "active"
+      ? "translateX(15px)"
+      : "translateX(1px)",
+      transition: "0.3s",
+    }}
+  ></div>
+</div>
+</div>
 </td>
 
 
-            </tr>
-          ))
-        ) : (
-          <tr>
-            <td colSpan="15" className="text-center text-muted py-4">
-              No Users Found
-            </td>
-          </tr>
-        )}
-      </tbody>
-    </table>
+</tr>
+))
+) : (
+<tr>
+<td colSpan="15" className="text-center text-muted py-4">No Users Found</td>
+</tr>
+)}
+</tbody>
+</table>
 
 
 {/* pagination */}

@@ -35,7 +35,7 @@ const initialValue = {
   language: "",
   job_title: "",
   profile: "",
-    status: "active",
+  status: "",
 };
 
 // Field names mapping for validation error messages
@@ -63,11 +63,8 @@ function AddUser() {
 
   // for state function use
   const usStates = State.getStatesOfCountry("IN");
-
   const [selected, setSelected] = useState("");
-
   const [errors, setErrors] = useState({});
-
   const [registeredEmails, setRegisteredEmails] = useState([]);
 
   // CHECK FORM CHANGED OR NOT
@@ -179,7 +176,7 @@ function AddUser() {
         }
         break;
 
-        // language + job tittle
+        // language  +  job tittle
       case "language":
   if (!value) {
     error = "Please select a language.";
@@ -289,7 +286,9 @@ case "job_title":
             {/* FIRST + LAST */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">First Name</label>
+                <label className="form-label fw-semibold ">First Name
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <input
                   type="text"
@@ -300,12 +299,13 @@ case "job_title":
                   placeholder="Enter First Name"
                   maxLength={15}
                 />
-
                 <small className="text-danger">{errors.fname}</small>
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Last Name</label>
+                <label className="form-label fw-semibold">Last Name
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <input
                   type="text"
@@ -324,7 +324,9 @@ case "job_title":
             {/* EMAIL + PHONE */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Email</label>
+                <label className="form-label fw-semibold">Email
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <input
                   type="text"
@@ -339,7 +341,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Phone</label>
+                <label className="form-label fw-semibold">Phone
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <input
                   type="text"
@@ -370,7 +374,9 @@ case "job_title":
             {/* CITY STATE ZIP + DOB */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">City</label>
+                <label className="form-label fw-semibold">City
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <input
                   type="text"
@@ -386,7 +392,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">State</label>
+                <label className="form-label fw-semibold">State
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <select
                   className="form-select"
@@ -414,7 +422,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Zip Code</label>
+                <label className="form-label fw-semibold">Zip Code
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <input
                   type="text"
@@ -442,7 +452,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">DOB</label>
+                <label className="form-label fw-semibold">DOB
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <input
                   type="date"
@@ -459,7 +471,9 @@ case "job_title":
             {/* LANGUAGE + JOB */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Language</label>
+                <label className="form-label fw-semibold">Language
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <select
                   className="form-select"
@@ -483,7 +497,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Job Title</label>
+                <label className="form-label fw-semibold">Job Title
+                  <span class="text-danger"> * </span>
+                </label>
 
                 <select
                   className="form-select"
@@ -493,7 +509,7 @@ case "job_title":
                 >
                   <option value="">Select Job</option>
 
-                  <option>Developer</option>
+                  <option>Full Stack Developer</option>
                   <option>Designer</option>
                   <option>Manager</option>
                   <option>Finance & Accounting</option>
@@ -510,7 +526,7 @@ case "job_title":
 
 
 {/* active */}
-<div className="col-md-6 mb-3">
+{/* <div className="col-md-6 mb-3">
   <label className="form-label fw-semibold">
     Status
   </label>
@@ -524,12 +540,14 @@ case "job_title":
     <option value="active">Active</option>
     <option value="inactive">Inactive</option>
   </select>
-</div>
+</div> */}
 
 
             {/* PROFILE */}
             <div className="mb-4">
-              <label className="form-label fw-semibold">Profile Image</label>
+              <label className="form-label fw-semibold">Profile Image
+                <span class="text-danger"> * </span>
+              </label>
 
               <div className="row">
                 {/* URL INPUT */}
@@ -596,7 +614,7 @@ case "job_title":
               <button
                 type="submit"
                 disabled={id && !isChanged}
-                className="btn w-50 text-white"
+                className="btn w-70 text-white"
                 style={{
                   backgroundColor: "#ff6600",
                   borderColor: "#973e03",
@@ -609,7 +627,7 @@ case "job_title":
 
               <button
                 type="button"
-                className="btn btn-secondary w-50"
+                className="btn w-70 btn-secondary "
                 onClick={() => navigate("/dashboard/all")}
               >
                 Cancel

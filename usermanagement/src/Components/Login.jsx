@@ -34,7 +34,7 @@ function Login() {
     let error = "";
 
     // use for username validation ...
-    switch (name) {
+switch (name) {
       case "username":
         if (!value.trim()) {
           error = "Please enter a username";
@@ -84,7 +84,7 @@ function Login() {
 
       default:
         break;
-    }
+}
 
     return error;
   };
@@ -255,11 +255,13 @@ setTimeout(() => {
 
   return (
     <>
+
+
       <div
         className="container-fluid min-vh-100 d-flex justify-content-center align-items-center"
         style={{
           backgroundImage:
-            "url('https://static.vecteezy.com/system/resources/thumbnails/035/121/756/small/background-of-bubbles-for-laundry-and-cleaning-concept-vector.jpg')",
+"url('https://static.vecteezy.com/system/resources/thumbnails/035/121/756/small/background-of-bubbles-for-laundry-and-cleaning-concept-vector.jpg')",
           backgroundFilter: "blur(10px)",
           backgroundSize: "cover",
           // backgroundPosition: "center",
@@ -286,6 +288,9 @@ setTimeout(() => {
               <form onSubmit={isLogin ? handleLogin : handleSignup}>
                 {!isLogin && (
                   <div className="mb-3">
+<label>Username  
+<span class="text-danger">*</span>
+</label>
                     <input
                       type="text"
                       name="username"
@@ -299,7 +304,10 @@ setTimeout(() => {
                   </div>
                 )}
 
-                <div className="mb-3">
+<div className="mb-3">
+<label>Email
+<span class="text-danger">*</span>
+</label>
                   <input
                     type="email"
                     name="email"
@@ -313,8 +321,12 @@ setTimeout(() => {
                   <small className="text-danger">{errors.email}</small>
                 </div>
 
-                <div className="mb-3">
-                  <div className="input-group">
+<div className="mb-3">
+  <label>Password
+  <span class="text-danger">*</span>
+</label>
+<div className="input-group">
+
                     <input
                       type={showPassword ? "text" : "password"}
                       name="password"
@@ -354,7 +366,11 @@ setTimeout(() => {
                 </div>
 
                 {!isLogin && (
+
                   <div className="mb-3">
+<label>Confirm Password
+<span class="text-danger">*</span>
+</label>
                     <div className="input-group">
                       <input
                         type={showConfirmPassword ? "text" : "password"}

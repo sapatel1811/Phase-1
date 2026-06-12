@@ -137,7 +137,7 @@ useEffect(() => {
                 fontSize: "18px",
               }}
             >
-              👤
+              
             </div> */}
 
         {/* 4-6-2026 */}
@@ -265,6 +265,7 @@ useEffect(() => {
                       Profile Settings
                     </NavLink>
                   </li> */}
+
                 </ul>
               )}
             </li>

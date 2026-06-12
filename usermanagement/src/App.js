@@ -15,6 +15,7 @@ import PasswordSetting from "./Components/PasswordSetting";
 
 
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,8 @@ function App() {
         
         <Route path="/dashboard" element={<Dashboard />}>
        {/* <Route path="profile" element={<ProfileEdit />}/> */}
+
+    
 
           <Route index element={<Home />} />
           <Route path="add" element={<AddUser />} />
