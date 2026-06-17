@@ -3,10 +3,15 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
+
+
+
 function ProfileEdit() {
   const navigate = useNavigate();
 
+
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
 
   const [form, setForm] = useState({
     username: "",
@@ -15,10 +20,13 @@ function ProfileEdit() {
     profile: "",
   });
 
+
   // profile img genretor ....
   const fileInputRef = useRef(null);
 
+
   const [originalData, setOriginalData] = useState(null);
+
 
   useEffect(() => {
     if (currentUser) {
@@ -29,18 +37,22 @@ function ProfileEdit() {
         profile: currentUser.profile || "",
       };
 
+
       setForm(data);
       setOriginalData(data);
     }
   }, []);
 
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+
   // CHECK IF ANY CHANGE DONE
   const isChanged =
     originalData && JSON.stringify(form) !== JSON.stringify(originalData);
+
 
   const handleUpdate = async () => {
     try {
@@ -49,12 +61,15 @@ function ProfileEdit() {
         form,
       );
 
+
       localStorage.setItem(
         "currentUser",
         JSON.stringify({ ...currentUser, ...form }),
       );
 
+
       Swal.fire("Success", "Profile Updated Successfully", "success");
+
 
       navigate("/dashboard");
     } catch (error) {
@@ -62,16 +77,18 @@ function ProfileEdit() {
     }
   };
 
+
   return (
-    <div className="container py-4">
-      
+    <div className="container py-1 pb-4">
+     
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
-          <div className="card shadow border-0 rounded-4">
+          <div className="card shadow border-3 rounded-6">
             {/* HEADER */}
             <div className="card-header bg-black text-white text-center">
               <h4 className="mb-0">Edit Profile</h4>
             </div>
+
 
             <div className="card-body p-4">
               {/* PROFILE IMAGE */}
@@ -88,6 +105,7 @@ function ProfileEdit() {
                 />
               </div> */}
 
+
               {/* PROFILE IMAGE URL */}
               {/* <div className="mb-3">
                 <label className="form-label">Profile Image URL</label>
@@ -100,6 +118,7 @@ function ProfileEdit() {
                   onChange={handleChange}
                 />
               </div> */}
+
 
               <div className="text-center mb-3">
                 <img
@@ -122,6 +141,7 @@ function ProfileEdit() {
                   onClick={() => fileInputRef.current.click()}
                 />
 
+
                 <input
                   type="file"
                   accept="image/*"
@@ -130,8 +150,10 @@ function ProfileEdit() {
                   onChange={(e) => {
                     const file = e.target.files[0];
 
+
                     if (file) {
                       const reader = new FileReader();
+
 
                       reader.onloadend = () => {
                         setForm({
@@ -140,15 +162,18 @@ function ProfileEdit() {
                         });
                       };
 
+
                       reader.readAsDataURL(file);
                     }
                   }}
                 />
 
+
                 <p className="text-muted mt-2 mb-0">
                   Click image to change profile photo
                 </p>
               </div>
+
 
               {/* USERNAME */}
               <div className="mb-3">
@@ -162,6 +187,7 @@ function ProfileEdit() {
                 />
               </div>
 
+
               {/* EMAIL */}
               <div className="mb-3">
                 <label className="form-label">Email</label>
@@ -174,6 +200,7 @@ function ProfileEdit() {
                 />
               </div>
 
+
               {/* PASSWORD */}
               <div className="mb-3">
                 <label className="form-label">Password</label>
@@ -182,9 +209,11 @@ function ProfileEdit() {
                   name="password"
                   className="form-control"
                   value={form.password}
+                  autoComplete="password"
                   onChange={handleChange}
                 />
               </div>
+
 
               {/* BUTTONS */}
               <div className="d-flex gap-2">
@@ -197,6 +226,7 @@ function ProfileEdit() {
                     Update
                   </button>
                 )}
+
 
                 <button
                   className="btn btn-secondary w-100"
@@ -212,5 +242,6 @@ function ProfileEdit() {
     </div>
   );
 }
+
 
 export default ProfileEdit;

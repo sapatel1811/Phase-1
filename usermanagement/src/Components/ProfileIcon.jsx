@@ -1,6 +1,7 @@
 function ProfileIcon() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
+
   return (
     <img
       src={
@@ -18,5 +19,6 @@ function ProfileIcon() {
     />
   );
 }
+
 
 export default ProfileIcon;

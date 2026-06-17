@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 
-  function ViewUser() {
+function ViewUser() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -17,150 +17,117 @@ import axios from "axios";
   if (!user) return <h2> ... </h2>;
 
   return (
-    <div className="container " style={{ maxWidth: "700px" }}>
-      {/* Back Button */}
-      <div
-        className="max-auto mb-3"
-        style={{ maxWidth: "900px", margin: "0 auto" }}
-      >
+    <>
+      {/* Header */}
+      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
+        <h2 className="fw-bold m-0">View User</h2>
+
         <button
-          className="btn btn-outline-secondary btn-sm px-2 shadow-sm "
+          className="btn text-white px-4 shadow-sm align-self-start align-self-sm-center"
+          style={{
+            backgroundColor: "#ff6600",
+            borderColor: "#973e03",
+          }}
           onClick={() => navigate(-1)}
         >
+          <i className="align-self-start align-self-sm-center"></i>
           Go Back
         </button>
       </div>
 
-      {/* Main Card */}
-      <div
-        className="card shadow-sm border-0 mx-auto"
-        style={{ maxWidth: "900px" }}
-      >
-        <div className="p-4">
-          <div className="d-flex align-items-center gap-4 flex-wrap">
-            {/* User Image */}
-            {/* <img
-          src={user.
-           || "https://via.placeholder.com/100"}
-          alt="profile"
-          className="rounded-circle border" 
-          width="100"
-          height="100"
-          style={{ objectFit: "cover" }}
-        /> */}
+      <div className="card border rounded-3 p-4">
+        <div className="row">
+          {/* Left Side */}
+          <div className="col-md-4 text-center ">
+            <img
+              src={user.profile || "https://placehold.co/150"}
+              alt="profile"
+              width="140"
+              height="140"
+              className="rounded-circle border mb-3"
+              style={{ objectFit: "cover" }}
+            />
 
-            {/* Bio */}
-            <div className="pt-3">
-              {/* fw-semibold => fornt-wight (bootstarp provide boldness of text) */}
-              {/* <h6 className="fw-semibold">   
-          Profile Bio
-        </h6>
-
-        <p className="text-muted mb-0">
-          {user.profile || "No bio available"}
-        </p> */}
-
-              {/* PROFILE */}
-              <td>
-                {user.profile ? (
-                  <img
-                    src={user.profile}
-                    alt="profile"
-                    width="100"
-                    height="100"
-                    className="rounded-circle border object-fit-cover"
-                  />
-                ) : (
-                  <img
-                    src="https://placehold.co/600x400"
-                    alt="profile"
-                    width="40"
-                    height="40"
-                    className="rounded-circle border object-fit-cover"
-                  />
-                )}
-              </td>
-            </div>
-
-            {/* Basic Info */}
-            <div>
-              <h3 className="mb-1">
-                {user.fname} {user.lname}
-              </h3>
-
-              <p className="mb-1 text-dark">{user.job_title || "User"}</p>
-
-              <small>ID: {user.id}</small>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Details Section */}
-        <div className="card-body p-4">
-          {/* Row */}
-          <div className="d-flex justify-content-between border-bottom py-2">
-            <span className="fw-semibold text-capitalize">Name</span>
-
-            <span>
+            <h3 className="fw-bold">
               {user.fname} {user.lname}
+            </h3>
+
+            <span className="badge bg-primary px-3 py-2 mt-2">
+              {user.job_title}
             </span>
           </div>
 
-          {/* Row */}
-          <div className="d-flex justify-content-between border-bottom py-2">
-            <span className="fw-semibold">Email</span>
+          {/* Right Side */}
+          <div className="col-md-8 ps-md-4">
+            <div className="row g-4">
+              {/* Email */}
+              <div className="col-md-6">
+                <small className="text-muted">
+                  <i className="bi bi-envelope-fill me-2"></i>Email
+                </small>
+                <div className="fw-semibold">{user.email}</div>
+              </div>
 
-            <span>{user.email}</span>
-          </div>
+              {/* Phone */}
+              <div className="col-md-6">
+                <small className="text-muted">
+                  <i className="bi bi-telephone-fill me-2"></i>Phone
+                </small>
+                <div className="fw-semibold">{user.phone}</div>
+              </div>
 
-          {/* Row */}
-          <div className="d-flex justify-content-between border-bottom py-2">
-            <span className="fw-semibold">Phone</span>
+              {/* City */}
+              <div className="col-md-6">
+                <small className="text-muted">
+                  <i className="bi bi-geo-alt-fill me-2"></i>City
+                </small>
+                <div className="fw-semibold">{user.city}</div>
+              </div>
 
-            <span>{user.phone}</span>
-          </div>
+              {/* State */}
+              <div className="col-md-6">
+                <small className="text-muted">
+                  <i className="bi bi-map-fill me-2"></i>State
+                </small>
+                <div className="fw-semibold">{user.state}</div>
+              </div>
 
-          {/* Row */}
-          <div className="d-flex justify-content-between border-bottom py-2">
-            <span className="fw-semibold">City</span>
+              {/* Zip Code */}
+              <div className="col-md-6">
+                <small className="text-muted">
+                  <i className="bi bi-mailbox me-2"></i>Zip Code
+                </small>
+                <div className="fw-semibold">{user.zip_code}</div>
+              </div>
 
-            <span>{user.city}</span>
-          </div>
+              {/* DOB */}
+              <div className="col-md-6">
+                <small className="text-muted">
+                  <i className="bi bi-calendar-event me-2"></i>Date of Birth
+                </small>
+                <div className="fw-semibold">{user.dob}</div>
+              </div>
 
-          {/* Row */}
-          <div className="d-flex justify-content-between border-bottom py-2">
-            <span className="fw-semibold">State</span>
+              {/* Language */}
+              <div className="col-md-6">
+                <small className="text-muted">
+                  <i className="bi bi-translate me-2"></i>Language
+                </small>
+                <div className="fw-semibold">{user.language}</div>
+              </div>
 
-            <span>{user.state}</span>
-          </div>
-
-          {/* Row */}
-          {/* <div className="d-flex justify-content-between border-bottom py-2">
-        <span className="fw-semibold">
-          Country
-        </span>
-
-        <span>
-          {user.country}
-        </span>
-      </div> */}
-
-          {/* Row */}
-          <div className="d-flex justify-content-between border-bottom py-2">
-            <span className="fw-semibold">Language</span>
-
-            <span>{user.language}</span>
-          </div>
-
-          {/* Row */}
-          <div className="d-flex justify-content-between border-bottom py-2">
-            <span className="fw-semibold">Date of Birth</span>
-
-            <span>{user.dob}</span>
+              {/* Job Title */}
+              <div className="col-md-6">
+                <small className="text-muted">
+                  <i className="bi bi-briefcase-fill me-2"></i>Job Title
+                </small>
+                <div className="fw-semibold">{user.job_title}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

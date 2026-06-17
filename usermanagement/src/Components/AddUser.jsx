@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
-//useeffect : api call and side effect dur karne ke liye 
-//usestate : state manage karne ke liye 
+//useeffect : api call and side effect dur karne ke liye
+//usestate : state manage karne ke liye
 
-import Swal from "sweetalert2";
-// swal : popup alaert ke liye 
-
+import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-//usenavigate : redirect karne ke liye 
+//usenavigate : redirect karne ke liye
 //useparms : url se id lene ke liye
 
 import axios from "axios";
-// axios: api call karane ke liye 
+// axios: api call karane ke liye
 
 // for pre build state option
 import { State } from "country-state-city";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
 
-
-// initial value : form reset karne ke liye and state initialize karne ke liye , 
-// form ke sare fields ka initial value ek object me store kar liya hai , 
+// initial value : form reset karne ke liye and state initialize karne ke liye ,
+// form ke sare fields ka initial value ek object me store kar liya hai ,
 // taki form reset karne me asani ho aur state initialize karne me bhi asani ho .
 const initialValue = {
   id: "",
@@ -35,7 +31,7 @@ const initialValue = {
   language: "",
   job_title: "",
   profile: "",
-  status: "",
+  status: "active",
 };
 
 // Field names mapping for validation error messages
@@ -50,15 +46,19 @@ const fieldNames = {
   state: "State",
   language: "Language",
   job_title: "Job Title",
+  status: "Status",
 };
 
 function AddUser() {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  //form ka sara data store karne ke liye state bnaya hy..
+  //user = current value , setuser = function update karne ke liye ,
+  // initialvalue = user state ka initial value , jo ki ek object hai jisme form ke sare fields ka initial value store hai .
   const [user, setUser] = useState(initialValue);
 
-  // ORIGINAL USER DATA
+  // ORIGINAL data cahnge karne ke liye (edit par)
   const [originalUser, setOriginalUser] = useState(initialValue);
 
   // for state function use
@@ -67,7 +67,7 @@ function AddUser() {
   const [errors, setErrors] = useState({});
   const [registeredEmails, setRegisteredEmails] = useState([]);
 
-  // CHECK FORM CHANGED OR NOT
+  // check karna ki user data or orignal data same hy ya
   const isChanged = JSON.stringify(user) !== JSON.stringify(originalUser);
 
   // single user data load for edit ke liye
@@ -76,9 +76,7 @@ function AddUser() {
     const fetchAll = async () => {
       try {
         const resp = await axios.get("http://192.168.1.117:3000/users");
-
         const emails = resp.data.map((u) => (u.email || "").toLowerCase());
-
         setRegisteredEmails(emails);
       } catch (err) {
         console.log("Failed to fetch users for email check", err);
@@ -86,25 +84,17 @@ function AddUser() {
     };
 
     fetchAll();
-
     const fetchUser = async () => {
       try {
         const res = await axios.get(`http://192.168.1.117:3000/users/${id}`);
-
         setUser(res.data);
-
         // SAVE ORIGINAL DATA
         setOriginalUser(res.data);
-
         setSelected(res.data.state);
       } catch (error) {
         console.log(error);
 
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "Failed to load user",
-        });
+        toast.error("Failed to load user");
       }
     };
 
@@ -117,7 +107,7 @@ function AddUser() {
   const validateField = (name, value) => {
     let error = "";
 
-    const trimmedValue = value.trim();
+    const trimmedValue = value ? value.toString().trim() : "";
 
     switch (name) {
       case "fname":
@@ -151,22 +141,26 @@ function AddUser() {
         break;
 
       case "phone":
-        if (!/^[0-9]{10}$/.test(value)) {
-          error = "Phone number is Required.";
+        if (!value) {
+          error = "Phone number is required.";
+        } else if (!/^[0-9]{10}$/.test(value)) {
+          error = "Phone number must be exactly 10 digits.";
         }
-
         break;
 
       case "zip_code":
-        if (!/^[0-9]{6}$/.test(value)) {
-          error = "ZIP code is Required.";
+        if (!value) {
+          error = "Zip code is required.";
+        } else if (!/^[0-9]{6}$/.test(value)) {
+          error = "Zip code must be exactly 6 digits.";
         }
-
         break;
 
       case "dob":
         if (!value) {
           error = "Please select your date of birth.";
+        } else if (value >= new Date().toISOString().split("T")[0]) {
+          error = "DOB must be select a past date.";
         }
         break;
 
@@ -176,20 +170,27 @@ function AddUser() {
         }
         break;
 
-        // language  +  job tittle
+      // language  +  job tittle
       case "language":
-  if (!value) {
-    error = "Please select a language.";
-  }
-  break;
+        if (!value) {
+          error = "Please select a language.";
+        }
+        break;
 
-case "job_title":
-  if (!value) {
-    error = "Please select a job title.";
-  }
-  break;
+      case "job_title":
+        if (!value) {
+          error = "Please select a job title.";
+        }
+        break;
 
       default:
+        break;
+
+      // extra
+      case "status":
+        if (!value) {
+          error = "Please select status.";
+        }
         break;
     }
 
@@ -202,16 +203,17 @@ case "job_title":
 
     let fieldValue = value;
 
-    // FILE  of validation 
+    // FILE  of validation
     if (files && files[0]) {
       fieldValue = URL.createObjectURL(files[0]);
     }
-
+    // other fild validation ke liye
     setUser({
-      ...user,
+      ...user, // spred oprator =  current value copy karta hy taki baki filds ka data lose na ho .
       [name]: fieldValue,
     });
 
+    //validation ke liye error state update karne ke liye
     setErrors({
       ...errors,
       [name]: validateField(name, fieldValue),
@@ -219,7 +221,7 @@ case "job_title":
   };
 
   // SUBMIT
-  const submitData = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let newErrors = {};
@@ -237,59 +239,44 @@ case "job_title":
     if (Object.keys(newErrors).length > 0) return;
 
     try {
-      // edit code
       if (id) {
         await axios.put(`http://192.168.1.117:3000/users/${id}`, user);
 
-        Swal.fire({
-          icon: "success",
-          title: "Updated",
-          text: "User Updated Successfully",
-          confirmButtonColor: "#0d6efd",
-        });
+        toast.success("User Updated Successfully");
       } else {
-        // add user code
         await axios.post("http://192.168.1.117:3000/users", user);
 
-        Swal.fire({
-          icon: "success",
-          title: "Success",
-          text: "User Added Successfully",
-          confirmButtonColor: "#0d6efd",
-        });
+        toast.success("User Added Successfully");
       }
 
-      // reset form data after submit
       setUser(initialValue);
 
+      // setTimeout(() => {
       navigate("/dashboard/all");
+      // }, 1500);
     } catch (error) {
       console.log(error);
-
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Something went wrong",
-      });
+      toast.error("Something went wrong");
     }
   };
 
   return (
-    <div className="container py-4">
-      <div className="card shadow border-0">
-        <div className="card-header bg-black text-white">
-          <h3 className="mb-0">{id ? "Edit User" : "Add User"}</h3>
-        </div>
+    <div className="container py-1 pb-4">
+      {/* Header */}
+      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
+        <h2 className="fw-bold m-0">{id ? "Edit User" : "Add User"}</h2>
+      </div>
 
+      <div className="card shadow ">
         <div className="card-body">
-          <form onSubmit={submitData}>
+          <form onSubmit={handleSubmit}>
             {/* FIRST + LAST */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold ">First Name
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold ">
+                  First Name
+                  <span className="text-danger">*</span>
                 </label>
-
                 <input
                   type="text"
                   className="form-control"
@@ -303,8 +290,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Last Name
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold">
+                  Last Name
+                  <span className="text-danger">*</span>
                 </label>
 
                 <input
@@ -324,8 +312,9 @@ case "job_title":
             {/* EMAIL + PHONE */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Email
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold">
+                  Email
+                  <span className="text-danger">*</span>
                 </label>
 
                 <input
@@ -341,8 +330,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Phone
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold">
+                  Phone
+                  <span className="text-danger">*</span>
                 </label>
 
                 <input
@@ -374,8 +364,9 @@ case "job_title":
             {/* CITY STATE ZIP + DOB */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">City
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold">
+                  City
+                  <span className="text-danger">*</span>
                 </label>
 
                 <input
@@ -392,8 +383,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">State
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold">
+                  State
+                  <span className="text-danger">*</span>
                 </label>
 
                 <select
@@ -401,18 +393,25 @@ case "job_title":
                   name="state"
                   value={selected}
                   onChange={(e) => {
-                    setSelected(e.target.value);
+                    const value = e.target.value;
+
+                    setSelected(value);
 
                     setUser({
                       ...user,
-                      state: e.target.value,
+                      state: value,
+                    });
+
+                    setErrors({
+                      ...errors,
+                      state: validateField("state", value),
                     });
                   }}
                 >
                   <option value="">Select State</option>
-``
+                  ``
                   {usStates.map((state) => (
-                    <option key={state.isoCode} value={state.isoCode}>
+                    <option key={state.isoCode} value={state.name}>
                       {state.name}
                     </option>
                   ))}
@@ -422,8 +421,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Zip Code
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold">
+                  Zip Code
+                  <span className="text-danger">*</span>
                 </label>
 
                 <input
@@ -452,8 +452,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">DOB
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold">
+                  DOB
+                  <span className="text-danger">*</span>
                 </label>
 
                 <input
@@ -461,6 +462,8 @@ case "job_title":
                   className="form-control"
                   name="dob"
                   value={user.dob}
+                  max={new Date().toISOString().split("T")[0]}
+                  dateFormat="YYYY-MM-dd"
                   onChange={onChange}
                 />
 
@@ -471,8 +474,9 @@ case "job_title":
             {/* LANGUAGE + JOB */}
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Language
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold">
+                  Language
+                  <span className="text-danger">*</span>
                 </label>
 
                 <select
@@ -497,8 +501,9 @@ case "job_title":
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold">Job Title
-                  <span class="text-danger"> * </span>
+                <label className="form-label fw-semibold">
+                  Job Title
+                  <span className="text-danger">*</span>
                 </label>
 
                 <select
@@ -521,33 +526,27 @@ case "job_title":
               </div>
             </div>
 
+            {/* active */}
+            {/* <div className="col-md-6 mb-3">
+          <label className="form-label fw-semibold">
+          Status
+         </label>
 
 
-
-
-{/* active */}
-{/* <div className="col-md-6 mb-3">
-  <label className="form-label fw-semibold">
-    Status
-  </label>
-
-  <select
-    className="form-select"
-    name="status"
-    value={user.status}
-    onChange={onChange}
-  >
-    <option value="active">Active</option>
-    <option value="inactive">Inactive</option>
-  </select>
+         <select
+           className="form-select"
+           name="status"
+           value={user.status}
+          onChange={onChange}
+          >
+          <option value="active">Active</option>
+         <option value="inactive">Inactive</option>
+         </select>
 </div> */}
-
 
             {/* PROFILE */}
             <div className="mb-4">
-              <label className="form-label fw-semibold">Profile Image
-                <span class="text-danger"> * </span>
-              </label>
+              <label className="form-label fw-semibold">Profile Image</label>
 
               <div className="row">
                 {/* URL INPUT */}
@@ -570,31 +569,27 @@ case "job_title":
                 {/* FILE INPUT */}
                 <div className="col-md-6">
                   <input
-  type="file"
-  className="form-control"
-  name="profile"
-  accept="image/*"
-  onChange={(e) => {
-    const file = e.target.files[0];
+                    type="file"
+                    className="form-control"
+                    name="profile"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
 
-    if (file) {
-      const reader = new FileReader();
+                      if (file) {
+                        const reader = new FileReader();
 
-      reader.onloadend = () => {
-        setUser((prev) => ({
-          ...prev,
-          profile: reader.result,
-        }));
-      };
+                        reader.onloadend = () => {
+                          setUser((prev) => ({
+                            ...prev,
+                            profile: reader.result,
+                          }));
+                        };
 
-      reader.readAsDataURL(file);
-    }
-  }}
-/>
-
-
-
-
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
                 </div>
               </div>
 
@@ -609,6 +604,54 @@ case "job_title":
               )}
             </div>
 
+            {id && (
+              <div className="mb-4">
+                <label className="form-label fw-semibold d-block">
+                  User Status
+                </label>
+
+                <div
+                  onClick={() =>
+                    setUser({
+                      ...user,
+                      status: user.status === "active" ? "inactive" : "active",
+                    })
+                  }
+                  style={{
+                    width: "55px",
+                    height: "28px",
+                    borderRadius: "20px",
+                    background:
+                      user.status === "active" ? "#22c55e" : "#dc3545",
+                    position: "relative",
+                    cursor: "pointer",
+                    transition: "0.3s",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      borderRadius: "50%",
+                      background: "#fff",
+                      position: "absolute",
+                      top: "2px",
+                      left: user.status === "active" ? "29px" : "2px",
+                      transition: "0.3s",
+                    }}
+                  />
+                </div>
+
+                <small
+                  className={`fw-bold ${
+                    user.status === "active" ? "text-success" : "text-danger"
+                  }`}
+                >
+                  {user.status === "active" ? "Active" : "Inactive"}
+                </small>
+              </div>
+            )}
+
             {/* BUTTONS */}
             <div className="d-flex gap-3">
               <button
@@ -622,6 +665,7 @@ case "job_title":
                   cursor: id && !isChanged ? "not-allowed" : "pointer",
                 }}
               >
+                {/* <i className={`bi ${ id ? "bi-pencil-square" : "bi-person-plus-fill"  } me-2`}></i> */}
                 {id ? "Update User" : "Add User"}
               </button>
 
@@ -630,15 +674,11 @@ case "job_title":
                 className="btn w-70 btn-secondary "
                 onClick={() => navigate("/dashboard/all")}
               >
+                <i className="bi bi-x-circle-fill me-2"></i>
                 Cancel
               </button>
             </div>
           </form>
-           <ToastContainer
-                position="top-left"
-                autoClose={2500}
-                theme="colored"
-              />
         </div>
       </div>
     </div>

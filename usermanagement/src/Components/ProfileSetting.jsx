@@ -7,11 +7,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 function ProfileSetting() {
   const navigate = useNavigate();
   const fileRef = useRef(null);
 
+
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
 
   const initialState = {
     username: "",
@@ -30,12 +33,16 @@ function ProfileSetting() {
     profile: "",
   };
 
+
   const [form, setForm] = useState(initialState);
   const [original, setOriginal] = useState(initialState);
 
+
   const usStates = State.getStatesOfCountry("IN");
 
+
   const [activeTab, setActiveTab] = useState("profile");
+
 
   // for validation ke liye
   const [errors, setErrors] = useState({
@@ -47,9 +54,11 @@ function ProfileSetting() {
     zip_code: "",
   });
 
+
   // for validation ke liye
   const validateField = (name, value) => {
     let error = "";
+
 
     switch (name) {
       case "fname":
@@ -60,6 +69,7 @@ function ProfileSetting() {
         }
         break;
 
+
       case "lname":
         if (!value.trim()) {
           error = "Last Name is required";
@@ -67,6 +77,7 @@ function ProfileSetting() {
           error = "Only letters allowed";
         }
         break;
+
 
       case "email":
         if (!value.trim()) {
@@ -78,6 +89,7 @@ function ProfileSetting() {
         }
         break;
 
+
       case "phone":
         if (!value.trim()) {
           error = "Mobile Number is required";
@@ -85,6 +97,7 @@ function ProfileSetting() {
           error = "Enter valid 10 digit Indian mobile number";
         }
         break;
+
 
       case "city":
         if (!value.trim()) {
@@ -94,6 +107,7 @@ function ProfileSetting() {
         }
         break;
 
+
       case "zip_code":
         if (!value.trim()) {
           error = "Zip Code is required";
@@ -102,12 +116,15 @@ function ProfileSetting() {
         }
         break;
 
+
       default:
         break;
     }
 
+
     return error;
   };
+
 
   useEffect(() => {
     if (currentUser) {
@@ -128,18 +145,22 @@ function ProfileSetting() {
         profile: currentUser.profile || "",
       };
 
+
       setForm(data);
       setOriginal(data);
     }
   }, []);
 
+
   const isChanged = JSON.stringify(form) !== JSON.stringify(original);
 
-  // new added handle change 
+
+  // new added handle change
   const handleChange = (e) => {
     const { name } = e.target;
     let value = e.target.value;
     let error = "";
+
 
     if (name === "fname" || name === "lname" || name === "city") {
       if (/[^A-Za-z ]/.test(value)) {
@@ -147,29 +168,36 @@ function ProfileSetting() {
           "Name can only contain letters, spaces, and standard punctuation.";
       }
 
+
       value = value.replace(/[^A-Za-z]/g, "");
     }
+
 
     if (name === "phone") {
       if (/[^0-9]/.test(value)) {
         error = "Only numbers are allowed";
       }
 
+
       value = value.replace(/\D/g, "").slice(0, 10);
     }
+
 
     if (name === "zip_code") {
       if (/[^0-9]/.test(value)) {
         error = "Please enter a valid number-digit PIN code.";
       }
 
+
       value = value.replace(/\D/g, "").slice(0, 5);
     }
+
 
     setForm({
       ...form,
       [name]: value,
     });
+
 
     setErrors({
       ...errors,
@@ -177,9 +205,11 @@ function ProfileSetting() {
     });
   };
 
+
   // const handleChange = (e) => {
   //   setForm({ ...form, [e.target.name]: e.target.value });
   // };
+
 
   const updateProfile = async () => {
     try {
@@ -188,10 +218,12 @@ function ProfileSetting() {
         form,
       );
 
+
       localStorage.setItem(
         "currentUser",
         JSON.stringify({ ...currentUser, ...form }),
       );
+
 
       toast.success("Profile Updated Successfully");
       setTimeout(() => {
@@ -202,19 +234,24 @@ function ProfileSetting() {
     }
   };
 
+
   const removeImage = () => {
     setForm({ ...form, profile: "" });
   };
 
+
   return (
-    
-    <div className="container-fluid py-4">
+
+
+    <div className="container-fluid py-1 pb-4">
+
 
       <div className="mb-4">
-      <h3 className="fw-bold">Profile</h3>
+        <h3 className="fw-bold">Profile</h3>
       </div>
-      
-    <div className="row">
+
+
+      <div className="row">
         {/* LEFT SIDEBAR */}
         {/* <div className="col-md-9">
           <div className="card border-0 shadow-sm">
@@ -233,6 +270,7 @@ function ProfileSetting() {
                 Profile Settings
               </button>
 
+
               <button
                 className={`list-group-item list-group-item-action ${
                   activeTab === "password" ? "active" : ""
@@ -250,6 +288,7 @@ function ProfileSetting() {
           </div>
         </div> */}
 
+
         {/* RIGHT CONTENT */}
         <div className="col-md-12">
           <div
@@ -261,22 +300,23 @@ function ProfileSetting() {
             <div className="card-body p-4">
               <div className="d-flex gap-2 mb-3">
                 <button
-                  className={`btn btn-sm ${
-                    activeTab === "profile" ? "btn-dark" : "btn-light border"
-                  }`}
+                  className={`btn btn-sm ${activeTab === "profile" ? "btn-dark" : "btn-light border"
+                    }`}
                   onClick={() => setActiveTab("profile")}
-                >
+                ><i className="bi bi-person me-2"></i>
                   Profile
                 </button>
 
+
                 <button
-                  className={`btn btn-sm ${
-                    activeTab === "password" ? "btn-dark" : "btn-light border"
-                  }`}
+                  className={`btn btn-sm ${activeTab === "password" ? "btn-dark" : "btn-light border"
+                    
+                    }`}
                   onClick={() => setActiveTab("password")}
-                >
-                  Security
+                ><i className="bi bi-shield-lock me-2"></i>Security
                 </button>
+                
+
 
               </div>
               {activeTab === "profile" && (
@@ -294,11 +334,13 @@ function ProfileSetting() {
                   {/* <div>
                     <h4>Password Settings  </h4>
 
+
                     <input
                       type="password"
                       placeholder="Current Password"
                       className="form-control mb-3"
                     />
+
 
                     <input
                       type="password"
@@ -306,14 +348,17 @@ function ProfileSetting() {
                       className="form-control mb-3"
                     />
 
+
                     <input
                       type="password"
                       placeholder="Confirm Password"
                       className="form-control mb-3"
                     />
 
+
                     <button className="btn btn-primary">Update Password</button>
                   </div> */}
+
 
                   {/* PROFILE SECTION */}
                   <div className="text-center mb-5">
@@ -334,6 +379,7 @@ function ProfileSetting() {
                         title="Edit Profile Picture"
                       />
 
+
                       {/* <button
                         className="btn btn-primary rounded-circle position-absolute"
                         style={{
@@ -344,9 +390,10 @@ function ProfileSetting() {
                         }}
                         onClick={() => fileRef.current.click()}
                       >
-                        
+                       
                       </button> */}
                     </div>
+
 
                     <div className="mt-3">
                       <button
@@ -360,6 +407,7 @@ function ProfileSetting() {
                         Upload New
                       </button>
 
+
                       <button
                         className="btn btn-light border"
                         onClick={removeImage}
@@ -367,6 +415,7 @@ function ProfileSetting() {
                         Delete Avatar
                       </button>
                     </div>
+
 
                     <input
                       type="file"
@@ -376,8 +425,10 @@ function ProfileSetting() {
                       onChange={(e) => {
                         const file = e.target.files[0];
 
+
                         if (file) {
                           const reader = new FileReader();
+
 
                           reader.onloadend = () => {
                             setForm({
@@ -386,88 +437,101 @@ function ProfileSetting() {
                             });
                           };
 
+
                           reader.readAsDataURL(file);
                         }
                       }}
                     />
                   </div>
 
-                  {/* FORM */}
 
+                  {/* FORM */}
                   <div className="row">
+
                     <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">
+                      <label className="form-label fw-semibold ">
                         First Name
                       </label>
-
                       <input
                         type="text"
                         name="fname"
                         value={form.fname}
+                        // disabled
                         onChange={handleChange}
-                        className={`form-control ${
-                          errors.fname ? "is-invalid" : ""
-                        }`}
+                        className={`form-control  ${errors.fname ? "is-invalid" : ""
+                          }`}
                         placeholder="First Name"
+                        // title="No Change Allowed"
+                        // style={{ cursor: "not-allowed" }}
                       />
-                      <small className="text-danger">{errors.fname}</small>
+                      <small className="text-danger ">{errors.fname}</small>
                     </div>
+
 
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">
                         Last Name
                       </label>
-
                       <input
                         type="text"
                         name="lname"
                         value={form.lname}
+                        // disabled
                         onChange={handleChange}
-                        className={`form-control ${
-                          errors.lname ? "is-invalid" : ""
-                        }`}
+                        className={`form-control ${errors.lname ? "is-invalid" : ""
+                          }`}
                         placeholder="Last Name"
+                        // title=" No Change Allowed"
+                        // style={{ cursor: "not-allowed" }}
                       />
                       <small className="text-danger">{errors.lname}</small>
                     </div>
 
+
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">Email</label>
+
 
                       <input
                         type="email"
                         name="email"
                         value={form.email}
+                        disabled
                         onChange={handleChange}
-                        className={`form-control ${
-                          errors.email ? "is-invalid" : ""
-                        }`}
+                        className={`form-control ${errors.email ? "is-invalid" : ""
+                          }`}
                         placeholder="example@gmail.com"
+                          title="No Change Allowed"
+                          style={{ cursor: "not-allowed" }}
                       />
                       <small className="text-danger">{errors.email}</small>
                     </div>
+
 
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">
                         Mobile Number
                       </label>
 
+
                       <input
                         type="text"
                         name="phone"
                         value={form.phone}
                         onChange={handleChange}
-                        className={`form-control ${
-                          errors.phone ? "is-invalid" : ""
-                        }`}
+                        className={`form-control ${errors.phone ? "is-invalid" : ""
+                          }`}
                         placeholder="0806 123 7890"
                       />
+
 
                       <small className="text-danger">{errors.phone}</small>
                     </div>
 
+
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">Gender</label>
+
 
                       <select
                         name="gender"
@@ -477,16 +541,19 @@ function ProfileSetting() {
                       >
                         <option value="">Select Gender</option>
 
+
                         <option>Male</option>
                         <option>Female</option>
                         <option>Other</option>
                       </select>
                     </div>
 
+
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">
                         Job Title
                       </label>
+
 
                       <select
                         name="job_title"
@@ -495,6 +562,7 @@ function ProfileSetting() {
                         className="form-select"
                       >
                         <option value="">Select Job</option>
+
 
                         <option>Developer</option>
                         <option>Designer</option>
@@ -505,23 +573,26 @@ function ProfileSetting() {
                       </select>
                     </div>
 
+
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">City</label>
+
 
                       <input
                         type="text"
                         name="city"
                         value={form.city}
                         onChange={handleChange}
-                        className={`form-control ${
-                          errors.city ? "is-invalid" : ""
-                        }`}
+                        className={`form-control ${errors.city ? "is-invalid" : ""
+                          }`}
                       />
                       <small className="text-danger">{errors.city}</small>
                     </div>
 
+
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">State</label>
+
 
                       <select
                         className="form-select"
@@ -531,6 +602,7 @@ function ProfileSetting() {
                       >
                         <option value="">Select State</option>
 
+
                         {usStates.map((state) => (
                           <option key={state.isoCode} value={state.isoCode}>
                             {state.name}
@@ -539,25 +611,28 @@ function ProfileSetting() {
                       </select>
                     </div>
 
+
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">Zip Code</label>
+
 
                       <input
                         type="text"
                         name="zip_code"
                         value={form.zip_code}
                         onChange={handleChange}
-                        className={`form-control ${
-                          errors.zip_code ? "is-invalid" : ""
-                        }`}
+                        className={`form-control ${errors.zip_code ? "is-invalid" : ""
+                          }`}
                       />
                       <small className="text-danger">{errors.zip_code}</small>
                     </div>
+
 
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">
                         Date Of Birth
                       </label>
+
 
                       <input
                         type="date"
@@ -568,8 +643,10 @@ function ProfileSetting() {
                       />
                     </div>
 
+
                     <div className="col-md-6 mb-4">
                       <label className="form-label fw-semibold">Language</label>
+
 
                       <select
                         name="language"
@@ -578,6 +655,7 @@ function ProfileSetting() {
                         className="form-select"
                       >
                         <option value="">Select Language</option>
+
 
                         <option>Hindi</option>
                         <option>English</option>
@@ -590,26 +668,32 @@ function ProfileSetting() {
                     </div>
                   </div>
 
-                  {/* BUTTONS */}
 
-                  <div className="d-flex justify-content-end gap-2 mt-4">
-                    {isChanged && (
-                      <button
-                        className="btn w-10 text-white"
-                        style={{
-                          backgroundColor: "#ff6600",
-                          borderColor: "#b94d05",
-                        }}
-                        onClick={updateProfile}
-                      >
-                        Save Changes
-                      </button>
-                    )}
+                  {/* BUTTONS */}
+                  {/* <div className="d-flex justify-content-end gap-2 mt-4"> */}
+                  <div className="d-flex gap-3">
+
 
                     <button
-                      className="btn btn-secondary"
+                      className="btn w-70 text-white"
+                      style={{
+                        backgroundColor: "#ff6600",
+                        borderColor: "#b94d05",
+                        opacity: !isChanged ? 0.6 : 1,
+                        cursor: !isChanged ? "not-allowed" : "pointer",
+                      }}
+                      onClick={updateProfile}
+                      disabled={!isChanged}
+                    >
+                      Save Changes
+                    </button>
+
+
+                    <button
+                      className="btn w-70 btn-secondary"
                       onClick={() => navigate("/dashboard")}
                     >
+                      <i className="bi bi-x-circle-fill me-2"></i>
                       Cancel
                     </button>
                   </div>
@@ -630,5 +714,6 @@ function ProfileSetting() {
     </div>
   );
 }
+
 
 export default ProfileSetting;

@@ -4,8 +4,10 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
+
 function PasswordSetting() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
 
   const [passwords, setPasswords] = useState({
     currentPassword: "",
@@ -13,7 +15,9 @@ function PasswordSetting() {
     confirmPassword: "",
   });
 
+
   const navigate = useNavigate();
+
 
   //password validation function
   const [errors, setErrors] = useState({
@@ -22,14 +26,17 @@ function PasswordSetting() {
     confirmPassword: "",
   });
 
+
   const [showPassword, setShowPassword] = useState({
     current: false,
     new: false,
     confirm: false,
   });
 
+
   const validateField = (name, value) => {
     let error = "";
+
 
     switch (name) {
       case "currentPassword":
@@ -37,6 +44,7 @@ function PasswordSetting() {
           error = "Current password is required";
         }
         break;
+
 
       case "newPassword":
         if (!value) {
@@ -47,6 +55,7 @@ function PasswordSetting() {
         }
         break;
 
+
       case "confirmPassword":
         if (!value) {
           error = "Please confirm your password";
@@ -55,20 +64,23 @@ function PasswordSetting() {
         }
         break;
 
+
       default:
         break;
     }
-
     return error;
   };
+
 
   //validation code ..
   const validate = () => {
     let newErrors = {};
 
+
     if (!passwords.currentPassword.trim()) {
       newErrors.currentPassword = "Current password is required";
     }
+
 
     if (!passwords.newPassword.trim()) {
       newErrors.newPassword = "New password is required";
@@ -83,33 +95,42 @@ function PasswordSetting() {
         "Must contain uppercase, lowercase, number and special character";
     }
 
+
     if (!passwords.confirmPassword.trim()) {
       newErrors.confirmPassword = "Please confirm your password";
     } else if (passwords.newPassword !== passwords.confirmPassword) {
       newErrors.confirmPassword = "Confirm password does not match";
     }
 
+
     setErrors(newErrors);
+
 
     return Object.keys(newErrors).length === 0;
   };
 
-  
+
+
+
   // validation change handle function...
   const handleChange = (e) => {
     const { name, value } = e.target;
+
 
     const updatedPasswords = {
       ...passwords,
       [name]: value,
     };
 
+
     setPasswords(updatedPasswords);
+
 
     let newErrors = {
       ...errors,
       [name]: validateField(name, value),
     };
+
 
     if (name === "newPassword" || name === "confirmPassword") {
       if (
@@ -122,22 +143,27 @@ function PasswordSetting() {
       }
     }
 
+
     setErrors(newErrors);
   };
 
+
   const updatePassword = async () => {
     if (!validate()) return;
+
 
     if (passwords.currentPassword !== currentUser.password) {
       toast.error("Current password is incorrect");
       return;
     }
 
-// User current password hi dobara set na kar sake
+
+    // User current password hi dobara set na kar sake
     if (passwords.currentPassword === passwords.newPassword) {
-  toast.error("New password must be different from current password");
-  return;
-} 
+      toast.error("New password must be different from current password");
+      return;
+    }
+
 
     try {
       const updatedUser = {
@@ -145,14 +171,18 @@ function PasswordSetting() {
         password: passwords.newPassword,
       };
 
+
       await axios.put(
         `http://192.168.1.117:3000/login/${currentUser.id}`,
         updatedUser,
       );
 
+
       localStorage.setItem("currentUser", JSON.stringify(updatedUser));
 
+
       toast.success("Password updated successfully");
+
 
       setPasswords({
         currentPassword: "",
@@ -164,32 +194,35 @@ function PasswordSetting() {
     }
   };
 
+
   return (
 
-    <>    
+
+    <>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           updatePassword();
         }}
       >
-       <div className="mb-3">
+        <div className="mb-3">
           <label>Current Password
-          <span class="text-danger"> * </span>
+            <span className="text-danger">*</span>
           </label>
+
 
           <div className="input-group">
             <input
               type={showPassword.current ? "text" : "password"}
               name="currentPassword"
               autoComplete="current-password"
-              className={`form-control ${
-                errors.currentPassword ? "is-invalid" : ""
-              }`}
+              className={`form-control ${errors.currentPassword ? "is-invalid" : ""
+                }`}
               value={passwords.currentPassword}
               onChange={handleChange}
-              maxLength={16}
-              
+              // maxLength={16}
+
+
             />
 
             <button
@@ -203,33 +236,35 @@ function PasswordSetting() {
               }
             >
               <i
-                className={`bi ${
-                  showPassword.current ? "bi-eye-slash" : "bi-eye"
-                }`}
+                className={`bi ${showPassword.current ? "bi-eye-slash" : "bi-eye"
+                  }`}
               ></i>
             </button>
           </div>
 
+
           <small className="text-danger">{errors.currentPassword}</small>
         </div>
 
+
         <div className="mb-3">
           <label>New Password
-            <sapn class="text-danger"> * </sapn>
+            <sapn className="text-danger">*</sapn>
           </label>
+
 
           <div className="input-group">
             <input
               type={showPassword.new ? "text" : "password"}
               name="newPassword"
               autoComplete="new-password"
-              className={`form-control ${
-                errors.newPassword ? "is-invalid" : ""
-              }`}
+              className={`form-control ${errors.newPassword ? "is-invalid" : ""
+                }`}
               value={passwords.newPassword}
               onChange={handleChange}
-              maxLength={16}
+              // maxLength={16}
             />
+
 
             <button
               type="button"
@@ -247,26 +282,29 @@ function PasswordSetting() {
             </button>
           </div>
 
+
           <small className="text-danger">{errors.newPassword}</small>
         </div>
 
+
         <div className="mb-3">
           <label>Confirm Password
-            <sapn class="text-danger"> * </sapn>
+            <sapn className="text-danger">*</sapn>
           </label>
+
 
           <div className="input-group">
             <input
               type={showPassword.confirm ? "text" : "password"}
               name="confirmPassword"
               autoComplete="new-password"
-              className={`form-control ${
-                errors.confirmPassword ? "is-invalid" : ""
-              }`}
+              className={`form-control ${errors.confirmPassword ? "is-invalid" : ""
+                }`}
               value={passwords.confirmPassword}
               onChange={handleChange}
-              maxLength={16}
+              // maxLength={16}
             />
+
 
             <button
               type="button"
@@ -279,41 +317,51 @@ function PasswordSetting() {
               }
             >
               <i
-                className={`bi ${
-                  showPassword.confirm ? "bi-eye-slash" : "bi-eye"
-                }`}
+                className={`bi ${showPassword.confirm ? "bi-eye-slash" : "bi-eye"
+                  }`}
               ></i>
             </button>
           </div>
 
+
           <small className="text-danger">{errors.confirmPassword}</small>
         </div>
+        <div className="d-flex gap-3">
+          <button
+            type="submit"
+            className="btn w-70 text-white"
+            style={{
+              backgroundColor: "#ff6600",
+              borderColor: "#973e03",
+            }}
+          >
+            Update Password
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary w-70"
+            onClick={() => {
 
-        <button
-          type="submit"
-          className="btn me-2 text-white"
-          style={{
-            backgroundColor: "#ff6600",
-            borderColor: "#973e03",
-          }}
-        >
-          Update Password
-        </button>
-  <button
-    type="button"
-    className="btn btn-secondary"
-    onClick={() => {
 
-    setPasswords({
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
+              setPasswords({
+                currentPassword: "",
+                newPassword: "",
+                confirmPassword: "",
 
-  });
 
-  navigate("/dashboard");
-    }}
-> Cancel </button>
+              });
+
+
+              navigate("/dashboard");
+            }}
+          >
+            <i className="bi bi-x-circle-fill me-2"></i>
+            Cancel
+          </button>
+
+
+        </div>
+
 
 
 
@@ -324,5 +372,6 @@ function PasswordSetting() {
     </>
   );
 }
+
 
 export default PasswordSetting;

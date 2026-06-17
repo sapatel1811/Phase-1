@@ -2,37 +2,42 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ProfileIcon from "./ProfileIcon";
 
+
 // used for profile icon clickable
 import { useRef, useEffect } from "react";
+
 
 function Dashboard() {
   const [userOpen, setUserOpen] = useState(false);
 
-// profile edit ....
-const [showProfileMenu, setShowProfileMenu] = useState(false);
-const navigate = useNavigate();
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  // profile edit ....
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
 
   // Logout Function
   const logout = () => {
     localStorage.removeItem("currentUser");
-    navigate("/");
+    navigate("/login");
   };
 
+  // profile kahi be click krne par card hat jata hy wo function
+  const menuRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowProfileMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
-// profile kahi be click krne par card hat jata hy wo function
-const menuRef = useRef(null);
-useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
-      setShowProfileMenu(false);
-    }
-  };
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
-}, []);
+
 
 
   return (
@@ -57,68 +62,107 @@ useEffect(() => {
         {/* Logo */}
         <h4 className="text-white fw-bold m-0">User Management System</h4>
 
-  {/* Right Side */}
-<div ref={menuRef} className="position-relative">
-<div
-    className="d-flex align-items-center gap-2 text-white"
-    style={{ cursor: "pointer" }}
-    onClick={(e) => {
-      e.stopPropagation();
-      setShowProfileMenu(!showProfileMenu);
-    }}
-  >
-    <ProfileIcon />
-    {/* <span>{currentUser?.username}</span> */}
-  </div>
 
-  {showProfileMenu && (
-  <div
-    className="card shadow border-0 position-absolute"
-    style={{
-      right: 0,
-      top: "50px",
-      width: "220px",
-      zIndex: 9999,
-      borderRadius: "12px",
-    }}
-  >
-    <div className="card-body p-3">
-      <h6 className="mb-0 fw-bold">
-        {currentUser?.fname
-          ? `${currentUser.fname} ${currentUser.lname}`
-          : currentUser?.username}
-      </h6>
+        {/* Right Side */}
+        <div ref={menuRef} className="position-relative">
+          <div
+            className="d-flex align-items-center gap-2 text-white"
+            style={{ cursor: "pointer" }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowProfileMenu(!showProfileMenu);
+            }}
+          >
+            <ProfileIcon />
+            {/* <span>{currentUser?.username}</span> */}
+          </div>
 
-      <small
-        className="text-muted d-block"
-        style={{ lineHeight: "1.2" }}
-      >
-        {currentUser?.email}
-      </small>
 
-      <hr className="my-2" />
+          {showProfileMenu && (
+            <div
+              className="card shadow border-0 position-absolute"
+              style={{
+                right: 0,
+                top: "50px",
+                width: "220px",
+                zIndex: 9999,
+                borderRadius: "12px",
+              }}
+            >
+              <div className="card-body p-3">
+                <h6 className="mb-0 fw-bold">
+                  {currentUser?.fname
+                    ? `${currentUser.fname} ${currentUser.lname}`
+                    : currentUser?.username}
+                </h6>
 
-      <button
-        className="btn btn-light w-100 mb-2"
-        onClick={() => {
-          navigate("/dashboard/profile");
-          setShowProfileMenu(false);
-        }}
-      >
-        Edit Profile
-      </button>
 
-      <button
-        className="btn btn-danger w-100"
-        onClick={logout}
-      >
-        Logout
-      </button>
-    </div>
-  </div>
-)}
+                <small
+                  className="text-muted d-block"
+                  style={{ lineHeight: "1.2" }}
+                >
+                  {currentUser?.email}
+                </small>
 
-</div>
+
+                <hr className="my-2" />
+
+
+                {/* <button
+                  className="btn btn-light w-100 mb-2"
+                  onClick={() => {
+                    navigate("/dashboard/profile");
+                    setShowProfileMenu(false);
+                  }}
+                >
+                  Edit Profile
+                </button>
+
+                <button
+                  className="btn btn-danger w-100"
+                  onClick={logout}
+                >
+                  Logout
+                </button> */}
+
+<button
+  className="btn w-100 mb-2 text-white d-flex align-items-center justify-content-center gap-2"
+  style={{
+    background: "#0d6efd",
+    borderRadius: "8px",
+  }}
+  onClick={() => {
+    navigate("/dashboard/profile");
+    setShowProfileMenu(false);
+  }}
+>
+  <i className="bi bi-pencil-square"></i>
+  Edit Profile
+</button>
+
+<button
+  className="btn w-100 text-white d-flex align-items-center justify-content-center gap-2"
+  style={{
+    background: "#dc3545",
+    borderRadius: "8px",
+  }}
+  onClick={logout}
+>
+  <i className="bi bi-box-arrow-right"></i>
+  Logout
+</button>
+
+
+
+
+
+
+
+              </div>
+            </div>
+          )}
+        </div>
+
 
         {/* <div className="d-flex align-items-center gap-3">
           <div
@@ -127,6 +171,7 @@ useEffect(() => {
             onClick={() => navigate("/dashboard/profile-edit")}
           >
             <ProfileIcon /> */}
+
 
         {/* <div
               className="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center"
@@ -137,10 +182,12 @@ useEffect(() => {
                 fontSize: "18px",
               }}
             >
-              
+             
             </div> */}
 
+
         {/* 4-6-2026 */}
+
 
         {/* <img
   src={
@@ -157,8 +204,10 @@ useEffect(() => {
   }}
 /> */}
 
+
         {/* <span className="fw-semibold">{currentUser?.username}</span>
           </div> */}
+
 
         {/* <button
             className="btn btn-outline-light btn-sm px-3"
@@ -166,10 +215,10 @@ useEffect(() => {
           >
             Logout
           </button> */}
-        {/* 
+        {/*
         </div> */}
-</nav>
-<div className="d-flex">
+      </nav>
+      <div className="d-flex">
         {/* ================= SIDEBAR ================= */}
         <div
           className="shadow-sm"
@@ -189,10 +238,12 @@ useEffect(() => {
               Admin Panel
             </h5>
 
+
             <small className="text-muted">
               User Management
             </small>
           </div> */}
+
 
           {/* Menu */}
           <ul className="nav flex-column p-3 gap-2">
@@ -211,6 +262,7 @@ useEffect(() => {
               </NavLink>
             </li>
 
+
             {/* User Section */}
             <li>
               <button
@@ -223,6 +275,7 @@ useEffect(() => {
               >
                 User Management
               </button>
+
 
               {userOpen && (
                 <ul className="list-unstyled ps-3 mt-2">
@@ -239,6 +292,7 @@ useEffect(() => {
                     </NavLink>
                   </li>
 
+
                   <li>
                     <NavLink
                       to="all"
@@ -251,6 +305,7 @@ useEffect(() => {
                       User List
                     </NavLink>
                   </li>
+
 
                   {/* NEW PROFILE SETTINGS */}
                   {/* <li>
@@ -266,11 +321,13 @@ useEffect(() => {
                     </NavLink>
                   </li> */}
 
+
                 </ul>
               )}
             </li>
           </ul>
         </div>
+
 
         {/* ================= CONTENT ================= */}
         <div
@@ -289,5 +346,6 @@ useEffect(() => {
     </div>
   );
 }
+
 
 export default Dashboard;
