@@ -140,6 +140,12 @@ function AddUser() {
 
         break;
 
+
+
+
+
+
+
       case "phone":
         if (!value) {
           error = "Phone number is required.";
