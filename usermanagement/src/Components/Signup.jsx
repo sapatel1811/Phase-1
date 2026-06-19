@@ -67,6 +67,7 @@ function Signup() {
       if (err) newErrors[key] = err;
     });
 
+    // js me kisi object ki sari key ko arry ke form me return karta hy 
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 

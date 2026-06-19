@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function ViewUser() {
-  const { id } = useParams();
+  const { id } = useParams(); // daymamic value leta hy url ke variable se 
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 

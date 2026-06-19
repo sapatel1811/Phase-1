@@ -18,8 +18,6 @@ function Home() {
   };
 
 
-
-
   // COUNTS....
   // const totalUsers = users.length;   // total user yha list se aye hy
   // const activeUsersList = users.filter(
@@ -36,8 +34,6 @@ const inactiveUsersList = users.filter(
   (u) => u.status?.toLowerCase().trim() === "inactive"
 );
 const totalUsers = users.length;
-
-
 
 
   // Search
@@ -58,7 +54,7 @@ const totalUsers = users.length;
   // Pagination Logic
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-
+ 
 
   const currentUsers = filteredUsers.slice(
     indexOfFirstUser,
@@ -72,8 +68,9 @@ return (
 <h2 className="fw-bold mb-4">Dashboard Overview</h2>
 
 
-      {/* ================= CARDS ================= */}
-      <div className="row g-4 mb-4">
+  {/* ================= CARDS ================= */}
+  <div className="row g-4 mb-4">
+
 
 
         {/* TOTAL */}

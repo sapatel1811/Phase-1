@@ -23,8 +23,6 @@ function ProfileEdit() {
 
   // profile img genretor ....
   const fileInputRef = useRef(null);
-
-
   const [originalData, setOriginalData] = useState(null);
 
 

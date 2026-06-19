@@ -70,7 +70,7 @@ The application follows a Single Page Application (SPA) architecture using React
 
 ---
 
-## 5. Authentication Module
+
 
 ### User Registration
 
@@ -111,7 +111,7 @@ The system allows administrators to add new users with:
   * City
   * State
   * ZIP Code
-  * Country
+ 
 
 * Professional Information
 
@@ -240,27 +240,9 @@ Users can:
 * Image Upload Support
 * Form Validation
 * Responsive Design
-* Notification System
+
 
 ---
-
-## 13. Future Enhancements
-
-The project can be extended with:
-
-* Role-Based Access Control (RBAC)
-* JWT Authentication
-* Password Encryption
-* Export to PDF and Excel
-* Advanced Search Filters
-* User Activity Logs
-* Profile Image Cropping
-* Cloud Storage Integration
-* Backend Database Integration
-* Email Verification
-
----
-
 ## 14. Conclusion
 
 The User Management System provides a complete solution for managing user records and authentication processes. The application follows modern React development practices and delivers a scalable, maintainable, and user-friendly platform for user administration.
