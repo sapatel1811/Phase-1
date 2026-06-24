@@ -6,6 +6,7 @@ import { State } from "country-state-city";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Select from "react-select";
 
 
 function ProfileSetting() {
@@ -43,13 +44,19 @@ const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const [activeTab, setActiveTab] = useState("profile");
   const [stateSearch, setStateSearch] = useState("");
-const [showStateDropdown, setShowStateDropdown] = useState(false);
+const [ , setShowStateDropdown] = useState(false);
 
-const filteredStates = usStates.filter((state) =>
-  state.name
-    .toLowerCase()
-    .includes(stateSearch.toLowerCase())
-);
+// const filteredStates = usStates.filter((state) =>
+//   state.name
+//     .toLowerCase()
+//     .includes(stateSearch.toLowerCase())
+// );
+
+
+const stateOptions = usStates.map((state) => ({
+  value: state.name,
+  label: state.name,
+}));
 
 
   // for validation ke liye
@@ -329,9 +336,7 @@ const filteredStates = usStates.filter((state) =>
 style={{
   borderRadius: "14px",
 }}
-
-           
-          >
+>
             <div className="card-body p-4">
 <div className="d-flex gap-2 mb-3">
   <button
@@ -339,7 +344,7 @@ style={{
       activeTab === "profile" ? "btn-dark" : "btn-light border"
     }`}
     style={{
-      borderRadius: "8px",
+      borderRadius:"8px",
       minWidth: "120px",
       fontWeight: "500",
     }}
@@ -497,7 +502,7 @@ style={{
 
                     <div className="col-12 col-md-6">
                       <label className="form-label fw-semibold ">
-                        First Name
+                        First Name<span className="text-danger">*</span>
                       </label>
                       <input
                         type="text"
@@ -517,7 +522,7 @@ style={{
 
                     <div className="col-12 col-md-6">
                       <label className="form-label fw-semibold small">
-                        Last Name
+                        Last Name<span className="text-danger">*</span>
                       </label>
                       <input
                         type="text"
@@ -536,7 +541,9 @@ style={{
 
 
                     <div className="col-12 col-md-6">
-                      <label className="form-label fw-semibold small">Email</label>
+                      <label className="form-label fw-semibold small">
+                        Email<span className="text-danger">*</span>
+                      </label>
 
 
                       <input
@@ -550,6 +557,7 @@ style={{
                         placeholder="example@gmail.com"
                           title="No Change Allowed"
                           style={{ cursor: "not-allowed" }}
+                          
                       />
                       <small className="text-danger">{errors.email}</small>
                     </div>
@@ -557,7 +565,7 @@ style={{
 
                     <div className="col-12 col-md-6">
                       <label className="form-label fw-semibold small">
-                        Mobile Number
+                        Mobile Number<span className="text-danger">*</span>
                       </label>
 
 
@@ -577,7 +585,9 @@ style={{
 
 
                     <div className="col-12 col-md-6">
-                      <label className="form-label fw-semibold small">Gender</label>
+                      <label className="form-label fw-semibold small">
+                        Gender<span className="text-danger">*</span>
+                        </label>
 
 
                       <select
@@ -598,7 +608,7 @@ style={{
 
                     <div className="col-12 col-md-6">
                       <label className="form-label fw-semibold small">
-                        Job Title
+                        Job Title<span className="text-danger">*</span>
                       </label>
 
 
@@ -622,7 +632,9 @@ style={{
 
 
                     <div className="col-12 col-md-6">
-                      <label className="form-label fw-semibold small">City</label>
+                      <label className="form-label fw-semibold small">
+                        City<span className="text-danger">*</span>
+                        </label>
 
 
                       <input
@@ -637,74 +649,43 @@ style={{
                     </div>
 
 
-<div className="col-12 col-md-6">
-  <label className="form-label fw-semibold small">
-    State
+<div className="col-12 col-md-6 mb-3">
+  <label className="form-label fw-semibold">
+    State <span className="text-danger">*</span>
   </label>
 
-  <div className="position-relative">
-    <input
-      type="text"
-      className="form-control"
-      placeholder="Search State..."
-      value={stateSearch}
-      onChange={(e) => {
-        setStateSearch(e.target.value);
+  <Select
+    options={stateOptions}
+    placeholder="Search or Select State"
+    value={
+      stateOptions.find(
+        (option) => option.value === form.state
+      ) || null
+    }
+    onChange={(selectedOption) => {
+      const value = selectedOption?.value || "";
 
-        setForm({
-          ...form,
-          state: e.target.value,
-        });
+      setForm({
+        ...form,
+        state: value,
+      });
 
-        setShowStateDropdown(true);
-      }}
-      onFocus={() => setShowStateDropdown(true)}
-    />
+      setErrors({
+        ...errors,
+        state: validateField("state", value),
+      });
+    }}
+    isSearchable={true}
+  />
 
-    {showStateDropdown && (
-      <ul
-        className="list-group position-absolute w-100 shadow"
-        style={{
-          zIndex: 999,
-          maxHeight: "200px",
-          overflowY: "auto",
-        }}
-      >
-        {filteredStates.length > 0 ? (
-          filteredStates.map((state) => (
-            <li
-              key={state.isoCode}
-              className="list-group-item list-group-item-action"
-              style={{
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setStateSearch(state.name);
-
-                setForm({
-                  ...form,
-                  state: state.name,
-                });
-
-                setShowStateDropdown(false);
-              }}
-            >
-              {state.name}
-            </li>
-          ))
-        ) : (
-          <li className="list-group-item text-muted">
-            No state found
-          </li>
-        )}
-      </ul>
-    )}
-  </div>
+  <small className="text-danger">{errors.state}</small>
 </div>
 
 
                     <div className="col-12 col-md-6">
-                      <label className="form-label fw-semibold small">Zip Code</label>
+                      <label className="form-label fw-semibold small">
+                        Zip Code<span className="text-danger">*</span>
+                        </label>
 
 
                       <input
@@ -721,7 +702,7 @@ style={{
 
                     <div className="col-12 col-md-6">
                       <label className="form-label fw-semibold small">
-                        Date Of Birth
+                        Date Of Birth<span className="text-danger">*</span>
                       </label>
 
 
@@ -736,7 +717,9 @@ style={{
 
 
                     <div className="col-12 col-md-6">
-                      <label className="form-label fw-semibold small">Language</label>
+                      <label className="form-label fw-semibold small">
+                        Language<span className="text-danger">*</span>
+                        </label>
 
 
                       <select

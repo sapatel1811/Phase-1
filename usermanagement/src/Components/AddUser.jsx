@@ -14,6 +14,7 @@ import axios from "axios";
 import { State } from "country-state-city";
 import Select from "react-select";
 import "react-toastify/dist/ReactToastify.css";
+// img select....
 
 // initial value : form reset karne ke liye and state initialize karne ke liye ,
 // form ke sare fields ka initial value ek object me store kar liya hai ,
@@ -57,46 +58,51 @@ function AddUser() {
   //form ka sara data store karne ke liye state bnaya hy..
   //user = current value , setuser = function update karne ke liye ,
   // initialvalue = user state ka initial value , jo ki ek object hai jisme form ke sare fields ka initial value store hai .
-const [user, setUser] = useState(initialValue);
-const [imageSource, setImageSource] = useState("");
+  const [user, setUser] = useState(initialValue);
+
+  const [imageSource, setImageSource] = useState("");
+  // const [imageSource, setImageSource] = useState("url");
   // ORIGINAL data cahnge karne ke liye (edit par)
+
   const [originalUser, setOriginalUser] = useState(initialValue);
 
   // for state function use
- const usStates = State.getStatesOfCountry("IN");
+  const usStates = State.getStatesOfCountry("IN");
 
-const stateOptions = usStates.map((state) => ({
-  value: state.name,
-  label: state.name,
-}));
+  const stateOptions = usStates.map((state) => ({
+    value: state.name,
+    label: state.name,
+  }));
 
-const languageOptions = [
-  { value: "English", label: "English" },
-  { value: "Hindi", label: "Hindi" },
-  { value: "Gujarati", label: "Gujarati" },
-  { value: "Tamil", label: "Tamil" },
-  { value: "Punjabi", label: "Punjabi" },
-  { value: "Sanskrit", label: "Sanskrit" },
-];
+  const languageOptions = [
+    { value: "English", label: "English" },
+    { value: "Hindi", label: "Hindi" },
+    { value: "Gujarati", label: "Gujarati" },
+    { value: "Tamil", label: "Tamil" },
+    { value: "Punjabi", label: "Punjabi" },
+    { value: "Sanskrit", label: "Sanskrit" },
+  ];
 
-const joblist = [
-  { value: "Full Stack Developer", label: "Full Stack Developer" },
-  { value: "Designer", label: "Designer" },
-  { value: "Manager", label: "Manager" },
-  { value: "Finance & Accounting", label: "Finance & Accounting" },
-  { value: "Human Resources (HR)", label: "Human Resources (HR)" },
-  { value: "Product Manager", label: "Product Manager" },
-];
+  const joblist = [
+    { value: "Full Stack Developer", label: "Full Stack Developer" },
+    { value: "Designer", label: "Designer" },
+    { value: "Manager", label: "Manager" },
+    { value: "Finance & Accounting", label: "Finance & Accounting" },
+    { value: "Human Resources (HR)", label: "Human Resources (HR)" },
+    { value: "Product Manager", label: "Product Manager" },
+  ];
 
+  const options = [
+    { value: "", label: "Select Image Source" },
+    { value: "url", label: "Paste Image URL" },
+    { value: "file", label: "Upload From Device" },
+  ];
 
-const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
   const [registeredEmails, setRegisteredEmails] = useState([]);
-  
 
   // check karna ki user data or orignal data same hy ya
   const isChanged = JSON.stringify(user) !== JSON.stringify(originalUser);
-
-
 
   // single user data load for edit ke liye
   useEffect(() => {
@@ -120,12 +126,12 @@ const [errors, setErrors] = useState({});
         setOriginalUser(res.data);
         // setSelected(res.data.state);
         if (res.data.profile) {
-  if (res.data.profile.startsWith("data:")) {
-    setImageSource("file");
-  } else {
-    setImageSource("url");
-  }
-}
+          if (res.data.profile.startsWith("data:")) {
+            setImageSource("file");
+          } else {
+            setImageSource("url");
+          }
+        }
       } catch (error) {
         console.log(error);
 
@@ -174,8 +180,6 @@ const [errors, setErrors] = useState({});
         }
 
         break;
-
-
 
       case "phone":
         if (!value) {
@@ -262,7 +266,7 @@ const [errors, setErrors] = useState({});
     e.preventDefault();
 
     let newErrors = {};
-
+ console.log(newErrors);
     Object.keys(user).forEach((key) => {
       const error = validateField(key, user[key]);
 
@@ -270,7 +274,7 @@ const [errors, setErrors] = useState({});
         newErrors[key] = error;
       }
     });
-
+ console.log(newErrors);
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) return;
@@ -300,24 +304,22 @@ const [errors, setErrors] = useState({});
   return (
     <div className="container-fluid py-2 px-2 px-sm-3">
       {/* Header */}
-<div className="mb-3">
-  <h2 className="fw-bold mb-1">
-    {id ? "Edit User" : "Add User"}
-  </h2>
+      <div className="mb-3">
+        <h2 className="fw-bold mb-1">{id ? "Edit User" : "Add User"}</h2>
 
-  <small className="text-muted">
-    {id
-      ? "Update user information and account details"
-      : "Create a new user profile and assign details"}
-  </small>
-</div>
+        <small className="text-muted">
+          {id
+            ? "Update user information and account details"
+            : "Create a new user profile and assign details"}
+        </small>
+      </div>
 
       <div
-  className="card border-0 shadow-sm"
-  style={{
-    borderRadius: "14px",
-  }}
->
+        className="card border-0 shadow-sm"
+        style={{
+          borderRadius: "14px",
+        }}
+      >
         <div className="card-body p-3">
           <form onSubmit={handleSubmit}>
             {/* FIRST + LAST */}
@@ -437,32 +439,32 @@ const [errors, setErrors] = useState({});
                   State
                   <span className="text-danger">*</span>
                 </label>
-<Select
-  options={stateOptions}
-  placeholder="Search or Select State"
-  value={
-    stateOptions.find(
-      (option) => option.value === user.state
-    ) || null
-  }
-  onChange={(selectedOption) => {
-    setUser({
-      ...user,
-      state: selectedOption?.value || "",
-    });
+                <Select
+                  options={stateOptions}
+                  placeholder="Search or Select State"
+                  value={
+                    stateOptions.find(
+                      (option) => option.value === user.state,
+                    ) || null
+                  }
+                  onChange={(selectedOption) => {
+                    setUser({
+                      ...user,
+                      state: selectedOption?.value || "",
+                    });
 
-    setErrors({
-      ...errors,
-      state: validateField(
-        "state",
-        selectedOption?.value || ""
-      ),
-    });
-  }}
-  isSearchable={true}
-/>
+                    setErrors({
+                      ...errors,
+                      state: validateField(
+                        "state",
+                        selectedOption?.value || "",
+                      ),
+                    });
+                  }}
+                  isSearchable={true}
+                />
 
-{/* <datalist id="stateList">
+                {/* <datalist id="stateList">
   {usStates.map((state) => (
     <option key={state.isoCode} value={state.name} />
   ))}
@@ -530,38 +532,38 @@ const [errors, setErrors] = useState({});
                   <span className="text-danger">*</span>
                 </label>
 
-<Select
-  options={languageOptions}
-  placeholder="Select Language"
-  value={
-    languageOptions.find(
-      (option) => option.value === user.language
-    ) || null
-  }
-  onChange={(selectedOption) => {
-    setUser({
-      ...user,
-      language: selectedOption?.value || "",
-    });
+                <Select
+                  options={languageOptions}
+                  placeholder="Select Language"
+                  value={
+                    languageOptions.find(
+                      (option) => option.value === user.language,
+                    ) || null
+                  }
+                  onChange={(selectedOption) => {
+                    setUser({
+                      ...user,
+                      language: selectedOption?.value || "",
+                    });
 
-    setErrors({
-      ...errors,
-      language: validateField(
-        "language",
-        selectedOption?.value || ""
-      ),
-    });
-  }}
-/>
+                    setErrors({
+                      ...errors,
+                      language: validateField(
+                        "language",
+                        selectedOption?.value || "",
+                      ),
+                    });
+                  }}
+                />
 
-<datalist id="languageList">
-  <option value="English" />
-  <option value="Hindi" />
-  <option value="Gujarati" />
-  <option value="Tamil" />
-  <option value="Punjabi" />
-  <option value="Sanskrit" />
-</datalist>
+                <datalist id="languageList">
+                  <option value="English" />
+                  <option value="Hindi" />
+                  <option value="Gujarati" />
+                  <option value="Tamil" />
+                  <option value="Punjabi" />
+                  <option value="Sanskrit" />
+                </datalist>
 
                 <small className="text-danger">{errors.language}</small>
               </div>
@@ -572,7 +574,7 @@ const [errors, setErrors] = useState({});
                   <span className="text-danger">*</span>
                 </label>
 
-{/* <input
+                {/* <input
   list="jobList"
   className="form-control"
   value={user.job_title}
@@ -592,40 +594,37 @@ const [errors, setErrors] = useState({});
   }}
 /> */}
 
+                <Select
+                  options={joblist}
+                  placeholder="Select joblist"
+                  value={
+                    joblist.find((option) => option.value === user.job_title) ||
+                    null
+                  }
+                  onChange={(selectedOption) => {
+                    setUser({
+                      ...user,
+                      job_title: selectedOption?.value || "",
+                    });
 
-<Select
-  options={joblist}
-  placeholder="Select joblist"
-  value={
-    joblist.find(
-      (option) => option.value === user.job_title
-    ) || null
-  }
-  onChange={(selectedOption) => {
-    setUser({
-      ...user,
-      job_title: selectedOption?.value || "",
-    });
+                    setErrors({
+                      ...errors,
+                      job_title: validateField(
+                        "job_title",
+                        selectedOption?.value || "",
+                      ),
+                    });
+                  }}
+                />
 
-    setErrors({
-      ...errors,
-      job_title: validateField(
-        "job_title",
-        selectedOption?.value || ""
-      ),
-    });
-  }}
-/>
-
-
-<datalist id="job_title">
-  <option value="Full Stack Developer" />
-  <option value="Designer" />
-  <option value="Manager" />
-  <option value="Finance & Accounting" />
-  <option value="Human Resources (HR)" />
-  <option value="Product Manager" />
-</datalist>
+                <datalist id="job_title">
+                  <option value="Full Stack Developer" />
+                  <option value="Designer" />
+                  <option value="Manager" />
+                  <option value="Finance & Accounting" />
+                  <option value="Human Resources (HR)" />
+                  <option value="Product Manager" />
+                </datalist>
 
                 <small className="text-danger">{errors.job_title}</small>
               </div>
@@ -649,107 +648,133 @@ const [errors, setErrors] = useState({});
          </select>
 </div> */}
 
-<div
-  className="mb-4 p-3 border rounded"
-  style={{
-    background: "#f8f9fa",
-    marginTop: "20px"
-  }}
->
-  <label className="form-label fw-semibold">
-    Profile Image
-  </label>
+            {/* for imge.... */}
+            <div
+              className="mb-4 p-3 border rounded"
+              style={{
+                background: "#f8f9fa",
+                marginTop: "20px",
+              }}
+            >
+              <label className="form-label fw-semibold">Profile Image</label>
 
-  <small className="d-block text-secondary mb-2">
-    Choose any one option below:
-    <strong> Paste Image URL</strong> OR
-    <strong> Upload Image File</strong>
-  </small>
+              <small className="d-block text-secondary mb-3">
+                Select image source
+              </small>
 
-  <div className="row g-2 align-items-center">
+              {/* DROPDOWN */}
+{/* <div className="row justify-content-start">
+  <div className="col-12 col-sm-10 col-md-8 col-lg-6">
+    <select
+      className="form-select w-100"
+      value={imageSource}
+      onChange={(e) => {
+        setImageSource(e.target.value);
 
-    {/* URL INPUT */}
-    {imageSource !== "file" && (
-      <div className="col-12 col-md-5">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Paste Image URL"
-          value={user.profile.startsWith("data:") ? "" : user.profile}
-          onChange={(e) => {
-            setImageSource("url");
-
-            setUser({
-              ...user,
-              profile: e.target.value,
-            });
-          }}
-        />
-      </div>
-    )}
-
-    {/* OR TEXT */}
-    {imageSource === "" && (
-      <div className="col-md-2 text-center d-none d-md-block">
-        <span className="fw-bold text-secondary">
-          OR
-        </span>
-      </div>
-    )}
-
-    {/* FILE INPUT */}
-    {imageSource !== "url" && (
-      <div className="col-12 col-md-5">
-        <input
-          type="file"
-          className="form-control"
-          accept="image/*"
-          onChange={(e) => {
-            const file = e.target.files[0];
-
-            if (file) {
-              setImageSource("file");
-
-              const reader = new FileReader();
-
-              reader.onloadend = () => {
-                setUser((prev) => ({
-                  ...prev,
-                  profile: reader.result,
-                }));
-              };
-
-              reader.readAsDataURL(file);
-            }
-          }}
-        />
-      </div>
-    )}
+        setUser((prev) => ({
+          ...prev,
+          profile: "",
+        }));
+      }}
+    >
+      <option value="">Select Image Source</option>
+      <option value="url">Paste Image URL</option>
+      <option value="file">Upload From Device</option>
+    </select>
   </div>
+</div> */}
 
-  {user.profile && (
-    <div className="mt-3">
-  <img
-    src={user.profile}
-    alt="profile"
-    className="rounded-circle border shadow-sm"
-    style={{
-      width: "70px",
-      height: "70px",
-      objectFit: "cover",
-    }}
-  />
-</div>
-  )}
-</div> 
+              <Select
+                options={options}
+                value={options.find((opt) => opt.value === imageSource)}
+                onChange={(selected) => {
+                  setImageSource(selected.value);
+
+                  setUser((prev) => ({
+                    ...prev,
+                    profile: "",
+                  }));
+                }}
+                isSearchable={false}
+              />
+
+              {/* URL INPUT */}
+              {imageSource === "url" && (
+                <div className="row mt-3">
+                  <div className="col-12 col-md-8 col-lg-6">
+                    <input
+                      type="text"
+                      className="form-control w-100"
+                      placeholder="Paste Image URL"
+                      value={
+                        user.profile?.startsWith("data:")
+                          ? ""
+                          : user.profile || ""
+                      }
+                      onChange={(e) => {
+                        setUser({
+                          ...user,
+                          profile: e.target.value,
+                        });
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* FILE INPUT */}
+              {imageSource === "file" && (
+                <div className="row mt-3">
+                  <div className="col-12 col-md-8 col-lg-6">
+                    <input
+                      type="file"
+                      className="form-control w-100"
+                      accept="image/*"
+                      onChange={(e) => {
+                        const file = e.target.files[0];
+
+                        if (file) {
+                          const reader = new FileReader();
+
+                          reader.onloadend = () => {
+                            setUser((prev) => ({
+                              ...prev,
+                              profile: reader.result,
+                            }));
+                          };
+
+                          reader.readAsDataURL(file);
+                        }
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* PREVIEW */}
+              {user.profile && imageSource && (
+                <div className="mt-3 text-center">
+                  <img
+                    src={user.profile}
+                    alt="profile"
+                    className="rounded-circle border shadow-sm"
+                    style={{
+                      width: "85px",
+                      height: "85px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+              )}
+            </div>
 
             {id && (
               <div
-  className="mb-4 p-3 border rounded"
-  style={{
-    background: "#f8f9fa",
-  }}
->
+                className="mb-4 p-3 border rounded"
+                style={{
+                  background: "#f8f9fa",
+                }}
+              >
                 <label className="form-label fw-semibold d-block">
                   User Status
                 </label>
@@ -787,8 +812,9 @@ const [errors, setErrors] = useState({});
                 </div>
 
                 <small
-                  className={`fw-bold ${user.status === "active" ? "text-success" : "text-danger"
-                    }`}
+                  className={`fw-bold ${
+                    user.status === "active" ? "text-success" : "text-danger"
+                  }`}
                 >
                   {user.status === "active" ? "Active" : "Inactive"}
                 </small>
@@ -796,38 +822,36 @@ const [errors, setErrors] = useState({});
             )}
 
             {/* BUTTONS */}
-<div className="d-flex flex-column flex-sm-row gap-2 mt-3">
-  <button
-    type="submit"
-    disabled={id && !isChanged}
-    className="btn btn-lg text-white"
-    style={{
-      backgroundColor: "#ff6600",
-      borderColor: "#973e03",
-      opacity: id && !isChanged ? 0.6 : 1,
-      cursor: id && !isChanged ? "not-allowed" : "pointer",
-      minWidth: "150px",
-      height: "45px",
-    }}
-  >
-    {id ? "Update User" : "Add User"}
-  </button>
+            <div className="d-flex flex-column flex-sm-row gap-2 mt-3">
+              <button
+                type="submit"
+                disabled={id && !isChanged}
+                className="btn btn-lg text-white"
+                style={{
+                  backgroundColor: "#ff6600",
+                  borderColor: "#973e03",
+                  opacity: id && !isChanged ? 0.6 : 1,
+                  cursor: id && !isChanged ? "not-allowed" : "pointer",
+                  minWidth: "150px",
+                  height: "45px",
+                }}
+              >
+                {id ? "Update User" : "Add User"}
+              </button>
 
-  <button
-    type="button"
-    className="btn btn-outline-secondary"
-    style={{
-  minWidth: "120px",
-  height: "45px",
-}}
-    onClick={() => navigate("/dashboard/all")}
-  >
-    <i className="bi bi-x-circle-fill me-2"></i>
-    Cancel
-  </button>
-</div>
-
-
+              <button
+                type="button"
+                className="btn btn-outline-secondary"
+                style={{
+                  minWidth: "120px",
+                  height: "45px",
+                }}
+                onClick={() => navigate("/dashboard/all")}
+              >
+                <i className="bi bi-x-circle-fill me-2"></i>
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </div>

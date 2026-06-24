@@ -83,7 +83,6 @@
 
     {/* ================= CARDS ================= */}
 <div className="row g-3 g-md-4 mb-4">
-
   {/* Total Users */}
   <div className="col-12 col-sm-6 col-lg-4">
     <div className="card border-0 shadow-lg rounded-4 bg-primary-subtle text-primary h-100">

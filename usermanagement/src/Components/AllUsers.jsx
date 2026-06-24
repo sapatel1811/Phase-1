@@ -113,7 +113,7 @@ function AllUsers() {
           ? "User Activated Successfully"
           : "User Inactivated Successfully",
       );
-     console.log("after tost");
+      console.log("after tost");
 
       // loadUsers(); // Real-time update
     } catch (error) {
@@ -191,7 +191,7 @@ function AllUsers() {
 
               <input
                 type="text"
-                className="form-control form-control-lg ps-5 pe-5"
+                className="form-control  ps-5 pe-5"
                 placeholder="Search by name, email or job title..."
                 value={search}
                 onChange={(e) => {
@@ -224,7 +224,7 @@ function AllUsers() {
             <select
               className="form-select shadow-sm"
               style={{
-                minHeight: "48px",
+                minHeight: "40px",
                 fontSize: "14px",
                 width: "100%",
               }}
@@ -233,13 +233,6 @@ function AllUsers() {
                 setStatusFilter(e.target.value);
                 setCurrentPage(1);
               }}
-              /* style={{
-      width: "100%",
-      maxWidth: "100%",
-      minHeight: "48px",
-      boxSizing: "border-box",
-      
-    }} */
             >
               <option value="all">All Users</option>
               <option value="active">Active Users</option>
@@ -250,7 +243,7 @@ function AllUsers() {
           {/* Add Button */}
           <div className="col-12 col-sm-6 col-lg-3">
             <button
-              className="btn btn-primary w-100 h-100"
+              className="btn btn-primary w-50 h-90"
               onClick={() => navigate("/dashboard/add")}
             >
               <i className="bi bi-person-plus-fill me-2"></i>
@@ -261,27 +254,43 @@ function AllUsers() {
       </div>
 
       {/* table */}
-      <div className="card shadow border-0">
-        <div className="card-header bg-white border-0 py-3">
-          <h5 className="mb-0 fw-semibold">User Directory</h5>
+      <div className="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div
+          className="card-header border-0 px-4 py-3"
+          style={{
+            background: "#f8fafc",
+          }}
+        >
+          <h5 className="mb-0 fw-bold">User Directory</h5>
+
+          <small className="text-muted">Manage all registered users</small>
         </div>
         <div className="card-body p-0 p-md-3">
-          <div className="table-responsive">
-            <table className="table table-bordered table-hover align-middle text-nowrap m-0">
+          <div
+            className="table-responsive"
+            style={{
+              minHeight: "400px",
+            }}
+          >
+            <table
+              className="table table-hover align-middle mb-0"
+              style={{
+                fontSize: "14px",
+              }}
+            >
               <thead
-                className="text-center"
                 style={{
-                  backgroundColor: "#212529",
+                  background: "#1e293b",
                   color: "#fff",
                 }}
               >
                 <tr>
-                  <th scope="col">S.no</th>
-                  <th scope="col">Profile</th>
-                  <th scope="col">Full Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Job Title</th>
-                  <th scope="col">Actions</th>
+                  <th className="py-3">#</th>
+                  <th className="py-3">Image</th>
+                  <th className="py-3">User</th>
+                  <th className="py-3">Email</th>
+                  <th className="py-3">Job Title</th>
+                  <th className="py-3 text-center">Actions</th>
                 </tr>
               </thead>
 
@@ -296,55 +305,64 @@ function AllUsers() {
 
                       {/* PROFILE */}
                       <td>
-                        {user.profile ? (
+                        <div className="d-flex align-items-center gap-3">
                           <img
-                            src={user.profile}
+                            src={user.profile || "https://placehold.co/100"}
                             alt=""
-                            onError={(e) => {
-                              e.currentTarget.src =
-                                "https://placehold.co/600x400";
-                              e.currentTarget.onerror = null;
+                            width="42"
+                            height="42"
+                            className="rounded-circle border"
+                            style={{
+                              objectFit: "cover",
                             }}
-                            width="40"
-                            height="40"
-                            className="rounded-circle border object-fit-cover "
                           />
-                        ) : (
-                          <img
-                            src="https://placehold.co/600x400"
-                            alt=""
-                            width="40"
-                            height="40"
-                            className="rounded-circle border object-fit-cover "
-                          />
-                        )}
+
+                          <div className="text-start">
+                            <div className="fw-semibold">
+                              {user.fname} {user.lname}
+                            </div>
+
+                            <small className="text-muted">{user.status}</small>
+                          </div>
+                        </div>
                       </td>
 
                       {/* NAME */}
                       <td>{user.fname + " " + user.lname}</td>
 
                       {/* EMAIL */}
-                      <td>{user.email}</td>
-
+                      <td>
+                        <span
+                          className="text-muted"
+                          style={{
+                            fontSize: "13px",
+                          }}
+                        >
+                          {user.email}
+                        </span>
+                      </td>
                       {/* JOB TITLE */}
-                      <td>{user.job_title}</td>
+                      <td>
+                        <span
+                          className="badge rounded-pill"
+                          style={{
+                            background: "#eef2ff",
+                            color: "#4f46e5",
+                            padding: "8px 12px",
+                          }}
+                        >
+                          {user.job_title}
+                        </span>
+                      </td>
 
                       {/* ACTIONS */}
 
                       <td>
-                        <div
-                          className="
-    d-flex
-    flex-wrap
-    justify-content-center
-    align-items-center
-    gap-0
-  "
-                        >
+                        <div className="d-flex justify-content-center align-items-center gap-2">
                           {" "}
                           {/* View */}
                           <button
-                            className="btn text-success  d-flex align-items-center justify-content-center"
+                            className="btn-light border text-success"
                             style={{ width: "40px", height: "40px" }}
                             onClick={() =>
                               navigate(`/dashboard/view/${user.id}`)
@@ -355,7 +373,7 @@ function AllUsers() {
                           </button>
                           {/* Edit */}
                           <button
-                            className="btn text-primary  d-flex align-items-center justify-content-center"
+                            className=" btn-light border text-primary"
                             style={{ width: "40px", height: "40px" }}
                             onClick={() =>
                               navigate(`/dashboard/edit/${user.id}`)
@@ -366,7 +384,7 @@ function AllUsers() {
                           </button>
                           {/* Delete */}
                           <button
-                            className="btn text-danger  d-flex align-items-center justify-content-center"
+                            className="btn-light border text-danger"
                             style={{ width: "42px", height: "42px" }}
                             onClick={() => setDeleteUser(user)}
                             title="Delete User"
@@ -434,7 +452,10 @@ function AllUsers() {
             <span className="text-muted">
               Showing {currentUsers.length} of {filteredUsers.length} users
             </span>
-            <div className="d-flex align-items-center flex-wrap justify-content-center">
+            <div
+              className="d-flex align-items-center flex-wrap justify-content-center"
+              style={{ height: "100px" }}
+            >
               <button
                 className="btn btn-outline-secondary"
                 disabled={currentPage === 1}
