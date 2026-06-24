@@ -99,7 +99,7 @@ function Signup() {
 
   return (
     <div
-      className="d-flex justify-content-center align-items-center min-vh-100"
+      className="container-fluid px-3 d-flex justify-content-center align-items-center min-vh-100"
       style={{
         backgroundImage:
           "url('https://static.vecteezy.com/system/resources/thumbnails/035/121/756/small/background-of-bubbles-for-laundry-and-cleaning-concept-vector.jpg')",
@@ -110,7 +110,8 @@ function Signup() {
       <div
         className="card shadow-lg border-0 p-4"
         style={{
-          width: "420px",
+          width: "100%",
+maxWidth: "420px",
           borderRadius: "16px",
           backdropFilter: "blur(10px)",
         }}
@@ -145,7 +146,7 @@ function Signup() {
               name="email"
               className="form-control"
               placeholder="Enter email"
-              autoComplete="email"
+              autoComplete="username"
               onChange={handleChange}
             />
             <small className="text-danger">{errors.email}</small>
@@ -190,7 +191,7 @@ function Signup() {
                 name="confirmPassword"
                 className="form-control"
                 placeholder="Confirm password"
-                autoComplete="new-password"
+                autoComplete="confirm-password"
                 onChange={handleChange}
               />
               <button

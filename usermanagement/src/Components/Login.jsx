@@ -132,8 +132,15 @@ setLoginError("");
 };
 
   return (
-    <div
-      className="d-flex justify-content-center align-items-center min-vh-100"
+   <div
+//    style={{
+//   overflowX: "hidden",
+//   backgroundImage:
+//     "url('https://static.vecteezy.com/system/resources/thumbnails/035/121/756/small/background-of-bubbles-for-laundry-and-cleaning-concept-vector.jpg')",
+//   backgroundSize: "cover",
+//   backgroundPosition: "center",
+// }}
+  className="container-fluid px-2 px-sm-3 px-md-4 d-flex justify-content-center align-items-center min-vh-100"
       style={{
         backgroundImage:
           "url('https://static.vecteezy.com/system/resources/thumbnails/035/121/756/small/background-of-bubbles-for-laundry-and-cleaning-concept-vector.jpg')",
@@ -142,15 +149,16 @@ setLoginError("");
       }}
     >
       <div
-        className="card shadow-lg border-0 p-4 rounded-4"
-        style={{
-          width: "420px",
-          backdropFilter: "blur(10px)",
-        }}
-      >
-        <h3 className="text-center fw-bold text-primary mb-4">
-          Welcome Back
-        </h3>
+  className="card shadow-lg border-0 p-3 p-sm-4 rounded-4"
+  style={{
+    width: "100%",
+    maxWidth: "450px",
+    backdropFilter: "blur(10px)",
+  }}
+>
+<h3 className="text-center fw-bold text-primary mb-4 fs-3 fs-md-2">
+  Welcome Back
+</h3>
 
 
         {loginError && (
@@ -165,14 +173,15 @@ setLoginError("");
             <label className="form-label fw-semibold">
               Email<span className="text-danger">*</span>
             </label>
-            <input
-              name="email"
-              autoComplete="email"
-              className="form-control"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Enter email"
-            />
+<input
+  name="email"
+  autoComplete="email"
+  className="form-control form-control-lg"
+  value={form.email}
+  onChange={handleChange}
+  placeholder="Enter email"
+  autoCompleted="username"
+/>
             <small className="text-danger">{errors.email}</small>
           </div>
 
@@ -183,16 +192,16 @@ setLoginError("");
             </label>
 
             <div className="input-group">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="loginPassword"
-                autoComplete="current-password"
-                className="form-control"
-                value={form.loginPassword}
-                onChange={handleChange}
-                placeholder="Enter password"
-              />
-
+<input
+  type={showPassword ? "text" : "password"}
+  name="loginPassword"
+  autoComplete="current-password"
+  className="form-control form-control-lg"
+  value={form.loginPassword}
+  onChange={handleChange}
+  placeholder="Enter password"
+  autoCompleted="new-password"
+/>
               <button
                 type="button"
                 className="btn btn-outline-secondary"
@@ -206,13 +215,13 @@ setLoginError("");
           </div>
 
           {/* BUTTON */}
-          <button className="btn btn-primary w-100 fw-bold py-2">
+          <button className="btn btn-primary w-100 fw-bold py-2 py-md-3">
             Login
           </button>
         </form>
 
         {/* SWITCH */}
-        <p className="text-center mt-3">
+        <p className="text-center mt-3 mb-0 small small-md">
           Don't have an account?{" "}
           <span
             className="text-primary fw-semibold"

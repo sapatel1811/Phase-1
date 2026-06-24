@@ -13,7 +13,7 @@ function ProfileSetting() {
   const fileRef = useRef(null);
 
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 
   const initialState = {
@@ -42,6 +42,14 @@ function ProfileSetting() {
 
 
   const [activeTab, setActiveTab] = useState("profile");
+  const [stateSearch, setStateSearch] = useState("");
+const [showStateDropdown, setShowStateDropdown] = useState(false);
+
+const filteredStates = usStates.filter((state) =>
+  state.name
+    .toLowerCase()
+    .includes(stateSearch.toLowerCase())
+);
 
 
   // for validation ke liye
@@ -148,6 +156,7 @@ function ProfileSetting() {
 
       setForm(data);
       setOriginal(data);
+     setStateSearch(data.state || "");
     }
   }, []);
 
@@ -239,11 +248,35 @@ function ProfileSetting() {
     setForm({ ...form, profile: "" });
   };
 
+  const stateRef = useRef(null);
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (
+      stateRef.current &&
+      !stateRef.current.contains(event.target)
+    ) {
+      setShowStateDropdown(false);
+    }
+  };
+
+  document.addEventListener(
+    "mousedown",
+    handleClickOutside
+  );
+
+  return () => {
+    document.removeEventListener(
+      "mousedown",
+      handleClickOutside
+    );
+  };
+}, []);
+
 
   return (
 
 
-    <div className="container-fluid py-1 pb-4">
+    <div className="container-fluid px-2 px-sm-3 px-md-4 py-2 pb-4">
 
 
       <div className="mb-4">
@@ -251,7 +284,7 @@ function ProfileSetting() {
       </div>
 
 
-      <div className="row">
+      <div className="row g-3">
         {/* LEFT SIDEBAR */}
         {/* <div className="col-md-9">
           <div className="card border-0 shadow-sm">
@@ -292,33 +325,45 @@ function ProfileSetting() {
         {/* RIGHT CONTENT */}
         <div className="col-md-12">
           <div
-            className="card shadow-sm border-0"
-            style={{
-              borderRadius: "10px",
-            }}
+           className="card border-0 shadow-sm"
+style={{
+  borderRadius: "14px",
+}}
+
+           
           >
             <div className="card-body p-4">
-              <div className="d-flex gap-2 mb-3">
-                <button
-                  className={`btn btn-sm ${activeTab === "profile" ? "btn-dark" : "btn-light border"
-                    }`}
-                  onClick={() => setActiveTab("profile")}
-                ><i className="bi bi-person me-2"></i>
-                  Profile
-                </button>
+<div className="d-flex gap-2 mb-3">
+  <button
+    className={`btn btn-sm px-3 py-2 ${
+      activeTab === "profile" ? "btn-dark" : "btn-light border"
+    }`}
+    style={{
+      borderRadius: "8px",
+      minWidth: "120px",
+      fontWeight: "500",
+    }}
+    onClick={() => setActiveTab("profile")}
+  >
+    <i className="bi bi-person me-2"></i>
+    Profile
+  </button>
 
-
-                <button
-                  className={`btn btn-sm ${activeTab === "password" ? "btn-dark" : "btn-light border"
-                    
-                    }`}
-                  onClick={() => setActiveTab("password")}
-                ><i className="bi bi-shield-lock me-2"></i>Security
-                </button>
-                
-
-
-              </div>
+  <button
+    className={`btn btn-sm px-3 py-2 ${
+      activeTab === "password" ? "btn-dark" : "btn-light border"
+    }`}
+    style={{
+      borderRadius: "8px",
+      minWidth: "120px",
+      fontWeight: "500",
+    }}
+    onClick={() => setActiveTab("password")}
+  >
+    <i className="bi bi-shield-lock me-2"></i>
+    Security
+  </button>
+</div>
               {activeTab === "profile" && (
                 <>
                   <div
@@ -369,12 +414,14 @@ function ProfileSetting() {
                           "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                         }
                         alt=""
-                        width="140"
-                        height="140"
-                        className="rounded-circle border"
-                        style={{
-                          objectFit: "cover",
-                        }}
+                        width="120"
+  height="120"
+  className="rounded-circle border img-fluid"
+  style={{
+    objectFit: "cover",
+    maxWidth: "120px",
+    maxHeight: "120px",
+  }}
                         onClick={() => fileRef.current.click()}
                         title="Edit Profile Picture"
                       />
@@ -395,7 +442,7 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="mt-3">
+                    <div className="mt-3 d-grid d-sm-flex justify-content-center gap-2">
                       <button
                         className="btn text-white me-2"
                         style={{
@@ -446,9 +493,9 @@ function ProfileSetting() {
 
 
                   {/* FORM */}
-                  <div className="row">
+                  <div className="row g-3">
 
-                    <div className="col-md-6 mb-4">
+                    <div className="col-12 col-md-6">
                       <label className="form-label fw-semibold ">
                         First Name
                       </label>
@@ -468,8 +515,8 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">
+                    <div className="col-12 col-md-6">
+                      <label className="form-label fw-semibold small">
                         Last Name
                       </label>
                       <input
@@ -488,8 +535,8 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">Email</label>
+                    <div className="col-12 col-md-6">
+                      <label className="form-label fw-semibold small">Email</label>
 
 
                       <input
@@ -508,8 +555,8 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">
+                    <div className="col-12 col-md-6">
+                      <label className="form-label fw-semibold small">
                         Mobile Number
                       </label>
 
@@ -529,8 +576,8 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">Gender</label>
+                    <div className="col-12 col-md-6">
+                      <label className="form-label fw-semibold small">Gender</label>
 
 
                       <select
@@ -549,8 +596,8 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">
+                    <div className="col-12 col-md-6">
+                      <label className="form-label fw-semibold small">
                         Job Title
                       </label>
 
@@ -574,8 +621,8 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">City</label>
+                    <div className="col-12 col-md-6">
+                      <label className="form-label fw-semibold small">City</label>
 
 
                       <input
@@ -590,30 +637,74 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">State</label>
+<div className="col-12 col-md-6">
+  <label className="form-label fw-semibold small">
+    State
+  </label>
+
+  <div className="position-relative">
+    <input
+      type="text"
+      className="form-control"
+      placeholder="Search State..."
+      value={stateSearch}
+      onChange={(e) => {
+        setStateSearch(e.target.value);
+
+        setForm({
+          ...form,
+          state: e.target.value,
+        });
+
+        setShowStateDropdown(true);
+      }}
+      onFocus={() => setShowStateDropdown(true)}
+    />
+
+    {showStateDropdown && (
+      <ul
+        className="list-group position-absolute w-100 shadow"
+        style={{
+          zIndex: 999,
+          maxHeight: "200px",
+          overflowY: "auto",
+        }}
+      >
+        {filteredStates.length > 0 ? (
+          filteredStates.map((state) => (
+            <li
+              key={state.isoCode}
+              className="list-group-item list-group-item-action"
+              style={{
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setStateSearch(state.name);
+
+                setForm({
+                  ...form,
+                  state: state.name,
+                });
+
+                setShowStateDropdown(false);
+              }}
+            >
+              {state.name}
+            </li>
+          ))
+        ) : (
+          <li className="list-group-item text-muted">
+            No state found
+          </li>
+        )}
+      </ul>
+    )}
+  </div>
+</div>
 
 
-                      <select
-                        className="form-select"
-                        name="state"
-                        value={form.state}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select State</option>
-
-
-                        {usStates.map((state) => (
-                          <option key={state.isoCode} value={state.isoCode}>
-                            {state.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">Zip Code</label>
+                    <div className="col-12 col-md-6">
+                      <label className="form-label fw-semibold small">Zip Code</label>
 
 
                       <input
@@ -628,8 +719,8 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">
+                    <div className="col-12 col-md-6">
+                      <label className="form-label fw-semibold small">
                         Date Of Birth
                       </label>
 
@@ -644,8 +735,8 @@ function ProfileSetting() {
                     </div>
 
 
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label fw-semibold">Language</label>
+                    <div className="col-12 col-md-6">
+                      <label className="form-label fw-semibold small">Language</label>
 
 
                       <select
@@ -671,32 +762,43 @@ function ProfileSetting() {
 
                   {/* BUTTONS */}
                   {/* <div className="d-flex justify-content-end gap-2 mt-4"> */}
-                  <div className="d-flex gap-3">
+<div className="d-flex justify-content-start gap-2 mt-4 flex-wrap">
 
+  <button
+    className="btn text-white"
+    style={{
+      backgroundColor: "#ff6600",
+      borderColor: "#b94d05",
+      borderRadius: "6px",
+      height: "34px",
+      fontSize: "13px",
+      padding: "4px 14px",
+      fontWeight: "500",
+      opacity: !isChanged ? 0.6 : 1,
+      cursor: !isChanged ? "not-allowed" : "pointer",
+    }}
+    onClick={updateProfile}
+    disabled={!isChanged}
+  >
+    Save Changes
+  </button>
 
-                    <button
-                      className="btn w-70 text-white"
-                      style={{
-                        backgroundColor: "#ff6600",
-                        borderColor: "#b94d05",
-                        opacity: !isChanged ? 0.6 : 1,
-                        cursor: !isChanged ? "not-allowed" : "pointer",
-                      }}
-                      onClick={updateProfile}
-                      disabled={!isChanged}
-                    >
-                      Save Changes
-                    </button>
+  <button
+    className="btn btn-outline-secondary"
+    style={{
+      borderRadius: "6px",
+      height: "34px",
+      fontSize: "13px",
+      padding: "4px 14px",
+      fontWeight: "500",
+    }}
+    onClick={() => navigate("/dashboard")}
+  >
+    <i className="bi bi-x-circle-fill me-2"></i>
+    Cancel
+  </button>
 
-
-                    <button
-                      className="btn w-70 btn-secondary"
-                      onClick={() => navigate("/dashboard")}
-                    >
-                      <i className="bi bi-x-circle-fill me-2"></i>
-                      Cancel
-                    </button>
-                  </div>
+</div>
                 </>
               )}
               {/* PASSWORD TAB */}

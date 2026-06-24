@@ -17,7 +17,7 @@ function ViewUser() {
   if (!user) return <h2> ... </h2>;
 
   return (
-    <>
+    <div className="container-fluid px-2 px-sm-3 py-2">
       {/* Header */}
       <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
         <h2 className="fw-bold m-0">View User</h2>
@@ -127,7 +127,7 @@ function ViewUser() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

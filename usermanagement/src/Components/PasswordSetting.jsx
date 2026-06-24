@@ -206,7 +206,8 @@ function PasswordSetting() {
         }}
       >
         <div className="mb-3">
-          <label>Current Password
+          <label className="form-label fw-semibold">
+           Current Password
             <span className="text-danger">*</span>
           </label>
 
@@ -216,8 +217,9 @@ function PasswordSetting() {
               type={showPassword.current ? "text" : "password"}
               name="currentPassword"
               autoComplete="current-password"
-              className={`form-control ${errors.currentPassword ? "is-invalid" : ""
-                }`}
+              className={`form-control form-control-lg ${
+                errors.currentPassword ? "is-invalid" : ""
+               }`}
               value={passwords.currentPassword}
               onChange={handleChange}
               // maxLength={16}
@@ -248,8 +250,9 @@ function PasswordSetting() {
 
 
         <div className="mb-3">
-          <label>New Password
-            <sapn className="text-danger">*</sapn>
+          <label className="form-label fw-semibold">
+            New Password
+            <span className="text-danger">*</span>
           </label>
 
 
@@ -258,8 +261,9 @@ function PasswordSetting() {
               type={showPassword.new ? "text" : "password"}
               name="newPassword"
               autoComplete="new-password"
-              className={`form-control ${errors.newPassword ? "is-invalid" : ""
-                }`}
+className={`form-control form-control-lg ${
+  errors.newPassword ? "is-invalid" : ""
+}`}
               value={passwords.newPassword}
               onChange={handleChange}
               // maxLength={16}
@@ -288,8 +292,9 @@ function PasswordSetting() {
 
 
         <div className="mb-3">
-          <label>Confirm Password
-            <sapn className="text-danger">*</sapn>
+          <label className="form-label fw-semibold">
+            Confirm Password
+            <span className="text-danger">*</span>
           </label>
 
 
@@ -297,9 +302,10 @@ function PasswordSetting() {
             <input
               type={showPassword.confirm ? "text" : "password"}
               name="confirmPassword"
-              autoComplete="new-password"
-              className={`form-control ${errors.confirmPassword ? "is-invalid" : ""
-                }`}
+              autoComplete="confirm-password"
+            className={`form-control form-control-lg ${
+            errors.confirmPassword ? "is-invalid" : ""
+}`}
               value={passwords.confirmPassword}
               onChange={handleChange}
               // maxLength={16}
@@ -326,10 +332,11 @@ function PasswordSetting() {
 
           <small className="text-danger">{errors.confirmPassword}</small>
         </div>
-        <div className="d-flex gap-3">
+
+        {/* <div className="d-flex justify-content-start gap-2 mt-4 flex-wrap">
           <button
             type="submit"
-            className="btn w-70 text-white"
+            className="btn w-100 py-2 py-md-3 text-white"
             style={{
               backgroundColor: "#ff6600",
               borderColor: "#973e03",
@@ -339,7 +346,7 @@ function PasswordSetting() {
           </button>
           <button
             type="button"
-            className="btn btn-secondary w-70"
+            className="btn btn-secondary w-100 py-2 py-md-3"
             onClick={() => {
 
 
@@ -359,10 +366,55 @@ function PasswordSetting() {
             Cancel
           </button>
 
+        </div> */}
 
-        </div>
+<div className="d-flex justify-content-start gap-2 mt-4 flex-wrap">
+
+  <button
+    className="btn text-white"
+    style={{
+      backgroundColor: "#ff6600",
+      borderColor: "#b94d05",
+      borderRadius: "6px",
+      height: "34px",
+      fontSize: "13px",
+      padding: "4px 14px",
+      fontWeight: "500",
+     
+    }}
+
+  >
+  Update Password
+  </button>
+
+  <button
+    className="btn btn-outline-secondary"
+    style={{
+      borderRadius: "6px",
+      height: "34px",
+      fontSize: "13px",
+      padding: "4px 14px",
+      fontWeight: "500",
+    }}
+ onClick={() => {
 
 
+              setPasswords({
+                currentPassword: "",
+                newPassword: "",
+                confirmPassword: "",
+
+
+              });
+
+
+              navigate("/dashboard");
+            }}>
+    <i className="bi bi-x-circle-fill me-2"></i>
+    Cancel
+  </button>
+
+</div>
 
 
 

@@ -77,11 +77,11 @@ function ProfileEdit() {
 
 
   return (
-    <div className="container py-1 pb-4">
+    <div className="container-fluid px-2 px-sm-3 px-md-4 py-3">
      
       <div className="row justify-content-center">
-        <div className="col-12 col-md-8 col-lg-6">
-          <div className="card shadow border-3 rounded-6">
+        <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+          <div className="card shadow-lg border-0 rounded-4">
             {/* HEADER */}
             <div className="card-header bg-black text-white text-center">
               <h4 className="mb-0">Edit Profile</h4>
@@ -175,6 +175,7 @@ function ProfileEdit() {
 
               {/* USERNAME */}
               <div className="mb-3">
+
                 <label className="form-label">Username</label>
                 <input
                   type="text"
@@ -214,7 +215,7 @@ function ProfileEdit() {
 
 
               {/* BUTTONS */}
-              <div className="d-flex gap-2">
+              <div className="d-flex flex-column flex-sm-row gap-2">
                 {/* UPDATE BUTTON (ONLY IF CHANGED) */}
                 {isChanged && (
                   <button

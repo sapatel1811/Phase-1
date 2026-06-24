@@ -8,8 +8,15 @@ import { useRef, useEffect } from "react";
 
 
 function Dashboard() {
-  const [userOpen, setUserOpen] = useState(false);
+const [userOpen, setUserOpen] = useState(false);
 
+const [sidebarOpen, setSidebarOpen] = useState(true);
+
+const [isMobile, setIsMobile] = useState(
+  window.innerWidth < 768
+);
+
+const SIDEBAR_WIDTH = 250;
 
   // profile edit ....
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -38,6 +45,23 @@ function Dashboard() {
   }, []);
 
 
+useEffect(() => {
+  const handleResize = () => {
+    const mobile = window.innerWidth < 768;
+
+    setIsMobile(mobile);
+
+    if (mobile) {
+      setSidebarOpen(false);
+    }
+  };
+
+  handleResize(); // IMPORTANT FIX
+
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
 
   return (
@@ -48,8 +72,8 @@ function Dashboard() {
       }}
     >
       {/* ================= NAVBAR ================= */}
-      <nav
-        className="navbar navbar-dark px-4 shadow-sm"
+    <nav
+  className="navbar navbar-dark px-2 px-md-4 shadow-sm"
         style={{
           height: "70px",
           position: "fixed",
@@ -59,8 +83,31 @@ function Dashboard() {
           background: "linear-gradient(90deg, #1e293b, #334155)",
         }}
       >
+
+  {/* Hamburger Button       */}
+
+<button
+  className="btn btn-outline-light me-2"
+  onClick={(e) => {
+    e.stopPropagation();
+    setSidebarOpen((prev) => !prev);
+  }}
+>
+  <i
+    className={`bi ${
+      sidebarOpen
+        ? "bi-x-lg"
+        : "bi-list"
+    }`}
+  ></i>
+</button>
+
+
+
         {/* Logo */}
-        <h4 className="text-white fw-bold m-0">User Management System</h4>
+        <h5 className="text-white fw-bold m-0 text-truncate text-start  fs-6 fs-md-5">
+          User Management System
+        </h5>
 
 
         {/* Right Side */}
@@ -84,7 +131,8 @@ function Dashboard() {
               style={{
                 right: 0,
                 top: "50px",
-                width: "220px",
+                width: "250px",
+                maxWidth: "95vw",
                 zIndex: 9999,
                 borderRadius: "12px",
               }}
@@ -125,32 +173,32 @@ function Dashboard() {
                   Logout
                 </button> */}
 
-<button
-  className="btn w-100 mb-2 text-white d-flex align-items-center justify-content-center gap-2"
-  style={{
-    background: "#0d6efd",
-    borderRadius: "8px",
-  }}
-  onClick={() => {
-    navigate("/dashboard/profile");
-    setShowProfileMenu(false);
-  }}
->
-  <i className="bi bi-pencil-square"></i>
-  Edit Profile
-</button>
+                <button
+                  className="btn w-100 mb-2 text-white d-flex align-items-center justify-content-center gap-2"
+                  style={{
+                    background: "#0d6efd",
+                    borderRadius: "8px",
+                  }}
+                  onClick={() => {
+                    navigate("/dashboard/profile");
+                    setShowProfileMenu(false);
+                  }}
+                >
+                  <i className="bi bi-pencil-square"></i>
+                  Edit Profile
+                </button>
 
-<button
-  className="btn w-100 text-white d-flex align-items-center justify-content-center gap-2"
-  style={{
-    background: "#dc3545",
-    borderRadius: "8px",
-  }}
-  onClick={logout}
->
-  <i className="bi bi-box-arrow-right"></i>
-  Logout
-</button>
+                <button
+                  className="btn w-100 text-white d-flex align-items-center justify-content-center gap-2"
+                  style={{
+                    background: "#dc3545",
+                    borderRadius: "8px",
+                  }}
+                  onClick={logout}
+                >
+                  <i className="bi bi-box-arrow-right"></i>
+                  Logout
+                </button>
 
 
 
@@ -220,18 +268,34 @@ function Dashboard() {
       </nav>
       <div className="d-flex">
         {/* ================= SIDEBAR ================= */}
-        <div
-          className="shadow-sm"
-          style={{
-            width: "250px",
-            minHeight: "100vh",
-            position: "fixed",
-            top: "70px",
-            left: 0,
-            background: "#ffffff",
-            borderRight: "1px solid #e5e7eb",
-          }}
-        >
+<div
+  className="shadow-sm position-fixed"
+  style={{
+    width: `${SIDEBAR_WIDTH}px`,
+    minHeight: "100vh",
+    top: "70px",
+    background: "#fff",
+    borderRight: "1px solid #e5e7eb",
+    zIndex: 1049,
+    transition: "all 0.3s ease",
+    left: sidebarOpen
+      ? "0"
+      : `-${SIDEBAR_WIDTH}px`,
+  }}
+>
+
+
+{/* MOBILE OVERLAY */}
+{/* {isMobile && sidebarOpen && (
+  <div
+    className="position-fixed top-0 start-0 w-100 h-100"
+    style={{
+      background: "rgba(0,0,0,0.4)",
+      zIndex: 1050,
+    }}
+    onClick={() => setSidebarOpen(false)}
+  />
+)} */}
           {/* Sidebar Header */}
           {/* <div className="text-center py-4 border-bottom">
             <h5 className="fw-bold text-primary mb-1">
@@ -246,10 +310,16 @@ function Dashboard() {
 
 
           {/* Menu */}
+
+
           <ul className="nav flex-column p-3 gap-2">
             {/* Dashboard */}
             <li>
               <NavLink
+              onClick={() => {
+             if (isMobile)
+             setSidebarOpen(false);
+              }}
                 to="/dashboard"
                 end
                 className="nav-link rounded px-3 py-2 fw-semibold"
@@ -266,7 +336,7 @@ function Dashboard() {
             {/* User Section */}
             <li>
               <button
-                className="btn w-100 text-start fw-semibold"
+                className="btn w-100 text-start fw-semibold py-2"
                 style={{
                   background: "#f8fafc",
                   border: "1px solid #e2e8f0",
@@ -281,6 +351,7 @@ function Dashboard() {
                 <ul className="list-unstyled ps-3 mt-2">
                   <li>
                     <NavLink
+                      // onClick={() => setSidebarOpen(false)}
                       to="add"
                       className="nav-link rounded px-3 py-2 fw-bold"
                       style={({ isActive }) => ({
@@ -295,6 +366,7 @@ function Dashboard() {
 
                   <li>
                     <NavLink
+                       // onClick={() => setSidebarOpen(false)}
                       to="all"
                       className="nav-link rounded px-3 py-2 fw-bold"
                       style={({ isActive }) => ({
@@ -310,6 +382,7 @@ function Dashboard() {
                   {/* NEW PROFILE SETTINGS */}
                   {/* <li>
                     <NavLink
+                       onClick={() => setSidebarOpen(false)}
                       to="profile-edit"
                       className="nav-link rounded px-3 py-2 fw-bold"
                       style={({ isActive }) => ({
@@ -326,20 +399,41 @@ function Dashboard() {
               )}
             </li>
           </ul>
-        </div>
+
+{isMobile && sidebarOpen && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.4)",
+      zIndex: 1048,
+    }}
+    onClick={() => setSidebarOpen(false)}
+  />
+)}
+
+
+</div>
 
 
         {/* ================= CONTENT ================= */}
-        <div
-          style={{
-            marginLeft: "250px",
-            marginTop: "70px",
-            width: "100%",
-            padding: "25px",
-            backgroundColor: "#f8fafc",
-            minHeight: "100vh",
-          }}
-        >
+  <div className="flex-grow-1 p-2 p-md-4"
+  style={{
+   marginLeft:
+  !isMobile && sidebarOpen
+    ? `${SIDEBAR_WIDTH}px`
+    : "0",
+    marginTop: "70px",
+    width: "100%",
+    padding: "15px",
+    backgroundColor: "#f8fafc",
+    minHeight: "100vh",
+    transition: "all 0.3s ease",
+  }}
+>
           <Outlet />
         </div>
       </div>

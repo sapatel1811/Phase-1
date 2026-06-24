@@ -12,6 +12,7 @@ import axios from "axios";
 
 // for pre build state option
 import { State } from "country-state-city";
+import Select from "react-select";
 import "react-toastify/dist/ReactToastify.css";
 
 // initial value : form reset karne ke liye and state initialize karne ke liye ,
@@ -56,19 +57,46 @@ function AddUser() {
   //form ka sara data store karne ke liye state bnaya hy..
   //user = current value , setuser = function update karne ke liye ,
   // initialvalue = user state ka initial value , jo ki ek object hai jisme form ke sare fields ka initial value store hai .
-  const [user, setUser] = useState(initialValue);
-
+const [user, setUser] = useState(initialValue);
+const [imageSource, setImageSource] = useState("");
   // ORIGINAL data cahnge karne ke liye (edit par)
   const [originalUser, setOriginalUser] = useState(initialValue);
 
   // for state function use
-  const usStates = State.getStatesOfCountry("IN");
-  const [selected, setSelected] = useState("");
-  const [errors, setErrors] = useState({});
+ const usStates = State.getStatesOfCountry("IN");
+
+const stateOptions = usStates.map((state) => ({
+  value: state.name,
+  label: state.name,
+}));
+
+const languageOptions = [
+  { value: "English", label: "English" },
+  { value: "Hindi", label: "Hindi" },
+  { value: "Gujarati", label: "Gujarati" },
+  { value: "Tamil", label: "Tamil" },
+  { value: "Punjabi", label: "Punjabi" },
+  { value: "Sanskrit", label: "Sanskrit" },
+];
+
+const joblist = [
+  { value: "Full Stack Developer", label: "Full Stack Developer" },
+  { value: "Designer", label: "Designer" },
+  { value: "Manager", label: "Manager" },
+  { value: "Finance & Accounting", label: "Finance & Accounting" },
+  { value: "Human Resources (HR)", label: "Human Resources (HR)" },
+  { value: "Product Manager", label: "Product Manager" },
+];
+
+
+const [errors, setErrors] = useState({});
   const [registeredEmails, setRegisteredEmails] = useState([]);
+  
 
   // check karna ki user data or orignal data same hy ya
   const isChanged = JSON.stringify(user) !== JSON.stringify(originalUser);
+
+
 
   // single user data load for edit ke liye
   useEffect(() => {
@@ -90,7 +118,14 @@ function AddUser() {
         setUser(res.data);
         // SAVE ORIGINAL DATA
         setOriginalUser(res.data);
-        setSelected(res.data.state);
+        // setSelected(res.data.state);
+        if (res.data.profile) {
+  if (res.data.profile.startsWith("data:")) {
+    setImageSource("file");
+  } else {
+    setImageSource("url");
+  }
+}
       } catch (error) {
         console.log(error);
 
@@ -139,10 +174,6 @@ function AddUser() {
         }
 
         break;
-
-
-
-
 
 
 
@@ -267,19 +298,32 @@ function AddUser() {
   };
 
   return (
-    <div className="container py-1 pb-4">
+    <div className="container-fluid py-2 px-2 px-sm-3">
       {/* Header */}
-      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
-        <h2 className="fw-bold m-0">{id ? "Edit User" : "Add User"}</h2>
-      </div>
+<div className="mb-3">
+  <h2 className="fw-bold mb-1">
+    {id ? "Edit User" : "Add User"}
+  </h2>
 
-      <div className="card shadow ">
-        <div className="card-body">
+  <small className="text-muted">
+    {id
+      ? "Update user information and account details"
+      : "Create a new user profile and assign details"}
+  </small>
+</div>
+
+      <div
+  className="card border-0 shadow-sm"
+  style={{
+    borderRadius: "14px",
+  }}
+>
+        <div className="card-body p-3">
           <form onSubmit={handleSubmit}>
             {/* FIRST + LAST */}
-            <div className="row">
-              <div className="col-md-6 mb-3">
-                <label className="form-label fw-semibold ">
+            <div className="row g-2">
+              <div className="col-12 col-md-6 mb-3">
+                <label className="form-label fw-semibold">
                   First Name
                   <span className="text-danger">*</span>
                 </label>
@@ -295,7 +339,7 @@ function AddUser() {
                 <small className="text-danger">{errors.fname}</small>
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-12 col-md-6 mb-3">
                 <label className="form-label fw-semibold">
                   Last Name
                   <span className="text-danger">*</span>
@@ -316,8 +360,8 @@ function AddUser() {
             </div>
 
             {/* EMAIL + PHONE */}
-            <div className="row">
-              <div className="col-md-6 mb-3">
+            <div className="row g-2">
+              <div className="col-12 col-md-6 mb-3">
                 <label className="form-label fw-semibold">
                   Email
                   <span className="text-danger">*</span>
@@ -335,7 +379,7 @@ function AddUser() {
                 <small className="text-danger">{errors.email}</small>
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-12 col-md-6 mb-3">
                 <label className="form-label fw-semibold">
                   Phone
                   <span className="text-danger">*</span>
@@ -368,8 +412,8 @@ function AddUser() {
             </div>
 
             {/* CITY STATE ZIP + DOB */}
-            <div className="row">
-              <div className="col-md-6 mb-3">
+            <div className="row g-2">
+              <div className="col-12 col-md-6 mb-3">
                 <label className="form-label fw-semibold">
                   City
                   <span className="text-danger">*</span>
@@ -388,45 +432,46 @@ function AddUser() {
                 <small className="text-danger">{errors.city}</small>
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-12 col-md-6 mb-3">
                 <label className="form-label fw-semibold">
                   State
                   <span className="text-danger">*</span>
                 </label>
+<Select
+  options={stateOptions}
+  placeholder="Search or Select State"
+  value={
+    stateOptions.find(
+      (option) => option.value === user.state
+    ) || null
+  }
+  onChange={(selectedOption) => {
+    setUser({
+      ...user,
+      state: selectedOption?.value || "",
+    });
 
-                <select
-                  className="form-select"
-                  name="state"
-                  value={selected}
-                  onChange={(e) => {
-                    const value = e.target.value;
+    setErrors({
+      ...errors,
+      state: validateField(
+        "state",
+        selectedOption?.value || ""
+      ),
+    });
+  }}
+  isSearchable={true}
+/>
 
-                    setSelected(value);
-
-                    setUser({
-                      ...user,
-                      state: value,
-                    });
-
-                    setErrors({
-                      ...errors,
-                      state: validateField("state", value),
-                    });
-                  }}
-                >
-                  <option value="">Select State</option>
-                  ``
-                  {usStates.map((state) => (
-                    <option key={state.isoCode} value={state.name}>
-                      {state.name}
-                    </option>
-                  ))}
-                </select>
+{/* <datalist id="stateList">
+  {usStates.map((state) => (
+    <option key={state.isoCode} value={state.name} />
+  ))}
+</datalist> */}
 
                 <small className="text-danger">{errors.state}</small>
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-12 col-md-6 mb-3">
                 <label className="form-label fw-semibold">
                   Zip Code
                   <span className="text-danger">*</span>
@@ -457,7 +502,7 @@ function AddUser() {
                 <small className="text-danger">{errors.zip_code}</small>
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-12 col-md-6 mb-3">
                 <label className="form-label fw-semibold">
                   DOB
                   <span className="text-danger">*</span>
@@ -469,7 +514,7 @@ function AddUser() {
                   name="dob"
                   value={user.dob}
                   max={new Date().toISOString().split("T")[0]}
-                  dateFormat="YYYY-MM-dd"
+                  // dateFormat="YYYY-MM-dd"
                   onChange={onChange}
                 />
 
@@ -478,62 +523,116 @@ function AddUser() {
             </div>
 
             {/* LANGUAGE + JOB */}
-            <div className="row">
-              <div className="col-md-6 mb-3">
+            <div className="row g-2">
+              <div className="col-12 col-md-6 mb-3">
                 <label className="form-label fw-semibold">
                   Language
                   <span className="text-danger">*</span>
                 </label>
 
-                <select
-                  className="form-select"
-                  name="language"
-                  value={user.language}
-                  onChange={onChange}
-                >
-                  <option value="">Select Language</option>
+<Select
+  options={languageOptions}
+  placeholder="Select Language"
+  value={
+    languageOptions.find(
+      (option) => option.value === user.language
+    ) || null
+  }
+  onChange={(selectedOption) => {
+    setUser({
+      ...user,
+      language: selectedOption?.value || "",
+    });
 
-                  <option>English</option>
-                  <option>Hindi</option>
-                  <option>Gujarati</option>
-                  <option>Tamil</option>
-                  <option>Odia (formerly Oriya)</option>
-                  <option>Tamil</option>
-                  <option>Sanskrit</option>
-                  <option>Punjabi</option>
-                </select>
+    setErrors({
+      ...errors,
+      language: validateField(
+        "language",
+        selectedOption?.value || ""
+      ),
+    });
+  }}
+/>
+
+<datalist id="languageList">
+  <option value="English" />
+  <option value="Hindi" />
+  <option value="Gujarati" />
+  <option value="Tamil" />
+  <option value="Punjabi" />
+  <option value="Sanskrit" />
+</datalist>
 
                 <small className="text-danger">{errors.language}</small>
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-12 col-md-6 mb-3">
                 <label className="form-label fw-semibold">
                   Job Title
                   <span className="text-danger">*</span>
                 </label>
 
-                <select
-                  className="form-select"
-                  name="job_title"
-                  value={user.job_title}
-                  onChange={onChange}
-                >
-                  <option value="">Select Job</option>
+{/* <input
+  list="jobList"
+  className="form-control"
+  value={user.job_title}
+  placeholder="Search or Select Job Title"
+  onChange={(e) => {
+    const value = e.target.value;
 
-                  <option>Full Stack Developer</option>
-                  <option>Designer</option>
-                  <option>Manager</option>
-                  <option>Finance & Accounting</option>
-                  <option>Human Resources (HR)</option>
-                  <option>Product Manager</option>
-                </select>
+    setUser({
+      ...user,
+      job_title: value,
+    });
+
+    setErrors({
+      ...errors,
+      job_title: validateField("job_title", value),
+    });
+  }}
+/> */}
+
+
+<Select
+  options={joblist}
+  placeholder="Select joblist"
+  value={
+    joblist.find(
+      (option) => option.value === user.job_title
+    ) || null
+  }
+  onChange={(selectedOption) => {
+    setUser({
+      ...user,
+      job_title: selectedOption?.value || "",
+    });
+
+    setErrors({
+      ...errors,
+      job_title: validateField(
+        "job_title",
+        selectedOption?.value || ""
+      ),
+    });
+  }}
+/>
+
+
+<datalist id="job_title">
+  <option value="Full Stack Developer" />
+  <option value="Designer" />
+  <option value="Manager" />
+  <option value="Finance & Accounting" />
+  <option value="Human Resources (HR)" />
+  <option value="Product Manager" />
+</datalist>
 
                 <small className="text-danger">{errors.job_title}</small>
               </div>
             </div>
 
             {/* active */}
-            {/* <div className="col-md-6 mb-3">
+            {/* <div className="col-12 col-md-6 mb-3">
           <label className="form-label fw-semibold">
           Status
          </label>
@@ -550,68 +649,107 @@ function AddUser() {
          </select>
 </div> */}
 
-            {/* PROFILE */}
-            <div className="mb-4">
-              <label className="form-label fw-semibold">Profile Image</label>
+<div
+  className="mb-4 p-3 border rounded"
+  style={{
+    background: "#f8f9fa",
+    marginTop: "20px"
+  }}
+>
+  <label className="form-label fw-semibold">
+    Profile Image
+  </label>
 
-              <div className="row">
-                {/* URL INPUT */}
-                <div className="col-md-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="profile"
-                    placeholder="Paste Image URL"
-                    value={user.profile.startsWith("blob:") ? "" : user.profile}
-                    onChange={(e) => {
-                      setUser({
-                        ...user,
-                        profile: e.target.value,
-                      });
-                    }}
-                  />
-                </div>
+  <small className="d-block text-secondary mb-2">
+    Choose any one option below:
+    <strong> Paste Image URL</strong> OR
+    <strong> Upload Image File</strong>
+  </small>
 
-                {/* FILE INPUT */}
-                <div className="col-md-6">
-                  <input
-                    type="file"
-                    className="form-control"
-                    name="profile"
-                    accept="image/*"
-                    onChange={(e) => {
-                      const file = e.target.files[0];
+  <div className="row g-2 align-items-center">
 
-                      if (file) {
-                        const reader = new FileReader();
+    {/* URL INPUT */}
+    {imageSource !== "file" && (
+      <div className="col-12 col-md-5">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Paste Image URL"
+          value={user.profile.startsWith("data:") ? "" : user.profile}
+          onChange={(e) => {
+            setImageSource("url");
 
-                        reader.onloadend = () => {
-                          setUser((prev) => ({
-                            ...prev,
-                            profile: reader.result,
-                          }));
-                        };
+            setUser({
+              ...user,
+              profile: e.target.value,
+            });
+          }}
+        />
+      </div>
+    )}
 
-                        reader.readAsDataURL(file);
-                      }
-                    }}
-                  />
-                </div>
-              </div>
+    {/* OR TEXT */}
+    {imageSource === "" && (
+      <div className="col-md-2 text-center d-none d-md-block">
+        <span className="fw-bold text-secondary">
+          OR
+        </span>
+      </div>
+    )}
 
-              {/* IMAGE PREVIEW */}
-              {user.profile && (
-                <img
-                  src={user.profile}
-                  alt="profile"
-                  width="120"
-                  className="mt-3 rounded border"
-                />
-              )}
-            </div>
+    {/* FILE INPUT */}
+    {imageSource !== "url" && (
+      <div className="col-12 col-md-5">
+        <input
+          type="file"
+          className="form-control"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files[0];
+
+            if (file) {
+              setImageSource("file");
+
+              const reader = new FileReader();
+
+              reader.onloadend = () => {
+                setUser((prev) => ({
+                  ...prev,
+                  profile: reader.result,
+                }));
+              };
+
+              reader.readAsDataURL(file);
+            }
+          }}
+        />
+      </div>
+    )}
+  </div>
+
+  {user.profile && (
+    <div className="mt-3">
+  <img
+    src={user.profile}
+    alt="profile"
+    className="rounded-circle border shadow-sm"
+    style={{
+      width: "70px",
+      height: "70px",
+      objectFit: "cover",
+    }}
+  />
+</div>
+  )}
+</div> 
 
             {id && (
-              <div className="mb-4">
+              <div
+  className="mb-4 p-3 border rounded"
+  style={{
+    background: "#f8f9fa",
+  }}
+>
                 <label className="form-label fw-semibold d-block">
                   User Status
                 </label>
@@ -649,9 +787,8 @@ function AddUser() {
                 </div>
 
                 <small
-                  className={`fw-bold ${
-                    user.status === "active" ? "text-success" : "text-danger"
-                  }`}
+                  className={`fw-bold ${user.status === "active" ? "text-success" : "text-danger"
+                    }`}
                 >
                   {user.status === "active" ? "Active" : "Inactive"}
                 </small>
@@ -659,31 +796,38 @@ function AddUser() {
             )}
 
             {/* BUTTONS */}
-            <div className="d-flex gap-3">
-              <button
-                type="submit"
-                disabled={id && !isChanged}
-                className="btn w-70 text-white"
-                style={{
-                  backgroundColor: "#ff6600",
-                  borderColor: "#973e03",
-                  opacity: id && !isChanged ? 0.6 : 1,
-                  cursor: id && !isChanged ? "not-allowed" : "pointer",
-                }}
-              >
-                {/* <i className={`bi ${ id ? "bi-pencil-square" : "bi-person-plus-fill"  } me-2`}></i> */}
-                {id ? "Update User" : "Add User"}
-              </button>
+<div className="d-flex flex-column flex-sm-row gap-2 mt-3">
+  <button
+    type="submit"
+    disabled={id && !isChanged}
+    className="btn btn-lg text-white"
+    style={{
+      backgroundColor: "#ff6600",
+      borderColor: "#973e03",
+      opacity: id && !isChanged ? 0.6 : 1,
+      cursor: id && !isChanged ? "not-allowed" : "pointer",
+      minWidth: "150px",
+      height: "45px",
+    }}
+  >
+    {id ? "Update User" : "Add User"}
+  </button>
 
-              <button
-                type="button"
-                className="btn w-70 btn-secondary "
-                onClick={() => navigate("/dashboard/all")}
-              >
-                <i className="bi bi-x-circle-fill me-2"></i>
-                Cancel
-              </button>
-            </div>
+  <button
+    type="button"
+    className="btn btn-outline-secondary"
+    style={{
+  minWidth: "120px",
+  height: "45px",
+}}
+    onClick={() => navigate("/dashboard/all")}
+  >
+    <i className="bi bi-x-circle-fill me-2"></i>
+    Cancel
+  </button>
+</div>
+
+
           </form>
         </div>
       </div>
