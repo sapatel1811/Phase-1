@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
@@ -420,7 +420,7 @@ className={`form-control form-control-lg ${
 
 
       </form>
-      <ToastContainer position="top-right" autoClose={2500} theme="colored" />
+      {/* <ToastContainer position="top-right" autoClose={2500} theme="colored" /> */}
     </>
   );
 }

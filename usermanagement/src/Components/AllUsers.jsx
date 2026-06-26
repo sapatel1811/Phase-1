@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { ToastContainer } from "react-toastify";
 
 function AllUsers() {
   const [users, setUsers] = useState([]);
@@ -107,12 +106,11 @@ function AllUsers() {
         prev.map((u) => (u.id === user.id ? { ...u, status: newStatus } : u)),
       );
       console.log("before tost");
-      toast.success(
-        // console.log("h1"),
-        newStatus === "active"
-          ? "User Activated Successfully"
-          : "User Inactivated Successfully",
-      );
+      if (newStatus === "active") {
+  toast.success("User Activated Successfully");
+} else {
+  toast.warn("User Inactivated Successfully");
+}
       console.log("after tost");
 
       // loadUsers(); // Real-time update
@@ -478,11 +476,7 @@ function AllUsers() {
             </div>
           </div>
 
-          {/* <ToastContainer
-            position="top-right"
-            autoClose={2500}
-            theme="colored"
-          /> */}
+          
         </div>
       </div>
 

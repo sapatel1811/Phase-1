@@ -167,9 +167,9 @@ setLoginError("");
   </div>
 )}
 
-        <form onSubmit={handleLogin}>
-          {/* EMAIL */}
-          <div className="mb-3">
+<form onSubmit={handleLogin}>
+{/* EMAIL */}
+  <div className="mb-3">
             <label className="form-label fw-semibold">
               Email<span className="text-danger">*</span>
             </label>
