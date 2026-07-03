@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaHome, FaUsers, FaCog } from "react-icons/fa";
+import { FaHome, FaUsers, FaCog, FaUser, FaLock } from "react-icons/fa";
 
 export default function Sidebar({ open, setOpen }) {
-
-const pathname = usePathname();
+  const pathname = usePathname();
 
   return (
     <>
@@ -56,6 +55,28 @@ const pathname = usePathname();
               >
                 <FaUsers />
                 Users
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/dashboard/profile"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-3 rounded-lg p-3 hover:bg-slate-700"
+              >
+                <FaUser />
+                Profile
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/dashboard/change-password"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-3 rounded-lg p-3 hover:bg-slate-700"
+              >
+                <FaLock />
+                Change Password
               </Link>
             </li>
 

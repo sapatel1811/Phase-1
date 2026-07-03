@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import {
@@ -12,9 +14,7 @@ export default function DashboardCard({
   value,
   type,
 }) {
-
   const cards = {
-
     total: {
       icon: <FaUsers />,
       bg: "bg-blue-100",

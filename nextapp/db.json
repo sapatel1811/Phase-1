@@ -1,4 +1,38 @@
 {
+  "admins": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "phone": "9876543210",
+      "address": "Ahmedabad"
+    },
+    {
+      "name": "jkhffg",
+      "email": "skp@gmail.com",
+      "password": "skp098",
+      "id": 2,
+      "address": "sdhhuf3ygf"
+    },
+    {
+      "name": "kishori",
+      "email": "kishori@gmail.com",
+      "password": "1234",
+      "id": 3
+    },
+    {
+      "name": "akshit",
+      "email": "ak@gmail.com",
+      "password": "ak1234",
+      "phone": "",
+      "address": "sdfddf",
+      "image": "",
+      "role": "Super Admin",
+      "createdAt": "2026-07-02T12:36:05.769Z",
+      "id": 4
+    }
+  ],
   "users": [
     {
       "name": "neha ",
@@ -9,16 +43,12 @@
       "id": "2"
     },
     {
-      "id": "4",
       "name": "Neha Shah",
       "email": "neha@gmail.com",
       "phone": "9876543213",
-      "role": "Admin",
-      "status": "Active",
-      "city": "Rajkot",
-      "department": "Management",
-      "gender": "Female",
-      "joiningDate": "2024-04-12"
+      "role": "User",
+      "status": "Inactive",
+      "id": "4"
     },
     {
       "id": "5",
@@ -57,16 +87,12 @@
       "joiningDate": "2024-06-28"
     },
     {
-      "id": "8",
       "name": "Sneha Gupta",
       "email": "sneha@gmail.com",
       "phone": "9876543217",
-      "role": "Admin",
+      "role": "User",
       "status": "Active",
-      "city": "Delhi",
-      "department": "Management",
-      "gender": "Female",
-      "joiningDate": "2024-07-08"
+      "id": "8"
     },
     {
       "id": "9",
@@ -112,9 +138,17 @@
       "name": "kishori ",
       "email": "kishori13@gmail.com",
       "phone": "1234567890",
-      "role": "Admin",
+      "role": "User",
       "status": "Inactive",
       "id": "k9iw9k-"
+    },
+    {
+      "name": "akshit",
+      "email": "ak@gmail.com",
+      "phone": "1234567890",
+      "role": "Admin",
+      "status": "Active",
+      "id": "0rhZRBO"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -12,15 +12,10 @@ import {
 export default function DashboardChart() {
   const data = [
     { name: "Jan", users: 10 },
-
     { name: "Feb", users: 20 },
-
     { name: "Mar", users: 35 },
-
     { name: "Apr", users: 18 },
-
     { name: "May", users: 40 },
-
     { name: "Jun", users: 30 },
   ];
 

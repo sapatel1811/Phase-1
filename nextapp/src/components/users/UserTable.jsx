@@ -11,7 +11,7 @@ export default function UserTable({
 }) {
   return (
 <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-  <div className="overflow-x-auto">      
+<div className="overflow-x-auto">      
 <table className="min-w-full text-sm text-left">
 <thead className="bg-slate-800 text-white sticky top-0">
 <tr>
